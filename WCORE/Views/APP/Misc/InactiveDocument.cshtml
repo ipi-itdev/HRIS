@@ -1,0 +1,158 @@
+﻿@System.Web.Optimization.Scripts.Render("~/Script/plugins/formslist")
+<section class="content-header">
+    <h1>Documents (Inactive)</h1>
+</section>
+
+<section class="content" style="position: center">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+                    <div class="col-md-5">
+                        <div class="box-body">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                <table id="tblDocumentTrackerDone" class="table table-bordered table-striped table-hover tblList" style="font-size: 13px; width: 100%">
+                                    <thead id="tblDocumentTrackerHead">
+                                        <tr class="notfilter" role="row">
+                                            <th style="width: 5%">ID</th>
+                                            <th style="width: 65%">Document</th>
+                                            <th style="width: 30%">Status</th>
+                                            <th>Created Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbllDocumentTrackerDoneBody"></tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <section class="content">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="nav-tabs-custom">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active"><a href="#Details_Form_Child_DocumentTrackerDone" data-toggle="tab" aria-expanded="true">Progress Details</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="Details_Form_Child_DocumentTrackerDone">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group" id="Details_Form_Child_DocumentTracker_DetailViewDone">
+                                                                    <table id="tblDocumentTrackerDetailsDone" class="table table-bordered table-striped table-hover tblList" style="font-size: 13px; width: 100%">
+                                                                        <thead id="tblDocumentTrackerDetailsDoneHead">
+                                                                            <tr class="notfilter" role="row">
+                                                                                <th>ID</th>
+                                                                                <th style="width: 20%">From</th>
+                                                                                <th style="width: 20%">To</th>
+                                                                                <th style="width: 10%">Document Status</th>
+                                                                                <th style="width: 15%">Date</th>
+                                                                                <th style="width: 30%">Remarks</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody id="tblDocumentTrackerDetailsDoneBody"></tbody>
+                                                                        <tfoot></tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div style="clear: both;"></div>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                    <div style="clear: both;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+var tableDocumentTrackerDone;
+var tableDocumentDetailsTrackerDone;
+
+$(document).ready(function () {
+
+    LoadDocumentsDone();
+
+});
+
+//---------------- 
+
+    function LoadDocumentsDone() {
+            var r = $.Deferred();
+
+            tableDocumentTrackerDone = $("#tblDocumentTrackerDone").DataTable({
+                "columnDefs": [{
+                    "targets": [3],
+                    "visible": false
+                }],
+                ajax: {
+                    url: '@Url.Action("GetDocumentsDone", "Misc")',
+	            type: 'POST',
+	            datatype: 'application/json; charset=utf-8',
+	            dataSrc: function (data) {
+	                var jsonResult = JSON.parse(data);
+
+	                LoadDocumentsDetailsDone(jsonResult[0][0]);
+	                return JSON.parse(data);
+	            },
+
+	            error: function (e) { }
+	        }
+			, order: [[1, 'asc']], pageResize: true, ordering: true, lengthChange: false, ordering: false,
+	        initComplete: function () { }
+	    });
+        return r;
+    };
+
+
+    function LoadDocumentsDetailsDone(docID) {
+        var r = $.Deferred();
+
+        $('#tblDocumentTrackerDetailsDone').DataTable().destroy();
+
+        tableDocumentDetailsTrackerDone = $("#tblDocumentTrackerDetailsDone").DataTable({
+            "columnDefs": [
+                {
+                   "targets": [0],
+                   "visible": false
+                }],
+                ajax: {
+                url: '@Url.Action("GetDocumentsDetails", "Misc")?documentID=' + docID,
+                type: 'POST',
+                datatype: 'application/json; charset=utf-8',
+                dataSrc: function (data) {
+                    return JSON.parse(data);
+                },
+
+                error: function (e) { }
+            }
+			, order: [[1, 'asc']], pageResize: true, ordering: true, lengthChange: false, ordering: false,
+            initComplete: function () { }
+        });
+
+        return r;
+    };
+
+
+    $('#tblDocumentTrackerDone tbody').off().on('click', 'tr', function () {
+        var data = tableDocumentTrackerDone.row(this).data();
+        LoadDocumentsDetailsDone(data[0]);
+    })
+
+</script>
+
+<div>
+     <div style="clear: both;"></div>
+</div>
+</section>

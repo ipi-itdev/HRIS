@@ -1,0 +1,59 @@
+﻿@using WCORE.Utility;
+<section class="content-header">
+<div class="btn-group" id="btnList_@{@ViewBag.FormID}">
+    @if ((@ViewBag.AllowInsert == true && @ViewBag.pid <= 0) || (@ViewBag.AllowUpdate == true && @ViewBag.pid > 0))
+    { <button type="button" class="btn btn-primary" id="Save_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save</button> }
+    @if (@ViewBag.AllowDelete == true && @ViewBag.pid > 0)
+    { <button type="button" class="btn btn-primary" id="Delete_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-trash-o" title="Delete"></i>  Delete</button> }
+</div>
+</section>
+<section class="content">
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs" id="tab_@{@ViewBag.FormID}" role="tablist">
+        @foreach (var tab in ViewBag.Tabs) { 
+		if (@tab.IsListView == true) { 
+			 <li class="nav-item"><a href="#@{@tab.Name}_List_@{@ViewBag.FormID}" data-toggle="tab" class="nav-link" role="tab">@tab.Desc</a></li> } 
+             else { <li class="nav-item"><a href="#@{@tab.Name}_@{@ViewBag.FormID}" data-toggle="tab" class="nav-link" role="tab">@tab.Desc</a></li> }
+		}
+    </ul>
+    <div class="tab-content">
+        @foreach (var tabpane in ViewBag.Tabs)
+        {
+            if (@tabpane.IsListView == true)
+            { <div class="tab-pane" id="@{@tabpane.Name}_List_@{@ViewBag.FormID}" role="tabpanel"></div> }
+            else
+            {
+            <div class="tab-pane" id="@{@tabpane.Name}_@{@ViewBag.FormID}" role="tabpanel">
+                <div class="col-md-12">
+                    <div class="form-group" id ="@{@tabpane.Name}_@{@ViewBag.FormID}_dtlv"></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group" id ="@{@tabpane.Name}_@{@ViewBag.FormID}_dtlv2"></div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+            }
+        }           
+    </div>      
+    <div style="clear:both;" ></div>                            
+</div>                                  
+</section>
+<script>
+$(document).ready(function () {
+ @{var ObjectID = Common.GenerateName();};
+ let @{@ObjectID} = { @{@Html.Raw(ViewBag.ObjectProperties)} };
+ @{var mFrmID = Common.GenerateName();};
+ let @{@mFrmID} = new formyd(@{@ViewBag.pid});
+ @{@mFrmID}.mguid = '@{@ViewBag.mguid}';
+ @{@mFrmID}.mNm = '@{@ViewBag.mCode}';
+ @{@mFrmID}.mNo = '@{@ViewBag.mNo}';
+ @{@mFrmID}.mDesc = '@{@ViewBag.Description}';
+ @{@mFrmID}.cObj =  @{@ObjectID};
+ @{@mFrmID}.FKN =  '@{@ViewBag.FKeyName}';
+ @{@mFrmID}.FK =  '@{@ViewBag.FKey}';
+ @{@mFrmID}.fid =  '@{@ViewBag.FormID}';
+ @{@mFrmID}.dvFormat =  @{@Html.Raw(ViewBag.DetailViewFormat)};
+    
+ $('.content-wrapper').waitMe('hide');
+ })
+</script>

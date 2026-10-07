@@ -1,0 +1,291 @@
+﻿@using WCORE.Utility;
+<section class="content-header">
+      <h1>Client Account</h1>
+</section>
+<section class="content" id="ClientAccount">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+             <div class="box-body">
+                <div class="row">
+                    <div class="box-header">
+                        <div id="btnList_ClientAccount">
+                            @if  (@ViewBag.AllowUpdate == true)
+                            { <button type="button" class="btn btn-primary" id="Save_ClientAccount" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save</button> }
+                              <button type="button" class="btn btn-primary" id="Back_ClientAccount" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Back to List"></i>  Back to List</button>
+                        </div>
+                    </div>          
+                    <div class="col-xs-4">
+                        <div class="form-group" id="Details_Form_ClientAccount_DetailView"></div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs" id="tab_ClientAccount">
+                                <li class="active"><a href="#Branch_Form_ClientAccount" data-toggle="tab" aria-expanded="false">Branch</a></li>
+                                <li><a href="#ClientContactPerson_Form_ClientAccount" data-toggle="tab" aria-expanded="false">Contact Person</a></li>
+                                <li><a href="#CostCenter_Form_ClientAccount" data-toggle="tab" aria-expanded="false">Cost Center</a></li>
+                                <li class=""><a href="#ClientAccountHistory_Form_ClientAccount" data-toggle="tab" aria-expanded="false">MSA History</a></li>
+                                <li class=""><a href="#EmployeeClientContractHistory_Form_ClientAccount" data-toggle="tab" aria-expanded="false">Work Schedule History</a></li>
+                                <li><a href="#Other_Form_ClientAccount" data-toggle="tab">Other</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="Branch_Form_ClientAccount">
+                                    <div class="col-md-12">
+                                        <div class="tab-pane" id="Branch_List_ClientAccount"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="ClientContactPerson_Form_ClientAccount">
+                                    <div class="col-md-12">
+                                        <div class="tab-pane" id="ClientContactPerson_List_ClientAccount"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="CostCenter_Form_ClientAccount">
+                                    <div class="col-md-12">
+                                        <div class="tab-pane" id="CostCenter_List_ClientAccount"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="ClientAccountHistory_Form_ClientAccount">
+                                    <div class="col-md-12">
+                                        <div class="tab-pane" id="ClientAccountHistory_List_ClientAccount"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="EmployeeClientContractHistory_Form_ClientAccount">
+                                    <div class="col-md-12">
+                                        <div class="tab-pane" id="EmployeeClientContractHistory_List_ClientAccount"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="Other_Form_ClientAccount">
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="Other_Form_ClientAccount_DetailView"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="Other_Form_ClientAccount_DetailView_2"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                            </div>                                  
+                        </div>                                  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<script>
+    var uri = '../api/PAREmpInfo';
+    var rnoyv_ipi_intreq;
+    var isDuplicate = false;
+    var IsNew_intreq = @ViewBag.PKey > 0  ? false : true;
+    var timer_intreq;
+    var result_intreq = null;
+
+    $(document).ready(function () {
+        functionOne();
+        $('#tab_ClientAccount>li>a').first().click();
+        $(function() {           
+            $('#btnList_ClientAccount').find('button').on('click', function() {
+                var ids = $(this).attr('id');
+                var Message = '';
+                var OkLabel = 'OK';
+                var fAction = null;
+                switch ( ids.replace('ClientAccount-','').toUpperCase() ) {
+                    case 'SAVE_ClientAccount'.toUpperCase():
+                        Message = 'Save changes?';
+                        OkLabel = 'Save';
+                        fAction = function(result) { if (ClientAccount_Validate() != false) { rnoyv_ipi_intreq.Save();}  else { return false; } }
+                        break;
+                    case 'BACK_ClientAccount'.toUpperCase():
+                        Message = 'Are you sure you want to go back to the list?';
+                        OkLabel = 'Back to List to List';
+                        fAction = function (result) { var URLView = '../ListView?ModelNo=302'; $('#content_ClientAccount').load(URLView, function () { });}
+                        break;
+                }
+                
+                BootstrapDialog.show({
+                    title: 'Client Account Maintenance',
+                    icon: 'fa-circle-o',
+                    message: Message,
+                    closable: true,
+                    draggable: true,
+                    buttons: [{ id: 'btn-1', label: 'Cancel', cssClass: 'btn-warning', action: function (dialog) { dialog.close(); } },
+                              { id: 'btn-2', label: 'Ok', cssClass: 'btn-primary', action: function (dialog) { var $button = this; $button.disable(); $button.spin(); fAction(); dialog.close(); } }]
+                });
+            });
+        });
+    })
+
+    function ClientAccount_Validate() {
+        
+        var valid_PARINT = true;
+        $("#ClientAccount .required").each(function() {
+            var fname_parintreq = $(this).attr('name').split("_");
+            var objVal = JSON.parse(JSON.stringify( rnoyv_ipi_intreq ));
+            if(objVal[fname_parintreq[0]] == null || objVal[fname_parintreq[0]] == 0)
+            { Toast.Error( $(this).attr('title') + " is required." ); valid_PARINT = false; return false; }
+        });
+        return valid_PARINT;
+    }
+    
+    function functionOne() {
+        var r = $.Deferred();
+        rnoyv_ipi_intreq = {
+            ID: null, Code: null, Description: null,ServiceOfferedRefNo: null, BusinessNature: null, ContractTenure: null, CreatedBy: null, CreatedDate: null, ModifiedBy: null, ModifiedDate: null,
+            IsActive: null, Branch: [], ClientContactPerson: [], CostCenter: [], ClientAccountHistory : [], EmployeeClientContractHistory: []
+            , IsDirty : false
+            , Save : function(Grid) {
+                $.ajax({
+                    url: '../DetailView/Save',
+                    data: { mName :'ClientAccount' ,JSONObject : JSON.stringify( rnoyv_ipi_intreq ) },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        result_intreq =  data
+                        rnoyv_ipi_intreq.ID = result_intreq.ID;
+                        rnoyv_ipi_intreq.IsDirty = false;
+                            
+                        var URLView = '@Url.Action("ClientAccount", "PAR")?mName=' + 'ClientAccount' + '&pKey=' + result_intreq.ID + '&Icon=' + 'fa-users';
+                        $('#content_ClientAccount').load(URLView, function () { });
+
+                        Toast.Show( 'Successfully Saved.');
+                    },
+                    error: function(xhr, textStatus, error) {
+                        console.log(error);
+                    }
+                });
+            }
+        };
+
+        function ClientAccount_DetailView() {
+            var ObjectID = '@ViewBag.PKey';
+            var dvFormat = [{
+                Name: 'Details', Controls: [{ Name: 'ID', Type: 'Int', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'ID' }
+                    , { Name: 'Code', Caption: 'Code', Type: 'String',IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'Code' }
+                    , { Name: 'Description', Caption: 'Client', Type: 'String', ControlType: 'textarea',IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'Description' }
+					, { Name: 'ClientAddress', Caption: 'Address', Type: 'String', ControlType: 'textarea', ColumnNo: 0, TbName: 'Details', ControlID: 'ClientAddress' }
+                    , { Name: 'BusinessNature', Caption: 'Business Nature', Type: 'String', IsRequired: true,IsEnabled: true, ColumnNo: 0, TbName: 'Details', ControlID: 'BusinessNature' }
+                    , { Name: 'ServiceOfferedRefNo', Caption: 'Service Offered', Type: 'Int',IsEnabled: true, ControlType: 'combobox', RefColumn: 'ServiceOffered', ControlModel: 'ServiceOffered', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'ServiceOfferedRefNo' }
+                    , { Name: 'ContractTenure', Caption: 'Contract Tenure', Type: 'String', IsRequired: true,IsEnabled: true, ColumnNo: 0, TbName: 'Details', ControlID: 'ContractTenure' }
+                    , { Name: 'InitialContractStartDate', Caption: 'Initial Contract',  Type: 'DateTime', ControlType: 'datepicker', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'InitialContractStartDate' }
+                    , { Name: 'StartDate', Caption: 'Start Date',  Type: 'DateTime', ControlType: 'datepicker', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'StartDate' }
+                    , { Name: 'EndDate', Caption: 'End Date',  Type: 'DateTime', ControlType: 'datepicker', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'EndDate' }]}
+                    , { Name: 'Branch', Type: '324', FKey: 'ClientAccountRefNo', FKeyValue: 'ClientAccountRefNo', HasNew: true, HasRemove: true , IsListView: true, PropertyName: 'Branch' }
+                    , { Name: 'ClientContactPerson', Type: '323', FKey: 'ClientAccountRefNo', FKeyValue: 'ClientAccountRefNo', HasNew: true, HasRemove: true , IsListView: true, PropertyName: 'ClientContactPerson' }
+                    , { Name: 'CostCenter', Type: '321', FKey: 'ClientAccountRefNo', FKeyValue: 'ClientAccountRefNo', HasNew: false, HasRemove: false , IsListView: true, PropertyName: 'CostCenter' }
+                    , { Name: 'ClientAccountHistory', Type: '322', FKey: 'ClientAccountRefNo', FKeyValue: 'ClientAccountRefNo', HasNew: false, HasRemove: false , IsListView: true, PropertyName: 'ClientAccountHistory' }
+                    , { Name: 'EmployeeClientContractHistory', Type: '325', FKey: 'ClientAccountRefNo', FKeyValue: 'ClientAccountRefNo', HasNew: false, HasRemove: false , IsListView: true, PropertyName: 'EmployeeClientContractHistory' }
+                    , { Name: 'Other', Controls: [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' } 
+                    , { Name: 'CreatedDate', Caption: 'Created Date', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' }
+                    , { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedBy' }
+                    , { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedDate' }
+                    , { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }]}
+               ];
+            function GetControl(Selector, CtrlFormat ) {
+                var control = new controly(Selector, { PropertyName: CtrlFormat.Name , Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption ), type : CtrlFormat.ControlType, Model : CtrlFormat.ControlModel, ControlID : CtrlFormat.ControlID , ControlFormat: CtrlFormat.strFormat },CtrlFormat,'ClientAccount');
+                control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+                control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+                control.ParentDiv = Selector
+                control.Init();
+                if ( CtrlFormat.IsEnabled != undefined ) control.SetEnabled( CtrlFormat.IsEnabled );
+                control.CurrentObject = rnoyv_ipi_intreq;
+                return control;
+            };
+            function InitNewObject(newObject) {
+                $.each(newObject, function(key, value) {
+                    if ( key != "IsEditOnly" ) {
+                        rnoyv_ipi_intreq[key] = value;
+                    }
+                });
+                $.each(dvFormat, function(i,tabs) {
+                    if ( tabs.IsListView != undefined ) {
+                        Selector = $('#' + tabs.Name + '_List_ClientAccount');
+                        LoadListViewTab(Selector,tabs);
+                    }
+                    else {
+                        $.each(tabs.Controls, function(x,val ) {
+                            if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_ClientAccount_DetailView_2');
+                            } else{ Selector = $('#' + tabs.Name + '_Form_ClientAccount_DetailView');}
+                            var control = GetControl(Selector,val);
+                            control.SetValue(rnoyv_ipi_intreq[val.Name]);
+                        });
+                    }
+                });
+            }
+            this.OpenObject = function(CurrentObject) {
+                InitNewObject(CurrentObject)
+            }
+            this.InitDetailView = function(CurrentObject) {
+                $.ajax({
+                    url: '../DetailView/GetBaseObject',
+                    data: { model:'ClientAccount', pKey:ObjectID },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        if ( ObjectID <= 0 ) {
+                            var newObject = eval("(function(){return " + data + ";})()");
+                            InitNewObject( newObject );
+                        } else {
+                            var jsonArray = JSON.parse(data);
+                            if (jsonArray.length == 0) return;
+                            var Columns = jsonArray[0];
+                            var Values = jsonArray[1];
+                            $.each(Columns,function(i,o){
+                                CurrentObject[o] = Values[i];
+                            });
+                            $.each(dvFormat, function(x,tabs) {
+                                if ( tabs.IsListView != undefined ) {
+                                    Selector = $('#' + tabs.Name + '_List_ClientAccount');
+                                    LoadListViewTab(Selector,tabs);
+                                } else {
+                                    $.each( tabs.Controls, function( i, val ) {
+                                        if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_ClientAccount_DetailView_2');
+                                        } else{ Selector = $('#' + tabs.Name + '_Form_ClientAccount_DetailView');}
+                                        var control = GetControl(Selector,val);
+                                        var ColumnIndex = Columns.indexOf( val.Name );
+                                        var Value = Values[ColumnIndex];
+                                        control.SetValue(Value);
+                                    });
+                                }
+                            });
+                        }
+                    }, error: function ( e ) { alert(e.responseText); }
+                });
+            };
+        }
+        function LoadListViewTab(Selector, tabs){
+            var URLView = '../ListView/ChildListIndex?ModelNo=MODEL_NAME&Description=MODEL_DESC&ColumnsWidth=0.7&IsAppendMode=True&ForeignKeyName=FKeyName&ForeignKey=FKey&ParentModel=MODEL_PARENT&AllowAddOth=ModAllowUpdate';
+            URLView = URLView.replace("MODEL_NAME", tabs.Type);
+            URLView = URLView.replace("MODEL_DESC", tabs.Name);
+            URLView = URLView.replace("FKeyName", tabs.FKey);
+            URLView = URLView.replace("FKey", tabs.FKeyValue);
+            URLView = URLView.replace("MODEL_PARENT", "ClientAccount");
+            URLView = URLView.replace("ModAllowUpdate", '@ViewBag.AllowUpdate');
+            Selector.load(URLView);
+            Selector.on('OnGridCreated', function (e, o) {
+                var ctr = 0;
+                var h = Selector.parent().height();
+                var grid = o.Grid;
+                grid.ParentObject = rnoyv_ipi_intreq;
+                grid.ParentObjectProperty = tabs.PropertyName;
+
+                grid.rowHeight = 30;
+                grid.ID_ParentKey = rnoyv_ipi_intreq[tabs.FKeyValue];
+                grid.ForeignFieldKey = tabs.FKey != undefined ? tabs.FKey : null;
+                grid.IsPartialRefresh = false;
+                grid.Refresh();
+                grid.getContainer().css('height', h - 10 );
+                grid.getTable().css('height', h - 70);
+            });
+        }
+        var $itm = new ClientAccount_DetailView();
+        $itm.InitDetailView(rnoyv_ipi_intreq);
+        return r;
+    }
+</script>

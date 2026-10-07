@@ -1,0 +1,773 @@
+﻿<section class="content-header">
+      <h1>Employee Masterlist</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-list"></i> Summary</a></li>
+        <li class="active">Employee Masterlist</li>
+      </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <div class="col-md-12 no-padding">
+                        <div id="myParent_EmployeeMasterlist">
+                            <section class="content" id="myParent_EmployeeMasterlist_EmployeeMasterlist">
+                                <div id="btnList_Child_EmployeeMasterlist" class="no-padding">
+                                    <button type="button" class="btn btn-primary" id="btnFilter"><i class="fa fa-filter" title="Filter"></i>  Filter</button>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 no-padding">
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-xs-12 no-padding">
+                                                    <div class="nav-tabs-custom">
+                                                        <ul class="nav nav-tabs" id="tab_child_EmployeeMasterlist">
+                                                            <li class="active"><a href="#Details_Form_Child_EmployeeMasterlist" data-toggle="tab" aria-expanded="true">Criteria</a></li>                                                  
+                                                            <li><a href="#OtherC_Form_Child_EmployeeMasterlist" data-toggle="tab">Criteria (Dates)</a></li>
+                                                            <li><a href="#Other_Form_Child_EmployeeMasterlist" data-toggle="tab">Personal Information</a></li>
+                                                            <li><a href="#Result_Form_Child_EmployeeMasterlist" data-toggle="tab">Result</a></li>
+                                                        </ul>
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="Details_Form_Child_EmployeeMasterlist">
+                                                                <div class="col-md-4">
+                                                                    <strong>Personnal Information</strong><br /><br />
+                                                                    <div class="form-group" id="Details_Form_Child_EmployeeMasterlist_DetailView"></div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <strong>Employment Information</strong><br /><br />
+                                                                    <div class="form-group" id="Employment_Form_Child_EmployeeMasterlist_DetailView"></div>
+                                                                </div>
+                                                                 <div class="col-md-4">
+                                                                     <strong>Employment Information</strong><br /><br />
+                                                                    <div class="form-group" id="Payroll_Form_Child_EmployeeMasterlist_DetailView"></div>
+                                                                </div>
+                                                                <div style="clear:both;"></div>
+                                                            </div>
+                                                             <div class="tab-pane" id="OtherC_Form_Child_EmployeeMasterlist">
+                                                                <div class="col-md-4">
+                                                                    <strong>Personnal Information</strong><br /><br />
+                                                                    <div class="form-group"></div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <strong>Employment Information</strong><br /><br />
+                                                                    <div class="form-group"></div>
+                                                                </div>
+                                                                 <div class="col-md-4">
+                                                                     <strong>Employment Information</strong><br /><br />
+                                                                    <div class="form-group"></div>
+                                                                </div>
+                                                                <div style="clear:both;"></div>
+                                                            </div>
+                                                            <div class="tab-pane" id="Other_Form_Child_EmployeeMasterlist">
+                                                                <div class="col-md-4">
+                                                                    <strong>Personnal Information</strong><br /><br />
+                                                                    <div class="form-group" id="Columns_Form_Child_EmployeeMasterlist_DetailView">
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Employee Number
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_EmployeeNumber" name="col_EmployeeNumber">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Last Name
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_LastName" name="col_LastName">
+                                                                            </div>
+                                                                        </div>
+                                                                         <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>First Name
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_FirstName" name="col_FirstName">
+                                                                            </div>
+                                                                        </div>
+                                                                         <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Middle Name
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_MiddleName" name="col_MiddleName">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Sex
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Sex" name="col_Sex">
+                                                                            </div>
+                                                                        </div>
+                                                                         <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Birth Date
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_BirthDate" name="col_BirthDate">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Age
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Age" name="col_Age">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Birth Place
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_BirthPlace" name="col_BirthPlace">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Civil Status
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_CivilStatus" name="col_CivilStatus">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Nationality
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Nationality" name="col_Nationality">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Religion
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Religion" name="col_Religion">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Height
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Height" name="col_Height">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Weight
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Weight" name="col_Weight">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Blood Type
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_BloodType" name="col_BloodType">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Allergies
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Allergies" name="col_Allergies">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <strong>Education Information</strong><br /><br />
+                                                                    <div class="form-group" id="ContactInfo_Form_Child_EmployeeMasterlist_DetailView">
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>School
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_School" name="col_School">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Course
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Course" name="col_Course">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Year Graduated
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_YearGraduated" name="col_YearGraduated">
+                                                                            </div>
+                                                                        </div>
+                                                                        <strong>Contact Information</strong><br /><br />
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Primary Email
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_PrimaryEmail" name="col_PrimaryEmail">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Secondary Email
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_SecondaryEmail" name="col_SecondaryEmail">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Telephone
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Telephone" name="col_Telephone">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Mobile
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Mobile" name="col_Mobile">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Mobile 2
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_Mobile2" name="col_Mobile2">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Current Address
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_CurrentAddress" name="col_CurrentAddress">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Permanent Address
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_PermanentAddress" name="col_PermanentAddress">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>City
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_City" name="col_City">
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <strong>Personnal Information</strong><br /><br />
+                                                                    <div class="form-group" id="Emergency_Form_Child_EmployeeMasterlist_DetailView">
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Emergency Name
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_EmergencyName" name="col_EmergencyName">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Address
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_EmergencyAddress" name="col_EmergencyAddress">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Contact No
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_EmergencyContactNo" name="col_EmergencyContactNo">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Relationship
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_EmergencyRelationship" name="col_EmergencyRelationship">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Emergency Name 2
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_EmergencyName2" name="col_EmergencyName2">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Address 2
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_EmergencyAddress2" name="col_EmergencyAddress2">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Contact No 2
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_EmergencyContactNo2" name="col_EmergencyContactNo2">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>Relationship 2
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_EmergencyRelationship2" name="col_EmergencyRelationship2">
+                                                                            </div>
+                                                                        </div>
+                                                                        <strong>Government Information</strong><br /><br />
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>TIN No
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_TIN" name="col_TIN">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>PHILHEALTH
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_PHILHEALTH" name="col_PHILHEALTH">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>SSS
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_SSS" name="col_SSS">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row form-group">
+                                                                            <label class="col-lg-5 control-label" style="text-align:left">
+                                                                                <span style="visibility:hidden;">.....  </span>PAGIBIG
+                                                                            </label>
+                                                                            <div class="col-lg-4 control-container vcenter">
+                                                                                <input type="checkbox" id="col_PAGIBIG" name="col_PAGIBIG">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div style="clear:both;"></div>
+                                                            </div>
+                                                            <div class="tab-pane" id="OtherPayroll_Form_Child_EmployeeMasterlist">
+                                                                <div class="col-md-3">
+                                                                    <strong>Employment Information</strong><br /><br />
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Field of Work
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_FOW" name="col_FOW">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Rank Level
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_RL" name="col_RL">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Employment Status
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_EmploymentStatus" name="col_EmploymentStatus">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Client
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_Client" name="col_Client">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Client Address
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_ClientAddress" name="col_ClientAddress">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Job Position
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_JobPosition" name="col_JobPosition">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Date Hired
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_DateHired" name="col_DateHired">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Start Date
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_StartDate" name="col_StartDate">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>End Date
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_EndDate" name="col_EndDate">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Contractual Date
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_ContractualDate" name="col_ContractualDate">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Prob. Date
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_ProbDate" name="col_ProbDate">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Date Regularized
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_DateRegularized" name="col_DateRegularized">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Technical Skills
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_TSkills" name="col_TSkills">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <strong>Benefits Information</strong><br /><br />
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Holiday Tag
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_Holiday" name="col_Holiday">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Tax Tag
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_Tax" name="col_Tax">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>Separation Tag
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_Separation" name="col_Separation">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>13th Month Tag
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_13th" name="col_13th">
+                                                                        </div>
+                                                                    </div>
+                                                                     <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>SSS Tag
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_SSSTag" name="col_SSSTag">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>PAGIBIG Tag
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_PAGIBIGTag" name="col_PAGIBIGTag">
+                                                                        </div>
+                                                                    </div>
+                                                                     <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>PHILHEALTH Tag
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_PHILHEALTHTag" name="col_PHILHEALTHTag">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>SIL
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_SIL" name="col_SIL">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>HMO DC(Annual)
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_HMODC" name="col_HMODC">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>HMO Coverage(Annual)
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_HMOCoverage" name="col_HMOCoverage">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>OT Assumption
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_OTAssumption" name="col_OTAssumption">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>GPA No
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_GPANo" name="col_GPANo">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-5 control-label" style="text-align:left">
+                                                                            <span style="visibility:hidden;">.....  </span>HMO Card No
+                                                                        </label>
+                                                                        <div class="col-lg-4 control-container vcenter">
+                                                                            <input type="checkbox" id="col_HMOCardNo" name="col_HMOCardNo">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane" id="Result_Form_Child_EmployeeMasterlist">
+                                                                 <div class="col-md-4">
+                                                                    <div class="form-group" id="Result_ListView">
+                                                                        <table id="lstMasterlist" class="table table-bordered table-striped table-hover tblList table-responsive" style="font-size:13px; width:100%;">
+                                                                            <thead id="tblHead">
+                                                                                <tr class="notfilter"></tr>
+                                                                            </thead>
+                                                                            <tbody id="tblBody"></tbody>
+                                                                            <tfoot></tfoot>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                <div style="clear:both;"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div style="clear:both;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <script>
+                                var tablemlist;
+                                var lsthtml = '';
+                                var strcol = null;
+                                var strparam = null;
+                                var strparamval = null;
+                                $(document).ready(function () {
+									var zkswm = {ID: null,EmployeeStatusRefNo:1 , MRRefNo: null, FOWRefNo:null, ClientAccountRefNo:null }
+                                    function EmployeeMasterlist_DetailView_Child() {
+                                        this.IsEditOnly = false;
+                                        var ObjectID = -1;
+                                        var dvFormat = [{ Name: 'Employment', Controls: [
+                                                    { Name: 'EmployeeStatusRefNo', Caption: 'Employee Status', Type: 'Int', ControlType: 'combobox', RefColumn: 'ESS', ControlModel: 'EmployeeStatus', ColumnValue: 'ID', DisplayColumnValue: 'Description',  ColumnNo: 0, TbName: 'Employment', ControlID: 'EmployeeStatusRefNo' },
+                                                    { Name: 'MRRefNo', Caption: 'MR', Type: 'Int', ControlType: 'combobox', RefColumn: 'MR', ControlModel: 'MarketingRep', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Employment', ControlID: 'MRRefNo' },
+                                                    { Name: 'FOWRefNo', Caption: 'Field of Work', Type: 'Int', ControlType: 'combobox', RefColumn: 'FOW', ControlModel: 'FOW', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Employment', ControlID: 'FOWRefNo' },
+                                                    { Name: 'ClientAccountRefNo', Caption: 'Client', Type: 'Int', ControlType: 'combobox', RefColumn: 'C', ControlModel: 'ClientAccount', ColumnValue: 'ID', DisplayColumnValue: 'Description',  ColumnNo: 0, TbName: 'Employment', ControlID: 'ClientAccountRefNo' },
+                                                    { Name: 'EmployeeTypeRefNo', Caption: 'Rank Level', Type: 'Int', ControlType: 'combobox', RefColumn: 'ET', ControlModel: 'EmployeeType', ColumnValue: 'ID', DisplayColumnValue: 'Description',  ColumnNo: 0, TbName: 'Employment', ControlID: 'EmployeeTypeRefNo' },
+                                                    { Name: 'EmploymentStatusRefNo', Caption: 'Employment Status', Type: 'Int', ControlType: 'combobox', RefColumn: 'EMPS', ControlModel: 'EmploymentStatus', ColumnValue: 'ID', DisplayColumnValue: 'Description',  ColumnNo: 0, TbName: 'Employment', ControlID: 'EmploymentStatusRefNo' },
+                                                    { Name: 'MaxicareCoverageRefNo', Caption: 'Malayan Coverage', Type: 'Int', ControlType: 'combobox', RefColumn: 'MC', ControlModel: 'MaxicareCoverage', ColumnValue: 'ID', DisplayColumnValue: 'Description',  ColumnNo: 0, TbName: 'Employment', ControlID: 'MaxicareCoverageRefNo' },
+                                                    { Name: 'MaxicarePolicyNo', Type: 'String', ControlModel: 'EmployeeMasterlist', ColumnNo: 0, TbName: 'Employment', ControlID: 'MaxicarePolicyNo' }]
+                                            }];
+                                        function GetControl_Child(Selector, CtrlFormat) {
+                                            var control = new JIBControl(Selector, { PropertyName: CtrlFormat.Name, Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption), type: CtrlFormat.ControlType, Model: CtrlFormat.ControlModel, ControlID: CtrlFormat.ControlID, ControlFormat: CtrlFormat.strFormat }, CtrlFormat, 'EmployeeMasterlist');
+                                            control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+                                            control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+                                            control.ParentDiv = Selector
+                                            control.Init();
+                                            if (CtrlFormat.IsEnabled != undefined) control.SetEnabled(CtrlFormat.IsEnabled);
+                                            control.CurrentObject = zkswm;
+                                            return control;
+                                        };
+                                        function InitNewObject_Child(newObject) {
+                                            $.each(newObject, function (key, value) {
+                                                if (key != "IsEditOnly") {
+                                                    zkswm[key] = value;
+                                                }
+                                            });
+                                            $.each(dvFormat, function (i, tabs) {
+                                                $.each(tabs.Controls, function (x, val) {
+                                                    Selector = $('#' + tabs.Name + '_Form_Child_EmployeeMasterlist_DetailView');
+                                                    var control = GetControl_Child(Selector, val);
+                                                    control.SetValue(zkswm[val.Name]);
+                                                });
+                                            });
+                                        }
+                                        this.InitDetailView_Child = function (CurrentObject) {
+                                            $.ajax({
+                                                url: '../DetailView/GetBaseObject',
+                                                data: { model: 'EmployeeMasterlist', pKey: ObjectID },
+                                                type: 'POST',
+                                                datatype: 'application/json; charset=utf-8',
+                                                beforeSend: function () { },
+                                                success: function (data) {
+                                                    if (ObjectID == -1) {
+                                                        var newObject = eval("(function(){return " + data + ";})()");
+                                                        InitNewObject_Child(newObject);
+                                                    } else {
+                                                        var jsonArray = JSON.parse(data);
+                                                        if (jsonArray.length == 0) return;
+                                                        var Columns = jsonArray[0];
+                                                        var Values = jsonArray[1];
+                                                        $.each(Columns, function (i, o) {
+                                                            CurrentObject[o] = Values[i];
+                                                        });
+                                                        $.each(dvFormat, function (x, tabs) {
+                                                            $.each(tabs.Controls, function (i, val) {
+                                                                Selector = $('#' + tabs.Name + '_Form_Child_EmployeeMasterlist_DetailView');
+                                                                var control = GetControl_Child(Selector, val);
+                                                                var ColumnIndex = Columns.indexOf(val.Name);
+                                                                var Value = Values[ColumnIndex];
+                                                                control.SetValue(Value);
+                                                            });
+                                                        });
+                                                    }
+                                                }, error: function (e) { alert(e.responseText); }
+                                            });
+                                        };
+                                    }
+                                    var $itm = new EmployeeMasterlist_DetailView_Child();
+                                    $itm.InitDetailView_Child(zkswm);
+
+                                    $('#myParent_EmployeeMasterlist').trigger("OnDetailViewContentCreated", { BaseObject: zkswm, DetailView: new EmployeeMasterlist_DetailView_Child() });
+                                    $('#myParent_EmployeeMasterlist').unbind("OnDetailViewContentCreated");
+
+                                    $('#tab_child_EmployeeMasterlist>li>a').first().click();
+
+                                    $('#btnFilter').off('click').on('click', function () {
+                                        getval().done(populateTable());
+                                    })
+
+                                })
+
+                                function getval() {
+                                    var r = $.Deferred();
+                                    strcol = ''; strparam = ''; strparamval = '';
+                                    if ($('#col_EmployeeNumber').prop('checked')) { strcol = strcol == null ? 'EmployeeNumber,' : strcol + 'EmployeeNumber,' }
+                                    if ($('#col_LastName').prop('checked')) { strcol = strcol == null ? 'LastName,' : strcol + 'LastName,' }
+                                    if ($('#col_FirstName').prop('checked')) { strcol = strcol == null ? 'FirstName,' : strcol + 'FirstName,' }
+                                    if ($('#col_MiddleName').prop('checked')) { strcol = strcol == null ? 'MiddleName,' : strcol + 'MiddleName,' }
+
+
+                                    if ($('#GenderRefNo_EmployeeMasterlist').val() > 0) { strparam = strparam == null ? 'GenderRefNo,' : strparam + 'GenderRefNo,'; strparamval = strparamval == null ? $('#GenderRefNo_EmployeeMasterlist').val() + ',' : strparamval + $('#GenderRefNo_EmployeeMasterlist').val() + ','; }
+                                    if ($('#NationalityRefNo_EmployeeMasterlist').val() > 0) { strparam = strparam == null ? 'NationalityRefNo,' : strparam + 'NationalityRefNo,'; strparamval = strparamval == null ? $('#NationalityRefNo_EmployeeMasterlist').val() + ',' : strparamval + $('#NationalityRefNo_EmployeeMasterlists').val() + ','; }
+
+                                    strcolumns = null;
+                                    var strcolumns = strcol.split(',');
+                                    
+                                    if (lsthtml != '') { tablemlist.destroy(); }
+                                    lsthtml = '';
+                                    for (var i = 0; i < (strcolumns.length - 1) ; i++) {
+                                        lsthtml = lsthtml + "<th>" + strcolumns[i] + "</th>";
+                                    }
+                                    $("#lstMasterlist thead tr").html('');
+                                    $("#lstMasterlist thead tr").append(lsthtml);
+                                    return r;
+                                }
+
+                                function populateTable() {
+                                    var today = new Date();
+                                    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                                    var time = today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
+                                    var dateTime = date + ' ' + time;
+                                    if (strcol != null) {
+                                        tablemlist = $("#lstMasterlist").DataTable({
+                                            //stateSave: true,
+                                            dom: "<'row'<'col-sm-3'><'col-sm-3'l><'col-sm-2'B><'col-sm-4'p>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+                                            "autoWidth": false,
+                                            ajax: {
+                                                url: '../PIS/GetMasterlist?strcol=' + strcol + '&strparam=' + strparam + '&strparamval=' + strparamval,
+                                                type: 'POST',
+                                                datatype: 'application/json; charset=utf-8',
+                                                dataSrc: function (data) { return JSON.parse(data); },
+                                            },
+                                             pageResize: true, bSortCellsTop: true, buttons: [{
+                                             extend: 'excel', title: 'Masterlist' + ' ' + dateTime
+                                            }],
+                                             "deferRender": true, "bLengthChange": false 
+                                        });
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

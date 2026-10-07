@@ -1,0 +1,130 @@
+﻿<section class="content-header">
+      <h1>Loading Summary</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">LoadingSummary Summary</li>
+      </ol>
+</section>
+<section class="content">
+    <div class="row">
+      <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-body">
+                    <table id="lstLoadingSummarylist" class="table table-bordered table-striped table-hover tblList table-responsive" style="font-size:13px; width:100%;">
+                        <thead id="tblHead">
+                            <tr class="nofilters">
+                                <th>Company</th>
+                                <th class="wfilter">MR</th>
+                                <th class="wfilter">Type</th>
+                                <th class="wfilter">Account</th>
+                                <th class="wfilter">Personnel</th>
+                                <th>Job Position</th>
+                                <th>Status</th>
+                                <th>GR</th>
+                                <th>Basic Rate</th>
+								<th>SSS</th>
+								<th>Philhealth</th>
+								<th>Pag-ibig</th>
+								<th>13th Mo</th>
+								<th>SIL</th>
+								<th>Addt Leaves</th>
+								<th>HMO</th>
+								<th>Oth Benefits</th>
+                                <th>Oth Cost</th>
+                                <th>DC</th>
+                                <th>GM</th>
+                                <th>GM %</th>
+                                <th>Date Hired</th>
+								<th>Regularization Date</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                            </tr>
+                            <tr class="filters">
+                                <th class="wfilter">Company</th>
+                                <th class="wfilter">MR</th>
+                                <th class="wfilter">Type</th>
+                                <th class="wfilter">Account</th>
+                                <th class="wfilter">Personnel</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+								<th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+								<th></th>
+								<th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblBody"></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    var IsPageLoad = false;
+    var tablemlist;
+    var dateTime
+
+    $(document).ready(function () {
+        $('.content-wrapper').waitMe('hide');
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var time = today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
+        dateTime = date + ' ' + time;
+
+        populateTable();
+        $('#Filter').off('click').on('click', function () {
+            populateTable();
+        })
+
+        function populateTable() {
+            if (IsPageLoad == true) { tablemlist.destroy(); IsPageLoad = false; populateTable() } else {
+                IsPageLoad = true;
+                $('#lstLoadingSummarylist thead .filters th.wfilter').each(function () { $(this).html('<input type="text"/>'); });
+                tablemlist = $("#lstLoadingSummarylist").DataTable({
+                    dom: "<'row'<'col-sm-3'><'col-sm-3'l><'col-sm-2'B><'col-sm-4'p>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+                    "autoWidth": false,
+                    ajax: {
+                        url: '../PIS/GetLoadingSummary',
+                        type: 'POST',
+                        datatype: 'application/json; charset=utf-8',
+                        dataSrc: function (data) { return JSON.parse(data); },
+                    },
+                    pageResize: true, bSortCellsTop: true, buttons: [{
+                        extend: 'excel', title: 'Masterlist' + ' ' + dateTime
+                    }],
+                    "deferRender": true, "bLengthChange": false
+                });
+
+                tablemlist.columns('.wfilter').eq(0).each(function (colIdx) {
+                    $('input', $('#lstLoadingSummarylist thead .filters th')[colIdx]).on('keyup change', function () {
+                        tablemlist
+                    .column(colIdx)
+                    .search(this.value)
+                    .draw();
+                    });
+                });
+            }
+        }
+    })
+
+</script>
+<style>
+    
+
+</style>

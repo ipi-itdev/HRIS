@@ -1,0 +1,365 @@
+﻿<div class="box-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-xs-6"></div>
+                <div class="col-xs-6"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group" id="Details_Form_Computation_DetailView">
+                        <table class="table table-striped table-bordered">
+                            <tr><td><I>EMPLOYEE INFORMATION</I></td></tr>
+                            <tr>
+                                <td><b>EMPLOYEE</b><br/><label style="font-weight:100;" id="lblEmployee"></label></td>
+                                <td><b>POSITION</b><br /><label style="font-weight:100;" id="lblPosition"></label></td>
+                            </tr>
+                            <tr>
+                                <td><b>CLIENT</b><br /><label style="font-weight:100;" id="lblClient"></label></td>
+                                <td><b>CLIENT ADDRESS</b><br /><label style="font-weight:100;" id="lblClientAddress"></label></td>
+                            </tr>
+                            <tr>
+                                <td><b>START DATE</b><br /><label style="font-weight:100;" id="lblStartDate"></label></td>
+                                <td><b>END DATE</b><br /><label style="font-weight:100;" id="lblEndDate"></label></td>
+                            </tr>
+                            <tr>
+                                <td><b>PAY BASIS</b><br /><label style="font-weight:100;" id="lblPayBasis"></label></td>
+                                <td><b>DAYS PER MONTH</b><br /><label style="font-weight:100;" id="lblDPM"></label></td>
+                            </tr>
+                        </table>
+                        <table class="table table-striped table-bordered">
+                            <tr>
+                                <td><b>GROSS REVENUE</b> <strong><label class="pull-right" style="color:green" id="TotalGRPIS">0</label></strong></td>
+                                <td><b>DIRECT COST</b><strong><label class="pull-right" style="color:red" id="TotalDCPIS">0</label></strong></td>
+                            </tr>
+                            <tr>
+                                <td><b>GROSS MARGIN</b><strong><label class="pull-right" style="color:darkblue" id="TotalGMPIS">0</label></strong></td>
+                                <td><b>GM PERCENTAGE</b><strong><label class="pull-right" style="color:blue" id="TotalMRPercentPIS">0%</label></strong></td>
+                            </tr>
+                            <tr><td><I>WITH SEPARATION PAY</I></td></tr>
+                            <tr>
+                                <td><b>GROSS REVENUE</b> <strong><label class="pull-right" style="color:green" id="TotalGRSPPIS">0</label></strong></td>
+                                <td><b>DIRECT COST</b><strong><label class="pull-right" style="color:red" id="TotalDCSPPIS">0</label></strong></td>
+                            </tr>
+                            <tr>
+                                <td><b>GROSS MARGIN</b><strong><label class="pull-right" style="color:darkblue" id="TotalGMSPPIS">0</label></strong></td>
+                                <td><b>GM PERCENTAGE</b><strong><label class="pull-right" style="color:blue" id="TotalMRPercentSPPIS">0%</label></strong></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40%;"></th>
+                                    <th style="width: 20%;">Monthly</th>
+                                    <th style="width: 20%;">Daily</th>
+                                    <th style="width: 20%;">Hourly</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Salary</strong></td>
+                                    <td>
+                                        <strong>
+                                            <input name="mBasicSalaryPIS" type="text" value="0.00" id="mBasicSalaryPIS" disabled="disabled" class="form-control right" />
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <strong>
+                                            <input name="dBasicSalaryPIS" type="text" value="0.00" id="dBasicSalaryPIS" disabled="disabled" class="form-control right">
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <strong>
+                                            <input name="hBasicSalaryPIS" type="text" value="0.00" id="hBasicSalaryPIS" disabled="disabled" class="form-control right" />
+                                        </strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>SSS</td>
+                                    <td>
+                                        <input name="mSSSPIS" type="text" value="0.00" id="mSSSPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                    <td>
+                                        <input name="dSSSPIS" type="text" value="0.00" id="dSSSPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                    <td>
+                                        <input name="hSSSPIS" type="text" value="0.00" id="hSSSPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Pag-Ibig</td>
+                                    <td>
+                                        <input name="mPGBPIS" type="text" value="0.00" id="mPGBPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                    <td>
+                                        <input name="dPGBPIS" type="text" value="0.00" id="dPGBPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                    <td>
+                                        <input name="hPGBPIS" type="text" value="0.00" id="hPGBPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Philhealth</td>
+                                    <td>
+                                        <input name="mPHPIS" type="text" value="0.00" id="mPHPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                    <td>
+                                        <input name="dPHPIS" type="text" value="0.00" id="dPHPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                    <td>
+                                        <input name="hPHPIS" type="text" value="0.00" id="hPHPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>13th Month</td>
+                                    <td>
+                                        <input name="m13MPIS" type="text" value="0.00" id="m13MPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                    <td>
+                                        <input name="d13MPIS" type="text" value="0.00" id="d13MPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                    <td>
+                                        <input name="h13MPIS" type="text" value="0.00" id="h13MPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Incentive Leaves</td>
+                                    <td>
+                                        <input name="mILVPIS" type="text" value="0.00" id="mILVPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                    <td>
+                                        <input name="dILVPIS" type="text" value="0.00" id="dILVPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                    <td>
+                                        <input name="hILVPIS" type="text" value="0.00" id="hILVPIS" disabled="disabled" class="form-control right" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Holiday Pay</td>
+                                    <td>
+                                        <input name="mHOLPIS" type="text" value="0.00" id="mHOLPIS" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="dHOLPIS" type="text" value="0.00" id="dHOLPIS" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="hHOLPIS" type="text" value="0.00" id="hHOLPIS" disabled="disabled" class="form-control right">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cola</td>
+                                    <td>
+                                        <input name="mCOLAPIS" type="text" value="0.00" id="mCOLAPIS" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="dCOLAPIS" type="text" value="0.00" id="dCOLAPIS" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="hCOLAPIS" type="text" value="0.00" id="hCOLAPIS" disabled="disabled" class="form-control right">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>HMO</td>
+                                    <td>
+                                        <input name="mHMO" type="text" value="0.00" id="mHMO" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="dHMO" type="text" value="0.00" id="dHMO" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="hHMO" type="text" value="0.00" id="hHMO" disabled="disabled" class="form-control right">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;per Annum</td>
+                                    <td>
+                                        <input name="yHMO" type="text" value="0.00" id="yHMO" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Other Benefits</td>
+                                    <td>
+                                        <input name="mOBFT" type="text" value="0.00" id="mOBFT" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="dOBFT" type="text" value="0.00" id="dOBFT" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="hOBFT" type="text" value="0.00" id="hOBFT" disabled="disabled" class="form-control right">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total Benefits</strong></td>
+                                    <td>
+                                        <strong>
+                                            <input name="mTBFT" type="text" value="0.00" id="mTBFT" disabled="disabled" class="form-control right">
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <strong>
+                                            <input name="dTBFT" type="text" value="0.00" id="dTBFT" disabled="disabled" class="form-control right">
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <strong>
+                                            <input name="hTBFT" type="text" value="0.00" id="hTBFT" disabled="disabled" class="form-control right">
+                                        </strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Other Cost</td>
+                                    <td>
+                                        <input name="mOC" type="text" value="0.00" id="mOC" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="dOC" type="text" value="0.00" id="dOC" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="hOC" type="text" value="0.00" id="hOC" disabled="disabled" class="form-control right">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Separation Pay</td>
+                                    <td>
+                                        <input name="mSEPPAY" type="text" value="0.00" id="mSEPPAY" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="dSEPPAY" type="text" value="0.00" id="dSEPPAY" disabled="disabled" class="form-control right">
+                                    </td>
+                                    <td>
+                                        <input name="hSEPPAY" type="text" value="0.00" id="hSEPPAY" disabled="disabled" class="form-control right">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><strong>Total Direct Cost</strong></td>
+                                    <td>
+                                        <strong>
+                                            <input name="mTotalDC" type="text" value="0.00" id="mTotalDC" disabled="disabled" class="form-control right">
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <strong>
+                                            <input name="dTotalDC" type="text" value="0.00" id="dTotalDC" disabled="disabled" class="form-control right">
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <strong>
+                                            <input name="hTotalDC" type="text" value="0.00" id="hTotalDC" disabled="disabled" class="form-control right">
+                                        </strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+    $(document).ready(function () {
+        InitializeValue()
+    })
+
+    function InitializeValue() {
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: '@Url.Action("ComputePARDetails","PAR")?pkey=@ViewBag.PARID',
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                var basic = 0;
+                basic = parseFloat(jsonArray[0][0]).toFixed(2)
+                var client = 0;
+                client = parseFloat(jsonArray[0][28]).toFixed(2)
+                $('#mBasicSalaryPIS').val(accounting.formatMoney(basic, ''));
+                $('#dBasicSalaryPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][1]).toFixed(2), ''));
+                $('#hBasicSalaryPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][2]).toFixed(2), ''));
+
+                $('#mSSSPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][3]).toFixed(2), ''));
+                $('#dSSSPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][4]).toFixed(2), ''));
+                $('#hSSSPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][5]).toFixed(2), ''));
+
+                $('#mPGBPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][6]).toFixed(2), ''));
+                $('#dPGBPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][7]).toFixed(2), ''));
+                $('#hPGBPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][8]).toFixed(2), ''));
+
+                $('#mPHPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][9]).toFixed(2), ''));
+                $('#dPHPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][10]).toFixed(2), ''));
+                $('#hPHPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][11]).toFixed(2), ''));
+
+                $('#m13MPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][12]).toFixed(2), ''));
+                $('#d13MPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][13]).toFixed(2), ''));
+                $('#h13MPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][14]).toFixed(2), ''));
+
+                $('#mILVPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][15]).toFixed(2), ''));
+                $('#dILVPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][16]).toFixed(2), ''));
+                $('#hILVPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][17]).toFixed(2), ''));
+
+                $('#mHOLPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][18]).toFixed(2), ''));
+                $('#dHOLPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][19]).toFixed(2), ''));
+                $('#hHOLPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][20]).toFixed(2), ''));
+
+                $('#mCOLAPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][21]).toFixed(2), ''));
+                $('#dCOLAPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][22]).toFixed(2), ''));
+                $('#hCOLAPIS').val(accounting.formatMoney(parseFloat(jsonArray[0][23]).toFixed(2), ''));
+
+                $('#yHMO').val(accounting.formatMoney(parseFloat(jsonArray[0][24]).toFixed(2), ''));
+                $('#mHMO').val(accounting.formatMoney(parseFloat(jsonArray[0][25]).toFixed(2), ''));
+                $('#dHMO').val(accounting.formatMoney(parseFloat(jsonArray[0][26]).toFixed(2), ''));
+                $('#hHMO').val(accounting.formatMoney(parseFloat(jsonArray[0][27]).toFixed(2), ''));
+
+                $('#mOBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][29]).toFixed(2), ''));
+                $('#dOBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][30]).toFixed(2), ''));
+                $('#hOBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][31]).toFixed(2), ''));
+
+                $('#mOC').val(accounting.formatMoney(parseFloat(jsonArray[0][32]).toFixed(2), ''));
+                $('#dOC').val(accounting.formatMoney(parseFloat(jsonArray[0][33]).toFixed(2), ''));
+                $('#hOC').val(accounting.formatMoney(parseFloat(jsonArray[0][34]).toFixed(2), ''));
+
+                $('#mTBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][35]).toFixed(2), ''));
+                $('#dTBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][36]).toFixed(2), ''));
+                $('#hTBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][37]).toFixed(2), ''));
+
+                $('#mSEPPAY').val(accounting.formatMoney(parseFloat(jsonArray[0][43]).toFixed(2), ''));
+                $('#dSEPPAY').val(accounting.formatMoney(parseFloat(jsonArray[0][44]).toFixed(2), ''));
+                $('#hSEPPAY').val(accounting.formatMoney(parseFloat(jsonArray[0][45]).toFixed(2), ''));
+
+                $('#mTotalDC').val(accounting.formatMoney(parseFloat(jsonArray[0][38]).toFixed(2), ''));
+                $('#dTotalDC').val(accounting.formatMoney(parseFloat(jsonArray[0][39]).toFixed(2), ''));
+                $('#hTotalDC').val(accounting.formatMoney(parseFloat(jsonArray[0][40]).toFixed(2), ''));
+
+                var GR = client;
+                var DC = parseFloat(parseFloat(jsonArray[0][35])) + parseFloat(basic);
+                var GM = parseFloat(GR) - parseFloat(DC);
+
+                $('#TotalGRPIS').html(accounting.formatMoney(GR, ''));
+                $('#TotalDCPIS').html(accounting.formatMoney(parseFloat(jsonArray[0][47]).toFixed(2), ''));
+                $('#TotalGMPIS').html(accounting.formatMoney(parseFloat(jsonArray[0][48]).toFixed(2), ''));
+                $('#TotalMRPercentPIS').html(parseFloat(jsonArray[0][49]).toFixed(2) + '%');
+
+                $('#TotalGRSPPIS').html(accounting.formatMoney(GR, ''));
+                $('#TotalDCSPPIS').html(accounting.formatMoney(parseFloat(jsonArray[0][50]).toFixed(2), ''));
+                $('#TotalGMSPPIS').html(accounting.formatMoney(parseFloat(jsonArray[0][51]).toFixed(2), ''));
+                $('#TotalMRPercentSPPIS').html(parseFloat(jsonArray[0][52]).toFixed(2) + '%');
+                
+                $('#lblEmployee').html(jsonArray[0][53]);
+                $('#lblPosition').html(jsonArray[0][54]);
+                $('#lblClient').html(jsonArray[0][55]);
+                $('#lblClientAddress').html(jsonArray[0][56]);
+                $('#lblDPM').html(jsonArray[0][46]);
+                $('#lblPayBasis').html(jsonArray[0][58]);
+                $('#lblStartDate').html(jsonArray[0][59]);
+                $('#lblEndDate').html(jsonArray[0][60]);
+                
+            }
+            });
+            }
+    </script>

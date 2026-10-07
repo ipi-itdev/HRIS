@@ -1,0 +1,270 @@
+﻿<section class="content-header">
+    <h1>Commission Computation Details</h1>
+    <ol class="breadcrumb">
+        <li><a href="javascript:void(0);" onclick="displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+    </ol>
+</section>
+<section class="content">
+<div class="box box-primary">
+	<div class="box-header">
+		<div id="btnList_@ViewBag.FormID">
+			<button type="button" class="btn btn-primary" id="Back_@ViewBag.FormID" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Back"></i>  Back to List</button>
+			<div style="float:right;">
+				<button type="button" class="btn btn-primary" id="Compute_@ViewBag.FormID" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Compute"></i>  Compute</button>
+			</div>
+		</div>
+	</div>
+    <div class="box-body" id="@ViewBag.FormID">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row form-group">
+					<label class="col-lg-12 control-label style="text-align:left">MR </label>
+					<div class="col-lg-12 control-container vcenter">
+						<input type="text" class="form-control" value="@ViewBag.EmployeeName" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="col-lg-12 control-label style=" text-align:left">Month & Year  </label>
+					<div class="col-lg-12 control-container vcenter">
+						<input type="text" class="form-control" value="@ViewBag.MonthYear" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="col-lg-12 control-label style=" text-align:left">Gross Revenue   </label>
+					<div class="col-lg-12 control-container vcenter">
+						<input type="text" class="form-control" value="@ViewBag.GR" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="col-lg-12 control-label style=" text-align:left">Direct Cost   </label>
+					<div class="col-lg-12 control-container vcenter">
+						<input type="text" class="form-control" value="@ViewBag.DC" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="col-lg-12 control-label style=" text-align:left">Gross Margin   </label>
+					<div class="col-lg-12 control-container vcenter">
+						<input type="text" class="form-control" value="@ViewBag.GM" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="col-lg-12 control-label style=" text-align:left">Gross Margin %  </label>
+					<div class="col-lg-12 control-container vcenter">
+						<input type="text" class="form-control" value="@ViewBag.GMP" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10">
+				<div class="nav-tabs-custom">
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item active"><a class="nav-link active" data-toggle="tab" href="#Details_Form_@ViewBag.FormID" role="tab">Details</a></li>
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#NewAccountIncentive_List_@ViewBag.FormID" role="tab">Incentives</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="Details_Form_@ViewBag.FormID" role="tabpanel">
+							<div class="table-responsive">
+								<table class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th style="width: 20%;"><strong>Months</strong></th>
+											<th style="width: 20%;"><strong>Monthly Quota</strong></th>
+											<th style="width: 20%;"><strong>YTD Quota</strong></th>
+											<th style="width: 20%;"><strong>Monthly Performance</strong></th>
+											<th style="width: 20%;"><strong>YTD Performance</strong></th>
+											<th style="width: 20%;"><strong>YTD Achievement</strong></th>
+											<th style="width: 20%;"><strong>AQ Achievement</strong></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td style="width: 20%;"><strong>TOTAL</strong></td>
+											<td style="width: 20%;"><input name="totalmqJAN" type="text" value="0.00" id="totalmqJAN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="totalyqJAN" type="text" value="0.00" id="totalyqJAN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="totalmpJAN" type="text" value="0.00" id="totalmpJAN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="totalypJAN" type="text" value="0.00" id="totalypJAN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="totalyaJAN" type="text" value="0.00" id="totalyaJAN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="totalaqaJAN" type="text" value="0.00" id="totalaqaJAN" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>JAN</strong></td>
+											<td style="width: 20%;"><input name="mqJAN" type="text" value="0.00" id="mqJAN" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqJAN" type="text" value="0.00" id="yqJAN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpJAN" type="text" value="0.00" id="mpJAN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypJAN" type="text" value="0.00" id="ypJAN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaJAN" type="text" value="0.00" id="yaJAN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaJAN" type="text" value="0.00" id="aqaJAN" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>FEB</strong></td>
+											<td style="width: 20%;"><input name="mqFEB" type="text" value="0.00" id="mqFEB" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqFEB" type="text" value="0.00" id="yqFEB" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpFEB" type="text" value="0.00" id="mpFEB" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypFEB" type="text" value="0.00" id="ypFEB" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaFEB" type="text" value="0.00" id="yaFEB" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaFEB" type="text" value="0.00" id="aqaFEB" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>MAR</strong></td>
+											<td style="width: 20%;"><input name="mqMAR" type="text" value="0.00" id="mqMAR" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqMAR" type="text" value="0.00" id="yqMAR" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpMAR" type="text" value="0.00" id="mpMAR" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypMAR" type="text" value="0.00" id="ypMAR" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaMAR" type="text" value="0.00" id="yaMAR" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaMAR" type="text" value="0.00" id="aqaMAR" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>APR</strong></td>
+											<td style="width: 20%;"><input name="mqAPR" type="text" value="0.00" id="mqAPR" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqAPR" type="text" value="0.00" id="yqAPR" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpAPR" type="text" value="0.00" id="mpAPR" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypAPR" type="text" value="0.00" id="ypAPR" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaAPR" type="text" value="0.00" id="yaAPR" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaAPR" type="text" value="0.00" id="aqaAPR" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>MAY</strong></td>
+											<td style="width: 20%;"><input name="mqMAY" type="text" value="0.00" id="mqMAY" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqMAY" type="text" value="0.00" id="yqMAY" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpMAY" type="text" value="0.00" id="mpMAY" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypMAY" type="text" value="0.00" id="ypMAY" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaMAY" type="text" value="0.00" id="yaMAY" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaMAY" type="text" value="0.00" id="aqaMAY" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>JUN</strong></td>
+											<td style="width: 20%;"><input name="mqJUN" type="text" value="0.00" id="mqJUN" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqJUN" type="text" value="0.00" id="yqJUN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpJUN" type="text" value="0.00" id="mpJUN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypJUN" type="text" value="0.00" id="ypJUN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaJUN" type="text" value="0.00" id="yaJUN" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaJUN" type="text" value="0.00" id="aqaJUN" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>JUL</strong></td>
+											<td style="width: 20%;"><input name="mqJUL" type="text" value="0.00" id="mqJUL" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqJUL" type="text" value="0.00" id="yqJUL" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpJUL" type="text" value="0.00" id="mpJUL" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypJUL" type="text" value="0.00" id="ypJUL" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaJUL" type="text" value="0.00" id="yaJUL" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaJUL" type="text" value="0.00" id="aqaJUL" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>AUG</strong></td>
+											<td style="width: 20%;"><input name="mqAUG" type="text" value="0.00" id="mqAUG" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqAUG" type="text" value="0.00" id="yqAUG" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpAUG" type="text" value="0.00" id="mpAUG" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypAUG" type="text" value="0.00" id="ypAUG" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaAUG" type="text" value="0.00" id="yaAUG" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaAUG" type="text" value="0.00" id="aqaAUG" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>SEP</strong></td>
+											<td style="width: 20%;"><input name="mqSEP" type="text" value="0.00" id="mqSEP" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqSEP" type="text" value="0.00" id="yqSEP" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpSEP" type="text" value="0.00" id="mpSEP" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypSEP" type="text" value="0.00" id="ypSEP" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaSEP" type="text" value="0.00" id="yaSEP" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaSEP" type="text" value="0.00" id="aqaSEP" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>OCT</strong></td>
+											<td style="width: 20%;"><input name="mqOCT" type="text" value="0.00" id="mqOCT" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqOCT" type="text" value="0.00" id="yqOCT" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpOCT" type="text" value="0.00" id="mpOCT" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypOCT" type="text" value="0.00" id="ypOCT" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaOCT" type="text" value="0.00" id="yaOCT" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaOCT" type="text" value="0.00" id="aqaOCT" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>NOV</strong></td>
+											<td style="width: 20%;"><input name="mqNOV" type="text" value="0.00" id="mqNOV" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqNOV" type="text" value="0.00" id="yqNOV" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpNOV" type="text" value="0.00" id="mpNOV" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypNOV" type="text" value="0.00" id="ypNOV" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaNOV" type="text" value="0.00" id="yaNOV" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaNOV" type="text" value="0.00" id="aqaNOV" disabled="disabled" class="form-control right" /></td>
+										</tr>
+										<tr>
+											<td style="width: 20%;"><strong>DEC</strong></td>
+											<td style="width: 20%;"><input name="mqDEC" type="text" value="0.00" id="mqDEC" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yqDEC" type="text" value="0.00" id="yqDEC" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="mpDEC" type="text" value="0.00" id="mpDEC" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="ypDEC" type="text" value="0.00" id="ypDEC" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="yaDEC" type="text" value="0.00" id="yaDEC" disabled="disabled" class="form-control right" /></td>
+											<td style="width: 20%;"><input name="aqaDEC" type="text" value="0.00" id="aqaDEC" disabled="disabled" class="form-control right" /></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane" id="NewAccountIncentive_List_@ViewBag.FormID" role="tabpanel">
+							<table id="tblNewAccountIncentive_@{@ViewBag.FormID}" class="table table-bordered table-striped">
+								<thead id="tblNewAccountIncentive_@{@ViewBag.FormID}">
+									<tr class="notfilter" role="row">
+										<th width="80%">Description</th>
+										<th width="80%">Amount</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<script>
+$(document).ready(function () {
+    let table_@{@ViewBag.FormID} = $("#tblNewAccountIncentive_@{@ViewBag.FormID}").DataTable({
+        ajax: {
+			url: '@Url.Action("NewAccountIncentive", "CS")',
+			data: { pkey: '@ViewBag.pid' },
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			dataSrc: function (data) { return JSON.parse(data); },
+			error: function (e) { }
+        }
+        , order: [[1, 'asc']], "paging": false, "searching": false
+    });
+
+    $('#btnList_@ViewBag.FormID').find('button').off('click').on('click', function() {
+		var ids = $(this).attr('id'), Message = '', OkLabel = 'OK', fAction = null;
+        switch ( ids.replace('@ViewBag.FormID-','').toUpperCase() ) {
+			case 'Compute_@ViewBag.FormID'.toUpperCase():
+				$.ajax({
+					type: "POST",
+					cache: false,
+					url: '../CS/Compute?pkey=@ViewBag.pid',
+					success: function (data) {
+						if (data == 'True') { 
+							var URLView = '../CS/YTDPerformance?mguid=@{@ViewBag.mguid}&pid=@{@ViewBag.pid}'; 
+							$('#content_@ViewBag.FormID').load(URLView, function () { });
+						}
+						else { Toast.Error("Error"); }
+					}
+				});
+                break;
+            case 'Back_@ViewBag.FormID'.toUpperCase():
+				Message = 'Are you sure you want to go back to list?';
+				OkLabel = 'Back to List';
+                fAction = function(result){
+					if(result){
+						var URLView = '../ListView/ListIndex?mguid=@{@ViewBag.mguid}'; 
+						$('#content_@ViewBag.FormID').load(URLView, function () { });
+					}
+				}
+				break;
+		}
+		if(ids.toUpperCase() != 'Compute_@ViewBag.FormID'.toUpperCase()){
+			BootstrapDialog.confirm({
+				title: '@ViewBag.Caption', icon: 'fa-list', message: Message, closable: true,
+				btnCancelLabel: 'Cancel', btnOKLabel: OkLabel,
+				callback: fAction
+			});
+		}
+	})
+})
+$('.content-wrapper').waitMe('hide');
+</script>
+

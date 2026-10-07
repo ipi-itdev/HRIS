@@ -1,0 +1,39 @@
+﻿<div id="ItemPartsStatusForm" class="module-wrapper">
+<section class="content-header">
+      <h1>Item Parts Status Updates</h1>
+</section>
+<section class="content">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row">
+					<div class="col-md-12">
+						<div class="row form-group">
+							<label class="col-lg-12 control-label style=" text-align:left"=""><span style="color:red; font-size:20px; ">*  </span>Item Status:</label>
+							<div class="col-lg-12 control-container vcenter">
+								<select id="itemPartsStatus" class="form-control">
+								  <option value="1">Good</option>
+								  <option value="3">For Repair</option>
+								  <option value="4">Defective</option>
+								</select>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-lg-12 control-label style=" text-align:left"=""><span style="color:red; font-size:20px; ">*  </span>Remarks:   </label>
+							<div class="col-lg-12 control-container vcenter">
+								<textarea rows="4" cols="45" style="resize:none" class="form-control" id="iStatusRemarks"></textarea>
+							</div>
+						</div>
+						<div class="row form-group">
+							<button type="button" class="btn btn-primary" id="iStatusSubmit" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return ItemPartsStatusUpdate(@ViewBag.pid);">Submit</button> 
+						</div>
+					</div>
+                </div>
+            </div>
+    	</div>
+	</div>
+</div>
+</section>
+</div>  
+

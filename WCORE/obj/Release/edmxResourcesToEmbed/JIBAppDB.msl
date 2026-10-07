@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_9b2ff8_hristestModelStoreContainer" CdmEntityContainer="IPICORE_DTSEntities">
+    <EntitySetMapping Name="MenuUserRoles">
+      <EntityTypeMapping TypeName="db_9b2ff8_hristestModel.MenuUserRole">
+        <MappingFragment StoreEntitySet="MenuUserRoles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MenuRefNo" ColumnName="MenuRefNo" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SubDescription" ColumnName="SubDescription" />
+          <ScalarProperty Name="FormType" ColumnName="FormType" />
+          <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+          <ScalarProperty Name="MenuParentRefNo" ColumnName="MenuParentRefNo" />
+          <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="UserRolesRefNo" ColumnName="UserRolesRefNo" />
+          <ScalarProperty Name="AllowView" ColumnName="AllowView" />
+          <ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
+          <ScalarProperty Name="AllowUpdate" ColumnName="AllowUpdate" />
+          <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+          <ScalarProperty Name="AllowPrint" ColumnName="AllowPrint" />
+          <ScalarProperty Name="AllowApprove" ColumnName="AllowApprove" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="HasNew" ColumnName="HasNew" />
+          <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+          <ScalarProperty Name="DetailControllerName" ColumnName="DetailControllerName" />
+          <ScalarProperty Name="DetailActionName" ColumnName="DetailActionName" />
+          <ScalarProperty Name="HasDelete" ColumnName="HasDelete" />
+          <ScalarProperty Name="wListPopUp" ColumnName="wListPopUp" />
+          <ScalarProperty Name="PopUpIcon" ColumnName="PopUpIcon" />
+          <ScalarProperty Name="PopUpDetailViewAction" ColumnName="PopUpDetailViewAction" />
+          <ScalarProperty Name="PopUpDetailViewController" ColumnName="PopUpDetailViewController" />
+          <ScalarProperty Name="wListPopUp2" ColumnName="wListPopUp2" />
+          <ScalarProperty Name="PopUpIcon2" ColumnName="PopUpIcon2" />
+          <ScalarProperty Name="PopUpDetailViewAction2" ColumnName="PopUpDetailViewAction2" />
+          <ScalarProperty Name="PopUpDetailViewController2" ColumnName="PopUpDetailViewController2" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="OrderByAs" ColumnName="OrderByAs" />
+          <ScalarProperty Name="PopUpPrint" ColumnName="PopUpPrint" />
+          <ScalarProperty Name="PopUp2Print" ColumnName="PopUp2Print" />
+          <ScalarProperty Name="PopUpSubAction" ColumnName="PopUpSubAction" />
+          <ScalarProperty Name="PopUp2SubAction" ColumnName="PopUp2SubAction" />
+          <ScalarProperty Name="UserRefNo" ColumnName="UserRefNo" />
+          <ScalarProperty Name="IsDisplayOnly" ColumnName="IsDisplayOnly" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAREmployeeInfoes">
+      <EntityTypeMapping TypeName="db_9b2ff8_hristestModel.PAREmployeeInfo">
+        <MappingFragment StoreEntitySet="PAREmployeeInfo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EmployeeRefNo" ColumnName="EmployeeRefNo" />
+          <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
+          <ScalarProperty Name="ReasonForChangeRefNo" ColumnName="ReasonForChangeRefNo" />
+          <ScalarProperty Name="OtherReason" ColumnName="OtherReason" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="EffectivityDate" ColumnName="EffectivityDate" />
+          <ScalarProperty Name="ContractTemplateRefNo" ColumnName="ContractTemplateRefNo" />
+          <ScalarProperty Name="DepartmentRefNo" ColumnName="DepartmentRefNo" />
+          <ScalarProperty Name="JobBandRefNo" ColumnName="JobBandRefNo" />
+          <ScalarProperty Name="JobPositionRefNo" ColumnName="JobPositionRefNo" />
+          <ScalarProperty Name="FowRefNo" ColumnName="FowRefNo" />
+          <ScalarProperty Name="EmployeeTypeRefNo" ColumnName="EmployeeTypeRefNo" />
+          <ScalarProperty Name="EmploymentStatusRefNo" ColumnName="EmploymentStatusRefNo" />
+          <ScalarProperty Name="ClientAccountRefNo" ColumnName="ClientAccountRefNo" />
+          <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+          <ScalarProperty Name="JobPosition" ColumnName="JobPosition" />
+          <ScalarProperty Name="DateHired" ColumnName="DateHired" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ContractualDate" ColumnName="ContractualDate" />
+          <ScalarProperty Name="DateProbationary" ColumnName="DateProbationary" />
+          <ScalarProperty Name="DateRegularized" ColumnName="DateRegularized" />
+          <ScalarProperty Name="PayrollRateRefNo" ColumnName="PayrollRateRefNo" />
+          <ScalarProperty Name="PayBasisRefNo" ColumnName="PayBasisRefNo" />
+          <ScalarProperty Name="EcolaComputationRefNo" ColumnName="EcolaComputationRefNo" />
+          <ScalarProperty Name="EcolaRateRefNo" ColumnName="EcolaRateRefNo" />
+          <ScalarProperty Name="BasicRate" ColumnName="BasicRate" />
+          <ScalarProperty Name="NonTaxAllowance" ColumnName="NonTaxAllowance" />
+          <ScalarProperty Name="ClientRate" ColumnName="ClientRate" />
+          <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+          <ScalarProperty Name="SSSGSISTag" ColumnName="SSSGSISTag" />
+          <ScalarProperty Name="PAGIBIGTag" ColumnName="PAGIBIGTag" />
+          <ScalarProperty Name="PHICTag" ColumnName="PHICTag" />
+          <ScalarProperty Name="SepTag" ColumnName="SepTag" />
+          <ScalarProperty Name="W13thMonth" ColumnName="W13thMonth" />
+          <ScalarProperty Name="HOLTag" ColumnName="HOLTag" />
+          <ScalarProperty Name="SIL" ColumnName="SIL" />
+          <ScalarProperty Name="HMODC" ColumnName="HMODC" />
+          <ScalarProperty Name="HMOAmount" ColumnName="HMOAmount" />
+          <ScalarProperty Name="OTAssumption" ColumnName="OTAssumption" />
+          <ScalarProperty Name="ApprovalLevel" ColumnName="ApprovalLevel" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FilingStatusRefNo" ColumnName="FilingStatusRefNo" />
+          <ScalarProperty Name="NoofDays" ColumnName="NoofDays" />
+          <ScalarProperty Name="DateNow" ColumnName="DateNow" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="JobDescriptionPath" ColumnName="JobDescriptionPath" />
+          <ScalarProperty Name="sclause" ColumnName="sclause" />
+          <ScalarProperty Name="AddtlPaidLeaves" ColumnName="AddtlPaidLeaves" />
+          <ScalarProperty Name="APLProRata" ColumnName="APLProRata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

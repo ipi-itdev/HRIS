@@ -1,0 +1,72 @@
+﻿<section class="content-header">
+    <h1>Import Employee</h1>
+</section>
+<section class="content" style="position:absolute">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-body" id="CRONUS">
+                <div id="tblList_CRONUS_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                    <table id="tblList_CRONUS" class="table table-bordered table-striped table-hover tblList table-responsive nowrap" style="font-size:13px; width:100%;">
+                        <thead id="tblHead_CRONUS">
+                            <tr class="notfilter" role="row">
+							<th>ID</th>
+							<th width="100">Contract Type</th>
+							<th width="50">Type</th>
+							<th width="200">Name</th>
+							<th width="200">Job Title</th>
+							<th width="300">Company</th>
+							<th width="150">Start Date</th>
+							<th width="150">End Date</th>
+							<th width="50">Is Complete?</th>
+							<th width="150"></th>
+							</tr>
+                        </thead>
+                        <tbody id="tblBody_CRONUS"></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<script>
+$(document).ready(function () {
+    var table_CRONUS;
+    table_CRONUS = $("#tblList_CRONUS").DataTable({
+        "columnDefs": [{"targets": 9, "render": function (data, type, row) { return "<button type='button' id='btnDetails' class='btn fa fa-list' title='View Details'></button>" + (data ? "<button type='button' id='btnNew' class='btn btn-success fa fa-plane' title='Import Employee'></button>":"");}}],
+		 ajax: {
+			url: '@{@ViewBag.APIUrl}GetContract?compID=1',
+			type: 'GET',
+			datatype: 'application/json; charset=utf-8',
+			dataSrc: function (data) { return JSON.parse(data); },
+			error: function (e) { } },
+        order: [[1, 'asc']],"paging": false
+    });
+
+	 $('#tblList_CRONUS tbody').off('click', '#btnDetails').on('click', '#btnDetails', function () {
+		var cdata = table_CRONUS.row($(this).parents('tr')).data();
+		URLVIEW = '@Url.Action("ContractInfo", "HC")?pid=' + cdata[0];
+        $('#content_ImportEmployee').load(URLVIEW);
+	 })
+
+    $('#tblList_CRONUS tbody').off('click', '#btnNew').on('click', '#btnNew', function () {
+        var cdata = table_CRONUS.row($(this).parents('tr')).data(); var Message = ''; var OkLabel = 'OK'; var fAction = null;
+        Message = 'Are you sure you want to import the data?'; OkLabel = 'Import';
+        fAction = function (result) {
+            $.ajax({
+                type: "POST",
+                url: '@{@ViewBag.APIUrl}ImportContract?ContractID=' + cdata[0],
+                success: function () { $('#tblList_CRONUS').DataTable().ajax.reload(); Toast.Show("Successfully Imported."); },
+				error: function(){ Toast.Error("Import Failed."); }
+            });
+        }
+        BootstrapDialog.show({
+            title: 'Import information from Cronus', icon: 'fa-users', message: Message, closable: true, draggable: true,
+            buttons: [{ id: 'btn-1', label: 'Cancel', cssClass: 'btn-warning', action: function (dialog) { dialog.close(); } },
+                      { id: 'btn-2', label: 'Ok', cssClass: 'btn-primary', action: function (dialog) { var $button = this; $button.disable(); $button.spin(); fAction(); dialog.close(); } }]
+        });
+    });
+})
+</script>

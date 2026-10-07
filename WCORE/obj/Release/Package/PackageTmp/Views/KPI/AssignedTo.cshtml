@@ -1,0 +1,530 @@
+﻿@*@System.Web.Optimization.Scripts.Render("~/Script/plugins/formslist")*@
+<section class="content-header">
+    <h1>KPI Assignment (Internal)</h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xl-5">
+            <div class="box box-primary">
+                <div class="box-body" id="CRONUS">
+                    <div class="btn-group" id="btnChildList_PerformanceIndicatorMain_ListView_Table">
+                        <button type="button" class="btn btn-info" id="New"><i class="fa fa-file" title="New"></i> Reload</button>
+                    </div>
+                    <table id="KPIListInfo" class="table table-bordered table-striped table-hover tblList" style="font-size: 13px; width: 100%">
+                        <thead id="tblHeadKPIAssignment">
+                            <tr class="notfilter" role="row">
+                                <th>JOBPOSITIONREFNO</th>
+                                <th>ID</th>
+                                <th>JOB TITLE</th>
+                                <th>KPI GROUP NAME</th>
+                                <th>KPI GROUP ID</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblBodyKPIAssignment"></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-7">
+            <div id="myParents_KPIAssignmentList">
+                <div class="box-body">
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <button type='button' id='btnEnroll' class="btn btn-success">ENROLL</button>
+                                </div>
+                            </div>
+                        </div><br>
+                        <input type="text" id="myInput" onkeyup="AssignedToJobSearch()" placeholder="Search for names or job position.." title="Type in a name" class="form-control">
+                        <table id="KPIAssignmentDetails" class="table table-bordered" style="font-size: 15px;">
+                            <thead>
+                                <tr>
+                                    <th style="width:10%"><input type="checkbox" id="flowcheckall" value="" checked /></th>
+                                    <th style="width:20%">ID</th>
+                                    <th style="width:30%">EMPLOYEE #</th>
+                                    <th style="width:55%">EMPLOYEE</th>
+                                </tr>
+                            </thead>
+                            <tfoot></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+
+    var recordID = [];
+    var jobPositionRefNo = [];
+    var KPIGroupID = [];
+    var KPIListID = [];
+    var isForSAVE = true;
+	var kpilistid, ktldg, kpiyear;
+	var valid = true;
+	var updateType = 0;
+	var tableAssignment;
+	var tableKPIDetails;
+	var jobrefNo;
+	var userrefno = @ViewBag.userrefno;
+	var listviewid = @ViewBag.pid;
+	
+    $(document).ready(function () {
+		$('.content-wrapper').waitMe('hide');
+		console.log('ID: ' + @ViewBag.pid);
+		console.log('User ref no: ' + @ViewBag.userrefno);
+		loadKPIListAssignment();
+
+        ktldg = {
+            ID: null, JobPositionRefNo: null, Year: null, ID: null, CreatedBy: null, CreatedDate: null, ModifiedBy: null, ModifiedDate: null, IsActive: null, IsDirty: false
+        };
+
+        //--
+
+        //var tableAssignment2 = $('#KPIListInfo').DataTable();
+
+        var tableAssignment2 = $('#KPIListInfo').DataTable();
+        $('#KPIListInfo tbody').off().on('click', 'tr', function () {
+
+            //if (tableAssignment2 != null && tableAssignment2.Rows.Count>0){
+
+            var data = tableAssignment.row(this).data();
+            if (data != undefined) {
+                $('#Details_Form_Child_KPIAssignmentList_DetailView').html('');
+                kpilistid = data[1];
+                jobrefNo = data[0];
+                $('#KPIAssignmentDetails').DataTable().destroy();
+
+                Reload(data[1], data[0]);
+                updateType = 0;
+                $('#Delete').removeAttr('disabled');
+                $('#btnEnroll').removeAttr('disabled');
+            }
+        });
+
+
+        $("#flowcheckall").click(function () {
+            $('#KPIAssignmentDetails tbody input[type="checkbox"]').prop('checked', this.checked);
+		});
+
+    })
+
+	function loadKPIListAssignment() {
+
+	    var r = $.Deferred();
+
+	    $('#KPIListInfo').DataTable().destroy();
+
+		tableAssignment = $("#KPIListInfo").DataTable({
+			"columnDefs": [
+			 {
+				 "targets": [0, 4],
+				 "visible": false
+			 }],
+			ajax: {
+				url: '@Url.Action("GetKPILists", "KPI")',
+                type: 'POST',
+					datatype: 'application/json; charset=utf-8',
+					dataSrc: function (data) {
+
+					    jobPositionRefNo.length = 0;
+					    KPIGroupID.length = 0;
+					    KPIListID.length = 0;
+
+							if(JSON.parse(data) == ""){
+								kpilistid = -1;
+								updateType = 1;
+								jobrefNo = 0;
+								return JSON.parse(data);
+							}else {
+							    var jsonArray = JSON.parse(data);
+							    for(var i = 0; i < jsonArray.length; i++){
+							        KPIListID[i] = jsonArray[i][1];
+							        jobPositionRefNo[i] = jsonArray[i][0];
+							        KPIGroupID[i] = jsonArray[i][4];
+							    }
+								jobrefNo = jsonArray[0][0];
+								kpilistid = jsonArray[0][1];
+								return JSON.parse(data);
+							}
+
+
+						 },
+
+					error: function (e) {}
+				}
+			, order: [[1, 'asc']], pageResize: true, ordering: false, lengthChange: false,
+			initComplete: function () {
+			    if(kpilistid != undefined || kpilistid != ""){
+			        Reload(kpilistid, jobrefNo);
+
+			    }
+			}
+		});
+			return r;
+	};
+
+    function Reload(rowID, job) {
+
+        loadKPIListDetailsTarget(job);
+
+        $('#Details_Form_Child_KPIAssignmentList_DetailView').empty();
+        var $itm = new KPIAssignmentList_DetailView_Child(rowID);
+        $itm.InitDetailView_Child(ktldg);
+
+    }
+
+    function loadKPIListDetailsTarget(job) {
+		$('#KPIAssignmentDetails').DataTable().destroy();
+        var input, filter;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        tableKPIDetails =  $('#KPIAssignmentDetails').DataTable({
+				'columnDefs': [{
+					'targets': [0],
+					'className': 'dt-body-center',
+					'render': function (data, type, full, meta) {
+							return '<input type="checkbox" name="id[]" value="1" checked>';
+					}
+				}],
+
+				'order': [1, 'asc'], info: false, paging: false, searching: false,
+				ajax: {
+                    url: '@Url.Action("GetEmployeeAssignedTO", "KPI")?JobPositionRefNo=' + job + '&searchValue=' + filter,
+					type: 'POST',
+					datatype: 'application/json; charset=utf-8',
+					dataSrc: function (data) { return JSON.parse(data); },
+					error: function (e) { }
+				}
+			});
+	};
+
+
+
+	
+
+	function KPIAssignmentList_DetailView_Child(rowid) {
+		var self = $(this);
+		this.IsEditOnly = false;
+		var ObjectID = rowid;
+		var dvFormat = [{
+			Name: 'Details', Controls: [
+				{ Name: 'ID', Type: 'Int', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Details', ControlID: 'ID' },
+				{ Name: 'JobPositionRefNo', Caption: 'Job Title', Type: 'Int', ControlType: 'combobox', RefColumn: 'E', ControlModel: 'KPIJobTitleSelect', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'JobPositionRefNo' },
+				{ Name: 'PerfIndicatorListRefNo', Caption: 'KPI Group Name', Type: 'Int', ControlType: 'combobox', RefColumn: 'EGroup', ControlModel: 'PerformanceIndicatorSelect', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'PerfIndicatorListRefNo' }]
+				//{ Name: 'Year', Type: 'Varchar', IsEnabled: true, ControlType: 'text', ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Details', ControlID: 'Year', IsRequired: true}]
+		}, { Name: 'AssignedTo', Controls: [] }];
+		//, {
+		//Name: 'Other', Controls: [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' },
+		//    { Name: 'CreatedDate', Caption: 'Date', Type: 'String', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' }, { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedBy' }, { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedDate' }, { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }
+		function GetControl_Child(Selector, CtrlFormat) {
+			var control = new JIBControl(Selector, { PropertyName: CtrlFormat.Name, Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption), type: CtrlFormat.ControlType, Model: CtrlFormat.ControlModel, ControlID: CtrlFormat.ControlID, ControlFormat: CtrlFormat.strFormat }, CtrlFormat, 'KPIAssignmentList');
+			control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+			control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+			control.ParentDiv = Selector
+			control.Init();
+			if (CtrlFormat.IsEnabled != undefined) control.SetEnabled(CtrlFormat.IsEnabled);
+			control.CurrentObject = ktldg;
+			return control;
+		};
+		function InitNewObject_Child(newObject) {
+			$.each(newObject, function (key, value) {
+				if (key != "IsEditOnly") {
+					ktldg[key] = value;
+				}
+			});
+			$.each(dvFormat, function (i, tabs) {
+				if (tabs.IsListView != undefined) {
+					Selector = $('#' + tabs.Name + '_List_Child_KPIAssignmentList');
+					LoadListViewTab_Child(Selector, tabs);
+				} else {
+					$.each(tabs.Controls, function (x, val) {
+						Selector = $('#' + tabs.Name + '_Form_Child_KPIAssignmentList_DetailView');
+						var control = GetControl_Child(Selector, val);
+						control.SetValue(ktldg[val.Name]);
+					});
+				}
+			});
+		}
+		this.InitDetailView_Child = function (CurrentObject) {
+			$.ajax({
+				url: '/DetailView/GetBaseObject',
+				data: { model: 'KPIAssignmentList', pKey: ObjectID },
+                type: 'POST',
+				datatype: 'application/json; charset=utf-8',
+				beforeSend: function () { },
+				success: function (data) {
+					if (ObjectID == -1) {
+						var newObject = eval("(function(){return " + data + ";})()");
+						InitNewObject_Child(newObject);
+					} else {
+						var jsonArray = JSON.parse(data);
+						if (jsonArray.length == 0) return;
+						var Columns = jsonArray[0];
+						var Values = jsonArray[1];
+						$.each(Columns, function (i, o) {
+							CurrentObject[o] = Values[i];
+						});
+						$.each(dvFormat, function (x, tabs) {
+							if (tabs.IsListView != undefined) {
+                                Selector = $('#' + tabs.Name + '_List_Child_KPIAssignmentList');
+								LoadListViewTab_Child(Selector, tabs);
+							} else {
+								$.each(tabs.Controls, function (i, val) {
+                                    Selector = $('#' + tabs.Name + '_Form_Child_KPIAssignmentList_DetailView');
+									var control = GetControl_Child(Selector, val);
+									var ColumnIndex = Columns.indexOf(val.Name);
+									var Value = Values[ColumnIndex];
+									control.SetValue(Value);
+								});
+							}
+						});
+					}
+				}, error: function (e) { alert(e.responseText); }
+			});
+		};
+	}
+
+	//--
+
+	$('#btnEnroll').on('click', function () {
+		Enroll();
+	});
+
+	function Enroll(){
+
+				recordID.length = 0;
+				var values = "";
+				var selector = '#KPIAssignmentDetails td input:checked';
+				$.each($(selector), function (idx, val) {
+				    var id = $(this).parent().siblings(":first").text();
+					recordID.push(id);
+				});
+
+				if (recordID && recordID.length) {
+					values = JSON.stringify(recordID.toString());
+				} else { values = "000"; }
+				//---
+
+				if(recordID.length != 0){
+
+					swal({
+						title: "Confirmation..",
+						text: "Are you sure you want to enroll the selected employee(s)?",
+						icon: "info",
+						buttons: true,
+						dangerMode: true,
+					})
+					.then((willDelete) => {
+						if (willDelete) {
+							$.ajax({
+					         type: "POST",
+                             url: "../KPIView/UpdateKPIAssignedTo",
+                             contentType: "application/json; charset=utf-8",
+                             cache: false,
+                             data: JSON.stringify({id: values, kpilistid: kpilistid}),
+					        success: function (data) {
+						        if (data == 'True') {
+						            Toast.Show("The selected employee(s) has been successfully enrolled.");
+							        $('#KPIAssignmentDetails').DataTable().ajax.reload();
+						        }
+						        else { Toast.Show("Something went wrong."); }
+					        }
+					     })
+				}});
+			 }
+	}
+
+			function setModalMaxHeight(element) {
+				this.$element = $(element);
+				this.$content = this.$element.find('.modal-content');
+				var borderWidth = this.$content.outerHeight() - this.$content.innerHeight();
+				var dialogMargin = $(window).width() < 768 ? 20 : 60;
+				var contentHeight = $(window).height() - (dialogMargin + borderWidth);
+				var headerHeight = this.$element.find('.modal-header').outerHeight() || 0;
+				var footerHeight = this.$element.find('.modal-footer').outerHeight() || 0;
+				var maxHeight = contentHeight - (headerHeight + footerHeight);
+
+				this.$content.css({
+					'overflow': 'hidden'
+				});
+
+				this.$element
+				  .find('.modal-body').css({
+					  'max-height': maxHeight,
+					  'overflow-y': 'auto'
+				  });
+			}
+
+			$('.modal').on('show.bs.modal', function () {
+				$(this).show();
+				setModalMaxHeight(this);
+			});
+
+			$(window).resize(function () {
+				if ($('.modal.in').length == 1) {
+					setModalMaxHeight($('.modal.in'));
+				}
+			});
+
+			/* CodeMirror */
+			$('.code').each(function () {
+				var $this = $(this),
+					$code = $this.text(),
+					$mode = $this.data('language');
+
+				$this.empty();
+				$this.addClass('cm-s-bootstrap');
+				CodeMirror.runMode($code, $mode, this);
+			});
+
+
+			$('#New').on('click', function () {
+			        updateType = 1;
+			        Reload(-1, -1);
+			        $('#Delete').attr("disabled", "disabled");
+				$('#btnEnroll').attr("disabled", "disabled");
+                updateType = 1;
+			});
+
+			$('#Save').on('click', function () {
+				if ($('#select2-JobPositionRefNo_KPIAssignmentList-container').text() == "N/A" || $('#select2-PerfIndicatorListRefNo_KPIAssignmentList-container').text() == "N/A"){
+				    Toast.Error("Please fill-in all the required fields.");
+				} else {
+
+				    if(updateType == 1 && jobPositionRefNo.length != 0){
+				        for(var i = 0; i < jobPositionRefNo.length; i++){
+				            if(jobPositionRefNo[i] == ktldg.JobPositionRefNo && KPIGroupID[i] == ktldg.PerfIndicatorListRefNo){
+				                isForSAVE = false;
+				                break;
+				            }
+				        }
+				    } else if(updateType == 0 && jobPositionRefNo.length != 0){
+				        for(var i = 0; i < jobPositionRefNo.length; i++){
+				            if((jobPositionRefNo[i] == ktldg.JobPositionRefNo && KPIGroupID[i] == ktldg.PerfIndicatorListRefNo)){
+
+				                if(KPIListID[i] == kpilistid){
+				                    isForSAVE = true;
+				                    updateType = 0;
+				                    break;
+				                } else {
+				                    isForSAVE = false;
+				                    break;
+				                }
+				            }
+				        }
+				    }
+
+				    if(isForSAVE == false){
+				        Toast.Error("Duplicate Entry.");
+				        isForSAVE = true;
+				    } else if (isForSAVE == true){
+				        $.ajax({
+				            type: "POST",
+				            url: "../KPIView/UpdatingKPIList",
+				            contentType: "application/json; charset=utf-8",
+				            cache: false,
+				            data: JSON.stringify({kpiAssigmentRefNo: kpilistid, updateType: updateType, JobPositionRefNo: ktldg.JobPositionRefNo, PerformanceIndicatorRefNo: ktldg.PerfIndicatorListRefNo, Type: 1}),
+				            success: function (data) {
+				                if (data == true) {
+
+				                    $('#Delete').removeAttr('disabled');
+				                    $('#btnEnroll').removeAttr('disabled');
+
+									if (updateType == 0) {
+										Reload(kpilistid, ktldg.JobPositionRefNo); $('#KPIListInfo').DataTable().ajax.reload();
+									}
+									else if (updateType == 1) {
+										toastr.success("KPI Assignment successfully updated.");
+									}
+									else {
+                                        loadKPIListAssignment();//.done(Reload(kpilistid, jobrefNo));
+									}
+
+				                }
+								else {
+									if (updateType == 1) {
+										toastr.success("KPI Assignment successfully updated.");
+										loadKPIListAssignment();//.done(Reload(kpilistid, jobrefNo));
+									}
+									else if (updateType == 0) {
+										toastr.success("Successfully updated.");
+										loadKPIListAssignment();//.done(Reload(kpilistid, jobrefNo));
+									}
+									else {
+                                        toastr.warning("Something went wrong.");
+                                        loadKPIListAssignment();//.done(Reload(kpilistid, jobrefNo));
+									}
+
+
+								}
+				            }
+				        })
+				    }
+				}
+			});
+
+			$('#Delete').on('click', function () {
+				swal({
+					title: "Do you want to continue?",
+					text: "Are you sure you want to delete this record?",
+					icon: "info",
+					buttons: true,
+					dangerMode: true,
+				})
+				 .then((willDelete) => {
+					 if (willDelete) {
+
+						$.ajax({
+						type: "POST",
+						cache: false,
+				        url: '../KPIView/UpdatingKPIList?kpiAssigmentRefNo=' + kpilistid + '&updateType=' + 2 + '&JobPositionRefNo=' + ktldg.JobPositionRefNo + '&PerformanceIndicatorRefNo=' + ktldg.PerfIndicatorListRefNo + '&Type=1',
+						success: function (data) {
+							if (data == 'True') {
+							    $('#KPIAssignment').DataTable().destroy();
+
+                                updateType = 0;
+								}
+							}
+						})
+						toastr.success("Record Deleted!.")
+                         loadKPIListAssignment();
+				}});
+			});
+
+		function AssignedToJobSearch() {
+            var input, filter;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+
+        $('#KPIAssignmentDetails').DataTable().destroy();
+        tableKPIDetails =  $('#KPIAssignmentDetails').DataTable({
+				'columnDefs': [{
+					'targets': [0],
+					'className': 'dt-body-center',
+					'render': function (data, type, full, meta) {
+							return '<input type="checkbox" name="id[]" value="1" checked>';
+					}
+				}],
+
+				'order': [1, 'asc'], info: false, paging: false, searching: false,
+				ajax: {
+                    url: '@Url.Action("GetEmployeeAssignedTO", "KPI")?JobPositionRefNo=' + jobrefNo + '&searchValue=' + filter,
+					type: 'POST',
+					datatype: 'application/json; charset=utf-8',
+					dataSrc: function (data) { return JSON.parse(data); },
+					error: function (e) { }
+				}
+			});
+	};
+
+</script><div>
+    <div style="clear:both;"></div>
+</div>
+@*</section>*@

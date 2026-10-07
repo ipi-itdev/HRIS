@@ -1,0 +1,427 @@
+.skin-ipi .login-logo, .skin-ipi .register-logo {
+    background: url("../Contents/img/pea.png");
+    max-width: 320px;
+    height: 55px;
+    background-size: 100% 100%;
+}
+.skin-ipi .login-box a { color: #dd9933; }
+.skin-ipi .btn-primary:hover { background-color: #dd9933; }
+
+.skin-ipi .btn-secondary { background-color: #dd9933; }
+.skin-ipi .bootstrap-dialog.type-primary .modal-header { background-color: #495057; }
+.skin-ipi .bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient( -60deg, #ffdc09 50%, #201f1f 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: .5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+}
+
+.skin-ipi .bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+
+.skin-ipi .bg3 {
+    animation-duration: 5s;
+}
+
+.skin-ipi .main-header .navbar {
+    background-color: #24292e
+}
+
+    .skin-ipi .main-header .navbar .nav > li > a {
+        color: #fff
+    }
+
+        .skin-ipi .main-header .navbar .nav > li > a:hover,
+        .skin-ipi .main-header .navbar .nav > li > a:active,
+        .skin-ipi .main-header .navbar .nav > li > a:focus,
+        .skin-ipi .main-header .navbar .nav .open > a,
+        .skin-ipi .main-header .navbar .nav .open > a:hover,
+        .skin-ipi .main-header .navbar .nav .open > a:focus,
+        .skin-ipi .main-header .navbar .nav > .active > a {
+            background: rgba(0,0,0,0.1);
+            color: #f6f6f6
+        }
+
+    .skin-ipi .main-header .navbar .sidebar-toggle {
+        color: #fff
+    }
+
+        .skin-ipi .main-header .navbar .sidebar-toggle:hover {
+            color: #f6f6f6;
+            background: rgba(0,0,0,0.1)
+        }
+
+    .skin-ipi .main-header .navbar .sidebar-toggle {
+        color: #fff
+    }
+
+        .skin-ipi .main-header .navbar .sidebar-toggle:hover {
+            background-color: #24292e
+        }
+
+.skin-ipi .main-header .logo {
+    background-color: #24292e;
+    color: #fff;
+    border-bottom: 0 solid transparent
+}
+
+    .skin-ipi .main-header .logo:hover {
+        background-color: #357ca5
+    }
+
+.skin-ipi .main-header li.user-header {
+    background-color: #24292e
+}
+
+.skin-ipi .content-header {
+    background: transparent
+}
+
+.skin-ipi .main-sidebar, .skin-ipi .left-side {
+    background-color: #222d32;
+    height: 100%;
+}
+
+.skin-ipi .user-panel > .info, .skin-ipi .user-panel > .info > a {
+    color: #fff
+}
+
+.skin-ipi .sidebar-menu > li.header {
+    color: #4b646f;
+    background: #1a2226
+}
+
+.skin-ipi .sidebar-menu > li > a {
+    border-left: 3px solid transparent
+}
+
+.skin-ipi .sidebar-menu > li:hover > a,
+.skin-ipi .sidebar-menu > li.active > a {
+    color: #fff;
+    background: #1e282c;
+    border-left-color: #24292e
+}
+
+.skin-ipi .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #2c3b41
+}
+
+.skin-ipi .sidebar a {
+    color: #b8c7ce
+}
+
+    .skin-ipi .sidebar a:hover {
+        text-decoration: none
+    }
+
+.skin-ipi .treeview-menu > li > a {
+    color: #8aa4af
+}
+
+.skin-ipi .treeview-menu > li.active > a, .skin-ipi .treeview-menu > li > a:hover {
+    color: #fff
+}
+
+
+
+/* END  IPI */
+/* START PITS */
+.skin-pits .login-logo, .pits .register-logo {
+    background: url("../Contents/img/pits.png") no-repeat;
+    max-width: 320px;
+    height: 60px;
+    background-size: 100% 100%;
+}
+.skin-pits .login-box a {
+    color: #007bff;
+}
+
+.skin-pits .btn-secondary {
+    background-color: #007bff;
+}
+
+.skin-pits .bootstrap-dialog.type-primary .modal-header {
+    background-color: #495057;
+}
+
+.skin-pits .bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #b7b5ad 50%, #09f 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: .5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+}
+.skin-pits .bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+.skin-pits .bg3 {
+    animation-duration: 5s;
+}
+
+
+.skin-pits .main-header .navbar {
+    background-color: #24292e
+}
+
+    .skin-pits .main-header .navbar .nav > li > a {
+        color: #fff
+    }
+
+        .skin-pits .main-header .navbar .nav > li > a:hover,
+        .skin-pits .main-header .navbar .nav > li > a:active,
+        .skin-pits .main-header .navbar .nav > li > a:focus,
+        .skin-pits .main-header .navbar .nav .open > a,
+        .skin-pits .main-header .navbar .nav .open > a:hover,
+        .skin-pits .main-header .navbar .nav .open > a:focus,
+        .skin-pits .main-header .navbar .nav > .active > a {
+            background: rgba(0,0,0,0.1);
+            color: #f6f6f6
+        }
+
+    .skin-pits .main-header .navbar .sidebar-toggle {
+        color: #fff
+    }
+
+        .skin-pits .main-header .navbar .sidebar-toggle:hover {
+            color: #f6f6f6;
+            background: rgba(0,0,0,0.1)
+        }
+
+    .skin-pits .main-header .navbar .sidebar-toggle {
+        color: #fff
+    }
+
+        .skin-pits .main-header .navbar .sidebar-toggle:hover {
+            background-color: #24292e
+        }
+
+.skin-pits .main-header .logo {
+    background-color: #24292e;
+    color: #fff;
+    border-bottom: 0 solid transparent
+}
+
+    .skin-pits .main-header .logo:hover {
+        background-color: #357ca5
+    }
+
+.skin-pits .main-header li.user-header {
+    background-color: #24292e
+}
+
+.skin-pits .content-header {
+    background: transparent
+}
+
+.skin-pits .main-sidebar, .skin-pits .left-side {
+    background-color: #222d32;
+    height: 100%;
+}
+
+.skin-pits .user-panel > .info, .skin-pits .user-panel > .info > a {
+    color: #fff
+}
+
+.skin-pits .sidebar-menu > li.header {
+    color: #4b646f;
+    background: #1a2226
+}
+
+.skin-pits .sidebar-menu > li > a {
+    border-left: 3px solid transparent
+}
+
+.skin-pits .sidebar-menu > li:hover > a,
+.skin-pits .sidebar-menu > li.active > a {
+    color: #fff;
+    background: #1e282c;
+    border-left-color: #24292e
+}
+
+.skin-pits .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #2c3b41
+}
+
+.skin-pits .sidebar a {
+    color: #b8c7ce
+}
+
+    .skin-pits .sidebar a:hover {
+        text-decoration: none
+    }
+
+.skin-pits .treeview-menu > li > a {
+    color: #8aa4af
+}
+
+    .skin-pits .treeview-menu > li.active > a, .skin-pits .treeview-menu > li > a:hover {
+        color: #fff
+    }
+
+/* END PITS */
+/* START PRHI */
+
+.skin-prhi .login-logo, .skin-prhi .register-logo {
+    background: url("../Contents/img/pea.png") no-repeat;
+    max-width: 320px;
+    height: 60px;
+    background-size: 100% 100%;
+}
+
+.skin-prhi .bg {
+    animation: slide 3s ease-in-out infinite alternate;
+    background-image: linear-gradient(-60deg, #b7b5ad 50%, #24292e 50%);
+    bottom: 0;
+    left: -50%;
+    opacity: .5;
+    position: fixed;
+    right: -50%;
+    top: 0;
+    z-index: -1;
+}
+
+.skin-prhi .bg2 {
+    animation-direction: alternate-reverse;
+    animation-duration: 4s;
+}
+
+.skin-prhi .bg3 {
+    animation-duration: 5s;
+}
+
+
+.skin-prhi .main-header .navbar {
+    background-color: #24292e
+}
+
+    .skin-prhi .main-header .navbar .nav > li > a {
+        color: #fff
+    }
+
+        .skin-prhi .main-header .navbar .nav > li > a:hover,
+        .skin-prhi .main-header .navbar .nav > li > a:active,
+        .skin-prhi .main-header .navbar .nav > li > a:focus,
+        .skin-prhi .main-header .navbar .nav .open > a,
+        .skin-prhi .main-header .navbar .nav .open > a:hover,
+        .skin-prhi .main-header .navbar .nav .open > a:focus,
+        .skin-prhi .main-header .navbar .nav > .active > a {
+            background: rgba(0,0,0,0.1);
+            color: #f6f6f6
+        }
+
+    .skin-prhi .main-header .navbar .sidebar-toggle {
+        color: #fff
+    }
+
+        .skin-prhi .main-header .navbar .sidebar-toggle:hover {
+            color: #f6f6f6;
+            background: rgba(0,0,0,0.1)
+        }
+
+    .skin-prhi .main-header .navbar .sidebar-toggle {
+        color: #fff
+    }
+
+        .skin-prhi .main-header .navbar .sidebar-toggle:hover {
+            background-color: #24292e
+        }
+
+.skin-prhi .main-header .logo {
+    background-color: #24292e;
+    color: #fff;
+    border-bottom: 0 solid transparent
+}
+
+    .skin-prhi .main-header .logo:hover {
+        background-color: #357ca5
+    }
+
+.skin-prhi .main-header li.user-header {
+    background-color: #24292e
+}
+
+.skin-prhi .content-header {
+    background: transparent
+}
+
+.skin-prhi .main-sidebar, .skin-prhi .left-side {
+    background-color: #222d32;
+    height: 100%;
+}
+
+.skin-prhi .user-panel > .info, .skin-prhi .user-panel > .info > a {
+    color: #fff
+}
+
+.skin-prhi .sidebar-menu > li.header {
+    color: #4b646f;
+    background: #1a2226
+}
+
+.skin-prhi .sidebar-menu > li > a {
+    border-left: 3px solid transparent
+}
+
+.skin-prhi .sidebar-menu > li:hover > a,
+.skin-prhi .sidebar-menu > li.active > a {
+    color: #fff;
+    background: #1e282c;
+    border-left-color: #24292e
+}
+
+.skin-prhi .sidebar-menu > li > .treeview-menu {
+    margin: 0 1px;
+    background: #2c3b41
+}
+
+.skin-prhi .sidebar a {
+    color: #b8c7ce
+}
+
+    .skin-prhi .sidebar a:hover {
+        text-decoration: none
+    }
+
+.skin-prhi .treeview-menu > li > a {
+    color: #8aa4af
+}
+
+.skin-prhi .treeview-menu > li.active > a, .skin-prhi .treeview-menu > li > a:hover {
+    color: #fff
+}
+
+.skin-prhi .btn-secondary {
+    background-color: #343a40;
+    border: 1px solid #fff;
+}
+
+
+    
+/* END PRHI */
+
+
+/* LOGIN ANIMATION */
+
+@keyframes slide {
+    0% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(25%);
+    }
+}

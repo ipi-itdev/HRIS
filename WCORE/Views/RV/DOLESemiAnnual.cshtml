@@ -1,0 +1,75 @@
+﻿<section class="content-header">
+      <h1>Contractots Semi-Annual Report</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Semi-Annual Report</li>
+      </ol>
+</section>
+<section class="content">
+    <div class="row">
+      <div class="col-md-12">
+          <div class="box box-primary">
+                <div class="box-body">
+                    <div class="col-md-10">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                               <div class="row form-group">
+                                    <label class="col-lg-3 control-label style="text-align:left">Start Date</label>
+                                    <div class="col-lg-8 control-container vcenter">
+                                    <div class="input-group date" style="width:100%;" >
+                                    <input type="text" class="form-control pull-right datepicker" id="sdate" name="sdate" />
+                                    <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                    </div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                        </div>
+                         <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="row form-group">
+                                   <label class="col-lg-3 control-label style="text-align:left">End  Date</label>
+                                    <div class="col-lg-8 control-container vcenter">
+                                    <div class="input-group date" style="width:100%;">
+                                    <input type="text" class="form-control pull-right datepicker"  id="edate" name="edate"/>
+                                    <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="btnList_Child_EmployeeMasterlist" class="no-padding">
+                            <button type="button" class="btn btn-primary" id="Filter"><i class="fa fa-filter" title="Filter"></i>  Filter</button>
+                        </div>
+                </div>
+                <div class="col-md-12" id="myparent_dole">
+                </div>
+          </div>
+        </div>
+    </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $('.content-wrapper').waitMe('hide');
+    $('#sdate').attr('data-inputmask', "'alias': 'mm/dd/yyyy'");
+    $('#sdate').attr('data-mask', '');
+    $('#sdate').inputmask();
+    $('#sdate').val('1/1/2019');
+
+
+    $('#edate').attr('data-inputmask', "'alias': 'mm/dd/yyyy'");
+    $('#edate').attr('data-mask', '');
+    $('#edate').inputmask();
+    $('#edate').val('12/31/2019');
+
+    $('#Filter').off('click').on('click', function () {
+        var sdate = $('#sdate').val();
+        var URLView = '@Url.Action("IndexDate", "ReportView")?v=DOLEContractorsSemiannual&sdate=' + $('#sdate').val() + '&edate=' + $('#edate').val();
+        $('#myparent_dole').load(URLView, function () { });
+    })
+})
+</script>

@@ -1,0 +1,112 @@
+﻿<div id="content_@ViewBag.FormID" class="module-wrapper ng-scope">
+<section class="content-header">
+      <h1>Employee Information Update <i style="font-size:13px">  (facility to review the employee information)</i></h1>
+      <ol class="breadcrumb">
+        <li><a href="javascript:void(0);" onclick="displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+      </ol>
+</section>
+<section class="content" id="@ViewBag.FormID">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header" id="btnList_@{@ViewBag.FormID}">
+				<button type="button" class="btn btn-primary" id="Back_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Open"></i>  Back to List</button>
+				<div style="float:right;">
+					@if (@ViewBag.AllowApprove == true)
+					{
+					 <button type="button" class="btn btn-primary" id="Approve_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-up" title="New"></i>  Approve</button>
+					 <button type="button" class="btn btn-primary" id="Return_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-down" title="New"></i>  Return</button>
+					}                      
+				</div>
+            </div>          
+            <div class="box-body">
+                <div class="row">
+					<div class="col-md-12">
+						<div class="nav-tabs-custom">
+							<ul class="nav nav-tabs" id="tab_@ViewBag.FormID" role="tablist">
+								<li class="nav-item active"><a href="#AuditChanges_List_@ViewBag.FormID"  class="nav-link active" data-toggle="tab" role="tab">Audit</a></li>
+								<li class="nav-item"><a href="#Details_Form_@ViewBag.FormID"  class="nav-link" data-toggle="tab" role="tab">Personal Information</a></li>
+							    <li class="nav-item"><a href="#Contact_Form_@ViewBag.FormID"  class="nav-link" data-toggle="tab" role="tab">Contact Information</a></li>
+								<li class="nav-item"><a href="#ContactEmergency_Form_@ViewBag.FormID"  class="nav-link" data-toggle="tab" role="tab">Emergency Contact Information</a></li>
+								<li class="nav-item"><a href="#HighestEducationAudit_List_@ViewBag.FormID"  class="nav-link" data-toggle="tab" role="tab">Educational Background</a></li>
+								<li class="nav-item"><a href="#AffiliationNo_Form_@ViewBag.FormID"  class="nav-link" data-toggle="tab" role="tab">Government ID</a></li>
+								<li class="nav-item"><a href="#DependentsAudit_List_@ViewBag.FormID"  class="nav-link" data-toggle="tab" role="tab">Dependents</a></li>
+								</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="AuditChanges_List_@ViewBag.FormID" role="tabpanel">
+									 <div id="AuditChanges_List_@{@ViewBag.FormID}"></div>
+								</div>
+								<div class="tab-pane" id="Details_Form_@ViewBag.FormID" role="tabpanel">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group" id="Details_@{@ViewBag.FormID}_dtlv"></div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group" id="Details_@{@ViewBag.FormID}_dtlv2"></div>
+										</div>
+										<div style="clear:both;"></div>
+									</div>
+								</div>
+								<div class="tab-pane" id="Contact_Form_@ViewBag.FormID" role="tabpanel">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group" id="Contact_@{@ViewBag.FormID}_dtlv"></div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group" id="Contact_@{@ViewBag.FormID}_dtlv2"></div>
+										</div>
+										<div class="col-md-6">
+											<b>Present Address</b>
+											<div class="form-group" id="Address_@{@ViewBag.FormID}_dtlv"></div>
+										</div>
+										<div class="col-md-6">
+											<b>Permanent Address</b>
+											<div class="form-group" id="Address_@{@ViewBag.FormID}_dtlv2"></div>
+										</div>
+										<div style="clear:both;"></div>
+									</div>
+								</div>
+								<div class="tab-pane" id="ContactEmergency_Form_@ViewBag.FormID" role="tabpanel">
+									<div class="row">
+										<div class="col-md-6">
+											<b>Primary Emergency Contact</b>
+											<div class="form-group" id="ContactEmergency_@{@ViewBag.FormID}_dtlv"></div>
+										</div>
+										<div class="col-md-6">
+											<b>Secondary Emergency Contact</b>
+											<div class="form-group" id="ContactEmergency_@{@ViewBag.FormID}_dtlv2"></div>
+										</div>
+										<div style="clear:both;"></div>
+									</div>
+								</div>
+								<div class="tab-pane" id="HighestEducationAudit_List_@ViewBag.FormID" role="tabpanel">
+									 <div id="HighestEducationAudit_List_@{@ViewBag.FormID}"></div>
+								</div>
+								<div class="tab-pane" id="AffiliationNo_Form_@ViewBag.FormID" role="tabpanel">
+									<div class="col-md-6">
+										<div class="form-group" id="AffiliationNo_@{@ViewBag.FormID}_dtlv"></div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group" id="AffiliationNo_@{@ViewBag.FormID}_dtlv2"></div>
+									</div>
+									<div style="clear:both;"></div>
+								</div>
+								<div class="tab-pane" id="DependentsAudit_List_@ViewBag.FormID" role="tabpanel">
+									 <div id="DependentsAudit_List_@{@ViewBag.FormID}"></div>
+								</div>
+							</div>                                  
+						</div>                                  
+					</div>
+                </div>
+            </div>
+    </div>
+</div>
+</section>
+</div>
+@System.Web.Optimization.Scripts.Render("~/Script/EmployeeInfoAudit")
+<script>
+$(document).ready(function () {
+	let $mFrm = new EmployeeInfoAudit('@{@ViewBag.pid}'); $mFrm.mguid = '@{@ViewBag.mguid}'; $mFrm.mNm = '@{@ViewBag.mCode}'; $mFrm.mNo = '@{@ViewBag.mNo}'; $mFrm.mDesc = '@{@ViewBag.Description}'; $mFrm.FKN =  '@{@ViewBag.FKeyName}'; $mFrm.FK =  '@{@ViewBag.pid}'; $mFrm.fid =  '@{@ViewBag.FormID}';
+	$('.content-wrapper').waitMe('hide');
+})
+</script>

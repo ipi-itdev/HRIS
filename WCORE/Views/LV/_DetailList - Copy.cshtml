@@ -1,0 +1,33 @@
+﻿<section class="content-header">
+      <h1>@ViewBag.DisplayName <i style="font-size:13px">  @ViewBag.SubDescription</i></h1>
+      <ol class="breadcrumb">
+        <li><a href="javascript:displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+      </ol>
+</section>
+<section class="content">
+<div class="box box-primary">
+    <div class="box-body">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="Model_ListView" id="@{@ViewBag.ViewID}"></div>
+			</div>
+			<div class="col-md-6">
+				<div id="@{@ViewBag.FormID}"></div>
+			</div>
+		</div>
+    </div>
+</div>
+</section>
+<script>
+    $(document).ready(function(){
+        var @{@ViewBag.ViewId}_Setting = { @Html.Raw(@ViewBag.tableFormat) };
+        var $Grid = new IPIGrid('@ViewBag.mguid','@ViewBag.mCode', '#@{@ViewBag.ViewId}', @{@ViewBag.ViewId}_Setting.Format, 'False', '@ViewBag.FormID', '@ViewBag.ParentModel');
+        $Grid.DataSourceUrl = '@Url.Action("Refresh")';      
+        $Grid.AllowInsert = '@ViewBag.AllowInsert';
+        $Grid.Parent = @{@ViewBag.ViewId}
+        $Grid.DetailViewURL = '@Html.Raw(@Url.Action("Index", "DetailView", new { mguid = @ViewBag.mguid, pid = "PRIMARY_KEY", IsDetailList = "True" }))';
+        var $parent = $('#' + $('#@{@ViewBag.ViewID}').parent().attr('ID'));
+        $parent.trigger('OnGridCreated', { Grid: $Grid  });
+        $parent.unbind('OnGridCreated');     
+    })
+</script>

@@ -1,0 +1,557 @@
+﻿<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i><b>PART II</b></a></li>
+        <li class="active"><b>CORE COMPETENCIES</b></li>
+    </ol>
+    <style>
+               .bs-example {
+                   margin: 20px;
+               }
+
+               body {
+                   background: #ffffff;
+                   color: #414141;
+                   font: 400 17px/2em 'Source Sans Pro', sans-serif;
+               }
+
+               .select-box {
+                   cursor: pointer;
+                   position: relative;
+                   max-width: 24em;
+                   /*margin: 5em auto;*/
+                   width: 100%;
+               }
+
+               .select,
+               .labelSelect {
+                   color: #414141;
+                   display: block;
+                   font: 400 17px/2em 'Source Sans Pro', sans-serif;
+               }
+
+               .select {
+                   width: 100%;
+                   position: absolute;
+                   top: 0;
+                   padding: 5px 0;
+                   height: 40px;
+                   opacity: 0;
+                   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+                   background: none transparent;
+                   border: 0 none;
+               }
+
+               .select-box1 {
+                   background: #ececec;
+               }
+
+               .labelSelect {
+                   position: relative;
+                   padding: 5px;
+                   cursor: pointer;
+               }
+
+               .open .label::after {
+                   content: "▲";
+               }
+
+               .label::after {
+                   content: "▼";
+                   font-size: 12px;
+                   position: absolute;
+                   right: 0;
+                   top: 0;
+                   padding: 5px 15px;
+                   border-left: 5px solid #fff;
+               }
+
+               html {
+                   box-sizing: border-box;
+                   font-size: 95%;
+                   line-height: 1.5;
+                   font-family: 'Open Sans',sans-serif;
+                   background: #e0758e;
+                   color: #333;
+                   text-align: center;
+               }
+
+               *, *:before, *:after {
+                   box-sizing: inherit;
+               }
+
+               .box {
+                   width: 100%;
+                   max-width: 400px;
+                   margin: 2rem auto;
+                   background: white;
+                   border: 1px solid white;
+                   border-radius: 3px;
+                   text-align: left;
+               }
+
+               h1 {
+                   color: #fff;
+                   margin: 10% 0 0 0;
+               }
+
+               p {
+                   color: #fff;
+                   font-size: .9rem;
+                   opacity: .6;
+               }
+
+               /*****
+        *
+        * Radio checked style related
+        * the fun part starts here
+        *
+        */
+               input[type=radio] {
+                   display: none;
+               }
+
+               /**
+        * How it should look when hovered
+        */
+               .active-label, label:focus, label:hover, label:active, input:checked + label {
+                   color: #e0758e;
+               }
+
+                   .active-label:before, label:focus:before, label:hover:before, label:active:before, input:checked + label:before {
+                       background: white;
+                       border-color: #e0758e;
+                   }
+
+               /**
+        * Make those labels sexy
+        */
+               label {
+                   font-size: 1rem;
+                   font-weight: bold;
+                   line-height: 1;
+                   cursor: pointer;
+                   display: block;
+                   padding: 1rem 1rem 1rem 3rem;
+                   position: relative;
+                   border-top: 1px solid rgba(0, 0, 0, 0.1);
+                   background: white;
+                   whitespace: no-wrap;
+                   overflow: hidden;
+                   text-overflow: ellipsis;
+                   -webkit-transition: all .15s ease;
+                   transition: all .15s ease;
+                   /**
+          * This is the radio fake dot basically
+          */
+               }
+
+                   label:first-of-type {
+                       border: 0;
+                   }
+
+                   label:before {
+                       content: "";
+                       position: absolute;
+                       left: 1rem;
+                       top: 1rem;
+                       width: 16px;
+                       height: 16px;
+                       border-radius: 50%;
+                       border: .2rem solid #ccc;
+                   }
+
+               /**
+        * How it should look when checked
+        */
+               input:checked + label:before {
+                   border-color: white;
+                   border: none;
+                   background: #e0758e;
+               }
+
+               /**
+        * How it should look when disabled
+        */
+               input:disabled + label {
+                   background: #efefef;
+                   color: rgba(0, 0, 0, 0.5);
+                   cursor: not-allowed;
+               }
+
+                   input:disabled + label:hover {
+                       border-color: rgba(0, 0, 0, 0.1);
+                   }
+
+                   input:disabled + label:before {
+                       border-color: white;
+                       background: white;
+                   }
+
+               .select-box {
+                   cursor: pointer;
+                   position: relative;
+                   max-width: 24em;
+                   /*margin: 5em auto;*/
+                   width: 100%;
+               }
+
+               .select,
+               .labelSelect {
+                   color: #414141;
+                   display: block;
+                   font: 400 17px/2em 'Source Sans Pro', sans-serif;
+               }
+
+               .select {
+                   width: 100%;
+                   position: absolute;
+                   top: 0;
+                   padding: 5px 0;
+                   height: 40px;
+                   opacity: 0;
+                   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+                   background: none transparent;
+                   border: 0 none;
+               }
+
+               .select-box1 {
+                   background: #ececec;
+               }
+
+               .labelSelect {
+                   position: relative;
+                   padding: 5px;
+                   cursor: pointer;
+               }
+
+               .open .labelSelect::after {
+                   content: "▲";
+               }
+
+               .labelSelect::after {
+                   content: "▼";
+                   font-size: 12px;
+                   position: absolute;
+                   right: 0;
+                   top: 0;
+                   padding: 5px 15px;
+                   border-left: 5px solid #fff;
+               }
+    </style>
+
+</section>
+<section class="content" style="position: center">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+                    <div class="bs-example">
+                        <div class="panel-group" id="accordion">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+	var setCount, itemCount, count;
+	var setCore = [];
+	var itemsCore = [];
+	var coreDesc = [];
+	var coreRatings = [];
+	var coreID = [];
+	var radValue = [];
+	var totalItem;
+	isReadyForSubmit = false;
+
+
+
+	$(document).ready(function () {
+		loadCoreCompentency()
+
+		$("select").on("click", function () {
+
+			$(this).parent(".select-box").toggleClass("open");
+
+		});
+
+		$(document).mouseup(function (e) {
+			var container = $(".select-box");
+
+			if (container.has(e.target).length === 0) {
+				container.removeClass("open");
+			}
+		});
+
+
+		$("select").on("change", function () {
+
+			var selection = $(this).find("option:selected").text(),
+			evalID = $(this).find("option:selected").val()
+			labelFor = $(this).attr("id"),
+			label = $("[for='" + labelFor + "']");
+			label.find(".label-desc").html(selection);
+			evalPurpose = selection;
+			evalPurposeID = evalID;
+		});
+
+	});
+
+	function loadCoreCompentency() {
+		jQuery.ajax({
+			url: '@Url.Action("GetCoreCompetency", "KPI")',
+			method: 'GET',
+			datatype: 'application/json; charset=utf-8',
+			async: true,
+			success: function (data) {
+				var jsonCore = JSON.parse(data);
+				var itemC = jsonCore.length
+				if (jsonCore.length == 0) return false;
+				for (var i = jsonCore.length - 1; i >= 0; i--) {
+					var trRow = '';
+					trRow += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">'
+					trRow += '<a data-toggle="collapse" data-parent="#accordion" href="#collapse' + jsonCore[i][0] + '"> <span class="ui-icon ui-icon-home ui-icon-shadow ui-btn-icon-right" style="right:30px;"><b>' + (itemC--) + ". " + (jsonCore[i][1]).toUpperCase() + '</b></span></a></h4></div>'
+					trRow += '<div id="collapse' + jsonCore[i][0] + '"' +
+							 'class="panel-collapse collapse in">' +
+							 '<div class="panel-body" id="collapsebody' + jsonCore[i][0] + '">' +
+							 '</div>' +
+							 '</div>'
+					$('#accordion').prepend(trRow);
+					loadCoreDetails(jsonCore[i][0]);
+
+				}
+			},
+			error: function (e) {
+			}
+		});
+	}
+
+	function loadCoreDetails(id) {
+		totalItem = 1;
+		jQuery.ajax({
+			url: '@Url.Action("GetCoreCompetencyDetails", "KPI")?id=' + id,
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			success: function (coredetails) {
+
+				setCore.length = 0;
+				itemsCore.length = 0;
+				coreDesc.length = 0;
+				coreRatings.length = 0;
+				radValue.length = 0;
+				var jsonDetails = JSON.parse(coredetails);
+				count = 0;
+				for (var i = 0; i < jsonDetails.length; i++) {
+
+					setCore[i] = jsonDetails[i][0];
+					itemsCore[i] = jsonDetails[i][1];
+					coreDesc[i] = jsonDetails[i][2];
+					coreRatings[i] = jsonDetails[i][3];
+					radValue[i] = jsonDetails[i][4];
+				}
+
+				GetSETCoreCount();
+				GetITEMCoreCount();
+				var b = setCount;
+
+				for (var i = setCount; i >= 1; i--) {
+					var trRowHeader = '';
+					var trRowDetail = '';
+
+					trRowHeader += '<div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">'
+					trRowHeader += '<a data-toggle="collapse" data-parent="#accordion" href="#collapse' + id + "" + i + '"><b>' + id + "." + b-- + '</b></a></h4></div>'
+					trRowHeader += '<div id="collapse' + id + "" + i + '"' +
+									 'class="panel-collapse collapse in">' +
+									 '<div class="panel-body" id="collapsebody' + id + "" + i + '">' +
+									 '</div>' +
+									 '</div>'
+
+					for (var a = 1; a <= itemCount; a++) {
+						trRowDetail += '<div class="box" id="group' + id + '' + i + '">' +
+									   '<input type="radio" id="radio' + id + '' + i + '' + a + '' +  totalItem + '" name="radio' + id + '' + i + '" name="radio' + id + '' + i + '" value="' + radValue[count] + '" onclick="loadRating(' + radValue[count] + ', ' + id + ' ,' + i + ' ,' + totalItem + ' ,' + a + ')"/>' +
+									   '<label for="radio' + id + '' + i + '' + a + '' + totalItem + '">' + coreDesc[count] + '</label></div>';
+						count++;
+					}
+
+					trRowDetail += '<div class="box"><select id="rating' + id + '' + i + '' + totalItem + '" style="width: 200px; height: 35px; margin-left:15px;" onchange="getSelectedRating('+ id + ' ,' + i + ' ,' + totalItem + ')">' +
+								   '<option value="rating' + id + '' + i + '' + totalItem + '"><b>Rating</b></option></select></div>'
+
+					$('#collapsebody' + id).prepend(trRowHeader);
+					$('#collapsebody' + id + '' + i).prepend(trRowDetail);
+
+					totalItem++;
+
+				}
+
+				CoreDetailsRowID = new Array(totalItem);
+				CoreCompetencyRefNo = new Array(totalItem);
+				CoreCompetencySetNo = new Array(totalItem);
+				CoreCompetencyChoiceRefNo = new Array(totalItem);
+				CoreCompetencyChoiceRating = new Array(totalItem);
+			},
+			error: function (e) {
+			}
+		});
+	}
+
+
+	function GetSETCoreCount() {
+		setCount = 0;
+		for (var i = 0; i < setCore.length; i++) {
+			if (setCore[i] >= setCount) {
+				setCount = setCore[i];
+			}
+		}
+	}
+
+	function GetITEMCoreCount() {
+		itemCount = 0;
+		for (var i = 0; i < itemsCore.length; i++) {
+			if (itemsCore[i] >= itemCount) {
+				itemCount = itemsCore[i];
+			}
+		}
+	}
+
+	function getSelectedRating(core, set, index) {
+		CoreCompetencyChoiceRating[index] = $('#rating' + core + '' + set + '' + index + ' :selected').text();
+;
+	}
+
+	function loadRating(id, core, set, index, choice) {
+
+		jQuery.ajax({
+			url: '@Url.Action("GetRatings", "KPI")?id=' + id,
+				type: 'POST',
+				datatype: 'application/json; charset=utf-8',
+				success: function (data) {
+					var jsonArray = JSON.parse(data);
+
+					$('#rating' + core + '' + set + '' + index).children().remove().end().append('<option selected value="rating"><b>Rating</b></option>');
+					for (var i = 0; i < jsonArray.length; i++) {
+						var score = (jsonArray[i][0]).toString().split(',');
+						for (var a = 0; a < score.length; a++) {
+							var str = "<option value='" + core + '' + set  + '' + index + "'><b>" + score[a] + "</b></option>";
+							$('#rating' + core + '' + set + '' + index).append(str);
+						}
+					}
+				},
+				error: function (e) {
+				}
+		});
+
+		//-- START RECORDING ANSWERS
+		CoreDetailsRowID[index] = id;
+		CoreCompetencyRefNo[index] = core;
+		CoreCompetencySetNo [index] = set;
+		CoreCompetencyChoiceRefNo [index] = choice;
+	}
+
+	window.getScores = function () {
+		var s = $.Deferred();
+		for (i = 1; i < CoreCompetencyRefNo.length; i++) {
+			waitingDialog.show("Consolidating scores...");
+			$.ajax({
+				type: "POST",
+				cache: false,
+				url: '../KPIView/RecordScores?PerfEvalID=' + perfIndicatorRefNo + '&employeeRefNo=' + employeeRefNo +
+					'&coreRefNo=' + CoreCompetencyRefNo[i] + '&coreDetailsRefNo=' + CoreDetailsRowID[i] + '&setNo=' + CoreCompetencySetNo[i] + '&choiceID=' + CoreCompetencyChoiceRefNo[i],
+				success: function (data) {
+					if (data == 'True') {
+
+					}
+					else { status = 0; }
+				}
+			});
+		}
+
+		setTimeout(function () { waitingDialog.hide(); }, 2000);
+
+		return s;
+	};
+
+	window.generateScores = function () {
+		$(this).delay(2200).queue(function () {
+
+			var s = $.Deferred();
+			$.ajax({
+				type: "POST",
+				cache: false,
+				url: '../KPIView/RecordScoreSummary?PerfEvalID=' + perfIndicatorRefNo + '&employeeRefNo=' + employeeRefNo,
+				success: function (data) {
+					if (data == 'True') {
+					    URL = "../KPI/SpecialAssignment";
+					    var detailView = new KPIPartThree(URL, employeeInfo);
+					    detailView.open();
+					}
+					else { swal("Failed!", "Something went wrong.", "success"); }
+				}
+			});
+
+			return s;
+
+			$(this).dequeue();
+		});
+	};
+
+var waitingDialog = waitingDialog || (function ($) {
+		'use strict';
+
+		// Creating modal dialog's DOM
+		var $dialog = $(
+			'<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">' +
+			'<div class="modal-dialog modal-m">' +
+			'<div class="modal-content">' +
+				'<div class="modal-header"><h3 style="margin:0;"></h3></div>' +
+				'<div class="modal-body">' +
+					'<div class="progress progress-striped active" style="margin-bottom:0;"><div class="progress-bar" style="width: 100%"></div></div>' +
+				'</div>' +
+			'</div></div></div>');
+
+		return {
+
+			show: function (message, options) {
+				// Assigning defaults
+				if (typeof options === 'undefined') {
+					options = {};
+				}
+				if (typeof message === 'undefined') {
+					message = 'Loading';
+				}
+				var settings = $.extend({
+					dialogSize: 'm',
+					progressType: '',
+					onHide: null // This callback runs after the dialog was hidden
+				}, options);
+
+				// Configuring dialog
+				$dialog.find('.modal-dialog').attr('class', 'modal-dialog').addClass('modal-' + settings.dialogSize);
+				$dialog.find('.progress-bar').attr('class', 'progress-bar');
+				if (settings.progressType) {
+					$dialog.find('.progress-bar').addClass('progress-bar-' + settings.progressType);
+				}
+				$dialog.find('h3').text(message);
+				// Adding callbacks
+				if (typeof settings.onHide === 'function') {
+					$dialog.off('hidden.bs.modal').on('hidden.bs.modal', function (e) {
+						settings.onHide.call($dialog);
+					});
+				}
+				// Opening dialog
+				$dialog.modal();
+			},
+		/**
+		 * Closes dialog
+		 */
+		hide: function () {
+			$dialog.modal('hide');
+		}
+	};
+
+})(jQuery);
+
+</script>
+

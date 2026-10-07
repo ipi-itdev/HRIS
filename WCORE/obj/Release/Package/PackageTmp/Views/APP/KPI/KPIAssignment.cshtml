@@ -1,0 +1,298 @@
+﻿<div id="content_KPIAssignmentList" class="ng-scope"><script src="/Contents/js/Scripts/IPIGrid.js"></script>
+<script src="/Contents/js/Scripts/IPIForm.js"></script>
+<script src="/Contents/js/Scripts/IPIModal.js"></script>
+
+<section class="content-header">
+      <h1>KPI Assignment</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">KPI Assignment</li>
+      </ol>
+</section>
+<section class="content">
+<div class="row">
+   <div class="col-xs-12">
+       <div class="box box-primary">
+           <div class="box-body">
+               <div class="col-md-7">
+                   <div class="Model_ListView" id="KPIAssignmentList_ListView" style="height:auto;">
+                       <div id="KPIAssignmentList_ListView_Table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"></div>
+                       <div class="row"><div class="col-sm-6"><div class="btn-group" id="btnChildList_KPIAssignmentList_ListView_Table"></div>
+                       <button type="button" class="btn btn-default" id="New"><i class="fa fa-file" title="New"></i> New</button></div></div>
+                           <div class="col-sm-6">
+                        <div id="KPIAssignmentList_ListView_Table_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="KPIAssignmentList_ListView_Table"></label>
+                        </div></div></div>
+                       <div class="row">
+                       <div class="col-sm-12">
+                   <table id="KPIAssignmentList_ListView_Table" class="table table-bordered table-striped table-hover display responsive dataTable no-footer dtr-inline" style="font-size: small; width: 845px;" role="grid" aria-describedby="KPIAssignmentList_ListView_Table_info"><thead><tr role="row">
+                       <th class="sorting_asc" align="center" style="overflow: hidden; width: 37px;" tabindex="0" aria-controls="KPIAssignmentList_ListView_Table" rowspan="1" colspan="1" aria-label="ID: activate to sort column descending" aria-sort="ascending">ID</th>
+                       <th class="sorting" align="left" style="overflow: hidden; width: 216px;" tabindex="0" aria-controls="KPIAssignmentList_ListView_Table" rowspan="1" colspan="1" aria-label="Job Title: activate to sort column ascending">Job Title</th>
+                       <th class="sorting" align="left" style="overflow: hidden; width: 214px;" tabindex="0" aria-controls="KPIAssignmentList_ListView_Table" rowspan="1" colspan="1" aria-label="KPI Group Name: activate to sort column ascending">KPI Group Name</th>
+                       <th class="sorting" align="left" style="overflow: hidden; width: 217px;" tabindex="0" aria-controls="KPIAssignmentList_ListView_Table" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending">Date</th></tr>
+                       </thead>
+                       <tfoot></tfoot>
+                   </table>
+               </div>
+               <div class="col-md-5">
+                   <div id="myParents_KPIAssignmentList"><section class="content" id="myParents_KPIAssignmentList_KPIAssignmentList"></section> </div></div>
+            </div></div></div></div></div></div>
+<div class="btn-group-horizontal" id="btnList_Child_KPIAssignmentList">
+    <button type="button" class="btn btn-primary" id="Save"><i class="fa fa-save" title="Save"></i>  Save</button>
+    <button type="button" class="btn btn-primary" id="Delete"><i class="fa fa-close" title="Delete"></i>  Delete</button>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs" id="tab_child_KPIAssignmentList">
+                                        <li class="active"><a href="#Details_Form_Child_KPIAssignmentList" data-toggle="tab" aria-expanded="true">Details</a></li>
+                                        <li><a href="#AssignedTo_List_Child_KPIAssignmentList" data-toggle="tab">Assigned To</a></li>
+                                        <li><a href="#Other_Form_Child_KPIAssignmentList" data-toggle="tab">Other</a></li>
+                        </ul>
+                        <div class="tab-content">
+                                        <div class="tab-pane active" id="Details_Form_Child_KPIAssignmentList">
+                                            <div class="col-md-12">
+                                               
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        <div class="tab-pane" id="AssignedTo_List_Child_KPIAssignmentList"></div>
+                                        <div class="tab-pane" id="Other_Form_Child_KPIAssignmentList">
+                                            <div class="col-md-12">
+                                         
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                        </div>      
+                        <div style="clear:both;"></div>                            
+                    </div>                                  
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+</section>
+<script>
+    $(document).ready(function () {
+        var valid = true;
+
+        var ucomt = { ID:null,JobPositionRefNo:null,ID:null,CreatedBy:null,CreatedDate:null,ModifiedBy:null,ModifiedDate:null,IsActive:null,KPIAssignedTo:[]  , IsDirty : false
+            , Save : function(Grid) {
+                if(ucomt['null'] != undefined)
+                {
+                    ucomt['null'] = '0';
+                }
+                $.ajax({
+                    url: '/DetailView/Save',
+                    data: { mName :'KPIAssignmentList' ,JSONObject : JSON.stringify( ucomt ) },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        $('#myParent_KPIAssignmentList').trigger("OnDetailViewSaved");
+                        Toast.Show( 'KPI Details' + " Save" );
+                    },
+                    error: function(xhr, textStatus, error) {
+                        console.log(error);
+                    }
+                });
+
+            },
+        Delete : function() {
+            var item = [];
+            item.push(ucomt);
+                $.ajax({
+                    url: '/DetailView/Delete',
+                    data: { mName :'KPIAssignmentList' ,JSONObject : JSON.stringify(item) },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        if (data.error != undefined ) {
+                            alert(data.error);
+                            return;
+                        }
+                        Toast.Show( "Deleted" );
+                        $('#myParent_KPIAssignmentList').trigger("OnDetailViewSaved")
+                    },
+                    error: function(xhr, textStatus, error) {
+                        console.log(error);
+                    }
+                });
+            }
+    };
+
+        function Validate() {
+            var objVal = JSON.parse(JSON.stringify(ucomt));
+        var valid = true;
+        $("#myParent_KPIAssignmentList_KPIAssignmentList .required").each(function () {
+             if (objVal[$(this).attr('name')] == null || objVal[$(this).attr('name')] == 0 || objVal[$(this).attr('name')] == '')
+             { Toast.Error($(this).attr('title') + " is required."); valid = false; return false; }
+         });
+         return valid;
+     }
+
+     function KPIAssignmentList_DetailView_Child() {
+        var self = $(this);
+        this.IsEditOnly = false;
+        var ObjectID = 1;
+        var dvFormat = [{
+            Name: 'Details', Controls: [{ Name: 'ID', Type: 'Int', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Details', ControlID: 'ID' },
+         { Name: 'JobPositionRefNo', Caption: 'Job Title', Type: 'Int', ControlType: 'combobox', RefColumn: 'E', ControlModel: 'KPIJobTitleSelect', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'JobPositionRefNo' },
+         { Name: 'PerfIndicatorListRefNo', Caption: 'KPI Group Name', Type: 'Int', ControlType: 'combobox', RefColumn: 'EGroup', ControlModel: 'PerformanceIndicatorSelect', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'PerfIndicatorListRefNo' }]},
+         { Name: 'AssignedTo', Controls: [] },
+         { Name: 'Other', Controls: [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' },
+         { Name: 'CreatedDate', Caption: 'Date', Type: 'String', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' }, { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedBy' },
+         { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedDate' },
+         { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }]},
+         { Name: 'AssignedTo', Type: '', FKey: 'KPIAssignmentRefNo', FKeyValue: 'ID', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'KPIAssignedTo', ParentmName: 'KPIAssignmentList' }];
+        function GetControl_Child(Selector, CtrlFormat ) {
+            var control = new JIBControl(Selector, { PropertyName: CtrlFormat.Name , Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption ), type : CtrlFormat.ControlType, Model : CtrlFormat.ControlModel, ControlID : CtrlFormat.ControlID ,  ControlFormat: CtrlFormat.strFormat },CtrlFormat,'KPIAssignmentList');
+            control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+            control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+            control.ParentDiv = Selector
+            control.Init();
+            if ( CtrlFormat.IsEnabled != undefined ) control.SetEnabled( CtrlFormat.IsEnabled );
+            control.CurrentObject = ucomt;
+            return control;
+        };
+        function InitNewObject_Child(newObject) {
+            $.each(newObject, function(key, value) {
+                if ( key != "IsEditOnly" ) {
+ucomt[key] = value;
+                }
+            });
+            $.each(dvFormat, function(i,tabs) {
+                $.each(tabs.Controls, function(x,val ) {
+                    Selector = $('#' + tabs.Name + '_Form_Child_KPIAssignmentList_DetailView');
+                    var control = GetControl_Child(Selector,val);
+                    control.SetValue(ucomt[val.Name]);
+                });
+            });
+        }
+        this.InitDetailView_Child = function(CurrentObject) {
+            $.ajax({
+                url: '/DetailView/GetBaseObject',
+                data: { model:'KPIAssignmentList', pKey:ObjectID },
+                type: 'POST',
+                datatype: 'application/json; charset=utf-8',
+                beforeSend: function () { },
+                success: function (data) {
+                    if ( ObjectID == -1 ) {
+                        var newObject = eval("(function(){return " + data + ";})()");
+                        InitNewObject_Child( newObject );
+                    } else {
+                        var jsonArray = JSON.parse(data);
+                        if (jsonArray.length == 0) return;
+                        var Columns = jsonArray[0];
+                        var Values = jsonArray[1];
+                        $.each(Columns,function(i,o){
+                            CurrentObject[o] = Values[i];
+                        });
+                        $.each(dvFormat, function(x,tabs) {
+                            $.each( tabs.Controls, function( i, val ) {
+                                Selector = $('#' + tabs.Name + '_Form_Child_KPIAssignmentList_DetailView');
+                                var control = GetControl_Child(Selector,val);
+                                var ColumnIndex = Columns.indexOf( val.Name );
+                                var Value = Values[ColumnIndex];
+                                control.SetValue(Value);
+                            });
+                        });
+                        }
+                }, error: function ( e ) { alert(e.responseText); }
+            });
+        };
+        }
+        function LoadListViewTab_Child(Selector, tabs){
+            var URL = '../ListView/ChildListIndex?mName=MODEL_NAME&Description=MODEL_DESC&ColumnsWidth=0.7&IsAppendMode=True&ParentModel=MODEL_PARENT';
+            URL = URL.replace("MODEL_NAME", tabs.Type);
+            URL = URL.replace("MODEL_DESC", tabs.Name);
+            URL = URL.replace("MODEL_PARENT", 'KPIAssignmentList');
+            alert(URL);
+        Selector.load(URL);
+        Selector.on('OnGridCreated', function (e, o) {
+            var h = Selector.parent().height();
+            var grid = o.Grid;
+            grid.ParentObject = ucomt;
+            grid.ParentObjectProperty = tabs.PropertyName;
+            grid.rowHeight = 30;
+            grid.ID_ParentKey = ucomt[tabs.FKeyValue];
+            grid.ForeignFieldKey = tabs.FKey != undefined ? tabs.FKey : null;
+            grid.IsPartialRefresh = false;
+            grid.getContainer().css('height', h - 10);
+            grid.getTable().css('height', h - 70);
+        });
+    }
+
+    $(function() {
+        $('#btnList_Child_KPIAssignmentList').find('button').on('click', function() {
+            var ids = $(this).attr('id');
+            var Message = '';
+            var OkLabel = 'OK';
+            var fAction = null;
+            switch ( ids.replace('KPIAssignmentList-','').toUpperCase() ) {
+                case 'SAVE':
+                    Message = 'Save changes?';
+                    OkLabel = 'Save';
+                    fAction = function(result) {
+                        if (result)  {
+                            if (Validate() != false) {ucomt.Save();}
+                            }
+                        }
+                        break;
+                    case 'DELETE':
+                        Message = 'Are you sure you want to delete?';
+                        OkLabel = 'Delete';
+                        fAction = function(result) {
+                            if ( result ) { ucomt.Delete();}
+                        }
+                        break;
+                    }
+            BootstrapDialog.confirm({
+                title:'KPI Details',
+                    icon:'',
+                    message: Message,
+                    closable: true,
+                    draggable: true,
+                    btnCancelLabel: 'Cancel',
+                    btnOKLabel: OkLabel,
+                    callback: fAction
+                });
+        });
+    });
+
+    var $itm = new KPIAssignmentList_DetailView_Child();
+    $itm.InitDetailView_Child(ucomt);
+
+    $('#myParent_KPIAssignmentList').trigger("OnDetailViewContentCreated" , {BaseObject: ucomt, DetailView : new KPIAssignmentList_DetailView_Child() } );
+    $('#myParent_KPIAssignmentList').unbind("OnDetailViewContentCreated");
+
+    $('#tab_child_KPIAssignmentList>li>a').first().click();
+    })
+
+    $('#New').click(function () {
+
+
+    });
+</script></div>
+
+<script>
+    $(document).ready(function(){
+        var KPIAssignmentList_ListView_Setting = { Format:[{name: 'ID',width:'50px',visibility:'',caption:'ID',align:'center',type:'Int32',isDisabled:false},{name: 'E',width:'300px',visibility:'',caption:'Job Title',align:'left',type:String,RefColumn:'JobPositionRefNo',isDisabled:false},{name: 'EGroup',width:'300px',visibility:'',caption:'KPI Group Name',align:'left',type:String,RefColumn:'ID',isDisabled:false},{name: 'CreatedDate',width:'300px',visibility:'',caption:'Date',align:'left',type:'String',isDisabled:false}] };
+        var $Grid = new IPIGrid('KPIAssignmentList', '#KPIAssignmentList_ListView', KPIAssignmentList_ListView_Setting.Format, 'False', 'myParent_KPIAssignmentList');
+        $Grid.DataSourceUrl = '/Listview/Refresh';      
+        $Grid.AllowInsert = 'True';
+        $Grid.AllowDelete = 'True';
+        $Grid.DeleteURL = '/Listview/Delete';
+        $Grid.Parent = KPIAssignmentList_ListView
+        $Grid.DetailViewURL = '/DetailView/ChildIndex?mName=KPIAssignmentList&pKey=PRIMARY_KEY&IsDetailList=True&mNo=1005';
+        var $parent = $('#' + $('#KPIAssignmentList_ListView').parent().attr('ID'));
+        $parent.trigger('OnGridCreated', { Grid: $Grid  });
+        $parent.unbind('OnGridCreated');
+
+    })
+
+
+</script>

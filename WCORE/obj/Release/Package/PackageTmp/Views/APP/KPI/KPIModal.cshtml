@@ -1,0 +1,516 @@
+﻿<section class="content-header">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+<style type="text/css">
+    body {
+        color: #404E67;
+        background: #F5F7FA;
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+    .table-wrapper {
+        width: 100%;
+        /*margin: 30px auto;*/
+        background: #fff;
+        padding: 20px;	
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .table-title {
+        padding-bottom: 10px;
+        margin: 0 0 10px;
+    }
+    .table-title h2 {
+        margin: 6px 0 0;
+        font-size: 22px;
+    }
+    .table-title .add-new {
+        float: right;
+        height: 30px;
+        font-weight: bold;
+        font-size: 12px;
+        text-shadow: none;
+        min-width: 100px;
+        border-radius: 50px;
+        line-height: 13px;
+    }
+    .table-title .add-new i {
+        margin-right: 4px;
+    }
+    table.table {
+        table-layout: fixed;
+    }
+    table.table tr th, table.table tr td {
+        border-color: #e9e9e9;
+    }
+    table.table th i {
+        font-size: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+    table.table th:last-child {
+        width: 100px;
+    }
+    table.table td a {
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 5px;
+        /*min-width: 24px;*/
+
+        max-width:50px;
+        width:auto;
+        min-width:10px;
+    }    
+    table.table td a.add {
+        color: #27C46B;
+    }
+    table.table td a.edit {
+        color: #FFC107;
+    }
+    table.table td a.delete {
+        color: #E34724;
+    }
+    table.table td i {
+        font-size: 19px;
+
+        max-width:50px;
+        width:auto;
+        min-width:10px;
+    }
+    table.table td a.add i {
+        font-size: 24px;
+        margin-right: -1px;
+        position: relative;
+        top: 3px;
+
+        max-width:50px;
+        width:auto;
+        min-width:10px;
+    }    
+    table.table .form-control {
+        height: 32px;
+        line-height: 32px;
+        box-shadow: none;
+        border-radius: 2px;
+    }
+    table.table .form-control.error {
+        border-color: #f50000;
+    }
+    table.table td .add {
+        display: none;
+
+        max-width:50px;
+        width:auto;
+        min-width:10px;
+    }
+
+/*body {
+  background: #ffffff; 
+  color: #414141;
+  font: 400 17px/2em 'Source Sans Pro', sans-serif;
+}*/
+
+.select-box {
+  cursor: pointer;
+  position : relative;
+  max-width:  24em;
+  /*margin: 5em auto;*/
+  width: 100%;
+}
+
+.select,
+.label {
+  color: #414141;
+  display: block;
+  font: 400 17px/2em 'Source Sans Pro', sans-serif;
+}
+
+.select {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 5px 0;
+  height: 40px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  background: none transparent;
+  border: 0 none;
+}
+.select-box1 {
+  background: #ececec;
+}
+
+.label {
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+}
+.open .label::after {
+   content: "▲";
+}
+.label::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 15px;
+  border-left: 5px solid #fff;
+}
+
+  
+</style>
+</section>
+<section class="content" style="position:center">
+<div class="row">
+   <div class="col-xs-12">
+       <div class="box box-primary">    
+            <div class="table-wrapper">
+                  <form action="#">
+                       <div class="select-box" style="display: inline-block;">
+                            @*<div class="row">*@
+                                <label for="selectpurpose" class="label select-box1"><span class="label-desc">Purpose of Evaluation</span> </label>
+                                <select id="selectpurpose" class="select"> </select>
+                      @*   </div>*@
+                     </div>
+                       @* <div class="form-group col-sm-4" style="align-self:flex-start">
+                                 <label for="evaltext"></label>
+                                  <input type="text" class="form-control" id="evalText" disabled style="width:350px; height:34px">
+                         </div>  *@
+                 </form> 
+                    <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-4"><button type="button" class="btn btn-success add-newkpi"><i class="fa fa fa-plus" id="btnAdd">
+                                </i> ADD NEW</button>
+                                </div>
+
+                                
+                            </div>
+                       </div>
+                      
+                        <table class="table table-bordered" id="tableKPI">
+                            <thead>
+                                <tr>
+                                    <th rowspan="1" colspan="1" style="width:30%" data-field="id">ID</th>
+                                    <th rowspan="1" colspan="1" style="width:60%" data-field="KPIIndicator">KPI</th>
+                                    <th rowspan="1" colspan="1" style="width:50%" data-field="KPIType">FORMULA</th>
+                                    <th rowspan="1" colspan="1" style="width:50%" data-field="KPIWeight">WEIGHT</th>
+                                    <th rowspan="1" colspan="1" style="width:50%"data-field="KPITarget">TARGET</th>
+                                    <th ></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                   
+                            </tbody>
+                        </table>
+            </div>
+          </div>
+       </div>
+    </div>
+</section>
+
+<script>
+
+    evalRefNo = 0;
+    setTargets = [];
+    setWeights =  [];
+    targetReady = true;
+
+    var count = 1;
+    var kpiId, saveType, status = 1, arrayID, kpiformula, kpiweight, kpitarget;
+    var table = $("#tableKPI");
+    var index = $("tableKPI tbody tr:last-child").index();
+
+    $(document).ready(function () {
+        
+        loadTable();
+
+        var actions = $("#tableKPI td:last-child").html();
+        // Append table with add row form on add new button click
+        $(".add-newkpi").click(function () {
+            var index2 = $("#tableKPI tbody tr:last-child").index();
+            $(this).attr("disabled", "disabled");
+            var row = '<tr>' +
+                '<td><input type="text" class="form-control" name="kpiid" id="kpiid" value="1" style="font-size: 12px" disabled></td>' +
+                '<td> <input type="text" class="form-control" name="kpi" id="kpi" value="Undefined" style="font-size: 12px" rows="5"></td>' +
+                //'<td><input type="text" class="form-control" name="formula" id="formula" value="1" style="font-size: 12px"></td>' +
+                '<td><select id="formula" style="width: 150px; height: 32px; font-size: 12px"><option value="1">A = P / T x 100</option><option value="2">A = T / P x 100</option></select></td>' +
+                '<td><input type="text" class="form-control" name="weight" id="weight" value="0" style="font-size: 12px"></td>' +
+                '<td><input type="text" class="form-control" name="target" id="target" value="0" style="font-size: 12px"></td>' +
+                '<td>' +
+                    '<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>' +
+                    '<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>' +
+                    '<a class="delete" title="Delete"><i class="material-icons">&#xE872;</i></a>' +
+                    '</td>' +
+            '</tr>;'
+            $("#tableKPI").append(row);
+            $("#tableKPI tbody tr").eq(index2 + 1).find(".add, .edit").toggle();
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        // Add row on add button click
+        $(document).off("click", ".add").on("click", ".add", function () {
+            var empty = false;
+            var input = $(this).parents("tr").find('input[type="text"]');
+
+            input.each(function () {
+                if (!$(this).val() || parseFloat($(this).val()) <= 0.00) {
+                    $(this).addClass("error");
+                    empty = true;
+                } else {
+                    $(this).removeClass("error");
+                }
+            });
+
+            //---
+
+            $(this).parents("tr").find(".error").first().focus();
+            if (!empty) {
+                input.each(function () {
+                    $(this).parent("td").html($(this).val());
+                });
+                $(this).parents("tr").find(".add, .edit").toggle();
+                $(".add-new").removeAttr("disabled");
+
+                var table = $("#tableKPI");
+                var $tds = $(this).parents("tr").find('td'),
+                    id = $tds.eq(0).text();
+                    kpi = $tds.eq(1).text(),
+                    formula = $tds.eq(2).val();
+                    weight = $tds.eq(3).text();
+                    target = $tds.eq(4).text();
+
+                    kpi = kpi.replace(/ /g, '9azxA'); // SPACE
+                    kpi = kpi.replace(/\./g, '9azxB'); // PERIOD
+                    kpi = kpi.replace(/\,/g, '9azxC'); // COMMA
+                    kpi = kpi.replace(/\;/g, '9azxD'); // SEMICOLON
+
+                    if (id == "1") {
+                        saveType = 1;
+                        kpiId = 0;
+                    } else {
+                        saveType = 0;
+                        kpiId = id;
+                    }
+
+                    $.ajax({                 
+                        type: "POST",
+                        cache: false,
+                        url:'../KPIView/SetTarget?saveType=' + saveType + '&id=' + id + '&kpi=' + kpi + '&formula=' + ($('#formula').val()) + '&target=' + target + '&weight=' + weight + '&PerfEvalID=' + perfIndicatorRefNo + '&empRefno=' + employeeRefNo,
+                        success: function (data) {
+                            if (data == 'True') {
+                                status = 1;
+                            }
+                            else { status = 0; }
+                        }
+                    }).done(loadTable());
+
+                if (status == 1) {
+                    table.find('tr').each(function (i) {
+                    if (!this.rowIndex) return;
+                        this.parentNode.removeChild(this);
+                    });
+                    swal("Success!", "KPI details updated.", "success");	
+                }
+            }
+        });
+
+
+        // Edit row on edit button click
+        $(document).off("click", ".edit").on("click", ".edit", function () {
+
+            $(this).parents("tr").find("td:not(:last-child)").each(function () {
+                if (count == 1) {
+                    $(this).html('<input onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+                    count++;
+                    $(this).parents("tr").find(".add, .edit").toggle();
+                    $(".add-new").attr("disabled", "disabled");
+                } else if(count == 2){
+                    $(this).html('<input onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+                    count++;
+                    $(this).parents("tr").find(".add, .edit").toggle();
+                    $(".add-new").attr("disabled", "disabled");
+                } else if(count == 3){
+                    $(this).html('<select id="formula" style="width: 150px; height: 32px; font-size: 12px"><option value="1">A = P / T x 100</option><option value="2">A = T / P x 100</option></select>');
+                    count++;
+                    $(this).parents("tr").find(".add, .edit").toggle();
+                    $(".add-new").attr("disabled", "disabled");
+                } else if(count >= 4 && count <= 5){
+                    $(this).html('<input onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px">');
+                    count++;
+                    $(this).parents("tr").find(".add, .edit").toggle();
+                    $(".add-new").attr("disabled", "disabled");
+                } else {
+                    count = 1;
+                    return false;
+                } 
+            });	
+        });
+        // Delete row on delete button click
+        $(document).off("click", ".delete").on("click", ".delete", function () {
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this record!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+
+            .then((willDelete) => {
+                if (willDelete) {
+                    $(this).parents("tr").remove();
+                    $(".add-new").removeAttr("disabled");
+
+                    var table = $("#tableKPI");
+                    var $tds = $(this).parents("tr").find('td'),
+                        id = $tds.eq(0).text();
+
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url: '../KPIView/UpdateKPIPerEmployee?id=' + id,
+                        success: function (data) {
+                            if (data == 'True') {
+                                //Toast.Show("Successfully Deleted.")
+                            }
+                            else { Toast.Show("Unable to delete the record."); }
+                        }
+                    })
+                 }
+            });
+          
+        
+    });
+
+    loadPurpose();
+
+    $("select").on("click" , function() {
+  
+        $(this).parent(".select-box").toggleClass("open");
+  
+    });
+
+    $(document).mouseup(function (e)
+    {
+        var container = $(".select-box");
+
+        if (container.has(e.target).length === 0)
+        {
+            container.removeClass("open");
+        }
+    });
+
+
+    $("select").on("change" , function() {
+  
+            var selection = $(this).find("option:selected").text(),
+            evalID = $(this).find("option:selected").val()
+            labelFor = $(this).attr("id"),
+            label = $("[for='" + labelFor + "']");
+            label.find(".label-desc").html(selection);
+            evalPurpose = selection;
+            evalPurposeID =  evalID;
+
+            $.ajax({    
+                type: "POST",
+                cache: false,
+                url:'../KPIView/SetEvalPurpose?empRefNo=' + employeeRefNo + '&evalID=' + evalPurposeID + '&PerfEvalID=' + perfIndicatorRefNo,
+                success: function (data) {
+                    if (data == 'True') {
+                        $('#tblAssignedTo').DataTable().ajax.reload();
+                        swal("Purpose of evaluation has been successfully set.", {
+                            icon: "success",
+                        });
+                    }
+                    else { 
+                        swal("Something went wrong!", {
+                            icon: "warning",
+                        });
+                                        
+                    }  
+                }
+            })
+
+    }); 
+
+    });
+
+    //--
+
+    function isNumberKey(evt)
+    {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)){
+            return false;}else{	return true;}
+    }
+
+    function loadTable(){
+        setTargets.length = 0;
+        setWeights.length = 0;
+
+        jQuery.ajax({
+            url: '@Url.Action("GetKPIIndicatorDetails", "KPI")?PerfEvalID=' + perfIndicatorRefNo + '&empid=' + employeeRefNo,
+            type: 'POST',
+            datatype: 'application/json; charset=utf-8',
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                for (var i = 0; i < jsonArray.length; i++) {
+
+                    setTargets[i] = jsonArray[i][4];                     
+                    setWeights[i] = jsonArray[i][3];
+                    var trRow = '';
+                    trRow += '<tr><td style="font-size: 12px" disabled>' + jsonArray[i][0] + '</td><td style="font-size: 12px" rows="5">' + jsonArray[i][1] + '</td><td style="font-size: 12px">' + jsonArray[i][2] + '</td><td style="font-size: 12px">' + jsonArray[i][3].toFixed(2) + '</td><td style="font-size: 12px">' + jsonArray[i][4].toFixed(2) + '</td>';
+                    trRow += '<td>' +
+                             '<a class="add" title="Add"><i class="material-icons">&#xE03B;</i></a>' +
+                             '<a class="edit" title="Edit"><i class="material-icons">&#xE254;</i></a>' +
+                             '<a class="delete" title="Delete"><i class="material-icons">&#xE872;</i></a>' +
+                             '</td></tr>'
+                    $("#tableKPI").append(trRow);
+                    $("tableKPI tbody tr").eq(index + 1).find(".add, .edit").toggle();
+                }			
+            },
+            error: function (e) {
+            }
+        });
+    }
+
+    function loadPurpose(){
+
+        var  label = $("[for='" + "selectpurpose" + "']");
+        label.find(".label-desc").html(evalPurpose);
+    
+        jQuery.ajax({
+            url: '@Url.Action("GetEvalPurpose", "KPI")',
+            type: 'POST',
+            datatype: 'application/json; charset=utf-8',
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                for (var i = 0; i < jsonArray.length; i++) {
+                    var str="<option value='" + jsonArray[i][0] + "'>" + jsonArray[i][1] + "</option>";
+                    $("#selectpurpose").append(str);
+                }         
+            },
+            error: function (e) {
+            }
+        });
+    }
+
+</script>
+<style>
+    .tblList {
+        width: 100% !important;
+    }
+
+        .tblList td,
+        .tblList th {
+            white-space: normal;
+            -ms-text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+</style>

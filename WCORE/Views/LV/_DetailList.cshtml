@@ -1,0 +1,94 @@
+﻿<section class="content-header">
+      <h1>@ViewBag.Description <i style="font-size:13px">  @ViewBag.SubDescription</i></h1>
+      <ol class="breadcrumb">
+        <li><a href="javascript:void(0);" onclick="displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+      </ol>
+</section>
+<section class="content">
+<div class="box box-primary">
+    <div class="box-body">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="Model_ListView" id="@{@ViewBag.ViewID}"></div>
+			</div>
+			<div class="col-md-6">
+				<div id="@{@ViewBag.FormID}"></div>
+			</div>
+		</div>
+    </div>
+</div>
+</section>
+<script>
+	$(document).ready(function () {
+		let $Grid = new griddy('#@{@ViewBag.ViewId}', @Html.Raw(@ViewBag.tFormat), @Html.Raw(@ViewBag.tButtonHdr), @Html.Raw(@ViewBag.tButtonDtl), @{@Html.Raw(ViewBag.tFilter)});
+		$Grid.DetailViewURL = '@Html.Raw(@Url.Action(@ViewBag.DetailActionName, @ViewBag.DetailControllerName, new { pid = "PRIMARY_KEY" }))';
+		$Grid.WithOpen = '@ViewBag.WithOpen';
+		$Grid.AllowInsert = '@ViewBag.AllowInsert';
+		$Grid.LimitLoad = '@ViewBag.LimitLoad';
+		$Grid.mguid = '@ViewBag.mguid';
+		$Grid.mCode = '@ViewBag.mCode';
+		$Grid.FormID = '@ViewBag.FormID';
+		$Grid.ListType = '@ViewBag.fType';
+		$Grid.Description = '@ViewBag.Description';
+		$Grid.OrderBy = '@ViewBag.OrderBy';
+		$Grid.OrderByAs = '@ViewBag.OrderByAs';
+		$Grid.DataSourceUrl = '@ViewBag.ListDataSource';
+		$Grid.IsAPIUrl = '@ViewBag.IsAPIUrl';
+
+
+
+	});
+
+
+    $("#mFrm10703").off("select2:select", "#ID2_AssignedToExternal").on("select2:select", "#ID2_AssignedToExternal", function () {
+
+		console.log('asdasd4');
+
+	});
+
+	$("#mFrm1131").off("select2:select", "#EmployeeRefNo_DepartmentGlobe").on("select2:select", "#EmployeeRefNo_DepartmentGlobe", function () {
+
+        var employeerefno = $('#EmployeeRefNo_DepartmentGlobe').val();
+
+		//var employeename_dropdown = $('#EmployeeRefNo_DepartmentGlobe');
+
+
+		$.ajax({
+			type: "POST",
+			cache: false,
+			url: '@Url.Action("CheckDuplicateGLobeEmployee", "PAR")?empno=' + employeerefno,
+			success: function (data) {
+				var jsonArray = JSON.parse(data);
+				if (jsonArray.length == 0 && employeerefno > 0) {
+
+
+
+
+
+				} else {
+                    if ($('#EmployeeRefNo_DepartmentGlobe').val() > 0) {
+
+
+
+                        var $select = $('#EmployeeRefNo_DepartmentGlobe');
+                        var selectedValue = $select.val();
+
+                        if (selectedValue) {
+                            $select.find('option:selected').remove();
+                            $select.trigger('change');
+                        }
+
+
+						Toast.Error("This Employee is already on the list");
+						//return false;
+
+					}
+				}
+			}
+		})
+		//alert('Hello');
+
+	});
+</script>
+
+

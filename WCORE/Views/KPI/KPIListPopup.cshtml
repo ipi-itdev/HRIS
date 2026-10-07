@@ -1,0 +1,114 @@
+﻿@*@System.Web.Optimization.Scripts.Render("~/Script/plugins/formslist")*@
+<section class="content-header">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="box box-primary">
+            <div class="table-wrapper">
+                
+                        <table id="KPIListPopup" style="width: 100%; font-size: 12px;" class="table table-bordered table-striped table-hover tblList">
+                            <thead id="tblHead">
+                                <tr class="notfilter" role="row">
+                                    <th rowspan="1" colspan="1" style="width:15%">ID</th>
+                                    <th rowspan="1" colspan="1" style="width:50%">KPI GROUP NAME</th>
+                                    <th>Last Modified Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblBody"></tbody>
+                            <tfoot></tfoot>
+                        </table>
+                
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+	    var count = 1;
+	    var recordID = [];
+	    var kpilistid, ktldg, kpiyear;
+	    var valid = true;
+	    var updateType = 0;
+	    var saveType = 0;
+	    var table;
+        var kpiassignmentrefno = @ViewBag.pid;
+        console.log(kpiassignmentrefno);
+	function loadKPIListPopup() {
+		var r = $.Deferred();
+
+		table = $("#KPIListPopup").DataTable({
+		    "columnDefs": [{ "targets": 3, "data": null, "defaultContent": "<button type='button' style='width: 100%' id='btnSelect' class='btn btn-alert'>Select</button>" },
+             {
+                 "targets": [2],
+                 "visible": false
+             }
+		    ],
+			ajax: {
+                url: '@Url.Action("GetKPIGroup", "KPI")?kpiid=' + kpiassignmentrefno,
+				type: 'POST',
+				datatype: 'application/json; charset=utf-8',
+				dataSrc: function (data) {
+				    return JSON.parse(data);
+				},
+
+				error: function (e) {}
+			}
+			, order: [[1, 'asc']], pageResize: true, lengthChange: false,
+			initComplete: function () { }
+		});
+		return r;
+	};
+
+
+	$(document).ready(function () {
+
+	    loadKPIListPopup();
+
+	    $('#KPIListPopup tbody').on('click', '#btnSelect', function () {
+	        var data = table.row($(this).parents('tr')).data();
+
+	        swal({
+	            title: "Do you want to continue?",
+	            text: "This will load/replace the currently assigned KPI for the selected employee.",
+	            icon: "warning",
+	            buttons: true,
+	            dangerMode: true,
+	        })
+
+           .then((willDelete) => {
+               if (willDelete) {
+
+                UpdateKPIPerEmployee(data[0]);
+	            }
+            });
+	    })
+	});
+
+	function UpdateKPIPerEmployee(id) {
+	    var v = $.Deferred();
+	    $.ajax({
+	        type: "POST",
+	        cache: false,
+	        url: '../KPIView/ReplaceKPIList?KPIAssignmentRefNo=' + kpiassignmentrefno + '&kpiListID=' + id,
+            success: function (data) {
+                if (data == 'True') {
+
+                    Toast.Show("Scorecard successfully loaded.");
+                    $('#TargetDetails_Table').DataTable().ajax.reload();
+                }
+                else {  Toast.Error("Something went wrong.");}
+            }
+        })
+
+        return v;
+    }
+    </script><div>
+        <div style="clear:both;"></div>
+    </div>
+</section>

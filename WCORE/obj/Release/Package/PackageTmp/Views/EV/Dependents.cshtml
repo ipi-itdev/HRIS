@@ -1,0 +1,580 @@
+﻿<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i><b>DEPENDENTS LIST</b></a></li>
+        <li class="active"><b>DEPENDENTS DETAILS</b></li>
+    </ol><br>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style type="text/css">
+        .table-wrapper {
+            width: 100%;
+            /*margin: 30px auto;*/
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+
+            .table-title h2 {
+                margin: 6px 0 0;
+                font-size: 22px;
+            }
+
+            .table-title .add-newkpi_dependents {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 5px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+            }
+
+                .table-title .add-newkpi_dependents i {
+                    margin-right: 4px;
+                }
+
+        table.table {
+            table-layout: fixed;
+        }
+
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+            }
+
+            table.table th i {
+                font-size: 18px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+            table.table th:last-child {
+                width: 100px;
+            }
+
+            table.table td a {
+                cursor: pointer;
+                display: inline-block;
+                margin: 0 5px;
+                /*min-width: 24px;*/
+
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+                table.table td a.addkpi_dependents {
+                    color: #27C46B;
+                }
+
+                table.table td a.editkpi_dependents {
+                    color: #FFC107;
+                }
+
+                table.table td a.deletekpi_dependents {
+                    color: #E34724;
+                }
+
+            table.table td i {
+                font-size: 22px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td a.addkpi_dependents i {
+                /*font-size: 22px;*/
+                margin-right: -1px;
+                position: relative;
+                top: 3px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table .form-control {
+                height: 32px;
+                line-height: 32px;
+                box-shadow: none;
+                border-radius: 2px;
+            }
+
+                table.table .form-control.error {
+                    border-color: #f50000;
+                }
+
+            table.table td .addkpi_dependents {
+                display: none;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+    </style>
+</section>
+<section class="content" style="position:relative">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+
+                    @*    <div class="table-title">
+                        </div>
+                    *@
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-1" style="margin-left: 45px">
+                                <button style="font-size: 15px" type="button" class="btn btn-success add-newkpi_dependents" id="add-newkpi_dependents" onclick="addrow_kpi_dependents()">
+                                    <i class="fa glyphicon glyphicon-plus" id="btnAdd">
+                                    </i>ADD NEW
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered" id="tableKPIList_dependents">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width:10%; font-size: 13px;" data-field="id">ID</th>
+                                <th rowspan="1" colspan="1" style="width:50%; font-size: 13px" data-field="kpi"><span style="color: red; font-size: 20px"><b>*</b></span>Dependents Name</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="KPIType"><span style="color: red; font-size: 20px"><b>*</b></span>Relationship</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Dependents Birth Date</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>PWD</th>
+                                <th> ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <span style="color: darkred; float: left; margin-left: 2px"><b>Note : </b></span>
+                <span style="color: black; float: left; margin-left: 5px"><b>Put 'Yes' or 'No' if the dependents have disabilities</b></span>
+        </div>
+    </div>
+</section>
+
+<script>
+	var recID;
+	var count = 1;
+	var saveType;
+    var perfindicatorid = @ViewBag.pid;
+    console.log("Viewbag ito" + @ViewBag.pid);
+    var userrefno = @Session["UserRefNo"];
+
+    $(document).ready(function () {
+        // Initial call to loadKPIListDetails
+        console.log('Document Ready');
+        loadKPIListDetails_dependents();
+
+        if (userrefno == 5) {
+            document.getElementById('add-newkpi_dependents').style.display = "none";
+        }
+    });
+
+    function filterInput(event) {
+        // List of special characters to block
+        const specialChars = /[!#$%^&*(),.?":{}|<>]/;
+
+        // Get the character code of the pressed key
+        const charCode = event.which || event.keyCode;
+        const charStr = String.fromCharCode(charCode);
+
+        // Check if the character is a special character
+        if (specialChars.test(charStr)) {
+            // If it is a special character, prevent it from being entered
+
+            Toast.Error("Doesn't Allow Special Characters");
+            event.preventDefault();
+            return false;
+        }
+
+        // Allow the character if it's not a special character
+        return true;
+    }
+
+
+    function loadKPIListDetails_dependents() {
+        var tableKPListDetails = $("#tableKPIList_dependents tbody");
+         // Clear table including dynamically added rows
+         tableKPListDetails.empty();
+
+         jQuery.ajax({
+             url: '@Url.Action("GetEmployeeDependentsDetails", "KPI")',
+             type: 'POST',
+             dataType: 'json',
+             data: {
+                 PerfIndicatorID: perfindicatorid
+             },
+             success: function (data) {
+                 var jsonArray_dependents = JSON.parse(data);
+                 for (var i = 0; i < jsonArray_dependents.length; i++) {
+                     var trRow_dependents = '<tr><td style="font-size: 12px" disabled>' + jsonArray_dependents[i][0] + '</td><td style="font-size: 12px">' + jsonArray_dependents[i][1] + '</td><td style="font-size: 12px">' + jsonArray_dependents[i][2] + '</td><td style="font-size: 12px">' + jsonArray_dependents[i][3] + '</td>' + '</td><td style="font-size: 12px">' + jsonArray_dependents[i][4] + '</td>';
+                     trRow_dependents += '<td>' +
+                         '<a class="addkpi_dependents" title=""><i class="material-icons">&#xE03B;</i></a>' +
+                         '<a class="editkpi_dependents" title=""><i class="material-icons">&#xE254;</i></a>' +
+                         '<a class="deletekpi_dependents" title=""><i class="material-icons">&#xE872;</i></a>' +
+                         '</td></tr>';
+                     $("#tableKPIList_dependents").append(trRow_dependents);
+                     $("#tableKPIList_dependents tbody tr").eq(i + 1).find(".addkpi_dependents, .editkpi_dependents").toggle(); // Use 'i' instead of 'index'
+                 }
+
+                 var userroles = @Html.Raw(ViewBag.userrolesrefno);
+                console.log('value ng userrroles: ' + userroles);
+                if (userroles == 53) {
+                    $('.addkpi_dependents').hide();
+                    $('.editkpi_dependents').hide();
+                    $('.deletekpi_dependents').hide();
+                    $('.add-newkpi_dependents').hide();
+                 }
+
+                 if (userroles == 55) {
+                     $('.addkpi_dependents').hide();
+                     $('.editkpi_dependents').hide();
+                     $('.deletekpi_dependents').hide();
+                     $('.add-newkpi_dependents').hide();
+                 }
+
+                 if (userroles == 54) {
+                     $('.addkpi_dependents').hide();
+                     $('.editkpi_dependents').hide();
+                     $('.deletekpi_dependents').hide();
+                     $('.add-newkpi_dependents').hide();
+                 }
+             },
+             error: function (e) {
+                 console.error(e);
+             }
+         });
+     }
+
+
+    function addrow_kpi_dependents() {
+        var index2 = $("#tableKPIList_dependents tbody tr:last-child").index();
+        var row = '<tr>' +
+     '<td><input type="text" class="form-control" name="id" id="id" value="-1" style="font-size: 12px" disabled></td>' +
+     '<td><input type="text" class="form-control" name="dependentsname" id="dependentsname" placeholder="Dependents Name" style="font-size: 12px" rows="5" onkeypress="return filterInput(event)"></td>' +
+     '<td><input type="text" class="form-control" name="relationship" id="relationship" placeholder="Relationship" style="font-size: 12px" rows="5" onkeypress="return filterInput(event)"></td></td>' +
+     '<td><input type="date" class="form-control" name="dependentsbirthdate2" id="dependentsbirthdate2" onchange="getDate()" style="font-size: 12px" rows="5"><input type="text" class="form-control" name="dependentsbirthdate" id="dependentsbirthdate" placeholder="Birth Date" style="font-size: 12px" rows="5" hidden></td>' +
+     '<td><select class="form-control" name="pwd2" id="pwd2" onchange="changevaluepwd()"><option selected disabled>N/A</option><option value="Yes">Yes</option><option value="No">No</option></select><input type="text" class="form-control" name="pwd" id="pwd" placeholder="Is PWD?" style="font-size: 12px" rows="5" hidden></td>' +
+            '<td>' +
+            '<a class="addkpi_dependents" title=""><i class="material-icons">&#xE03B;</i></a>' +
+            '<a class="editkpi_dependents" title=""><i class="material-icons">&#xE254;</i></a>' +
+            '<a class="deletekpi_dependents" title=""><i class="material-icons">&#xE872;</i></a>' +
+            '</td>' +
+            '</tr>';
+        $("#tableKPIList_dependents").append(row);
+        $("#tableKPIList_dependents tbody tr").eq(index2 + 1).find(".addkpi_dependents, .editkpi_dependents").toggle();
+        $('[data-toggle="tooltip"]').tooltip();
+        $(".add-newkpi_dependents").attr("disabled", "disabled");
+    }
+
+    function getDate() {
+
+        var offense_value = document.getElementById('dependentsbirthdate2').value
+        document.getElementById('dependentsbirthdate').value = offense_value;
+
+    }
+
+    function changevaluepwd() {
+        var pwd_value = document.getElementById('pwd2').value
+        document.getElementById('pwd').value = pwd_value;
+    }
+     //Add row on add button click
+
+    $(document).off("click", ".addkpi_dependents").on("click", ".addkpi_dependents", function () {
+
+        var empty = false;
+        var input = $(this).parents("tr").find('input[type="text"]');
+
+        input.each(function () {
+            if (!$(this).val() || $(this).val() == 0.00 || $(this).val() == 0) {
+                $(this).addClass("error");
+                empty = true;
+            } else {
+                $(this).removeClass("error");
+            }
+        });
+
+        //---
+
+        $(this).parents("tr").find(".error").first().focus();
+
+        if (!empty) {
+            input.each(function () {
+                $(this).parent("td").html($(this).val());
+            });
+
+            //--
+            var $tds = $(this).parents("tr").find('td'),
+                id = $tds.eq(0).text(),
+                dependentsname = "'" + $tds.eq(1).text() + "'",
+                relationship = "'" + $tds.eq(2).text() + "'";
+            dependentsbirthdate = $tds.eq(3).text();
+            var date = new Date(dependentsbirthdate);
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            var birthdate = "'" + [year, month, day].join('-') + "'";
+
+
+            console.log('ito yung dependents birth date: ' + birthdate);
+
+            ispwd = $tds.eq(4).text();
+
+
+            if (ispwd == "No") {
+                ispwd = 0;
+            } else {
+                ispwd = 1;
+            }
+
+            //condition of save type
+            if (id == "-1") {
+                saveType = 1;
+            } else {
+                saveType = 0;
+            }
+
+            /* if (year != null && ) {*/
+
+            $.ajax({
+                type: "POST",
+                url: "../KPIView/UpdatingDependents",
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                data: JSON.stringify({ saveType: saveType, employeerefno: @ViewBag.pid, id: id, dependentsname: dependentsname, relationship: relationship, dependentsbirthdate: birthdate, ispwd: ispwd }),
+                success: function (data) {
+                    if (data == 'True') {
+                        // status = 1;
+                        loadKPIListDetails_dependents(perfindicatorid);
+                        $(this).parents("tr").find(".add_dependents, .edit_dependents").toggle();
+                        $(".add-newkpi_dependents").removeAttr("disabled");
+                        $('#CategoryDetails').DataTable().ajax.reload();
+                        $('#KPIAssignmentList_ListView_Table').DataTable().ajax.reload();
+                        $('#KPIAssignmentDetails').DataTable().ajax.reload();
+                        $('#KPIListInfo').DataTable().ajax.reload();
+                        Toast.Show("Employee's Dependents Details Added/Updated");
+                    }
+                    else { }
+                }
+            })
+
+
+            //} else {
+            //    swal("Failed!", "Invalid Weight format.", "info");
+            //    loadKPIListDetails(perfindicatorid);
+            //    $(".add-newkpi").removeAttr("disabled");
+            //}
+        } else {
+            Toast.Error("Please Complete All Required Fields");
+        }
+    });
+
+
+     // Edit row on edit button click
+    $(document).off("click", ".editkpi_dependents").on("click", ".editkpi_dependents", function () {
+
+         $(this).parents("tr").find("td:not(:last-child)").each(function () {
+
+             if (count == 1) {
+
+                 $(this).html('<input id="id" onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+                 count++;
+                 recID = $("#kpiid").val();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+             } else if (count == 2) {
+
+                 $(this).html('<input id="dependentsname" name="dependentsname" onkeypress="return filterInput(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+                 count++;
+                 //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+
+             } else if (count == 3) {
+
+                 $(this).html('<input id="relationship" name="relationship" onkeypress="return filterInput(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+                 count++;
+                 //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+
+             } else if (count == 4) {
+
+                 $(this).html('<input type="date" class="form-control" name="dependentsbirthdate2" id="dependentsbirthdate2" onchange="getDate()" style="font-size: 12px" rows="5" value="' + $(this).text() + '"><input id="dependentsbirthdate" name="dependentsbirthdate" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" hidden>');
+                 count++;
+                 //console.log('dadaan dito sa count 4 tapos ito na yung count number niya: ' + count);
+                 //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+
+             }
+             else if (count == 5) {
+                 $(this).html('<select class="form-control" name="pwd2" id="pwd2" onchange="changevaluepwd()"><option selected disabled>N/A</option><option value="Yes">Yes</option><option value="No">No</option></select><input id="pwd" name="pwd" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" hidden>');
+                 count++;
+                 console.log('dadaan dito sa count 5 tapos ito na yung count number niya: ' + count);
+                 console.log('pero di nag aactivate ung edit button!!!!');
+                 $(this).parents("tr").find(".addkpi_dependents, .editkpi_dependents").toggle();
+                 $(".add-newkpi_dependents").attr("disabled", "disabled");
+
+             }
+
+             else {
+                 count = 1;
+                 return false;
+             }
+         });
+     });
+
+      // Delete row on delete button click
+    $(document).off("click", ".deletekpi_dependents").on("click", ".deletekpi_dependents", function () {
+         let status;
+         var $tds = $(this).parents("tr").find('td'),
+             id = $tds.eq(0).text();
+         swal({
+             title: "Are you sure?",
+             text: "Once deleted, you will not be able to recover this record.",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+         })
+
+             .then((willDelete) => {
+                 if (willDelete) {
+
+                     if ((id == undefined || id == "")) {
+                         id = recID;
+                         console.log('ito yung id nang idedelete: ' + id);
+                         if (id != undefined) {
+                             $.ajax({
+                                 type: "POST",
+                                 cache: false,
+                                 url: '../KPIView/UpdatingDependents?saveType=' + 2 + '&id=' + id + '&dependentsname=' + 'NULL' + '&relationship=' + 'NULL' + '&dependentsbirthdate=' + 'NULL' + '&ispwd=' + '0',
+                                 success: function (data) {
+                                     if (data == 'True') {
+                                         //status = 1;
+                                         //loadKPIListDetails(kpilistid);
+                                     }
+                                     else { }
+                                 }
+                             })
+                         }
+                     } else {
+
+                         console.log('ito yung id nang idedelete: ' + id);
+                         $.ajax({
+                             type: "POST",
+                             cache: false,
+                             url: '../KPIView/UpdatingDependents?saveType=' + 2 + '&employeerefno=' + @ViewBag.pid + '&id=' + id + '&dependentsname=' + 'NULL' + '&relationship=' + 'NULL' + '&dependentsbirthdate=' + 'NULL' + '&ispwd=' + '0',
+                             success: function (data) {
+                                 if (data == 'True') {
+                                     //status = 1;
+                                     //loadKPIListDetails(kpilistid);
+                                 }
+                                 else { status = 0; }
+                             }
+                         })
+                     }
+
+                     $(this).parents("tr").find(".add_dependents, .edit_dependents").toggle();
+                     $(".add-newkpi_dependents").removeAttr("disabled");
+                     $(this).parents("tr").remove();
+                     Toast.Show("Employee's Dependents Details Deleted");
+                 }
+             });
+
+
+     });
+
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+            return false;
+        } else { return true; }
+    }
+
+
+    function isNumeric(num) {
+        return !isNaN(num)
+    }
+
+    // <============= do not remove backup function =======================>
+    // Append table with add row form on add new button click
+    //$(document).on("click", ".add-newkpi", function () {
+    //    var index2 = $("#tableKPIList tbody tr:last-child").index();
+    //    var row = '<tr>' +
+    //        '<td><input type="text" class="form-control" name="kpiid" id="kpiid" value="-1" style="font-size: 12px" disabled></td>' +
+    //        '<td><input type="text" class="form-control" name="kpi" id="kpi" value="Undefined" style="font-size: 12px" rows="5"></td>' +
+    //        '<td><select id="formula" style="width: 150px; height: 32px; font-size: 12px"><option value="1">A = P / T x 100</option><option value="2">A = T / P x 100</option><option value="3">Budget Bracket</option></select></td>' +
+    //        '<td><input onkeypress="return isNumberKey(event)" type="text" class="form-control" name="weight" id="weight" value="0" style="font-size: 12px"></td>' +
+    //        '<td>' +
+    //        '<a class="addkpi" title="Add"><i class="material-icons">&#xE03B;</i></a>' +
+    //        '<a class="editkpi" title="Edit"><i class="material-icons">&#xE254;</i></a>' +
+    //        '<a class="deletekpi" title="Delete"><i class="material-icons">&#xE872;</i></a>' +
+    //        '</td>' +
+    //        '</tr>';
+    //    $("#tableKPIList").append(row);
+    //    $("#tableKPIList tbody tr").eq(index2 + 1).find(".addkpi, .editkpi").toggle();
+    //    $('[data-toggle="tooltip"]').tooltip();
+    //    $(".add-newkpi").attr("disabled", "disabled");
+    //});
+
+    //$(document).on("click", ".editkpi", function () {
+
+    //    $(this).parents("tr").find("td:not(:last-child)").each(function () {
+
+    //        if (count == 1) {
+
+    //            $(this).html('<input id="id" onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+    //            count++;
+    //            recID = $("#kpiid").val();
+    //            $(".add-newkpi").attr("disabled", "disabled");
+    //        } else if (count == 2) {
+
+    //            $(this).html('<input id="dependentsname" name="dependentsname" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+    //            count++;
+    //            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+    //            $(".add-newkpi").attr("disabled", "disabled");
+
+    //        } else if (count == 3) {
+
+    //            $(this).html('<input id="relationship" name="relationship" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+    //            count++;
+    //            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+    //            $(".add-newkpi").attr("disabled", "disabled");
+
+    //        } else if (count == 4) {
+
+    //            $(this).html('<input id="dependentsbirthdate" name="dependentsbirthdate" onkeypress="return" type="date" class="form-control" value="' + $(this).text() + '" style="font-size: 12px">');
+    //            count++;
+    //            console.log('dadaan dito sa count 4 tapos ito na yung count number niya: ' + count);
+    //            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+    //            $(".add-newkpi").attr("disabled", "disabled");
+
+    //        }
+    //        else if (count == 5) {
+    //            $(this).html('<input id="pwd" name="pwd" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px">');
+    //            count++;
+    //            console.log('dadaan dito sa count 5 tapos ito na yung count number niya: ' + count);
+    //            console.log('pero di nag aactivate ung edit button!!!!');
+    //            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+    //            $(".add-newkpi").attr("disabled", "disabled");
+
+    //        }
+
+    //        else {
+    //            count = 1;
+    //            return false;
+    //        }
+    //    });
+    //});
+
+
+
+</script>
+
+
+

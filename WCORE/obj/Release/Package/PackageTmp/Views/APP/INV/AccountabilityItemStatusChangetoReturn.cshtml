@@ -1,0 +1,33 @@
+﻿<div id="AccountabilityItemStatusChangetoReturn" class="module-wrapper">
+<section class="content-header">
+    <h1>Returned/Cleared and Make it Available</h1>
+</section>
+<section class="content">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row">
+					<div class="col-md-12">
+						<div class="row form-group">
+                            <label class="col-lg-12 control-label" style="text-align:left">ID: @ViewBag.pid  </label>
+
+						</div>
+
+						<div class="row form-group">
+							<label class="col-lg-12 control-label" style="text-align:left">Remarks:   </label>
+							<div class="col-lg-12 control-container vcenter">
+								<textarea rows="4" cols="45" style="resize:none" class="form-control" id="AccountabilityItemStatusRemarks"></textarea>
+							</div>
+						</div>
+						<div class="row form-group">
+							<button type="button" class="btn btn-primary" id="AccountabilityStatusSubmit" onclick="AccountabilityItemStatusChangetoReturnSave(@ViewBag.pid)">Submit</button> 
+						</div>
+					</div>
+                </div>
+            </div>
+    	</div>
+	</div>
+</div>
+</section>
+</div>  

@@ -1,0 +1,361 @@
+﻿<section class="content-header">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style type="text/css">
+
+        .table-wrapper {
+            width: 100%;
+            /*margin: 30px auto;*/
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+
+            .table-title h2 {
+                margin: 6px 0 0;
+                font-size: 22px;
+            }
+
+            .table-title .add-newkpi {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 5px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+            }
+
+                .table-title .add-newkpi i {
+                    margin-right: 4px;
+                }
+
+        table.table {
+            table-layout: fixed;
+        }
+
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+            }
+
+            table.table th i {
+                font-size: 18px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+            table.table th:last-child {
+                width: 100px;
+            }
+
+            table.table td a {
+                cursor: pointer;
+                display: inline-block;
+                margin: 0 5px;
+                /*min-width: 24px;*/
+
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+                table.table td a.addkpi {
+                    color: #27C46B;
+                }
+
+                table.table td a.editkpi {
+                    color: #FFC107;
+                }
+
+                table.table td a.deletekpi {
+                    color: #E34724;
+                }
+
+            table.table td i {
+                font-size: 22px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td a.addkpi i {
+                /*font-size: 22px;*/
+                margin-right: -1px;
+                position: relative;
+                top: 3px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table .form-control {
+                height: 32px;
+                line-height: 32px;
+                box-shadow: none;
+                border-radius: 2px;
+            }
+
+                table.table .form-control.error {
+                    border-color: #f50000;
+                }
+
+            table.table td .addkpi {
+                display: none;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+    </style>
+
+</section>
+<section class="content" style="position:relative">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+                    <div class="table-title">
+                    </div>
+                    <div class="table-title">
+                        @*  <div class="row">
+                                 <div class="col-sm-1" style="margin-left: 15px" >
+                                    <button type="button" class="btn btn-info add-kpigroup"><i class="fa glyphicon glyphicon-plus" id="btnKPIGroup" >
+                                    </i> KPI GROUP </button>
+                                 </div>
+                            </div>*@
+                    </div>
+                    <table class="table table-bordered" id="tableKPITargetSettingDetails">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width:30%" data-field="id">ID</th>
+                                <th rowspan="1" colspan="1" style="width:60%" data-field="KPIIndicator">KPI</th>
+                                <th rowspan="1" colspan="1" style="width:50%" data-field="KPIType">FORMULA</th>
+                                <th rowspan="1" colspan="1" style="width:50%" data-field="KPIWeight">WEIGHT</th>
+                                <th rowspan="1" colspan="1" style="width:50%" data-field="KPITarget">TARGET</th>
+                                <th rowspan="1" colspan="1" style="width:20%"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblTargetDetails"></tbody>
+                        <tfoot></tfoot>
+                    </table>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+
+            <span style="color: darkred; float: left; margin-left: 2px"><b>Note : </b></span>
+            <span style="color: black; float: left; margin-left: 5px"><b> Make sure that the KPI's weight is exactly 100% in total.</b></span>
+        </div>
+    </div>
+</section>
+
+<script>
+	evalRefNo = 0;
+	isReady = true;
+	var recID;
+	var count = 1;
+	kpiCheck = [];
+	var kpiId, saveType, status = 1, arrayID, kpiformula, kpiweight, kpitarget;
+	var table = $("#tableKPITargetSettingDetails");
+	var index = $("tableKPITargetSettingDetails tbody tr:last-child").index();
+
+
+	$(document).ready(function () {
+
+	    LoadTargetSettingDetails();
+
+		// Add row on add button click
+	    // Add row on add button click
+	    $(document).off("click", ".addkpi").on("click", ".addkpi", function () {
+
+
+	        var empty = false;
+	        var input = $(this).parents("tr").find('input[type="text"]');
+	        columnCount = 1;
+	        input.each(function () {
+	            if (columnCount == 3 || columnCount == 4) {
+	                if (!$(this).val() || parseFloat($(this).val()) == 0.00 || parseFloat($(this).val()) == 0 || isNumeric($(this).val()) == false) {
+	                    $(this).addClass("error");
+	                    empty = true;
+	                    return false;
+	                } else {
+	                    $(this).removeClass("error");
+	                }
+	            } else {
+	                if (!$(this).val()) {
+	                    $(this).addClass("error");
+	                    empty = true;
+	                    return false;
+	                } else {
+	                    $(this).removeClass("error");
+	                }
+	            }
+	            columnCount++;
+	        });
+
+	        //---
+
+	        $(this).parents("tr").find(".error").first().focus();
+	        if (!empty) {
+	            input.each(function () {
+	                $(this).parent("td").html($(this).val());
+	            });
+
+	            var table = $("#tableKPITargetSettingDetails");
+	            var $tds = $(this).parents("tr").find('td'),
+                    id = $tds.eq(0).text();
+	            kpi = $tds.eq(1).text(),
+                formula = $tds.eq(2).val();
+	            weight = $tds.eq(3).text();
+	            target = $tds.eq(4).text();
+
+
+	            if (id == "-1") {
+	                saveType = 1;
+	                kpiId = 0;
+	            } else {
+	                saveType = 0;
+	                kpiId = id;
+	            }
+
+	            if (parseFloat(target) >= 0.00 && parseFloat(target) <= 999999999999.00) {
+
+	                $.ajax({
+	                    type: "POST",
+	                    url: "../KPIView/SetTarget",
+	                    contentType: "application/json; charset=utf-8",
+	                    data: JSON.stringify({ saveType: saveType, id: id, kpi: kpi, formula: $('#formulatarget').val(), target: target, weight: weight, KPIAssignmentRefNo: @ViewBag.pid }),
+	                    cache: false,
+	                    success: function (data) {
+	                        if (data == 'True') {
+	                            var table3 = $("#tableKPITargetSettingDetails");
+	                            table3.find('tr').each(function (i) {
+	                                if (!this.rowIndex) return;
+	                                this.parentNode.removeChild(this);
+	                            });
+
+	                            LoadTargetSettingDetails();
+	                            Toast.Show("KPI Details updated.");
+	                            $(".add-addkpi").removeAttr("disabled");
+	                            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+	                        }
+	                        else { status = 0; }
+	                    }
+	                })
+	            } else {
+	                swal("Failed!", "Target is too large/too small.", "info");
+	                LoadTargetSettingDetails();
+	                $(".add-addkpi").removeAttr("disabled");
+	            }
+
+	        }
+	    });
+
+	    // Edit row on edit button click
+	    $(document).off("click", ".editkpi").on("click", ".editkpi", function () {
+
+	        $(this).parents("tr").find("td:not(:last-child)").each(function () {
+	            if (count == 1) {
+	                $(this).html('<input id="kpiidtarget" onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+	                count++;
+
+	                recID = $("#kpiidtarget").val();
+	                //$(this).parents("tr").find(".add, .edit").toggle();
+	                //$(".add-newkpiTarget").attr("disabled", "disabled");
+
+	            } else if (count == 2) {
+	                $(this).html('<input onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5" disabled>');
+	                count++;
+	                //$(this).parents("tr").find(".add, .edit").toggle();
+	                //$(".add-newkpiTarget").attr("disabled", "disabled");
+
+	            } else if (count == 3) {
+	                if ($(this).text() == "A = P / T x 100") {
+                        $(this).html('<select id="formulatarget" style="width: 100%; height: 32px; font-size: 12px"><option value="1">A = P / T x 100</option><option value="2">A = T / P x 100</option><option value="3">Budget Bracket</option></select>');
+	                } else if ($(this).text() == "A = T / P x 100") {
+                        $(this).html('<select id="formulatarget" style="width: 100%; height: 32px; font-size: 12px"><option value="2">A = T / P x 100</option><option value="1">A = P / T x 100</option><option value="3">Budget Bracket</option></select>');
+                    } else if ($(this).text() == "Budget Bracket") {
+                        $(this).html('<select id="formulatarget" style="width: 100%; height: 32px; font-size: 12px"><option value="3">Budget Bracket</option><option value="2">A = T / P x 100</option><option value="1">A = P / T x 100</option><option value="3">Budget Bracket</option></select>');
+                    }
+	                count++;
+	                //$(this).parents("tr").find(".add, .edit").toggle();
+	                //$(".add-newkpiTarget").attr("disabled", "disabled");
+
+	            } else if (count == 4) {
+	                $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+	                count++;
+	                //$(this).parents("tr").find(".add, .edit").toggle();
+	                //$(".add-newkpiTarget").attr("disabled", "disabled");
+
+	            } else if (count == 5) {
+	                $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px">');
+	                count++;
+	                $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+	                $(".add-newkpiTarget").attr("disabled", "disabled");
+
+	            } else {
+	                count = 1;
+
+	                return false;
+	            }
+	        });
+	    });
+
+    });
+
+	//--
+
+	function isNumberKey(evt)
+	{
+		var charCode = (evt.which) ? evt.which : event.keyCode
+		if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)){
+			return false;}else{	return true;}
+	}
+
+	function LoadTargetSettingDetails() {
+
+	    var r = $.Deferred();
+
+	    var tableTargetSettingDetails = $("#tableKPITargetSettingDetails");
+
+	    tableTargetSettingDetails.find('tr').each(function (i) {
+	        if (!this.rowIndex) return;
+	        this.parentNode.removeChild(this);
+	    });
+        console.log('dito dumaan sa LoadTargetSettingDetails');
+	    jQuery.ajax({
+	        url: '@Url.Action("GetKPICategoryDetails", "KPI")?kpiid=' + @ViewBag.pid,
+		    type: 'POST',
+		    datatype: 'application/json; charset=utf-8',
+		    success: function (data) {
+		        var jsonArray = JSON.parse(data);
+
+		        for (var i = 0; i < jsonArray.length; i++) {
+		            var trRow = '';
+		            trRow += '<tr><td style="font-size: 12px" disabled>' + jsonArray[i][0] + '</td><td style="font-size: 12px" rows="5">' + jsonArray[i][1] + '</td><td style="font-size: 12px; width: 100%">' + jsonArray[i][2] + '</td><td style="font-size: 12px">' + jsonArray[i][3].toFixed(2) + '</td><td style="font-size: 12px">' + jsonArray[i][4].toFixed(2) + '</td>';
+		            trRow += '<td>' +
+                             '<a class="addkpi" title="" id="btnAddKPI"><i class="material-icons">&#xE03B;</i></a>' +
+                             '<a class="editkpi" title="" id="btnEditKPI"><i class="material-icons">&#xE254;</i></a>' +
+                             '</td></tr>'
+		            $("#tableKPITargetSettingDetails").append(trRow);
+		            $("tableKPITargetSettingDetails tbody tr").eq(index + 1).find(".addkpi, .editkpi").toggle();
+		        }
+		    },
+		    error: function (e) {
+		    }
+		});
+
+        return r;
+    };
+
+    function isNumeric(num){
+        return !isNaN(num)
+    }
+
+</script>

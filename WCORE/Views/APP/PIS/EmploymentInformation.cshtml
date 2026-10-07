@@ -1,0 +1,130 @@
+﻿<div class="box-header" id="btnList_@{@ViewBag.FormID}">
+	<div class="btn-group">
+		<h2 style="font-size:20px">
+			<i class="fa fa-briefcase"></i> Employment & Payroll Information
+		</h2>
+	</div>
+	<div style="float:right">
+		@if ((@ViewBag.AllowInsert == true) || (@ViewBag.AllowUpdate == true && @ViewBag.pid > 0))
+		{ <button type="button" class="btn btn-primary" id="Save_@{@ViewBag.FormID}"><i class="fa fa-save" title="Save"></i>  Save Employment and Payroll Information</button> }
+	</div>
+</div>
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs" id="Employment_tab" role="tablist">
+        <li class="nav-item active"><a href="#Employment_Frm_@ViewBag.mCode" class="nav-link active" data-toggle="tab" role="tab">Employment</a></li>
+        <li class="nav-item"><a href="#JobDescription_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Job Description</a></li>
+        <li class="nav-item"><a href="#Payroll_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Payroll</a></li>
+        <li class="nav-item"><a href="#Benefits_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Benefits</a></li>
+		<li class="nav-item"><a href="#OtherBenefits_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Other Benefits</a></li>
+        <li class="nav-item"><a href="#Cost_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Cost</a></li>
+        <li class="nav-item"><a href="#HealthCard_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Health Card</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="Employment_Frm_@ViewBag.mCode">
+            <div class="col-md-12">
+				<div class="row">
+					<div class="col-md-6"><div class="form-group" id="Employment_@{@ViewBag.FormID}_dtlv"></div></div>
+					<div class="col-md-6"><div class="form-group" id="Employment_@{@ViewBag.FormID}_dtlv2"></div></div>
+					<div style="clear:both;"></div>
+				</div>
+            </div>
+            <div class="col-md-12">
+                <div style="clear:both;"></div>
+                <b>Separation Information</b>
+                <div style="clear:both;"></div>
+                <br />
+				<div class="row">
+					<div class="col-md-6"><div class="form-group" id="SeparationInformation_@{@ViewBag.FormID}_dtlv"></div></div>
+					<div class="col-md-6"><div class="form-group" id="SeparationInformation_@{@ViewBag.FormID}_dtlv2"></div></div>
+				</div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="tab-pane" id="JobDescription_Form_@ViewBag.mCode">
+            <div class="col-md-12">
+				<div class="row">
+					<div class="col-md-6"><div class="form-group" id="ProjectName_@{@ViewBag.FormID}_dtlv"></div></div>
+					<div class="col-md-6"><div class="form-group" id="ProjectName_@{@ViewBag.FormID}_dtlv2"></div></div>
+					<div style="clear:both;"></div>
+				</div>
+            </div>           
+			<div class="col-md-12">
+				<div class="form-group" id="JobDescription_@{@ViewBag.FormID}_dtlv"></div>
+            </div>
+        <div style="clear:both;"></div>
+        </div>
+        <div class="tab-pane" id="Payroll_Form_@ViewBag.mCode">
+			<div class="row">
+				<div class="col-md-6"><div class="form-group" id="Payroll_@{@ViewBag.FormID}_dtlv"></div></div>
+				<div class="col-md-6"><div class="form-group" id="Payroll_@{@ViewBag.FormID}_dtlv2"></div></div>
+				<div style="clear:both;"></div>
+			</div>
+        </div>
+        <div class="tab-pane" id="Benefits_Form_@ViewBag.mCode">
+            <div class="col-md-12">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group" id="Benefits2_@{@ViewBag.FormID}_dtlv">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group" id="Benefits3_@{@ViewBag.FormID}_dtlv">
+						</div>
+					</div>
+				</div>
+            </div>
+            <br />
+            <b>ADDITIONAL CLAUSE UNDER 3.3</b> 
+            <br /><br />
+            <div class="col-md-12">
+                <div class="tab-pane" id="Clause_@{@ViewBag.FormID}_dtlv"></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+		<div class="tab-pane" id="OtherBenefits_Form_@ViewBag.mCode">
+            <div class="col-md-12">
+                <div class="tab-pane" id="OtherBenefits_List_@{@ViewBag.FormID}"></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="tab-pane" id="Cost_Form_@ViewBag.mCode">
+            <div class="col-md-12">
+                <div class="tab-pane" id="OtherCost_List_@{@ViewBag.FormID}"></div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+        <div class="tab-pane" id="HealthCard_Form_@ViewBag.mCode">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group" id="HealthCard_@{@ViewBag.FormID}_dtlv">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group" id="HealthCard_@{@ViewBag.FormID}_dtlv2">
+					</div>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+        </div>
+		<div class="tab-pane" id="Other_Form_@ViewBag.mCode"  role="tabpanel">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group" id="Other_@{@ViewBag.FormID}_dtlv">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group" id="Other_@{@ViewBag.FormID}_dtlv2">
+					</div>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+        </div>
+    </div>
+</div>
+@System.Web.Optimization.Scripts.Render("~/Script/Employment")
+<script>
+$(document).ready(function () {
+	let $mFrm = new EmploymentInfo('@{@ViewBag.pid}'); $mFrm.mguid = '@{@ViewBag.mguid}'; $mFrm.mNm = '@{@ViewBag.mName}'; $mFrm.mNo = '@{@ViewBag.mNo}'; $mFrm.mDesc = '@{@ViewBag.Description}'; $mFrm.FKN =  '@{@ViewBag.FKeyName}'; $mFrm.FK =  '@{@ViewBag.pid}'; $mFrm.fid =  '@{@ViewBag.FormID}';
+	$('.content-wrapper').waitMe('hide');
+})
+</script>

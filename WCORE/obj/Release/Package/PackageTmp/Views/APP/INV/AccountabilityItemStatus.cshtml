@@ -1,0 +1,56 @@
+﻿<div id="AccountabilityItemStatusForm" class="module-wrapper">
+<section class="content-header">
+      <h1>Accountability Item Status Updates</h1>
+</section>
+<section class="content">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row">
+					<div class="col-md-12">
+						<div class="row form-group">
+							<label class="col-lg-12 control-label style=" text-align:left"="">Returned Date:</label>
+							<div class="col-lg-12 control-container vcenter">
+								<div class="form-group has-icon">
+									<input type="text" id="AccountabilityItemReturnedDate" class="form-control pull-right datepicker" data-inputmask="'mask': 'mm/dd/yyyy'"/>
+									<span class="fa fa-calendar form-icon-feedback"></span>
+								</div>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-lg-12 control-label style=" text-align:left"="">Item Status:</label>
+							<div class="col-lg-12 control-container vcenter">
+								<select id="AccountabilityItemStatus" class="form-control">
+								  <option value="1">Good</option>
+								  <option value="3">For Repair</option>
+								  <option value="4">Defective</option>
+								</select>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-lg-12 control-label style=" text-align:left"="">Accountability Status:</label>
+							<div class="col-lg-12 control-container vcenter">
+								<select id="AccountabilityStatus" class="form-control">
+								  <option value="1">Cleared</option>
+								  <option value="2">With Pending Action</option>
+								</select>
+							</div>
+						</div>
+						<div class="row form-group">
+							<label class="col-lg-12 control-label style=" text-align:left"="">Remarks:   </label>
+							<div class="col-lg-12 control-container vcenter">
+								<textarea rows="4" cols="45" style="resize:none" class="form-control" id="AccountabilityItemStatusRemarks"></textarea>
+							</div>
+						</div>
+						<div class="row form-group">
+							<button type="button" class="btn btn-primary" id="AccountabilityStatusSubmit" onclick="AccountabilityItemStatusUpdate(@ViewBag.pid)">Submit</button> 
+						</div>
+					</div>
+                </div>
+            </div>
+    	</div>
+	</div>
+</div>
+</section>
+</div>  

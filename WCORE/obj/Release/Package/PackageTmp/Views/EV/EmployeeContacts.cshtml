@@ -1,0 +1,1118 @@
+﻿<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i><b>EMPLOYEE CONTACTS LIST</b></a></li>
+        <li class="active"><b>EMPLOYEE CONTACTS DETAILS</b></li>
+    </ol><br>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style type="text/css">
+        .table-wrapper {
+            width: 100%;
+            /*margin: 30px auto;*/
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+
+            .table-title h2 {
+                margin: 6px 0 0;
+                font-size: 22px;
+            }
+
+            .table-title .add-newkpi {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 5px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+            }
+
+                .table-title .add-newkpi i {
+                    margin-right: 4px;
+                }
+
+            .table-title .add-newkpi2 {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 5px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+            }
+
+                .table-title .add-newkpi2 i {
+                    margin-right: 4px;
+                }
+
+        table.table {
+            table-layout: fixed;
+        }
+
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+            }
+
+            table.table th i {
+                font-size: 18px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+            table.table th:last-child {
+                width: 100px;
+            }
+
+            table.table td a {
+                cursor: pointer;
+                display: inline-block;
+                margin: 0 5px;
+                /*min-width: 24px;*/
+
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+                table.table td a.addkpi {
+                    color: #27C46B;
+                }
+
+                table.table td a.addkpi2 {
+                    color: #27C46B;
+                }
+
+                table.table td a.editkpi {
+                    color: #FFC107;
+                }
+
+
+                table.table td a.editkpi2 {
+                    color: #FFC107;
+                }
+
+                table.table td a.deletekpi {
+                    color: #E34724;
+                }
+
+                table.table td a.deletekpi2 {
+                    color: #E34724;
+                }
+
+            table.table td i {
+                font-size: 22px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td a.addkpi i {
+                /*font-size: 22px;*/
+                margin-right: -1px;
+                position: relative;
+                top: 3px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td a.addkpi2 i {
+                /*font-size: 22px;*/
+                margin-right: -1px;
+                position: relative;
+                top: 3px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table .form-control {
+                height: 32px;
+                line-height: 32px;
+                box-shadow: none;
+                border-radius: 2px;
+            }
+
+                table.table .form-control.error {
+                    border-color: #f50000;
+                }
+
+            table.table td .addkpi {
+                display: none;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td .addkpi2 {
+                display: none;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+    </style>
+</section>
+<section class="content" style="position:relative">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+
+                    @*    <div class="table-title">
+        </div>
+                    *@
+                    @*<div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-1" style="margin-left: 45px">
+                                <button style="font-size: 15px" type="button" class="btn btn-success add-newkpi" id="add-newkpi" onclick="addrow_kpi()">
+                                    <i class="fa glyphicon glyphicon-plus" id="btnAdd">
+                                    </i>ADD NEW
+                                </button>
+                            </div>
+                        </div>
+                    </div>*@
+                    <table class="table table-bordered" id="tableKPIList">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width:10%; font-size: 13px;" data-field="id">ID</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="kpi"><span style="color: red; font-size: 20px"><b>*</b></span>Permanent Region</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="KPIType"><span style="color: red; font-size: 20px"><b>*</b></span>Permanent Province</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Permanent Municipality</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Permanent Barangay</th>
+                                <th> ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                    @*<div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-1" style="margin-left: 45px">
+                                <button style="font-size: 15px" type="button" class="btn btn-success add-newkpi2" id="add-newkpi2" onclick="addrow_kpi2()">
+                                    <i class="fa glyphicon glyphicon-plus" id="btnAdd2">
+                                    </i>ADD NEW
+                                </button>
+                            </div>
+                        </div>
+                    </div>*@
+
+                    <table class="table table-bordered" id="tableKPIList2">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width:10%; font-size: 13px;" data-field="id">ID</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Present Region</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Present Province</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Present Municipality</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Present Barangay</th>
+                                <th> ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <span style="color: darkred; float: left; margin-left: 2px"><b>Note : </b></span>
+                <span style="color: black; float: left; margin-left: 5px"><b> Make sure to select region first to select designated province, municipality, and barangay. </b></span>
+        </div>
+    </div>
+</section>
+
+<script>
+	var recID;
+	var count = 1;
+	var saveType;
+    var perfindicatorid = @ViewBag.pid;
+    var ec_mguid = '@ViewBag.mguid';
+    var ec_mno = '@ViewBag.mNo';
+    console.log("Viewbag ito" + @ViewBag.pid + ' - ' + ec_mguid);
+
+    function addrow_kpi() {
+        var index2 = $("#tableKPIList tbody tr:last-child").index();
+        var row = '<tr>' +
+            '<td><input type="text" class="form-control" name="id" id="id" value="-1" style="font-size: 12px" disabled></td>' +
+            '<td><input type="text" class="form-control" name="year" id="year" placeholder="Year Graduated" style="font-size: 12px" rows="5"></td>' +
+            '<td><input type="text" class="form-control" name="school" id="school" placeholder="School" style="font-size: 12px" rows="5"></td></td>' +
+            '<td><input type="text" class="form-control" name="course" id="course" placeholder="Course" style="font-size: 12px" rows="5"></td></td>' +
+            '<td>' +
+            '<a class="addkpi" title=""><i class="material-icons">&#xE03B;</i></a>' +
+            '<a class="editkpi" title=""><i class="material-icons">&#xE254;</i></a>' +
+            '<a class="deletekpi" title=""><i class="material-icons">&#xE872;</i></a>' +
+            '</td>' +
+            '</tr>';
+        $("#tableKPIList").append(row);
+        $("#tableKPIList tbody tr").eq(index2 + 1).find(".addkpi, .editkpi").toggle();
+        $('[data-toggle="tooltip"]').tooltip();
+        $(".add-newkpi").attr("disabled", "disabled");
+    }
+
+    function loadKPIListDetails() {
+        var tableKPListDetails = $("#tableKPIList tbody");
+        var tableKPListDetails2 = $("#tableKPIList2 tbody");
+        // Clear table including dynamically added rows
+        tableKPListDetails.empty();
+        tableKPListDetails2.empty();
+
+        jQuery.ajax({
+            url: '@Url.Action("GetEmployeeContacts", "KPI")',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                PerfIndicatorID: perfindicatorid
+            },
+            success: function (data) {
+                var jsonArray_contacts = JSON.parse(data);
+                for (var i = 0; i < jsonArray_contacts.length; i++) {
+                    var trRow_contacts = '<tr><td style="font-size: 12px" disabled>' + jsonArray_contacts[i][0] + '</td><td style="font-size: 12px">' + jsonArray_contacts[i][1] + ' - ' + jsonArray_contacts[i][2] + '</td><td style="font-size: 12px">' + jsonArray_contacts[i][5] + ' - ' + jsonArray_contacts[i][6] + '</td><td style="font-size: 12px">' + jsonArray_contacts[i][9] + ' - ' + jsonArray_contacts[i][10] + '</td><td style="font-size: 12px">' + jsonArray_contacts[i][13] + ' - ' + jsonArray_contacts[i][14] + '</td>';
+                    trRow_contacts += '<td>' +
+                        '<a class="addkpi" title="Add"><i class="material-icons">&#xE03B;</i></a>' +
+                        '<a class="editkpi" title="Edit"><i class="material-icons">&#xE254;</i></a>' +
+                        '</td></tr>';
+                    $("#tableKPIList").append(trRow_contacts);
+                    $("#tableKPIList tbody tr").eq(i + 1).find(".addkpi, .editkpi").toggle(); // Use 'i' instead of 'index'
+
+                    var trRow2_contacts = '<tr><td style="font-size: 12px" disabled>' + jsonArray_contacts[i][0] + '</td><td style="font-size: 12px">' + jsonArray_contacts[i][3] + ' - ' + jsonArray_contacts[i][4] + '</td><td style="font-size: 12px">' + jsonArray_contacts[i][7] + ' - ' + jsonArray_contacts[i][8] + '</td><td style="font-size: 12px">' + jsonArray_contacts[i][11] + ' - ' + jsonArray_contacts[i][12] + '</td><td style="font-size: 12px">' + jsonArray_contacts[i][15] + ' - ' + jsonArray_contacts[i][16] + '</td>';
+                    trRow2_contacts += '<td>' +
+                        '<a class="addkpi2" title=""><i class="material-icons">&#xE03B;</i></a>' +
+                        '<a class="editkpi2" title=""><i class="material-icons">&#xE254;</i></a>' +
+                        '</td></tr>';
+                    $("#tableKPIList2").append(trRow2_contacts);
+                    $("#tableKPIList2 tbody tr").eq(i + 1).find(".addkpi2, .editkpi2").toggle(); // Use 'i' instead of 'index'
+
+
+                }
+
+                 var userroles = @Html.Raw(ViewBag.userrolesrefno);
+                   console.log('value ng userrroles: ' + userroles);
+                   if (userroles == 53) {
+                       $('.addkpi').hide();
+                       $('.editkpi').hide();
+                       $('.addkpi2').hide();
+                       $('.editkpi2').hide();
+                }
+
+                if (userroles == 55) {
+                    $('.addkpi').hide();
+                    $('.editkpi').hide();
+                    $('.addkpi2').hide();
+                    $('.editkpi2').hide();
+                }
+
+                if (userroles == 54) {
+                    $('.addkpi').hide();
+                    $('.editkpi').hide();
+                    $('.addkpi2').hide();
+                    $('.editkpi2').hide();
+                }
+            },
+            error: function (e) {
+                console.error(e);
+            }
+        });
+    }
+
+    function transferValue() {
+        var regionvalue = document.getElementById('PermanentRegion').value
+        document.getElementById('PermanentRegion2').value = regionvalue;
+
+        var permanentprovince = $('#PermanentProvince');
+        var permanentmunicipality = $('#PermanentMunicipality');
+        var permanentbarangay = $('#PermanentBarangay');
+        permanentprovince.empty();
+        permanentmunicipality.empty();
+        permanentbarangay.empty();
+
+        document.getElementById('PermanentProvince2').value = '';
+        document.getElementById('PermanentMunicipality2').value = '';
+        document.getElementById('PermanentBarangay2').value = '';
+
+        $.ajax({
+            type: 'GET',
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + regionvalue,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            permanentprovince.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to 1lect2
+                var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                permanentprovince.append(option);
+            }
+
+
+
+        });
+    }
+
+    function transferValue2() {
+        var provincevalue = document.getElementById('PermanentProvince').value
+        document.getElementById('PermanentProvince2').value = provincevalue;
+
+        var permanentmunicipality = $('#PermanentMunicipality');
+        var permanentbarangay = $('#PermanentBarangay');
+        permanentmunicipality.empty();
+        permanentbarangay.empty();
+
+        document.getElementById('PermanentMunicipality2').value = '';
+        document.getElementById('PermanentBarangay2').value = '';
+
+        $.ajax({
+            type: 'GET',
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + provincevalue,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            permanentmunicipality.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to 1lect2
+                var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                permanentmunicipality.append(option);
+            }
+
+
+
+        });
+
+    }
+
+    function transferValue3() {
+        var municipalityvalue = document.getElementById('PermanentMunicipality').value
+        document.getElementById('PermanentMunicipality2').value = municipalityvalue;
+
+        var permanentbarangay = $('#PermanentBarangay');
+        permanentbarangay.empty();
+
+        document.getElementById('PermanentBarangay2').value = '';
+
+        $.ajax({
+            type: 'GET',
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municipalityvalue,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            permanentbarangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to 1lect2
+                var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                permanentbarangay.append(option);
+            }
+
+
+
+        });
+    }
+
+    function transferValue4() {
+        var barangayvalue = document.getElementById('PermanentBarangay').value
+        document.getElementById('PermanentBarangay2').value = barangayvalue;
+    }
+
+    function transferValue5() {
+        var regionvalue = document.getElementById('Region').value
+        document.getElementById('Region2').value = regionvalue;
+
+        var province = $('#Province');
+        var municipality = $('#Municipality');
+        var barangay = $('#Barangay');
+        province.empty();
+        municipality.empty();
+        barangay.empty();
+
+        document.getElementById('Province2').value = '';
+        document.getElementById('Municipality2').value = '';
+        document.getElementById('Barangay2').value = '';
+
+        $.ajax({
+            type: 'GET',
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + regionvalue,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to 1lect2
+                var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                province.append(option);
+            }
+
+
+
+        });
+    }
+
+    function transferValue6() {
+        var provincevalue = document.getElementById('Province').value
+        document.getElementById('Province2').value = provincevalue;
+
+        var municipality = $('#Municipality');
+        var barangay = $('#Barangay');
+        municipality.empty();
+        barangay.empty();
+
+        document.getElementById('Municipality2').value = '';
+        document.getElementById('Barangay2').value = '';
+
+        $.ajax({
+            type: 'GET',
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + provincevalue,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municipality.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to 1lect2
+                var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                municipality.append(option);
+            }
+
+
+
+        });
+
+    }
+
+
+    function transferValue7() {
+        var municipalityvalue = document.getElementById('Municipality').value
+        document.getElementById('Municipality2').value = municipalityvalue;
+
+        var barangay = $('#Barangay');
+        barangay.empty();
+
+        document.getElementById('Barangay2').value = '';
+
+        $.ajax({
+            type: 'GET',
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municipalityvalue,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to 1lect2
+                var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                barangay.append(option);
+            }
+
+
+
+        });
+    }
+
+    function transferValue8() {
+        var barangayvalue = document.getElementById('Barangay').value
+        document.getElementById('Barangay2').value = barangayvalue;
+    }
+
+    $(document).ready(function () {
+    // Initial call to loadKPIListDetails
+    console.log('Document Ready');
+    loadKPIListDetails();
+    });
+
+     //Add row on add button click
+
+    $(document).off("click", ".addkpi").on("click", ".addkpi", function () {
+
+        var empty = false;
+        var input = $(this).parents("tr").find('input[type="text"]');
+
+        input.each(function () {
+            if (!$(this).val() || $(this).val() == 0.00 || $(this).val() == 0) {
+                $(this).addClass("error");
+                empty = true;
+
+            } else {
+                $(this).removeClass("error");
+            }
+        });
+
+        //---
+
+        $(this).parents("tr").find(".error").first().focus();
+
+        if (!empty) {
+            input.each(function () {
+                $(this).parent("td").html($(this).val());
+            });
+
+            //--
+            var $tds = $(this).parents("tr").find('td'),
+                id = $tds.eq(0).text(),
+                permanentregion = $tds.eq(1).text(),
+                permanentprovince = $tds.eq(2).text();
+            permanentmunicipality = $tds.eq(3).text();
+            permanentbarangay = $tds.eq(4).text();
+            var permanentregion_final = permanentregion.replace(" ", "");
+            var permanentprovince_final = permanentprovince.replace(" ", "");
+            var permanentmunicipality_final = permanentmunicipality.replace(" ", "");
+            var permanentbarangay_final = permanentbarangay.replace(" ", "");
+            //kpi = kpi.replace(/'/g, "`");,
+            if (id == "-1") {
+                saveType = 1;
+            } else {
+                saveType = 0;
+            }
+
+            /* if (year != null && ) {*/
+
+            $.ajax({
+                type: "POST",
+                url: "../KPIView/UpdatingPermanentAddress",
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                data: JSON.stringify({ saveType: saveType, employeerefno: @ViewBag.pid, permanentregion: permanentregion_final, permanentprovince: permanentprovince_final, permanentmunicipality: permanentmunicipality_final, permanentbarangay: permanentbarangay_final }),
+                success: function (data) {
+                    if (data == 'True') {
+                        // status = 1;
+                        loadKPIListDetails(perfindicatorid);
+                        $(this).parents("tr").find(".add, .edit").toggle();
+                        $(".add-newkpi").removeAttr("disabled");
+                        $('#CategoryDetails').DataTable().ajax.reload();
+                        $('#KPIAssignmentList_ListView_Table').DataTable().ajax.reload();
+                        $('#KPIAssignmentDetails').DataTable().ajax.reload();
+                        $('#KPIListInfo').DataTable().ajax.reload();
+                        Toast.Show("Employee's Contacts Details Added/Updated");
+                    }
+                    else { }
+                }
+            })
+
+
+            //} else {
+            //    swal("Failed!", "Invalid Weight format.", "info");
+            //    loadKPIListDetails(perfindicatorid);
+            //    $(".add-newkpi").removeAttr("disabled");
+            //}
+        }
+        else {
+            Toast.Error("Please Complete All Required Fields");
+            //var URLView = '../ListView/ListIndex?mguid=' + self.mguid;
+            //$('#content_mFrm' + self.mNo).load(URLView, function () { });
+            //document.getElementById('btn-Close').click();
+            //var URLView = '../ListView/Index?mguid=' + ec_mguid + '&pid=' + perfindicatorid;
+            //console.log('URL View: ' + URLView);
+            //console.log('#content_mFrm' + ec_mno);
+            //$('.content').load(URLView, function (response, status, xhr) {
+            //    // Callback function after the load completes
+            //    if (status === "error") {
+            //        console.log("An error occurred: " + xhr.status + " " + xhr.statusText);
+            //    } else {
+            //        console.log("Content loaded successfully.");
+            //    }
+            //});
+            //window.location.reload();
+        }
+    });
+
+    $(document).off("click", ".addkpi2").on("click", ".addkpi2", function () {
+
+        var empty = false;
+        var input = $(this).parents("tr").find('input[type="text"]');
+
+        input.each(function () {
+            if (!$(this).val() || $(this).val() == 0.00 || $(this).val() == 0) {
+                $(this).addClass("error");
+                empty = true;
+            } else {
+                $(this).removeClass("error");
+            }
+        });
+
+        //---
+
+        $(this).parents("tr").find(".error").first().focus();
+
+        if (!empty) {
+            input.each(function () {
+                $(this).parent("td").html($(this).val());
+            });
+
+            //--
+            var $tds = $(this).parents("tr").find('td'),
+                id = $tds.eq(0).text(),
+                region = $tds.eq(1).text(),
+                province = $tds.eq(2).text();
+            municipality = $tds.eq(3).text();
+            barangay = $tds.eq(4).text();
+            var permanentregion_final = region.replace(" ", "");
+            var permanentprovince_final = province.replace(" ", "");
+            var permanentmunicipality_final = municipality.replace(" ", "");
+            var permanentbarangay_final = barangay.replace(" ", "");
+            //kpi = kpi.replace(/'/g, "`");,
+            if (id == "-1") {
+                saveType = 1;
+            } else {
+                saveType = 0;
+            }
+
+            /* if (year != null && ) {*/
+
+            $.ajax({
+                type: "POST",
+                url: "../KPIView/UpdatingPermanentAddress2",
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                data: JSON.stringify({ saveType: saveType, employeerefno: id, region: permanentregion_final, province: permanentprovince_final, municipality: permanentmunicipality_final, barangay: permanentbarangay_final }),
+                success: function (data) {
+                    if (data == 'True') {
+                        // status = 1;
+                        loadKPIListDetails(perfindicatorid);
+                        $(this).parents("tr").find(".add2, .edit2").toggle();
+                        $(".add-newkpi").removeAttr("disabled");
+                        $('#CategoryDetails').DataTable().ajax.reload();
+                        $('#KPIAssignmentList_ListView_Table').DataTable().ajax.reload();
+                        $('#KPIAssignmentDetails').DataTable().ajax.reload();
+                        $('#KPIListInfo').DataTable().ajax.reload();
+                        Toast.Show("Employee's Education Details Added/Updated");
+                    }
+                    else {
+                        Toast.Error("Incomplete Details.");
+
+                    }
+                }, error: function (xhr, status, error) {
+                    console.error("AJAX Error: ", status, error);
+                    Toast.Show("An error occurred. Please try again.");
+                }
+            })
+
+
+            //} else {
+            //    swal("Failed!", "Invalid Weight format.", "info");
+            //    loadKPIListDetails(perfindicatorid);
+            //    $(".add-newkpi").removeAttr("disabled");
+            //}
+        }
+    });
+
+
+     // Edit row on edit button click
+    $(document).off("click", ".editkpi").on("click", ".editkpi", function () {
+
+         $(this).parents("tr").find("td:not(:last-child)").each(function () {
+
+             if (count == 1) {
+
+                 $(this).html('<input id="id" onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+                 count++;
+                 recID = $("#kpiid").val();
+                 $(".add-newkpi").attr("disabled", "disabled");
+             } else if (count == 2) {
+
+                 var permanentregion_wholeword = $(this).text();
+                 var permanentregion_firsword = permanentregion_wholeword.split("-")[0];
+                 var permanentregion_secondword = permanentregion_wholeword.split("-")[1];
+
+                 $(this).html('<select id="PermanentRegion" name="PermanentRegion" class="form-control" onchange="transferValue()"><option disabled selected value="' + permanentregion_secondword + '">' + permanentregion_firsword + '</option></select><input id="PermanentRegion2" name="PermanentRegion2" onkeypress="return" type="text" class="form-control" value="' + permanentregion_secondword + '" style="font-size: 12px" rows="5" hidden>');
+                 count++;
+
+                 //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+
+                 var premanentregion = $('#PermanentRegion');
+
+                 $.ajax({
+                     type: 'GET',
+                     url: '../KPI/GetRegionList',
+                     dataType: 'json',
+                 }).then(function (data) {
+                     var jsonArray = JSON.parse(data);
+                     //premanentregion.append('<option id="0" value="0">N/A</option>');
+
+                     for (var i = 0; i < jsonArray.length; i++) {
+                         // create the option and append to 1lect2
+                         var option = new Option(jsonArray[i][2], jsonArray[i][11], false, false);
+
+                         premanentregion.append(option);
+                     }
+
+
+
+                 });
+
+
+             } else if (count == 3) {
+
+                 var permanentprovince_wholeword = $(this).text();
+                 var permanentprovince_firsword = permanentprovince_wholeword.split("-")[0];
+                 var permanentprovince_secondword = permanentprovince_wholeword.split("-")[1];
+                 var regionvalue = document.getElementById('PermanentRegion2').value;
+                 console.log('value ng region' + regionvalue);
+
+                 $(this).html('<select id="PermanentProvince" name="PermanentProvince" class="form-control" onchange="transferValue2()"><option selected disabled value="' + permanentprovince_secondword + '">' + permanentprovince_firsword + '</option></select><input id="PermanentProvince2" name="PermanentProvince2" onkeypress="return" type="text" class="form-control" value="' + permanentprovince_secondword + '" style="font-size: 12px" rows="5" hidden>');
+
+                 var permanentprovince2 = $('#PermanentProvince');
+
+                 $.ajax({
+                     type: 'GET',
+                     url: '../KPI/GetProvinceList?PerfIndicatorID=' + regionvalue ,
+                     dataType: 'json',
+                 }).then(function (data) {
+                     var jsonArray = JSON.parse(data);
+                     //premanentregion.append('<option id="0" value="0">N/A</option>');
+
+                     for (var i = 0; i < jsonArray.length; i++) {
+                         // create the option and append to 1lect2
+                         var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                         permanentprovince2.append(option);
+                     }
+
+
+
+                 });
+
+                 count++;
+
+
+
+             } else if (count == 4) {
+
+                 var permanentmunicipality_wholeword = $(this).text();
+                 var permanentmunicipality_firsword = permanentmunicipality_wholeword.split("-")[0];
+                 var permanentmunicipality_secondword = permanentmunicipality_wholeword.split("-")[1];
+                 var provincevalue = document.getElementById('PermanentProvince2').value;
+
+                 $(this).html('<select id="PermanentMunicipality" name="PermanentMunicipality" class="form-control" onchange="transferValue3()"><option selected disabled value="' + permanentmunicipality_secondword + '">' + permanentmunicipality_firsword + '</option></select><input id="PermanentMunicipality2" name="PermanentMunicipality2" onkeypress="return" type="text" class="form-control" value="' + permanentmunicipality_secondword + '" style="font-size: 12px" rows="5" hidden>');
+                 count++;
+                 //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+
+                 var permanentmunicipality2 = $('#PermanentMunicipality');
+
+                 $.ajax({
+                     type: 'GET',
+                     url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + provincevalue,
+                     dataType: 'json',
+                 }).then(function (data) {
+                     var jsonArray = JSON.parse(data);
+                     //premanentregion.append('<option id="0" value="0">N/A</option>');
+
+                     for (var i = 0; i < jsonArray.length; i++) {
+                         // create the option and append to 1lect2
+                         var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                         permanentmunicipality2.append(option);
+                     }
+
+
+
+                 });
+
+             } else if (count == 5) {
+
+                 var permanentbarangay_wholeword = $(this).text();
+                 var permanentbarangay_firsword = permanentbarangay_wholeword.split("-")[0];
+                 var permanentbarangay_secondword = permanentbarangay_wholeword.split("-")[1];
+                 var municipalityvalue = document.getElementById('PermanentMunicipality2').value;
+
+                 $(this).html('<select id="PermanentBarangay" name="PermanentBarangay" class="form-control" onchange="transferValue4()"><option selected disabled value="' + permanentbarangay_secondword + '">' + permanentbarangay_firsword + '</option></select><input id="PermanentBarangay2" name="PermanentBarangay2" onkeypress="return" type="text" class="form-control" value="' + permanentbarangay_secondword + '" style="font-size: 12px" rows="5" hidden>');
+                 count++;
+
+                 var premanentbarangay2 = $('#PermanentBarangay');
+
+                 $.ajax({
+                     type: 'GET',
+                     url: '../KPI/GetBarangayList?PerfIndicatorID=' + municipalityvalue,
+                     dataType: 'json',
+                 }).then(function (data) {
+                     var jsonArray = JSON.parse(data);
+                     //premanentregion.append('<option id="0" value="0">N/A</option>');
+
+                     for (var i = 0; i < jsonArray.length; i++) {
+                         // create the option and append to 1lect2
+                         var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                         premanentbarangay2.append(option);
+                     }
+
+
+
+                 });
+
+                 $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 $(".add-newkpi").attr("disabled", "disabled");
+
+             } else {
+                 count = 1;
+                 return false;
+             }
+         });
+     });
+
+    // Edit row on edit button click
+    $(document).off("click", ".editkpi2").on("click", ".editkpi2", function () {
+
+        $(this).parents("tr").find("td:not(:last-child)").each(function () {
+
+            if (count == 1) {
+
+                $(this).html('<input id="id" onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+                count++;
+                recID = $("#kpiid").val();
+                $(".add-newkpi2").attr("disabled", "disabled");
+            } else if (count == 2) {
+
+                var region_wholeword = $(this).text();
+                var region_firsword = region_wholeword.split("-")[0];
+                var region_secondword = region_wholeword.split("-")[1];
+
+                $(this).html('<select id="Region" name="Region" class="form-control" onchange="transferValue5()"><option disabled selected value="' + region_secondword + '">' + region_firsword + '</option></select><input id="Region2" name="Region2" onkeypress="return" type="text" class="form-control" value="' + region_secondword + '" style="font-size: 12px" rows="5" hidden>');
+                count++;
+
+                //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                //$(".add-newkpi").attr("disabled", "disabled");
+
+                var region = $('#Region');
+
+                $.ajax({
+                    type: 'GET',
+                    url: '../KPI/GetRegionList',
+                    dataType: 'json',
+                }).then(function (data) {
+                    var jsonArray = JSON.parse(data);
+                    //premanentregion.append('<option id="0" value="0">N/A</option>');
+
+                    for (var i = 0; i < jsonArray.length; i++) {
+                        // create the option and append to 1lect2
+                        var option = new Option(jsonArray[i][2], jsonArray[i][11], false, false);
+
+                        region.append(option);
+                    }
+
+
+
+                });
+
+
+            } else if (count == 3) {
+
+                var province_wholeword = $(this).text();
+                var province_firsword = province_wholeword.split("-")[0];
+                var province_secondword = province_wholeword.split("-")[1];
+                var regionvalue = document.getElementById('Region2').value;
+                console.log('value ng region' + regionvalue);
+
+                $(this).html('<select id="Province" name="Province" class="form-control" onchange="transferValue6()"><option selected disabled value="' + province_secondword + '">' + province_firsword + '</option></select><input id="Province2" name="Province2" onkeypress="return" type="text" class="form-control" value="' + province_secondword + '" style="font-size: 12px" rows="5" hidden>');
+
+                var province2 = $('#Province');
+
+                $.ajax({
+                    type: 'GET',
+                    url: '../KPI/GetProvinceList?PerfIndicatorID=' + regionvalue,
+                    dataType: 'json',
+                }).then(function (data) {
+                    var jsonArray = JSON.parse(data);
+                    //premanentregion.append('<option id="0" value="0">N/A</option>');
+
+                    for (var i = 0; i < jsonArray.length; i++) {
+                        // create the option and append to 1lect2
+                        var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                        province2.append(option);
+                    }
+
+
+
+                });
+
+                count++;
+
+
+
+            } else if (count == 4) {
+
+                var municipality_wholeword = $(this).text();
+                var municipality_firsword = municipality_wholeword.split("-")[0];
+                var municipality_secondword = municipality_wholeword.split("-")[1];
+                var provincevalue = document.getElementById('Province2').value;
+
+                $(this).html('<select id="Municipality" name="Municipality" class="form-control" onchange="transferValue7()"><option selected disabled value="' + municipality_secondword + '">' + municipality_firsword + '</option></select><input id="Municipality2" name="Municipality2" onkeypress="return" type="text" class="form-control" value="' + municipality_secondword + '" style="font-size: 12px" rows="5" hidden>');
+                count++;
+                //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                //$(".add-newkpi").attr("disabled", "disabled");
+
+                var municipality2 = $('#Municipality');
+
+                $.ajax({
+                    type: 'GET',
+                    url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + provincevalue,
+                    dataType: 'json',
+                }).then(function (data) {
+                    var jsonArray = JSON.parse(data);
+                    //premanentregion.append('<option id="0" value="0">N/A</option>');
+
+                    for (var i = 0; i < jsonArray.length; i++) {
+                        // create the option and append to 1lect2
+                        var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                        municipality2.append(option);
+                    }
+
+
+
+                });
+
+            } else if (count == 5) {
+
+                var barangay_wholeword = $(this).text();
+                var barangay_firsword = barangay_wholeword.split("-")[0];
+                var barangay_secondword = barangay_wholeword.split("-")[1];
+                var municipalityvalue = document.getElementById('Municipality2').value;
+
+                $(this).html('<select id="Barangay" name="Barangay" class="form-control" onchange="transferValue8()"><option selected disabled value="' + barangay_secondword + '">' + barangay_firsword + '</option></select><input id="Barangay2" name="PermanentBarangay2" onkeypress="return" type="text" class="form-control" value="' + barangay_secondword + '" style="font-size: 12px" rows="5" hidden>');
+                count++;
+
+                var barangay2 = $('#Barangay');
+
+                $.ajax({
+                    type: 'GET',
+                    url: '../KPI/GetBarangayList?PerfIndicatorID=' + municipalityvalue,
+                    dataType: 'json',
+                }).then(function (data) {
+                    var jsonArray = JSON.parse(data);
+                    //premanentregion.append('<option id="0" value="0">N/A</option>');
+
+                    for (var i = 0; i < jsonArray.length; i++) {
+                        // create the option and append to 1lect2
+                        var option = new Option(jsonArray[i][1], jsonArray[i][2], false, false);
+
+                        barangay2.append(option);
+                    }
+
+
+
+                });
+
+                $(this).parents("tr").find(".addkpi2, .editkpi2").toggle();
+                $(".add-newkpi2").attr("disabled", "disabled");
+
+            } else {
+                count = 1;
+                return false;
+            }
+        });
+    });
+
+      // Delete row on delete button click
+    $(document).off("click", ".deletekpi").on("click", ".deletekpi", function () {
+         let status;
+         var $tds = $(this).parents("tr").find('td'),
+             id = $tds.eq(0).text();
+         swal({
+             title: "Are you sure?",
+             text: "Once deleted, you will not be able to recover this record.",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+         })
+
+             .then((willDelete) => {
+                 if (willDelete) {
+
+                     if ((id == undefined || id == "")) {
+                         id = recID;
+                         console.log('ito yung id nang idedelete: ' + id);
+                         if (id != undefined) {
+                             $.ajax({
+                                 type: "POST",
+                                 cache: false,
+                                 url: '../KPIView/UpdatingHighestEducation?saveType=' + 2 + '&id=' + id,
+                                 success: function (data) {
+                                     if (data == 'True') {
+                                         //status = 1;
+                                         //loadKPIListDetails(kpilistid);
+                                     }
+                                     else { }
+                                 }
+                             })
+                         }
+                     } else {
+
+                         console.log('ito yung id nang idedelete: ' + id);
+                         $.ajax({
+                             type: "POST",
+                             cache: false,
+                             url: '../KPIView/UpdatingHighestEducation?saveType=' + 2 + '&employeerefno=' + @ViewBag.pid + '&id=' + id + '&Year=' + 'NULL' + '&School=' + 'NULL' + '&Course=' + 'NULL',
+                             success: function (data) {
+                                 if (data == 'True') {
+                                     //status = 1;
+                                     //loadKPIListDetails(kpilistid);
+                                 }
+                                 else { status = 0; }
+                             }
+                         })
+                     }
+
+                     $(this).parents("tr").find(".add, .edit").toggle();
+                     $(".add-newkpi").removeAttr("disabled");
+                     $(this).parents("tr").remove();
+                     Toast.Show("Employee's Education Details Deleted");
+                 }
+             });
+
+
+     });
+
+    // <============= do not remove backup function =======================>
+    // Append table with add row form on add new button click
+    //$(document).on("click", ".add-newkpi", function () {
+    //    var index2 = $("#tableKPIList tbody tr:last-child").index();
+    //    var row = '<tr>' +
+    //        '<td><input type="text" class="form-control" name="kpiid" id="kpiid" value="-1" style="font-size: 12px" disabled></td>' +
+    //        '<td><input type="text" class="form-control" name="kpi" id="kpi" value="Undefined" style="font-size: 12px" rows="5"></td>' +
+    //        '<td><select id="formula" style="width: 150px; height: 32px; font-size: 12px"><option value="1">A = P / T x 100</option><option value="2">A = T / P x 100</option><option value="3">Budget Bracket</option></select></td>' +
+    //        '<td><input onkeypress="return isNumberKey(event)" type="text" class="form-control" name="weight" id="weight" value="0" style="font-size: 12px"></td>' +
+    //        '<td>' +
+    //        '<a class="addkpi" title="Add"><i class="material-icons">&#xE03B;</i></a>' +
+    //        '<a class="editkpi" title="Edit"><i class="material-icons">&#xE254;</i></a>' +
+    //        '<a class="deletekpi" title="Delete"><i class="material-icons">&#xE872;</i></a>' +
+    //        '</td>' +
+    //        '</tr>';
+    //    $("#tableKPIList").append(row);
+    //    $("#tableKPIList tbody tr").eq(index2 + 1).find(".addkpi, .editkpi").toggle();
+    //    $('[data-toggle="tooltip"]').tooltip();
+    //    $(".add-newkpi").attr("disabled", "disabled");
+    //});
+
+    function isNumberKey(evt)
+    {
+	    var charCode = (evt.which) ? evt.which : evt.keyCode
+	    if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)){
+		    return false;}else{	return true;}
+    }
+
+
+    function isNumeric(num){
+        return !isNaN(num)
+    }
+
+</script>
+
+
+

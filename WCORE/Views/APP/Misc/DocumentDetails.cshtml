@@ -1,0 +1,194 @@
+﻿@System.Web.Optimization.Scripts.Render("~/Script/plugins/formslist")
+<section class="content-header">
+@*<h1>Document Details</h1>*@
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</section>
+
+<section class="content">
+<div class="row">
+   <div class="col-xs-12">
+			<div class="col-md-12">
+				<div class="box-body">
+                     <div class="row" style="margin-top: 10px">
+                         <div class="col-md-12">
+                           <input type="text" id="documentName" class="form-control" placeholder="Document name.." aria-label="Document name" aria-describedby="basic-addon1">
+                         </div>
+                     </div>
+                     <div class="row" style="margin-top: 10px">
+                         <div class="col-md-6">
+                              <input type="text" id="documentFrom" class="form-control" placeholder="From.." aria-label="From.." aria-describedby="basic-addon1">
+                            </div>
+                         <div class="col-md-6">
+                              <input type="text" id="documentTo" class="form-control" placeholder="To.." aria-label="To.." aria-describedby="basic-addon1">
+                         </div>
+                     </div>
+
+                      <div class="row" style="margin-top: 20px">
+                         <div class="col-md-6">
+                                <label class="control-label">Status</label>
+                                <div class="form-group">
+                                    <select class="form-control" id="documentStatus">
+
+                                    </select>
+                               </div>
+                         </div>
+                         <div class="col-md-6">
+                                <label class="control-label">Date <span style="color:red">*</span></label>
+                                <input type="date" id="documentDate" name="trip-start" class="form-control" data-provide='datepicker' data-date-format='yyyy-mm-dd' />
+                         </div>
+                 
+                    </div>
+
+                    <div class="row" style="margin-top: 10px">
+                         <div class="col-md-12">
+                            <textarea id="DocumentRemarks" name="DocumentRemarks" placeholder="Remarks" style="width: 100%; height: 20%" ></textarea>
+                         </div>
+                    
+                     </div>
+				</div>
+			</div>
+		</div>
+</div>	
+<script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
+<script>
+
+    var cmbStatus = document.getElementById("documentStatus");
+    var docDetailsID = 0;
+
+    $(document).ready(function () {
+
+        GetStatus();
+
+        if (saveType == 0) {
+
+            var mydate = new Date(detailsDate);
+
+            docDetailsID = detailsID;
+            document.getElementById("documentName").disabled = true;
+            document.getElementById("documentName").value = docName;
+            document.getElementById("documentFrom").value = detailsFrom;
+            document.getElementById("documentTo").value = detailsTO;
+
+            document.getElementById("documentStatus").value = detailsStatus;
+            document.getElementById("documentDate").value = formatDate(detailsDate);
+            document.getElementById("DocumentRemarks").value = detailsDRemarks;
+        }
+        else {
+            document.getElementById("documentName").value = docName;
+            docDetailsID = 0;
+        }
+
+    });
+
+    function formatDate(dateValue) {
+        var d = new Date(dateValue),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    function GetStatus() {
+        if (saveType == 2) {
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: '@Url.Action("GetDocumentsStatus", "Misc")',
+                success: function (data) {
+                    var jsonResult = JSON.parse(data);
+
+                    for (var i = 0; i < jsonResult.length; i++) {
+                        opt = document.createElement("option");
+                        opt.value = jsonResult[i][0];
+                        opt.text = jsonResult[i][1];
+                        cmbStatus.appendChild(opt);
+                    }
+                }
+            })
+
+        } else {
+
+               $.ajax({
+                type: "POST",
+                cache: false,
+                url: '@Url.Action("GetDocumentsDetailStatus", "Misc")',
+                success: function (data) {
+                    var jsonResult = JSON.parse(data);
+
+                    for (var i = 0; i < jsonResult.length; i++) {
+                        opt = document.createElement("option");
+                        opt.value = jsonResult[i][0];
+                        opt.text = jsonResult[i][1];
+                        cmbStatus.appendChild(opt);
+                    }
+                }
+            })
+
+        }
+
+
+       
+    }
+
+    window.UpdateDocumentDetails = function () {
+
+        var doc = document.getElementById('documentName');
+        var docFrom = document.getElementById("documentFrom");
+        var docTo = document.getElementById('documentTo');
+        var docDate = document.getElementById('documentDate');
+
+        var docStatusID = document.getElementById('documentStatus');
+        var statusValue = docStatusID.options[docStatusID.selectedIndex].value;
+
+        var docRemarks = document.getElementById('DocumentRemarks');
+
+        if ((!docFrom.value.replace(/\s/g, '').length) || (!docTo.value.replace(/\s/g, '').length) || (!docDate.value.replace(/\s/g, '').length)) {
+
+            Toast.Error("Please fill-in all the required fields.");
+            isDocumentReady = 0;
+
+        } else {
+
+            var today = new Date(docDate.value);
+            var year = today.getFullYear();
+
+            if (isNaN(Date.parse(docDate.value)) || parseInt(year) < 1900 || parseInt(year) > 9999) {
+
+                Toast.Error("You have entered an invalid date.");
+                   isDocumentReady = 0;
+
+            } else {
+
+                $.ajax({
+                    type: "POST",
+                    url: "../Misc/UpdateDocumentProgress",
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    data: JSON.stringify({ actionType: saveType, documentID: documentID, documentName: doc.value, from: docFrom.value, to: docTo.value, statusID: statusValue, date: docDate.value, remarks: docRemarks.value, detailsID: docDetailsID }),
+                    success: function (data) {
+                        if (data == 'True') {
+                            Toast.Show("Document details has been saved.");
+                        }
+                        else {
+                            Toast.Show("Something went wrong.");
+                        }
+                    }
+                })
+
+                isDocumentReady = 1;
+            }
+        }
+  
+    }
+
+</script><div>
+    <div style="clear:both;"></div>
+	</div>
+</section>

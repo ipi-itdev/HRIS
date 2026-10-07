@@ -1,0 +1,310 @@
+﻿<section class="content-header">
+    <h1>DHS Monitoring</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-list"></i> DHS Dashboard</a></li>
+        <li class="active">DHS Monitoring(Details)</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <div id="btnList_ALT1">
+                        @if (@ViewBag.AllowApprove == true || @ViewBag.SuperApprover == true)
+                        {
+                            <button type="button" class="btn btn-primary" id="Close_ALT1" onclick="CloseIssue()">Close</button>
+                        }
+						@if(@ViewBag.SuperApprover == true)
+						{
+							<button type="button" class="btn btn-primary" id="Save_ALT1" onclick="DoneEmployee()">Save & Send Updates</button>
+						}
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-xs-4" id="mainDIV">
+                            <div class="form-group" id="Details_Form_ALT1_DetailView">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-4">ID</div>
+                                        <div class="col-md-8"><input type="text" id="ID" class="form-control" disabled="disabled"></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4">Employee</div>
+                                        <div class="col-md-8"><input type="text" id="Employee" class="form-control" disabled="disabled"></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4">Client</div>
+                                        <div class="col-md-8"><input type="text" id="Client" class="form-control" disabled="disabled"></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4">Date & Time</div>
+                                        <div class="col-md-8"><input type="text" id="CreatedDate" class="form-control" disabled="disabled"></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4"><b>ACTIONS</b></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4"><span class="requiredtag" style="color: red">*</span>Instructions given to employee</div>
+										<div class="col-md-8"><select id="RecommendationRefNo" class="select2 form-control" style="width: 100%;"></select></div>
+                                    </div><br>
+									<div class="row" >
+                                        <div class="col-md-4"><span class="requiredtag" style="color: red">*</span>Other Instructions</div>
+                                        <div class="col-md-8"><textarea rows="3" cols="45" class="form-control" style="resize:none" id="Recommendation"></textarea></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4">Action Date & Time to Employee</div>
+                                        <div class="col-md-8"><input type="text" id="NotifyEmp" class="form-control" disabled="disabled"></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-8"><input type="checkbox" value="1" id="DoneNotifyEmp" onchange="DoneEmployee()">  Called and emailed employee on status.<br></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4">Employee Notified By</div>
+                                        <div class="col-md-8"><input type="text" id="NotifyEmpBy" class="form-control" disabled="disabled"></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4" id="OtherRecommendationLabel">Follow up Instructions</div>
+                                        <div class="col-md-8"><textarea rows="3" cols="45" class="form-control" style="resize:none" id="OtherRecommendation"></textarea></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-8"><input type="checkbox" value="1" id="DoneNotifyClient" onclick="DoneClient()">  Called and emailed client on initial status.<br></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4">Action Date & Time to Client</div>
+                                        <div class="col-md-8"><input type="text" id="NotifyClient" class="form-control" disabled="disabled"></div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-4">Client Notified By</div>
+                                        <div class="col-md-8"><input type="text" id="NotifyClientBy" class="form-control" disabled="disabled"></div>
+                                    </div><br>
+									 <div class="row">
+                                        <div class="col-md-4">Remarks</div>
+                                        <div class="col-md-8"><textarea rows="3" cols="45" class="form-control" style="resize:none" id="Remarks"></textarea></div>
+                                    </div><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-8">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs" id="tab_ALT1">
+                                    <li class="active"><a href="#Details_Form_ALT1" data-toggle="tab" aria-expanded="true">Response</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="Details_Form_ALT1">
+                                        <div class="col-md-12">
+                                           @if(@ViewBag.AllowPrint == true){ <iframe src="@Url.Action("ExportCovidResponse", "Covid")?pkey=@ViewBag.PKey#zoom=75" style="width:100%;  min-height:500px; height:157%"></iframe>}
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+	var dhsmObj
+    $(document).ready(function () {
+		dhsmObj = { ID: 0, Type: 0, RecommendationRefNo: 0,Recommendation: null,DoneNotifyEmp: false
+					,OtherRecommendation: null,NotifyClientBy: 0 ,Remarks: null }
+        loadData();
+
+        if ('@ViewBag.ModuleNameID' != "CovidUOR") {
+            $('#Close_ALT1').css('display', 'none');
+
+			if('@ViewBag.SuperApprover' != 'True'){
+				$('#OtherRecommendation').css('display', 'none');
+				$('#OtherRecommendationLabel').css('display', 'none');
+			}
+        }
+    })
+
+	 function GetNewValue() {
+        dhsmObj.RecommendationRefNo = document.getElementById('RecommendationRefNo').value;
+        dhsmObj.Recommendation = document.getElementById('Recommendation').value;
+        dhsmObj.DoneNotifyEmp= document.getElementById('DoneNotifyEmp').value;
+        dhsmObj.OtherRecommendation = document.getElementById('OtherRecommendation').value;
+        dhsmObj.DoneNotifyClient = document.getElementById('DoneNotifyClient').value;
+        dhsmObj.Remarks = document.getElementById('Remarks').value;
+	}
+    function DoneEmployee() {
+		GetNewValue();
+		dhsmObj.Type=1;
+		if(checkVal(dhsmObj.RecommendationRefNo) == 0 || checkVal( dhsmObj.Recommendation) == 0) { Toast.Error("Please fill out all required fields(*)"); $('#DoneNotifyEmp').prop("checked", false); return false;}
+		else{
+   			swal({	title: "Confirmation..", text: "Are you done notifying the employee? You may no longer edit this entry. Coordinate with the HR Manager for further changes.", icon: "warning",
+					buttons: [ 'No, cancel it!', 'Yes, I am sure!' ],
+					dangerMode: true,
+			}).then(function (isConfirm) {
+				if (isConfirm) {
+					$.ajax({
+						type: "POST",
+						cache: false,
+						url: '@Url.Action("DHSAction","Covid")',
+						data: { JSONObject: JSON.stringify(dhsmObj) },
+						success: function (data) { loadData();   Toast.Show('Done notifying the employee.');}
+					})
+				} else { $('#DoneNotifyEmp').prop("checked", false); }
+			})
+		}
+    }
+
+    function DoneClient() {
+		GetNewValue();
+		dhsmObj.Type=3;
+   	    swal({	title: "Confirmation..", text: "Are you done notofying the client?", icon: "warning",
+				buttons: [ 'No, cancel it!', 'Yes, I am sure!' ],
+				dangerMode: true,
+		}).then(function (isConfirm) {
+			if (isConfirm) {
+              $.ajax({
+					  type: "POST",
+					  cache: false,
+					  url: '@Url.Action("DHSAction","Covid")',
+					  data: { JSONObject: JSON.stringify(dhsmObj) },
+                  success: function (data) { loadData(); Toast.Show('Done notifying the client.'); }
+			  })
+
+			}
+            else { $('#DoneNotifyClient').prop("checked", false); }
+		})
+    }
+
+    function CloseIssue() {
+        GetNewValue();
+		dhsmObj.Type=5;
+        swal({	title: "Confirmation..", text: "You are about to close the issues / findings about this employee, Are you sure?", icon: "warning",
+						buttons: [ 'No, cancel it!', 'Yes, I am sure!' ],
+						dangerMode: true,
+		}).then(function (isConfirm) {
+			if (isConfirm) {
+				 $.ajax({
+						type: "POST",
+						cache: false,
+						url: '@Url.Action("DHSAction","Covid")',
+					    data: { JSONObject: JSON.stringify(dhsmObj) },
+                        success: function (data) { loadData(); Toast.Show('Issues / findings about this employee has been closed.'); }
+					})
+			}
+		})
+    }
+
+    function loadData() {
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: '@Url.Action("GetEmployeeSurvey","Covid")?pkey=' + '@ViewBag.PKey',
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                if ('@ViewBag.CanModify' == 'True' || '@ViewBag.SuperApprover' == 'True') {
+					dhsmObj.ID =  jsonArray[0][0];
+                    $('#ID').val(jsonArray[0][0]);
+                    $('#Employee').val(jsonArray[0][1]);
+                    $('#Client').val(jsonArray[0][2]);
+                    $('#CreatedDate').val(jsonArray[0][3]);
+                    $('#Recommendation').val(jsonArray[0][4]);
+					
+                    $('#NotifyEmp').val(jsonArray[0][5]);
+                    if (jsonArray[0][6] == true) {if('@ViewBag.SuperApprover' != 'True'){  $('#RecommendationRefNo').prop("disabled", true); } $('#Recommendation').prop("disabled", true); $('#DoneNotifyEmp').prop("checked", true); $('#DoneNotifyEmp').prop("disabled", true); } else { $('#DoneNotifyEmp').prop("checked", false); $('#DoneNotifyEmp').prop("disabled", false); }
+					
+                    if (jsonArray[0][14] == true) { $('#divCI').css('display', 'none'); } else {
+                        if (jsonArray[0][7] == true) { $('#ValidateCI').prop("checked", true); $('#ValidateCI').prop("disabled", true); } else { $('#ValidateCI').prop("checked", false); $('#ValidateCI').prop("disabled", false); }
+                    }
+                    $('#NotifyEmpBy').val(jsonArray[0][8]);
+                    $('#OtherRecommendation').val(jsonArray[0][9]);
+                    $('#NotifyClient').val(jsonArray[0][10]);
+
+                    if (jsonArray[0][11] == true) { $('#DoneNotifyClient').prop("checked", true); $('#DoneNotifyClient').prop("disabled", true); } else { $('#DoneNotifyClient').prop("checked", false); $('#DoneNotifyClient').prop("disabled", false); }
+                    $('#NotifyClientBy').val(jsonArray[0][12]);
+                    $('#RiskRefNo').val(jsonArray[0][13]);
+                    $('#CIUpdated').val(jsonArray[0][14]);
+
+					InitDropdownOTHVal('Recommendation', '#RecommendationRefNo', jsonArray[0][19]);
+                }
+                else {
+					dhsmObj.ID =  jsonArray[0][0];
+                    $('#ID').val(jsonArray[0][0]);
+                    $('#Employee').val(jsonArray[0][1]);
+                    $('#Client').val(jsonArray[0][2]);
+                    $('#CreatedDate').val(jsonArray[0][3]);
+                    $('#Recommendation').val(jsonArray[0][4]);
+                    $('#NotifyEmp').val(jsonArray[0][5]);
+                    if (jsonArray[0][6] == true) { if('@ViewBag.SuperApprover' != 'True'){  $('#RecommendationRefNo').prop("disabled", true); } $('#RecommendationRefNo').prop("disabled", true); $('#Recommendation').prop("disabled", true);  $('#DoneNotifyEmp').prop("checked", true); $('#DoneNotifyEmp').prop("disabled", true); } else { $('#DoneNotifyEmp').prop("checked", false); $('#DoneNotifyEmp').prop("disabled", true); }
+
+                    if (jsonArray[0][14] == true) { $('#divCI').css('display', 'none'); } else {
+                        if (jsonArray[0][7] == true) { $('#ValidateCI').prop("checked", true); $('#ValidateCI').prop("disabled", true); } else { $('#ValidateCI').prop("checked", false); $('#ValidateCI').prop("disabled", true); }
+                    }
+
+                    $('#NotifyEmpBy').val(jsonArray[0][8]);
+                    $('#OtherRecommendation').val(jsonArray[0][9]);
+                    $('#NotifyClient').val(jsonArray[0][10]);
+                    if (jsonArray[0][11] == true) { $('#DoneNotifyClient').prop("checked", true); $('#DoneNotifyClient').prop("disabled", true); } else { $('#DoneNotifyClient').prop("checked", false); $('#DoneNotifyClient').prop("disabled", true); }
+                    $('#NotifyClientBy').val(jsonArray[0][12]);
+                    $('#RiskRefNo').val(jsonArray[0][13]);
+                    $('#CIUpdated').val(jsonArray[0][14]);
+
+					InitDropdownOTHVal('Recommendation', '#RecommendationRefNo', jsonArray[0][19]);
+
+                    $('#Move_ALT1').prop("disabled", true);
+                    $('#Close_ALT1').prop("disabled", true);
+
+                    $('#ID').prop("disabled", true);
+                    $('#Employee').prop("disabled", true);
+                    $('#Client').prop("disabled", true);
+                    $('#CreatedDate').prop("disabled", true);
+                    $('#Recommendation').prop("disabled", true);
+                    $('#NotifyEmp').prop("disabled", true);
+                    $('#DoneNotifyEmp').prop("disabled", true);
+
+                    if (jsonArray[0][14] == true) { $('#divCI').css('display', 'none'); } else {
+                        $('#ValidateCI').prop("disabled", true);
+                    }
+
+                    $('#NotifyEmpBy').prop("disabled", true);
+                    $('#OtherRecommendation').prop("disabled", true);
+                    $('#NotifyClient').prop("disabled", true);
+                    $('#DoneNotifyClient').prop("disabled", true);
+                    $('#NotifyClientBy').prop("disabled", true);
+                    $('#RiskRefNo').prop("disabled", true);
+                    $('#CIUpdated').prop("disabled", true);
+					$('#RecommendationRefNo').prop("disabled", true);
+                }
+            }
+        })
+    }
+
+	function InitDropdownOTHVal(mname, textboxControl, value) {
+    jQuery.ajax({
+        url: "../Home/GetList",
+        data: { Model: mname },
+        type: 'POST',
+        datatype: 'application/json; charset=utf-8',
+        success: function (data) {
+            var jsonArray = JSON.parse(data);
+            $(textboxControl).append('<option id="0" value="0">N/A</option>');
+            if (jsonArray.length == 0) return;
+            for (var i = 0; i < jsonArray.length; i++) {
+                Columns = jsonArray[i];
+                $(textboxControl).append('<option id=' + Columns[0] + ' value=' + Columns[0] + '>' + Columns[1] + '</option>');
+                if (value == Columns[0]) {
+                    $(textboxControl).find('option[value=' + value + ']').attr('selected', 'selected')
+                }
+            }
+        },
+        error: function (e) {
+        }
+    });
+    $(textboxControl).select2({dropdownParent: $("#myParent")});
+
+}
+
+function checkVal(val) { if (val == 0 || val == '' || val == null || val == undefined) { return 0; } else { return 1; } }
+</script>
+

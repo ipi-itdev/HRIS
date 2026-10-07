@@ -1,0 +1,95 @@
+﻿<div id="content_@ViewBag.FormID" class="module-wrapper ng-scope">
+<section class="content-header">
+      <h1>Item Masterlist <i style="font-size:13px">  (@ViewBag.Description)</i></h1>
+      <ol class="breadcrumb">
+        <li><a href="javascript:void(0);" onclick="displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+      </ol>
+</section>
+<section class="content" id="@ViewBag.FormID">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header" id="btnList_@{@ViewBag.FormID}">
+                @*// @{ @ViewBag.AllowApprove;} // @{@ViewBag.pid}// @{@ViewBag.IStatus}*@  @*commented due to kita sa front end *@
+                <div class="btn-group">
+                    @if (@ViewBag.AllowInsert == true)
+                    {<button type="button" class="btn btn-primary" id="New_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-file" title="New"></i>  New</button>}
+                    @if ((@ViewBag.AllowInsert == true && @ViewBag.pid <= 0) || (@ViewBag.AllowUpdate == true && @ViewBag.pid > 0 && @ViewBag.IStatus != 3))
+                    {<button type="button" class="btn btn-primary" id="Save_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save</button>}
+                    <button type="button" class="btn btn-primary" id="Back_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Open"></i>  Back to List</button>
+                    @if (@ViewBag.AllowApprove == true && @ViewBag.pid > 0 && @ViewBag.IStatus != 2)
+                    {
+                        <div class="btn-group">
+                            <button class="btn btn-primary dropdown-toggle dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-cubes" title="Action"></i> Status:  @ViewBag.Status
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                @if (@ViewBag.IStatus != 5)
+                                {<button type="button" class="dropdown-item btn btn-default" id="Dispose_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"> Decommissioned</button>}
+                                @if (@ViewBag.IStatus != 4)
+                                {<button type="button" class="dropdown-item btn btn-default" id="Defective_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;">Defective</button>}
+                                @if (@ViewBag.IStatus != 3)
+                                {<button type="button" class="dropdown-item btn btn-default" id="ForRepair_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;">For Repair</button>}
+                                @if (@ViewBag.IStatus != 1)
+                                {<button type="button" class="dropdown-item btn btn-default" id="Available_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;">Available</button>}
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>          
+            <div class="box-body">
+                <div class="row">
+					<div class="col-md-4">
+						<div class="tab-pane active" id="Details_Form_@ViewBag.FormID">
+							<div class="col-md-12">
+								<div class="form-group" id="Details_@{@ViewBag.FormID}_dtlv"></div>
+							</div>
+							<div style="clear:both;"></div>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="nav-tabs-custom">-
+							<ul class="nav nav-tabs" id="tab_@ViewBag.FormID" role="tablist">
+								<li class="nav-item active"><a href="#Specifications_Form_@ViewBag.FormID"  class="nav-link active" data-toggle="tab" role="tab">Description</a></li>
+							    <li class="nav-item"><a href="#INVItemDetails_List_@ViewBag.FormID"  class="nav-link" data-toggle="tab" role="tab">Parts</a></li>
+								<li class="nav-item"><a href="#INVItemHistory_List_@ViewBag.FormID"  class="nav-link" data-toggle="tab" role="tab">History</a></li>
+								<li class="nav-item"><a href="#Other_Form_@ViewBag.FormID"  class="nav-link" data-toggle="tab" role="tab">Other</a></li>
+								</ul>
+							<div class="tab-content">
+								<div class="tab-pane active" id="Specifications_Form_@ViewBag.FormID" role="tabpanel">
+									<div class="col-md-12">
+										<div class="form-group" id="Specifications_@{@ViewBag.FormID}_dtlv"></div>
+									</div>
+									<div style="clear:both;"></div>
+								</div>
+								<div class="tab-pane" id="INVItemDetails_List_@ViewBag.FormID" role="tabpanel">
+									 <div id="INVItemDetails_List_@{@ViewBag.FormID}"></div>
+								</div>
+								<div class="tab-pane" id="INVItemHistory_List_@ViewBag.FormID" role="tabpanel">
+									 <div id="INVItemHistory_List_@{@ViewBag.FormID}"></div>
+								</div>
+								<div class="tab-pane" id="Other_Form_@ViewBag.FormID" role="tabpanel">
+									<div class="col-md-6">
+										<div class="form-group" id="Other_@{@ViewBag.FormID}_dtlv"></div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group" id="Other_@{@ViewBag.FormID}_dtlv2"></div>
+									</div>
+									<div style="clear:both;"></div>
+								</div>
+							</div>                                  
+						</div>                                  
+					</div>
+                </div>
+            </div>
+    </div>
+</div>
+</section>
+</div>
+@System.Web.Optimization.Scripts.Render("~/Script/INVItemsDetails")
+<script>
+$(document).ready(function () {
+	let $mFrm = new INVItemsDetails('@{@ViewBag.pid}'); $mFrm.mguid = '@{@ViewBag.mguid}'; $mFrm.mNm = '@{@ViewBag.mName}'; $mFrm.mNo = '@{@ViewBag.mNo}'; $mFrm.mDesc = '@{@ViewBag.Description}'; $mFrm.FKN =  '@{@ViewBag.FKeyName}'; $mFrm.FK =  '@{@ViewBag.pid}'; $mFrm.fid =  '@{@ViewBag.FormID}';
+	$('.content-wrapper').waitMe('hide');
+})
+</script>
