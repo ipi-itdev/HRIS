@@ -1,0 +1,437 @@
+﻿<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i><b>EMPLOYEE INFORMATION LIST</b></a></li>
+        <li class="active"><b>EMPLOYEE INFORMATION DETAILS</b></li>
+    </ol><br>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style type="text/css">
+        .table-wrapper {
+            width: 100%;
+            /*margin: 30px auto;*/
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+
+            .table-title h2 {
+                margin: 6px 0 0;
+                font-size: 22px;
+            }
+
+            .table-title .add-newkpi {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 5px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+            }
+
+                .table-title .add-newkpi i {
+                    margin-right: 4px;
+                }
+
+        table.table {
+            table-layout: fixed;
+        }
+
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+            }
+
+            table.table th i {
+                font-size: 18px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+            table.table th:last-child {
+                width: 100px;
+            }
+
+            table.table td a {
+                cursor: pointer;
+                display: inline-block;
+                margin: 0 5px;
+                /*min-width: 24px;*/
+
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+                table.table td a.addkpi {
+                    color: #27C46B;
+                }
+
+                table.table td a.editkpi {
+                    color: #FFC107;
+                }
+
+                table.table td a.deletekpi {
+                    color: #E34724;
+                }
+
+            table.table td i {
+                font-size: 22px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td a.addkpi i {
+                /*font-size: 22px;*/
+                margin-right: -1px;
+                position: relative;
+                top: 3px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table .form-control {
+                height: 32px;
+                line-height: 32px;
+                box-shadow: none;
+                border-radius: 2px;
+            }
+
+                table.table .form-control.error {
+                    border-color: #f50000;
+                }
+
+            table.table td .addkpi {
+                display: none;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+    </style>
+</section>
+<section class="content" style="position:relative">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+
+                    @*    <div class="table-title">
+                        </div>
+                    *@
+                    <table class="table table-bordered" id="tableKPIList">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width:15%; font-size: 13px;" data-field="id">EMPLOYEE INFORMATION</th>
+                                <th rowspan="1" colspan="1" style="width:15%; font-size: 13px" data-field="kpi"></th>
+                                <th rowspan="1" colspan="1" style="width:1%; font-size: 13px; border-bottom-style:none;" data-field="kpi"></th>
+                                <th rowspan="1" colspan="1" style="width:5%; font-size: 13px; border-bottom-style:none;" data-field="kpi"></th>
+                                <th rowspan="1" colspan="1" style="width:5%; font-size: 13px;" data-field="kpi">Monthly</th>
+                                <th rowspan="1" colspan="1" style="width:5%; font-size: 13px;" data-field="kpi">Daily</th>
+                                <th rowspan="1" colspan="1" style="width:5%; font-size: 13px;" data-field="kpi">Hourly</th>
+                                @*<th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="KPIType"><span style="color: red; font-size: 20px"><b>*</b></span>School</th>
+        <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Course</th>
+        <th> ACTION</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            @*<span style="color: darkred; float: left; margin-left: 2px"><b>Note : </b></span>
+                <span style="color: black; float: left; margin-left: 5px"><b> Make sure that the KPI's weight is exactly 100% in total.</b></span>*@
+        </div>
+    </div>
+</section>
+
+<script>
+	var recID;
+	var count = 1;
+	var saveType;
+    var perfindicatorid = @ViewBag.pid;
+    console.log("Viewbag ito" + @ViewBag.pid);
+
+    function addrow_kpi() {
+        var index2 = $("#tableKPIList tbody tr:last-child").index();
+        var row = '<tr>' +
+            '<td><input type="text" class="form-control" name="id" id="id" value="-1" style="font-size: 12px" disabled></td>' +
+            '<td><input type="text" class="form-control" name="year" id="year" placeholder="Year Graduated" style="font-size: 12px" rows="5"></td>' +
+            '<td><input type="text" class="form-control" name="school" id="school" placeholder="School" style="font-size: 12px" rows="5"></td></td>' +
+            '<td><input type="text" class="form-control" name="course" id="course" placeholder="Course" style="font-size: 12px" rows="5"></td></td>' +
+            '<td>' +
+            '<a class="addkpi" title=""><i class="material-icons">&#xE03B;</i></a>' +
+            '<a class="editkpi" title=""><i class="material-icons">&#xE254;</i></a>' +
+            '<a class="deletekpi" title=""><i class="material-icons">&#xE872;</i></a>' +
+            '</td>' +
+            '</tr>';
+        $("#tableKPIList").append(row);
+        $("#tableKPIList tbody tr").eq(index2 + 1).find(".addkpi, .editkpi").toggle();
+        $('[data-toggle="tooltip"]').tooltip();
+        $(".add-newkpi").attr("disabled", "disabled");
+    }
+
+    function loadKPIListDetails() {
+        var tableKPListDetails = $("#tableKPIList tbody");
+        // Clear table including dynamically added rows
+        tableKPListDetails.empty();
+
+        jQuery.ajax({
+            url: '@Url.Action("GetEmployeeInformationDetails", "KPI")',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                PerfIndicatorID: perfindicatorid
+            },
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                for (var i = 0; i < jsonArray.length; i++) {
+                    var
+                        trRow = '<tr><td colspan="2">Employee Information</td></tr>';
+                    trRow += '<tr><td style="font-size: 12px" disabled><span style="font-weight: bold;">EMPLOYEE</span><br><span>' + jsonArray[i][53] + '</span></td><td style="font-size: 12px"><span style="font-weight: bold;">POSITION</span><br><span>' + jsonArray[i][54] + '</span></td><td style="font-size: 12px; border-top:none;border-bottom: none;"></td><td style="font-size: 12px; font-weight: bold;">Salary</td><td style="font-size: 12px">' + jsonArray[i][0].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][1].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][2].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td><span style="font-weight: bold;">CLIENT</span><br><span>' + jsonArray[i][55] + '</span></td><td><span style="font-weight: bold;">CLIENT ADRESS</span><br><span>' + jsonArray[i][56] + '</span></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;   ">SSS</td><td style="font-size: 12px">' + jsonArray[i][3].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][4].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][5].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td><span style="font-weight: bold;">START DATE</span><br><span>Ju' + jsonArray[i][59] + '</span></td><td><span style="font-weight: bold;">END DATE</span><br><span>' + jsonArray[i][59] + '</span></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">Pag-Ibig</td><td style="font-size: 12px">' + jsonArray[i][6].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][7].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][8].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td><span style="font-weight: bold;">PAY BASIS</span><br><span>' + jsonArray[i][58] + '</span></td><td><span style="font-weight: bold;">DAYS PER MONTH</span><br><span>' + jsonArray[i][45] + '</span></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">Philhealth</td><td style="font-size: 12px">' + jsonArray[i][9].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][10].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][11].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td><span style="font-weight: bold;">GROSS REVENUE</span><span style="float: right;">' + jsonArray[i][28].toLocaleString() + '</span></td><td><span style="font-weight: bold;">DIRECT COST</span><span style="float: right;">' + jsonArray[i][47].toLocaleString() + '</span></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">13th Month</td><td style="font-size: 12px">' + jsonArray[i][12].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][13].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][14].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td><span style="font-weight: bold;">GROSS MARGIN</span><span style="float: right;">' + jsonArray[i][48].toLocaleString() + '</span></td><td><span style="font-weight: bold;">GM PERCENTAGE</span><span style="float: right;">%' + jsonArray[i][49].toLocaleString() + '</span></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">Incentive Leaves</td><td style="font-size: 12px">' + jsonArray[i][15].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][16].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][17].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td><span style="font-weight: bold;">WITH SEPARATION PAY</span><span style="float: right;"></span></td><td><span></span><span style="float: right;"></span></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">Holiday Pay</td><td style="font-size: 12px">' + jsonArray[i][18].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][19].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][20].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td><span style="font-weight: bold;">GROSS REVENUE</span><span style="float: right;">' + jsonArray[i][42].toLocaleString() + '</span></td><td><span style="font-weight: bold;">DIRECT COST</span><span style="float: right;">' + jsonArray[i][50].toLocaleString() + '</span></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">Cola</td><td style="font-size: 12px">' + jsonArray[i][21].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][22].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][23].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td><span style="font-weight: bold;">GROSS MARGIN</span><span style="float: right;">' + jsonArray[i][51].toLocaleString() + '</span></td><td><span style="font-weight: bold;">GM PERCENTAGE</span><span style="float: right;">%' + jsonArray[i][52].toLocaleString() + '</span></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">HMO</td><td style="font-size: 12px">' + jsonArray[i][24].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][25].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][26].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td style="border-right:none;border-left: hidden;border-bottom: hidden;"></td><td style="border-left: none; border-right: hidden;border-bottom:hidden;"></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">Per Annum</td><td style="font-size: 12px">' + jsonArray[i][23].toLocaleString() + '</td><td style="font-size: 12px"></td><td style="font-size: 12px"></td></tr>';
+                    trRow += '<tr><td style="border-right:none;border-left: hidden;border-bottom: hidden;"></td><td style="border-left: none; border-right: hidden;border-bottom:hidden;"></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">Other Benefits</td><td style="font-size: 12px">' + jsonArray[i][29].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][30].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][31].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td style="border-right:none;border-left: hidden;border-bottom: hidden;"></td><td style="border-left: none; border-right: hidden;border-bottom:hidden;"></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">Total Benefits</td><td style="font-size: 12px">' + jsonArray[i][35].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][36].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][37].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td style="border-right:none;border-left: hidden;border-bottom: hidden;"></td><td style="border-left: none; border-right: hidden;border-bottom:hidden;"></td></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">Other Cost</td><td style="font-size: 12px">' + jsonArray[i][32].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][33].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][34].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td style="border-right:none;border-left: hidden;border-bottom: hidden;"></td><td style="border-left: none; border-right: hidden;border-bottom:hidden;"></td></td><td style="font-size: 12px; border-top:none;border-bottom:none;"></td><td style="font-size: 12px; font-weight: bold;">Separation Pay</td><td style="font-size: 12px">' + jsonArray[i][43].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][44].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][45].toLocaleString() + '</td></tr>';
+                    trRow += '<tr><td style="border-right:none;border-left: hidden;border-bottom: hidden;"></td><td style="border-left: none; border-right: hidden;border-bottom:hidden;"></td><td style="font-size: 12px; border-top:none;border-bottom:hidden;"></td><td style="font-size: 12px; font-weight: bold;">Total Direct Cost</td><td style="font-size: 12px">' + jsonArray[i][38].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][39].toLocaleString() + '</td><td style="font-size: 12px">' + jsonArray[i][40].toLocaleString() + '</td></tr>';
+                    $("#tableKPIList").append(trRow);
+                }
+            },
+            error: function (e) {
+                console.error(e);
+            }
+        });
+    }
+
+    $(document).ready(function () {
+    // Initial call to loadKPIListDetails
+    console.log('Document Ready');
+    loadKPIListDetails();
+    });
+
+     //Add row on add button click
+
+    $(document).on("click", ".addkpi", function () {
+
+        var empty = false;
+        var input = $(this).parents("tr").find('input[type="text"]');
+
+        input.each(function () {
+            if (!$(this).val() || $(this).val() == 0.00 || $(this).val() == 0) {
+                $(this).addClass("error");
+                empty = true;
+            } else {
+                $(this).removeClass("error");
+            }
+        });
+
+        //---
+
+        $(this).parents("tr").find(".error").first().focus();
+
+        if (!empty) {
+            input.each(function () {
+                $(this).parent("td").html($(this).val());
+            });
+
+            //--
+            var $tds = $(this).parents("tr").find('td'),
+                id = $tds.eq(0).text(),
+                year = $tds.eq(1).text(),
+                school = $tds.eq(2).text();
+            course = $tds.eq(3).text();
+            //kpi = kpi.replace(/'/g, "`");
+            if (id == "-1") {
+                saveType = 1;
+            } else {
+                saveType = 0;
+            }
+
+           /* if (year != null && ) {*/
+
+                $.ajax({
+                    type: "POST",
+                    url: "../KPIView/UpdatingHighestEducation",
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    data: JSON.stringify({ saveType: saveType, employeerefno: @ViewBag.pid, id: id, School: school, course: course, year: year }),
+                    success: function (data) {
+                        if (data == 'True') {
+                            // status = 1;
+                            loadKPIListDetails(perfindicatorid);
+                            $(this).parents("tr").find(".add, .edit").toggle();
+                            $(".add-newkpi").removeAttr("disabled");
+                            $('#CategoryDetails').DataTable().ajax.reload();
+                            $('#KPIAssignmentList_ListView_Table').DataTable().ajax.reload();
+                            $('#KPIAssignmentDetails').DataTable().ajax.reload();
+                            $('#KPIListInfo').DataTable().ajax.reload();
+                            Toast.Show("Employee's Education Details Added/Updated");
+                        }
+                        else { }
+                    }
+                })
+
+
+            //} else {
+            //    swal("Failed!", "Invalid Weight format.", "info");
+            //    loadKPIListDetails(perfindicatorid);
+            //    $(".add-newkpi").removeAttr("disabled");
+            //}
+        }
+    });
+
+
+     // Edit row on edit button click
+     $(document).on("click", ".editkpi", function () {
+
+         $(this).parents("tr").find("td:not(:last-child)").each(function () {
+
+             if (count == 1) {
+
+                 $(this).html('<input id="id" onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+                 count++;
+                 recID = $("#kpiid").val();
+                 $(".add-newkpi").attr("disabled", "disabled");
+             } else if (count == 2) {
+
+                 $(this).html('<input id="year" name="year" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+                 count++;
+                 $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 $(".add-newkpi").attr("disabled", "disabled");
+
+             } else if (count == 3) {
+
+                 $(this).html('<input id="school" name="school" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+                 count++;
+                 $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 $(".add-newkpi").attr("disabled", "disabled");
+
+             } else if (count == 4) {
+
+                 $(this).html('<input id="course" name="course" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px">');
+                 count++;
+                 $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 $(".add-newkpi").attr("disabled", "disabled");
+
+             } else {
+                 count = 1;
+                 return false;
+             }
+         });
+     });
+
+      // Delete row on delete button click
+     $(document).on("click", ".deletekpi", function () {
+         let status;
+         var $tds = $(this).parents("tr").find('td'),
+             id = $tds.eq(0).text();
+         swal({
+             title: "Are you sure?",
+             text: "Once deleted, you will not be able to recover this record.",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+         })
+
+             .then((willDelete) => {
+                 if (willDelete) {
+
+                     if ((id == undefined || id == "")) {
+                         id = recID;
+                         console.log('ito yung id nang idedelete: ' + id);
+                         if (id != undefined) {
+                             $.ajax({
+                                 type: "POST",
+                                 cache: false,
+                                 url: '../KPIView/UpdatingHighestEducation?saveType=' + 2 + '&id=' + id,
+                                 success: function (data) {
+                                     if (data == 'True') {
+                                         //status = 1;
+                                         //loadKPIListDetails(kpilistid);
+                                     }
+                                     else { }
+                                 }
+                             })
+                         }
+                     } else {
+
+                         console.log('ito yung id nang idedelete: ' + id);
+                         $.ajax({
+                             type: "POST",
+                             cache: false,
+                             url: '../KPIView/UpdatingHighestEducation?saveType=' + 2 + '&employeerefno=' + @ViewBag.pid + '&id=' + id + '&Year=' + 'NULL' + '&School=' + 'NULL' + '&Course=' + 'NULL',
+                             success: function (data) {
+                                 if (data == 'True') {
+                                     //status = 1;
+                                     //loadKPIListDetails(kpilistid);
+                                 }
+                                 else { status = 0; }
+                             }
+                         })
+                     }
+
+                     $(this).parents("tr").find(".add, .edit").toggle();
+                     $(".add-newkpi").removeAttr("disabled");
+                     $(this).parents("tr").remove();
+                     Toast.Show("Employee's Education Details Deleted");
+                 }
+             });
+
+
+     });
+
+    // <============= do not remove backup function =======================>
+    // Append table with add row form on add new button click
+    //$(document).on("click", ".add-newkpi", function () {
+    //    var index2 = $("#tableKPIList tbody tr:last-child").index();
+    //    var row = '<tr>' +
+    //        '<td><input type="text" class="form-control" name="kpiid" id="kpiid" value="-1" style="font-size: 12px" disabled></td>' +
+    //        '<td><input type="text" class="form-control" name="kpi" id="kpi" value="Undefined" style="font-size: 12px" rows="5"></td>' +
+    //        '<td><select id="formula" style="width: 150px; height: 32px; font-size: 12px"><option value="1">A = P / T x 100</option><option value="2">A = T / P x 100</option><option value="3">Budget Bracket</option></select></td>' +
+    //        '<td><input onkeypress="return isNumberKey(event)" type="text" class="form-control" name="weight" id="weight" value="0" style="font-size: 12px"></td>' +
+    //        '<td>' +
+    //        '<a class="addkpi" title="Add"><i class="material-icons">&#xE03B;</i></a>' +
+    //        '<a class="editkpi" title="Edit"><i class="material-icons">&#xE254;</i></a>' +
+    //        '<a class="deletekpi" title="Delete"><i class="material-icons">&#xE872;</i></a>' +
+    //        '</td>' +
+    //        '</tr>';
+    //    $("#tableKPIList").append(row);
+    //    $("#tableKPIList tbody tr").eq(index2 + 1).find(".addkpi, .editkpi").toggle();
+    //    $('[data-toggle="tooltip"]').tooltip();
+    //    $(".add-newkpi").attr("disabled", "disabled");
+    //});
+
+    function isNumberKey(evt)
+    {
+	    var charCode = (evt.which) ? evt.which : evt.keyCode
+	    if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)){
+		    return false;}else{	return true;}
+    }
+
+
+    function isNumeric(num){
+        return !isNaN(num)
+    }
+
+</script>
+
+
+

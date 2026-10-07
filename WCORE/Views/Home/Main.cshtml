@@ -1,0 +1,51 @@
+﻿@{ Layout = "~/Views/_Layout.cshtml"; }
+<script type="text/javascript">
+    var CKEDITOR_BASEPATH = "@Url.Content("~/Contents/plugins/ckeditor/")";
+</script>
+<script src="~/Contents/plugins/ckeditor/ckeditor.js"></script>
+@System.Web.Optimization.Styles.Render("~/Styles/main")
+@System.Web.Optimization.Scripts.Render("~/Script/plugins/main")
+@System.Web.Optimization.Scripts.Render("~/Script/plugins/forms")
+@System.Web.Optimization.Scripts.Render("~/Script/plugins/list")
+<div id="mainapp" class="wrapper" ng-controller="TabCtrl as TC">
+  <header class="main-header">
+    <a href="#" class="logo" id="bmHome">
+      <span class="logo-mini">HRIS</span>
+      <span class="logo-lg">HRIS</span>
+    </a>
+    <nav class="navbar navbar-static-top">
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" aria-label="usedto toggle menu"></a>
+      <div class="navbar-custom-menu">
+		<div class="pull-right">
+			<span class="hidden-xs">Hi @Session["FullName"]!</span>
+			<a href="@Url.Action("Index","Home")" class="btn btn-danger"> <i class="fa fa-power-off" title="New"></i> Sign out</a>
+		</div>
+      </div>
+    </nav>
+  </header>
+   <aside class="main-sidebar">
+    <section class="sidebar">
+      <ul class="sidebar-menu">         
+          @{ @Html.Raw(ViewBag.NavigationList) }
+      </ul>
+    </section>
+  </aside>
+  <div class="content-wrapper" id="cMain">
+    <tabset class="tab-container">
+        <tab ng-repeat="tab in tabs" active="tab.active" tab-highlight id="{{ 'content_' + tab.content }}"> <!-- the tab highlight directive -->
+        <tab-heading>
+            {{tab.title}}  <i class="fa fa-remove" ng-show="tab.title !== 'Dashboard'" ng-click="removeTab($event, $index)"></i> <!-- the tab close button -->
+        </tab-heading>
+        <div id="{{ tab.content }}" class="module-wrapper"></div>
+        </tab>
+    </tabset>
+  </div>
+</div>
+
+@*<script type="text/javascript">
+    var id = @Html.Raw(Session["UserRefNo"] ?? "null"); // Use null if Session is empty
+    if (id !== 17) {
+        document.getElementById("200").style.display = "none";
+    }
+</script>*@
+

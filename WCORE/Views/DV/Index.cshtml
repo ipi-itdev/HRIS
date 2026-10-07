@@ -1,0 +1,1619 @@
+﻿@using WCORE.Utility;
+<div id="content_@ViewBag.FormID" class="module-wrapper ng-scope">
+    <section class="content-header">
+        <h1>@ViewBag.Description <i style="font-size:13px">  (@ViewBag.Description)</i></h1>
+        <ol class="breadcrumb">
+            <li><a href="javascript:void(0);" onclick="displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+        </ol>
+    </section>
+    <section class="content" id="@ViewBag.FormID">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header" id="btnList_@{@ViewBag.FormID}">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary" id="Back_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Open"></i>  Back to List</button>
+                            @if ((@ViewBag.AllowInsert == true && @ViewBag.pid <= 0) || (@ViewBag.AllowUpdate == true && @ViewBag.pid > 0))
+                            {<button type="button" class="btn btn-primary" id="Save_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save @ViewBag.Description</button>}
+                            @if (@ViewBag.AllowDelete == true && @ViewBag.pid > 0)
+                            {<button type="button" class="btn btn-primary" id="Delete_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-trash-o" title="Delete"></i>  Delete @ViewBag.Description</button>}
+                        @*For Request Button*@
+                            @if (@ViewBag.AllowApprove == true && @ViewBag.pid > 0 && ((ViewBag.CurrentUser == ViewBag.userrefno && ViewBag.ApprovalLevel == "0") || (ViewBag.ApprovalLevel == "1" && (ViewBag.userrolesrefno == "51" || ViewBag.userrolesrefno == "52" || ViewBag.userrolesrefno == "53")) || (ViewBag.ApprovalLevel == "2" && (ViewBag.userrolesrefno == "51" || ViewBag.userrolesrefno == "52")) || (ViewBag.ApprovalLevel == "3" && (ViewBag.userrolesrefno == "52" || ViewBag.userrolesrefno == "51"))) || (ViewBag.ApprovalLevel == "4" && (ViewBag.userrolesrefno == "51")))
+                            {<button type="button" class="btn btn-primary" id="Approve_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-up" title="Approve"></i>  @ViewBag.UserAction</button>}
+                        @*For Approve Button (MLO)*@
+                            @if (((ViewBag.userrolesrefno == "55" && ViewBag.ApprovalLevel == "2")))
+                            {<button type="button" class="btn btn-primary" id="Approve_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-up" title="Approve"></i>  @ViewBag.UserAction</button>
+                            <button type="button" class="btn btn-primary" id="Disapprove_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-down" title="Disapprove"></i>  Disapprove</button>}
+                        @*For Disapprove Button*@
+                            @if (((ViewBag.userrolesrefno == "51" && ViewBag.ApprovalLevel == "0") || ((ViewBag.userrolesrefno == "51" || ViewBag.userrolesrefno == "52" || ViewBag.userrolesrefno == "53") && ViewBag.ApprovalLevel == "1") || ((ViewBag.userrolesrefno == "51" || ViewBag.userrolesrefno == "52") && ViewBag.ApprovalLevel == "2") || ((ViewBag.userrolesrefno == "51" || ViewBag.userrolesrefno == "52") && ViewBag.ApprovalLevel == "3")))
+                            {<button type="button" class="btn btn-primary" id="Disapprove_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-down" title="Disapprove"></i>  Disapprove</button>}
+                            @*For Proceed Button - Target Setting*@
+                            @if (ViewBag.mNo2 == "1097")
+                            {
+                                <button type="button" class="btn btn-primary" id="Proceed_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-up" title="Proceed"></i>  Proceed</button>
+                            }
+
+                            @if (ViewBag.mNo2 == "53" && (ViewBag.userrolesrefno == "51" || ViewBag.userrolesrefno == "52"))
+                            {
+                                <button type="button" class="btn btn-primary" id="Printed_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-up" title="Printed"></i>  Printed</button>
+                            }
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            @*<div class="col-md-4">
+                                    <div class="form-group" id ="Details_@{@ViewBag.FormID}_dtlv"></div>
+                                    <div style="clear:both;"></div>
+                                </div>*@
+                            <div class="col-md-12">
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs" id="tab_@{@ViewBag.FormID}" role="tablist">
+                                        @foreach (var tab in ViewBag.Tabs)
+                                        {
+                                            if (@tab.IsListView == true)
+                                            {
+                                                <li class="nav-item"><a href="#@{@tab.Name}_List_@{@ViewBag.FormID}" class="nav-link" data-toggle="tab" role="tab">@tab.Desc</a></li>
+ }
+                                            else
+                                            {
+                                                <li class="nav-item"><a href="#@{@tab.Name}_Form_@{@ViewBag.FormID}" class="nav-link" data-toggle="tab" role="tab">@tab.Desc</a></li>
+}
+                                        }
+                                    </ul>
+                                    <div class="tab-content">
+                                        @foreach (var tabpane in ViewBag.Tabs)
+                                        {
+                                            if (@tabpane.IsListView == true)
+                                            {<div class="tab-pane" id="@{@tabpane.Name}_List_@{@ViewBag.FormID}" role="tabpanel"></div> }
+                                            else
+                                            {
+                                                <div class="tab-pane" id="@{@tabpane.Name}_Form_@{@ViewBag.FormID}" role="tabpanel">
+                                                    <div class="col-md-8">
+                                                        <div class="form-group" id="@{@tabpane.Name}_@{@ViewBag.FormID}_dtlv"></div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="form-group" id="@{@tabpane.Name}_@{@ViewBag.FormID}_dtlv2"></div>
+                                                    </div>
+                                                    <div style="clear:both;"></div>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+@{var ObjectID = Common.GenerateName();};
+let @{@ObjectID} = { @{@Html.Raw(ViewBag.ObjectProperties)} };
+@{var mFrmID = Common.GenerateName();};
+let  @{@mFrmID} = new formyd(@{@ViewBag.pid});
+@{@mFrmID}.controller = 'DetailView';
+@{@mFrmID}.mguid = '@{@ViewBag.mguid}';
+@{@mFrmID}.mNm = '@{@ViewBag.mCode}';
+@{@mFrmID}.mNo = '@{@ViewBag.mNo}';
+@{@mFrmID}.mDesc = '@{@ViewBag.Description}';
+@{@mFrmID}.cObj =  @{@ObjectID};
+@{@mFrmID}.FKN =  '@{@ViewBag.FKeyName}';
+@{@mFrmID}.FK =  '@{@ViewBag.FKey}';
+@{@mFrmID}.fid =  '@{@ViewBag.FormID}';
+@{@mFrmID}.dvFormat =  @{@Html.Raw(ViewBag.DetailViewFormat)};
+	console.log('ito yung viewbag: ' + @ViewBag.pid);
+	console.log('ito yung viewbag ng session: ' + @ViewBag.Session);
+    console.log('ito yung viewbag ng Mno: ' + @ViewBag.mNo);
+    console.log('ito yung mfm: ' + @ViewBag.FormID);
+    console.log('ito yung id ng user: ' + @ViewBag.userrefno);
+    console.log('ito yung userrolesrefno: ' + @ViewBag.userrolesrefno);
+    //console.log('ito yung error sa par: ' + @TempData["ErrorMessage"]);
+    //  console.log('ito yung user action para sa button: ' + @ViewBag.UserAction);
+   // console.log('ito yung sa rv controller: ' + @ViewBag.ContractTemplate);
+    $('.content-wrapper').waitMe('hide');
+
+    var uri = '../api/PAREmpInfo';
+
+
+    $(document).ready(function () {
+        // Initial call to loadKPIListDetails
+        var approvallevel = @Html.Raw(ViewBag.ApprovalLevel ?? 0);
+        var userroles = @Html.Raw(ViewBag.userrolesrefno);
+        var useraction = '@ViewBag.UserAction';
+        // For Review
+        if (approvallevel == 1 && (userroles == 51 || userroles == 52 || userroles == 53 || userroles == 55 || userroles == 54 || userroles == 59)) {
+            if (@ViewBag.mNo == 56) {
+                document.getElementById('Delete_mFrm56').style.display = "none";
+                document.getElementById('Save_mFrm56').style.display = "none";
+
+
+            } else {
+                document.getElementById('Delete_mFrm53').style.display = "none";
+                document.getElementById('Save_mFrm53').style.display = "none";
+            }
+
+
+
+
+            // For Approval
+        } else if (approvallevel == 2 && (userroles == 52 || userroles == 53 || userroles == 55 || userroles == 54 || userroles == 59)) {
+            if (@ViewBag.mNo == 56) {
+                document.getElementById('Delete_mFrm56').style.display = "none";
+                document.getElementById('Save_mFrm56').style.display = "none";
+                document.getElementById('Disapprove_mFrm56').style.display = "none";
+
+            } else {
+                document.getElementById('Delete_mFrm53').style.display = "none";
+                document.getElementById('Save_mFrm53').style.display = "none";
+            }
+
+               // For Save Button on Approval Level 2
+        } else if (approvallevel == 2 && (userroles == 51)) {
+                if (@ViewBag.mNo == 56) {
+                    document.getElementById('Delete_mFrm56').style.display = "none";
+                    //document.getElementById('Save_mFrm56').style.display = "none";
+                    document.getElementById('Disapprove_mFrm56').style.display = "none";
+
+                } else {
+                    document.getElementById('Delete_mFrm53').style.display = "none";
+                    document.getElementById('Save_mFrm53').style.display = "none";
+                }
+
+
+
+            // For Implementation
+        } else if (approvallevel == 3 && (userroles == 51 || userroles == 52 || userroles == 53 || userroles == 55 || userroles == 54 || userroles == 59)) {
+            if (@ViewBag.mNo == 56) {
+                document.getElementById('Delete_mFrm56').style.display = "none";
+                document.getElementById('Save_mFrm56').style.display = "none";
+                document.getElementById('Disapprove_mFrm56').style.display = "none";
+
+            } else {
+                document.getElementById('Delete_mFrm53').style.display = "none";
+                document.getElementById('Save_mFrm53').style.display = "none";
+            }
+
+            // For Review
+        } else if (approvallevel == 1 && (userroles == 52 && useraction == "Review")) {
+            if (@ViewBag.mNo == 56) {
+                // document.getElementById('Delete_mFrm56').style.display = "none";
+                 document.getElementById('Save_mFrm56').style.display = "none";
+                // document.getElementById('Disapprove_mFrm56').style.display = "none";
+
+             } else {
+                 //document.getElementById('Delete_mFrm53').style.display = "none";
+                 //document.getElementById('Save_mFrm53').style.display = "none";
+             }
+        }
+
+
+
+        //document.getElementById('Delete_mFrm56').style.display = none;
+
+    });
+
+    // remove disabled upon change
+    $("#mFrm70001").off("change", "#PayrollRateRefNo_ActiveEmployeeInternal").on("change", "#PayrollRateRefNo_ActiveEmployeeInternal", function () {
+        document.getElementById("PayFrequencyRefNo_ActiveEmployeeInternal").disabled = false;
+        document.getElementById("PayBasisRefNo_ActiveEmployeeInternal").disabled = false;
+    });
+
+    $("#mFrm53").off("change", "#EmployeeRefNo_PARExternalRequest").on("change", "#EmployeeRefNo_PARExternalRequest", function () {
+        // Get the new value and convert it to a Date object
+
+
+
+    });
+
+    $("#mFrm53").off("change", "#ReasonForChangeRefNo_PARExternalRequest").on("change", "#ReasonForChangeRefNo_PARExternalRequest", function () {
+
+        // Get selected text/value from first dropdown
+        var reasonText = $("#ReasonForChangeRefNo_PARExternalRequest option:selected").text().trim();
+        var reasonValue = $("#ReasonForChangeRefNo_PARExternalRequest").val();
+
+        // Get selected value from second dropdown
+        var fowValue = $("#FOWRefNo_PARExternalRequest").val();
+
+        // Check conditions
+        if ((reasonText === "Regularization" || reasonValue === "Regularization") && fowValue === "IT") {
+            $('#AddtlPaidLeaves_PARExternalRequest').val('5');
+        }
+
+    });
+
+    $("#mFrm53").off("change", "#EmployeeRefNo_PARExternalRequest").on("change", "#EmployeeRefNo_PARExternalRequest", function () {
+
+        //alert('noel');
+        $("#10690_ListView_53_Table tbody")
+            .empty()
+            .append('<tr><td colspan="100%" class="text-center">No data available</td></tr>');
+
+        var employeerefno_par = $('#EmployeeRefNo_PARExternalRequest').val();
+
+        $.ajax({
+         type: "POST",
+         cache: false,
+            url: '@Url.Action("GetEmployeeMovement2", "PAR")?pkey=' + employeerefno_par,
+            success: function (data) {
+
+                var table = $("#10690_ListView_53_Table").DataTable();
+
+                table.clear();
+
+                if (typeof data === "string") {
+                    data = JSON.parse(data);
+                }
+
+                if (!data || data.length === 0) {
+                    table.draw();
+                    return;
+                }
+
+                $.each(data, function (i, item) {
+                    table.row.add(item);
+                });
+
+                table.draw();
+
+            }
+        })
+
+    });
+
+    $("#mFrm53").off("change", "#EndDate_PARExternalRequest").on("change", "#EndDate_PARExternalRequest", function () {
+        // Get the new value and convert it to a Date object
+        var enddate = new Date($(this).val());
+        var startdate = new Date($('#StartDate_PARExternalRequest').val());
+        //EndDate_PARExternalRequest
+
+        // Check if the selected date is before today's date
+        if (enddate < startdate) {
+            Toast.Error("Selected date is in the past: " + $(this).val() + ". Please change the end date");
+            //alert("Selected date is in the past: " + $(this).val());
+            // Clear the selected date
+            $('#EndDate_PARExternalRequest').val('');
+        }
+    });
+
+
+    $("#mFrm53").off("change", "#StartDate_PARExternalRequest").on("change", "#StartDate_PARExternalRequest", function () {
+        // Get the new value and convert it to a Date object
+        var startdate = new Date($(this).val());
+        var enddate = new Date($('#EndDate_PARExternalRequest').val());
+        //EndDate_PARExternalRequest
+
+        // Check if the selected date is before today's date
+        if (enddate < startdate) {
+            Toast.Error("Selected start date is later than the end date: " + $(this).val() + ". Please change the end date");
+            //alert("Selected date is in the past: " + $(this).val());
+            // Clear the selected date
+            $('#EndDate_PARExternalRequest').val('');
+        }
+    });
+
+    $("#mFrm56").off("change", "#EndDate_PARInternalRequest").on("change", "#EndDate_PARInternalRequest", function () {
+        // Get the new value and convert it to a Date object
+        var enddate = new Date($(this).val());
+        var startdate = new Date($('#StartDate_PARInternalRequest').val());
+        //EndDate_PARExternalRequest
+
+        // Check if the selected date is before today's date
+        if (enddate < startdate) {
+            Toast.Error("Selected date is in the past: " + $(this).val() + ". Please change the end date");
+            //alert("Selected date is in the past: " + $(this).val());
+            // Clear the selected date
+            $('#EndDate_PARInternalRequest').val('');
+        }
+    });
+
+    $("#mFrm56").off("change", "#StartDate_PARInternalRequest").on("change", "#StartDate_PARInternalRequest", function () {
+        // Get the new value and convert it to a Date object
+        var startdate = new Date($(this).val());
+        var enddate = new Date($('#EndDate_PARInternalRequest').val());
+        //EndDate_PARExternalRequest
+
+        // Check if the selected date is before today's date
+        if (enddate < startdate) {
+            Toast.Error("Selected start date is later than the end date: " + $(this).val() + ". Please change the end date");
+            //alert("Selected date is in the past: " + $(this).val());
+            // Clear the selected date
+            $('#EndDate_PARInternalRequest').val('');
+        }
+    });
+
+    $("#mFrm56").off("select2:select", "#EmployeeRefNo_PARInternalRequest").on("select2:select", "#EmployeeRefNo_PARInternalRequest", function () {
+        var employeerefno = $('#EmployeeRefNo_PARInternalRequest').val();
+        //console.log(employeerefno);
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: '@Url.Action("CheckDuplicatePAR","PAR")?empno=' + employeerefno,
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                if (jsonArray.length == 0 && employeerefno > 0) {
+                    $.getJSON(uri + '?empid=' + employeerefno + '&pkey=@ViewBag.pid')
+                    .done(function (data) {
+                        $('#FOWRefNo_PARInternalRequest').val(data.FowRefNo).trigger("select2:select");
+                        $('#EmployeeTypeRefNo_PARInternalRequest').val(data.EmployeeTypeRefNo).trigger("select2:select");
+                        $('#EmploymentStatusRefNo_PARInternalRequest').val(data.EmploymentStatusRefNo).trigger("select2:select");
+                        $('#DepartmentRefNo_PARInternalRequest').val(data.DepartmentRefNo).trigger("select2:select");
+                        $('#JobBandRefNo_PARInternalRequest').val(data.JobBandRefNo).trigger("select2:select");
+                        $('#JobPositionRefNo_PARInternalRequest').val(data.JobPositionRefNo).trigger("select2:select");
+                        $('#StartDate_PARInternalRequest').val(data.StartDate).trigger("change");
+                        $('#EndDate_PARInternalRequest').val(data.EndDate).trigger("change");
+                        $('#DateHired_PARInternalRequest').val(data.DateHired).trigger("change");
+                        $('#ContractualDate_PARInternalRequest').val(data.ContractualDate).trigger("change");
+                        $('#DateProbationary_PARInternalRequest').val(data.DateProbationary).trigger("change");
+                        $('#DateRegularized_PARInternalRequest').val(data.DateRegularized).trigger("change");
+
+                        $('#PayrollRateRefNo_PARInternalRequest').val(data.PayrollRateRefNo).trigger("select2:select");
+                        $('#PayBasisRefNo_PARInternalRequest').val(data.PayBasisRefNo).trigger("select2:select");
+                        $('#EcolaComputationRefNo_PARInternalRequest').val(data.EcolaComputationRefNo).trigger("select2:select");
+                        $('#EcolaRateRefNo_PARInternalRequest').val(data.EcolaRateRefNo).trigger("select2:select");
+                        $('#BasicRate_PARInternalRequest').val(data.BasicRate).trigger("input");
+                        $('#NonTaxAllowance_PARInternalRequest').val(data.NonTaxAllowance).trigger("input");
+
+                        CKEDITOR.instances['JobDescription_PARInternalRequest'].setData(data.JobDescription, function () {
+                            this.checkDirty();
+                        });
+
+                        $('#IsUpdateSOW_PARInternalRequest').prop('checked',data.IsUpdateSOW == 1 ? 0 : 1).trigger('click');
+
+                        $('#ProjectName_PARInternalRequest').val(data.ProjectName).trigger('input');
+
+                        $("#SubmittedDate_PARInternalRequest").val(data.DateNow).trigger("change");
+                    })
+            } else { if($('#EmployeeRefNo_PARInternalRequest').val() > 0) {
+                $('#EmployeeRefNo_PARInternalRequest').val(0).trigger("select2:select");
+
+                $('#FOWRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                $('#EmployeeTypeRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                $('#EmploymentStatusRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                $('#DepartmentRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                $('#JobBandRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                $('#JobPositionRefNo_PARInternalRequest').val('').trigger("input");
+                $('#StartDate_PARInternalRequest').val(null).trigger("change");
+                $('#EndDate_PARInternalRequest').val(null).trigger("change");
+                $('#DateHired_PARInternalRequest').val(null).trigger("change");
+                $('#ContractualDate_PARInternalRequest').val(null).trigger("change");
+                $('#DateProbationary_PARInternalRequest').val(null).trigger("change");
+                $('#DateRegularized_PARInternalRequest').val(null).trigger("change");
+
+                $('#PayrollRateRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                $('#PayBasisRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                $('#EcolaComputationRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                $('#EcolaRateRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                $('#BasicRate_PARInternalRequest').val(0).trigger("input");
+                $('#NonTaxAllowance_PARInternalRequest').val(0).trigger("input");
+
+                CKEDITOR.instances['JobDescription_PARInternalRequest'].setData('', function () {
+                    this.checkDirty();
+                });
+
+                $('#IsUpdateSOW_PARInternalRequest').prop('checked', $('#IsUpdateSOW_PARInternalRequest').val() ?  true : false).trigger('click');
+
+                $('#ProjectName_PARInternalRequest').val(0).trigger('input');
+
+                Toast.Error("Duplicate entry is not allowed. Please complete the first entry before filing new par request."); return false;}}
+            }
+        })
+    });
+
+    $("#mFrm53").off("select2:select", "#EmployeeRefNo_PARExternalRequest").on("select2:select", "#EmployeeRefNo_PARExternalRequest", function () {
+        var employeerefno = $('#EmployeeRefNo_PARExternalRequest').val();
+     console.log(employeerefno);
+     $.ajax({
+         type: "POST",
+         cache: false,
+         url: '@Url.Action("CheckDuplicatePAR","PAR")?empno=' + employeerefno,
+         success: function (data) {
+             var jsonArray = JSON.parse(data);
+             if (jsonArray.length == 0 && employeerefno > 0) {
+                 $.getJSON(uri + '?empid=' + employeerefno + '&pkey=@ViewBag.pid')
+                 .done(function (data) {
+                     $('#FOWRefNo_PARExternalRequest').val(data.FowRefNo).trigger("select2:select");
+                     $('#EmployeeTypeRefNo_PARExternalRequest').val(data.EmployeeTypeRefNo).trigger("select2:select");
+                     $('#EmploymentStatusRefNo_PARExternalRequest').val(data.EmploymentStatusRefNo).trigger("select2:select");
+                     $('#ClientAccountRefNo_PARExternalRequest').val(data.ClientAccountRefNo).trigger("select2:select");
+                     $('#ClientAddress_PARExternalRequest').val(data.ClientAddress).trigger("input");
+                     $('#JobPosition_PARExternalRequest').val(data.JobPosition).trigger("input");
+                     $('#DepartmentRefNo_PARExternalRequest').val(data.DepartmentRefNo).trigger("select2:select");
+                     $('#JobBandRefNo_PARExternalRequest').val(data.JobBandRefNo).trigger("select2:select");
+                     $('#JobPositionRefNo_PARExternalRequest').val(data.JobPositionRefNo).trigger("select2:select");
+                     $('#StartDate_PARExternalRequest').val(data.StartDate).trigger("change");
+                     $('#EndDate_PARExternalRequest').val(data.EndDate).trigger("change");
+                     $('#DateHired_PARExternalRequest').val(data.DateHired).trigger("change");
+                     $('#ContractualDate_PARExternalRequest').val(data.ContractualDate).trigger("change");
+                     $('#DateProbationary_PARExternalRequest').val(data.DateProbationary).trigger("change");
+                     $('#DateRegularized_PARExternalRequest').val(data.DateRegularized).trigger("change");
+
+                     $('#PayrollRateRefNo_PARExternalRequest').val(data.PayrollRateRefNo).trigger("select2:select");
+                     $('#PayBasisRefNo_PARExternalRequest').val(data.PayBasisRefNo).trigger("select2:select");
+                     $('#EcolaComputationRefNo_PARExternalRequest').val(data.EcolaComputationRefNo).trigger("select2:select");
+                     $('#EcolaRateRefNo_PARExternalRequest').val(data.EcolaRateRefNo).trigger("select2:select");
+                     $('#BasicRate_PARExternalRequest').val(data.BasicRate).trigger("input");
+                     $('#ClientRate_PARExternalRequest').val(data.ClientRate).trigger("input");
+                     $('#NonTaxAllowance_PARExternalRequest').val(data.NonTaxAllowance).trigger("input");
+
+                     $('#SeparationPay_PARExternalRequest').prop('checked', data.SepTag == 1 ? 0 : 1).trigger('click');
+                    $('#T13ThMonth_PARExternalRequest').prop('checked', data.W13thMonth == 1 ? 0 : 1).trigger('click');
+                    $('#HolidayPay_PARExternalRequest').prop('checked', data.HOLTag == 1 ? 0 : 1).trigger('click');
+
+                     $('#SIL_PARExternalRequest').val(data.SIL).trigger('input');
+                     $('#AddtlPaidLeaves_PARExternalRequest').val(data.AddtlPaidLeaves).trigger('input');
+                     $('#APLProRata_PARExternalRequest').prop('checked', data.APLProRata == 1 ? 0 : 1).trigger('click');
+                     $('#HMODC_PARExternalRequest').val(data.HMODC).trigger('input');
+                     $('#HMOAmount_PARExternalRequest').val(data.HMOAmount).trigger('input');
+                     $('#OTAssumption_PARExternalRequest').val(data.OTAssumption).trigger('input');
+
+                     //$('#HMODC_PARExternalRequest').val(12000).trigger("input");
+                     //$('#HMOAmount_PARExternalRequest').val(60000).trigger("input");
+                     //$('#SIL_PARExternalRequest').val(5).trigger("input");
+
+                     CKEDITOR.instances['JobDescription_PARExternalRequest'].setData(data.JobDescription, function () {
+                         this.checkDirty();
+                     });
+
+                     $('#IsUpdateSOW_PARExternalRequest').prop('checked',data.IsUpdateSOW == 1 ? 0 : 1).trigger('click');
+
+                     $('#ProjectName_PARExternalRequest').val(data.ProjectName).trigger('input');
+
+                     $("#SubmittedDate_PARExternalRequest").val(data.DateNow).trigger("change");
+                 })
+             } else {
+                 if ($('#EmployeeRefNo_PARExternalRequest').val() > 0) {
+              $('#EmployeeRefNo_PARExternalRequest').val(0).trigger("select2:select");
+
+             $('#FOWRefNo_PARExternalRequest').val(0).trigger("select2:select");
+             $('#EmployeeTypeRefNo_PARExternalRequest').val(0).trigger("select2:select");
+             $('#EmploymentStatusRefNo_PARExternalRequest').val(0).trigger("select2:select");
+                     $('#ClientAccountRefNo_PARExternalRequest').val(0).trigger("select2:select");
+             $('#DepartmentRefNo_PARExternalRequest').val(0).trigger("select2:select");
+             $('#JobBandRefNo_PARExternalRequest').val(0).trigger("select2:select");
+             $('#JobPositionRefNo_PARExternalRequest').val('').trigger("input");
+             $('#StartDate_PARExternalRequest').val(null).trigger("change");
+             $('#EndDate_PARExternalRequest').val(null).trigger("change");
+             $('#DateHired_PARExternalRequest').val(null).trigger("change");
+             $('#ContractualDate_PARExternalRequest').val(null).trigger("change");
+             $('#DateProbationary_PARExternalRequest').val(null).trigger("change");
+             $('#DateRegularized_PARExternalRequest').val(null).trigger("change");
+
+             $('#PayrollRateRefNo_PARExternalRequest').val(0).trigger("select2:select");
+             $('#PayBasisRefNo_PARExternalRequest').val(0).trigger("select2:select");
+             $('#EcolaComputationRefNo_PARExternalRequest').val(0).trigger("select2:select");
+             $('#EcolaRateRefNo_PARExternalRequest').val(0).trigger("select2:select");
+             $('#BasicRate_PARExternalRequest').val(0).trigger("input");
+                     $('#ClientRate_PARExternalRequest').val(0).trigger("input");
+             $('#NonTaxAllowance_PARExternalRequest').val(0).trigger("input");
+
+             CKEDITOR.instances['JobDescription_PARExternalRequest'].setData('', function () {
+                 this.checkDirty();
+             });
+
+             $('#IsUpdateSOW_PARExternalRequest').prop('checked', $('#IsUpdateSOW_PARExternalRequest').val() ?  true : false).trigger('click');
+
+             $('#ProjectName_PARExternalRequest').val(0).trigger('input');
+
+             Toast.Error("Duplicate entry is not allowed. Please complete the first entry before filing new par request."); return false;}}
+         }
+     })
+    });
+
+    // Start - External Active Employees
+
+    $("#mFrm60001").off("select2:select", "#PermanentRegionRefNo_ExtActiveEmployee").on("select2:select", "#PermanentRegionRefNo_ExtActiveEmployee", function () {
+        var region = $('#PermanentRegionRefNo_ExtActiveEmployee').select2().val();
+        var province = $('#PermanentProvinceRefNo_ExtActiveEmployee');
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtActiveEmployee');
+        var barangay = $('#PermanentBrgyRefNo_ExtActiveEmployee');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+            // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+
+
+    });
+
+
+    $("#mFrm60001").off("select2:select", "#PermanentProvinceRefNo_ExtActiveEmployee").on("select2:select", "#PermanentProvinceRefNo_ExtActiveEmployee", function () {
+        var province = $('#PermanentProvinceRefNo_ExtActiveEmployee').select2().val();
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtActiveEmployee');
+        var barangay = $('#PermanentBrgyRefNo_ExtActiveEmployee');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60001").off("select2:select", "#PermanentMunicipalityRefNo_ExtActiveEmployee").on("select2:select", "#PermanentMunicipalityRefNo_ExtActiveEmployee", function () {
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtActiveEmployee').select2().val();
+        var barangay = $('#PermanentBrgyRefNo_ExtActiveEmployee');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    $("#mFrm60001").off("select2:select", "#RegionRefNo_ExtActiveEmployee").on("select2:select", "#RegionRefNo_ExtActiveEmployee", function () {
+        var region = $('#RegionRefNo_ExtActiveEmployee').select2().val();
+        var province = $('#ProvinceRefNo_ExtActiveEmployee');
+        var municiplaity = $('#MunicipalityRefNo_ExtActiveEmployee');
+        var barangay = $('#BrgyRefNo_ExtActiveEmployee');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60001").off("select2:select", "#ProvinceRefNo_ExtActiveEmployee").on("select2:select", "#ProvinceRefNo_ExtActiveEmployee", function () {
+        var province = $('#ProvinceRefNo_ExtActiveEmployee').select2().val();
+        var municiplaity = $('#MunicipalityRefNo_ExtActiveEmployee');
+        var barangay = $('#BrgyRefNo_ExtActiveEmployee');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60001").off("select2:select", "#MunicipalityRefNo_ExtActiveEmployee").on("select2:select", "#MunicipalityRefNo_ExtActiveEmployee", function () {
+        var municiplaity = $('#MunicipalityRefNo_ExtActiveEmployee').select2().val();
+        var barangay = $('#BrgyRefNo_ExtActiveEmployee');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    // End - External Active Employees
+
+    // Start - External Inactive Employees
+
+    $("#mFrm60002").off("select2:select", "#PermanentRegionRefNo_ExtInactiveEmployee").on("select2:select", "#PermanentRegionRefNo_ExtInactiveEmployee", function () {
+        var region = $('#PermanentRegionRefNo_ExtInactiveEmployee').select2().val();
+        var province = $('#PermanentProvinceRefNo_ExtInactiveEmployee');
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtInactiveEmployee');
+        var barangay = $('#PermanentBrgyRefNo_ExtInactiveEmployee');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+
+
+    });
+
+    $("#mFrm60002").off("select2:select", "#PermanentProvinceRefNo_ExtInactiveEmployee").on("select2:select", "#PermanentProvinceRefNo_ExtInactiveEmployee", function () {
+        var province = $('#PermanentProvinceRefNo_ExtInactiveEmployee').select2().val();
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtInactiveEmployee');
+        var barangay = $('#PermanentBrgyRefNo_ExtInactiveEmployee');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60002").off("select2:select", "#PermanentMunicipalityRefNo_ExtInactiveEmployee").on("select2:select", "#PermanentMunicipalityRefNo_ExtInactiveEmployee", function () {
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtInactiveEmployee').select2().val();
+        var barangay = $('#PermanentBrgyRefNo_ExtInactiveEmployee');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    $("#mFrm60002").off("select2:select", "#RegionRefNo_ExtInactiveEmployee").on("select2:select", "#RegionRefNo_ExtInactiveEmployee", function () {
+        var region = $('#RegionRefNo_ExtInactiveEmployee').select2().val();
+        var province = $('#ProvinceRefNo_ExtInactiveEmployee');
+        var municiplaity = $('#MunicipalityRefNo_ExtInactiveEmployee');
+        var barangay = $('#BrgyRefNo_ExtInactiveEmployee');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60002").off("select2:select", "#ProvinceRefNo_ExtInactiveEmployee").on("select2:select", "#ProvinceRefNo_ExtInactiveEmployee", function () {
+        var province = $('#ProvinceRefNo_ExtInactiveEmployee').select2().val();
+        var municiplaity = $('#MunicipalityRefNo_ExtInactiveEmployee');
+        var barangay = $('#BrgyRefNo_ExtInactiveEmployee');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60002").off("select2:select", "#MunicipalityRefNo_ExtInactiveEmployee").on("select2:select", "#MunicipalityRefNo_ExtInactiveEmployee", function () {
+        var municiplaity = $('#MunicipalityRefNo_ExtInactiveEmployee').select2().val();
+        var barangay = $('#BrgyRefNo_ExtInactiveEmployee');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    // End - External Inactive Employees
+
+    // Start - External Floating Employees
+
+    $("#mFrm60003").off("select2:select", "#PermanentRegionRefNo_ExtFloatingEmployee").on("select2:select", "#PermanentRegionRefNo_ExtFloatingEmployee", function () {
+        var region = $('#PermanentRegionRefNo_ExtFloatingEmployee').select2().val();
+        var province = $('#PermanentProvinceRefNo_ExtFloatingEmployee');
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtFloatingEmployee');
+        var barangay = $('#PermanentBrgyRefNo_ExtFloatingEmployee');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+
+
+    });
+
+    $("#mFrm60003").off("select2:select", "#PermanentProvinceRefNo_ExtFloatingEmployee").on("select2:select", "#PermanentProvinceRefNo_ExtFloatingEmployee", function () {
+        var province = $('#PermanentProvinceRefNo_ExtFloatingEmployee').select2().val();
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtFloatingEmployee');
+        var barangay = $('#PermanentBrgyRefNo_ExtFloatingEmployee');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60003").off("select2:select", "#PermanentMunicipalityRefNo_ExtFloatingEmployee").on("select2:select", "#PermanentMunicipalityRefNo_ExtFloatingEmployee", function () {
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtFloatingEmployee').select2().val();
+        var barangay = $('#PermanentBrgyRefNo_ExtFloatingEmployee');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    $("#mFrm60003").off("select2:select", "#RegionRefNo_ExtFloatingEmployee").on("select2:select", "#RegionRefNo_ExtFloatingEmployee", function () {
+        var region = $('#RegionRefNo_ExtFloatingEmployee').select2().val();
+        var province = $('#ProvinceRefNo_ExtFloatingEmployee');
+        var municiplaity = $('#MunicipalityRefNo_ExtFloatingEmployee');
+        var barangay = $('#BrgyRefNo_ExtFloatingEmployee');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60003").off("select2:select", "#ProvinceRefNo_ExtFloatingEmployee").on("select2:select", "#ProvinceRefNo_ExtFloatingEmployee", function () {
+        var province = $('#ProvinceRefNo_ExtFloatingEmployee').select2().val();
+        var municiplaity = $('#MunicipalityRefNo_ExtFloatingEmployee');
+        var barangay = $('#BrgyRefNo_ExtFloatingEmployee');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60003").off("select2:select", "#MunicipalityRefNo_ExtFloatingEmployee").on("select2:select", "#MunicipalityRefNo_ExtFloatingEmployee", function () {
+        var municiplaity = $('#MunicipalityRefNo_ExtFloatingEmployee').select2().val();
+        var barangay = $('#BrgyRefNo_ExtFloatingEmployee');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    // End - External Floating Employees
+
+    // Start - External Loading Employees
+
+    $("#mFrm60004").off("select2:select", "#PermanentRegionRefNo_ExtLoadingEmployee").on("select2:select", "#PermanentRegionRefNo_ExtLoadingEmployee", function () {
+        var region = $('#PermanentRegionRefNo_ExtLoadingEmployee').select2().val();
+        var province = $('#PermanentProvinceRefNo_ExtLoadinEmployee');
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtLoadingEmployee');
+        var barangay = $('#PermanentBrgyRefNo_ExtLoadingEmployee');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+
+
+    });
+
+    $("#mFrm60004").off("select2:select", "#PermanentProvinceRefNo_ExtLoadingEmployee").on("select2:select", "#PermanentProvinceRefNo_ExtLoadingEmployee", function () {
+        var province = $('#PermanentProvinceRefNo_ExtLoadingEmployee').select2().val();
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtLoadingEmployee');
+        var barangay = $('#PermanentBrgyRefNo_ExtLoadingEmployee');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60004").off("select2:select", "#PermanentMunicipalityRefNo_ExtLoadingEmployee").on("select2:select", "#PermanentMunicipalityRefNo_ExtLoadingEmployee", function () {
+        var municiplaity = $('#PermanentMunicipalityRefNo_ExtLoadingEmployee').select2().val();
+        var barangay = $('#PermanentBrgyRefNo_ExtLoadingEmployee');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    $("#mFrm60004").off("select2:select", "#RegionRefNo_ExtLoadingEmployee").on("select2:select", "#RegionRefNo_ExtLoadingEmployee", function () {
+        var region = $('#RegionRefNo_ExtLoadingEmployee').select2().val();
+        var province = $('#ProvinceRefNo_ExtLoadingEmployee');
+        var municiplaity = $('#MunicipalityRefNo_ExtLoadingEmployee');
+        var barangay = $('#BrgyRefNo_ExtLoadingEmployee');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60004").off("select2:select", "#ProvinceRefNo_ExtLoadingEmployee").on("select2:select", "#ProvinceRefNo_ExtLoadingEmployee", function () {
+        var province = $('#ProvinceRefNo_ExtLoadingEmployee').select2().val();
+        var municiplaity = $('#MunicipalityRefNo_ExtLoadingEmployee');
+        var barangay = $('#BrgyRefNo_ExtLoadingEmployee');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm60004").off("select2:select", "#MunicipalityRefNo_ExtLoadingEmployee").on("select2:select", "#MunicipalityRefNo_ExtLoadingEmployee", function () {
+        var municiplaity = $('#MunicipalityRefNo_ExtLoadingEmployee').select2().val();
+        var barangay = $('#BrgyRefNo_ExtLoadingEmployee');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    // Start - Internal Active Employees
+
+    $("#mFrm70001").off("select2:select", "#PermanentRegionRefNo_ActiveEmployeeInternal").on("select2:select", "#PermanentRegionRefNo_ActiveEmployeeInternal", function () {
+        var region = $('#PermanentRegionRefNo_ActiveEmployeeInternal').select2().val();
+        var province = $('#PermanentProvinceRefNo_ActiveEmployeeInternal');
+        var municiplaity = $('#PermanentMunicipalityRefNo_ActiveEmployeeInternal');
+        var barangay = $('#PermanentBrgyRefNo_ActiveEmployeeInternal');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+
+
+    });
+
+    $("#mFrm70001").off("select2:select", "#PermanentProvinceRefNo_ActiveEmployeeInternal").on("select2:select", "#PermanentProvinceRefNo_ActiveEmployeeInternal", function () {
+        var province = $('#PermanentProvinceRefNo_ActiveEmployeeInternal').select2().val();
+        var municiplaity = $('#PermanentMunicipalityRefNo_ActiveEmployeeInternal');
+        var barangay = $('#PermanentBrgyRefNo_ActiveEmployeeInternal');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm70001").off("select2:select", "#PermanentMunicipalityRefNo_ActiveEmployeeInternal").on("select2:select", "#PermanentMunicipalityRefNo_ActiveEmployeeInternal", function () {
+        var municiplaity = $('#PermanentMunicipalityRefNo_ActiveEmployeeInternal').select2().val();
+        var barangay = $('#PermanentBrgyRefNo_ActiveEmployeeInternal');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    $("#mFrm70001").off("select2:select", "#RegionRefNo_ActiveEmployeeInternal").on("select2:select", "#RegionRefNo_ActiveEmployeeInternal", function () {
+        var region = $('#RegionRefNo_ActiveEmployeeInternal').select2().val();
+        var province = $('#ProvinceRefNo_ActiveEmployeeInternal');
+        var municiplaity = $('#MunicipalityRefNo_ActiveEmployeeInternal');
+        var barangay = $('#BrgyRefNo_ActiveEmployeeInternal');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+    });
+
+    $("#mFrm70001").off("select2:select", "#ProvinceRefNo_ActiveEmployeeInternal").on("select2:select", "#ProvinceRefNo_ActiveEmployeeInternal", function () {
+        var province = $('#ProvinceRefNo_ActiveEmployeeInternal').select2().val();
+        var municiplaity = $('#MunicipalityRefNo_ActiveEmployeeInternal');
+        var barangay = $('#BrgyRefNo_ActiveEmployeeInternal');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm70001").off("select2:select", "#MunicipalityRefNo_ActiveEmployeeInternal").on("select2:select", "#MunicipalityRefNo_ActiveEmployeeInternal", function () {
+        var municiplaity = $('#MunicipalityRefNo_ActiveEmployeeInternal').select2().val();
+        var barangay = $('#BrgyRefNo_ActiveEmployeeInternal');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    // End - Internal Active Employees
+
+    // Start - Internal Inactive Employees
+
+    $("#mFrm70002").off("select2:select", "#PermanentRegionRefNo_InactiveEmployeeInternal").on("select2:select", "#PermanentRegionRefNo_InactiveEmployeeInternal", function () {
+        var region = $('#PermanentRegionRefNo_InactiveEmployeeInternal').select2().val();
+        var province = $('#PermanentProvinceRefNo_InactiveEmployeeInternal');
+        var municiplaity = $('#PermanentMunicipalityRefNo_InactiveEmployeeInternal');
+        var barangay = $('#PermanentBrgyRefNo_InactiveEmployeeInternal');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+
+
+    });
+
+    $("#mFrm70002").off("select2:select", "#PermanentProvinceRefNo_InactiveEmployeeInternal").on("select2:select", "#PermanentProvinceRefNo_InactiveEmployeeInternal", function () {
+        var province = $('#PermanentProvinceRefNo_InactiveEmployeeInternal').select2().val();
+        var municiplaity = $('#PermanentMunicipalityRefNo_InactiveEmployeeInternal');
+        var barangay = $('#PermanentBrgyRefNo_InactiveEmployeeInternal');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm70002").off("select2:select", "#PermanentMunicipalityRefNo_InactiveEmployeeInternal").on("select2:select", "#PermanentMunicipalityRefNo_InactiveEmployeeInternal", function () {
+        var municiplaity = $('#PermanentMunicipalityRefNo_InactiveEmployeeInternal').select2().val();
+        var barangay = $('#PermanentBrgyRefNo_InactiveEmployeeInternal');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    $("#mFrm70002").off("select2:select", "#RegionRefNo_InactiveEmployeeInternal").on("select2:select", "#RegionRefNo_InactiveEmployeeInternal", function () {
+        var region = $('#RegionRefNo_InactiveEmployeeInternal').select2().val();
+        var province = $('#ProvinceRefNo_InactiveEmployeeInternal');
+        var municiplaity = $('#MunicipalityRefNo_InactiveEmployeeInternal');
+        var barangay = $('#BrgyRefNo_InactiveEmployeeInternal');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetProvinceList?PerfIndicatorID=' + region,
+            dataType: 'json',
+        }).then(function (data) {
+            province.empty().trigger('change');
+            municiplaity.empty().trigger('change');
+            barangay.empty().trigger('change');
+            var jsonArray = JSON.parse(data);
+            province.append('<option id="0" value="0">N/A</option>');
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                province.append(option).trigger('change');
+            }
+
+            province.val(0);
+
+        });
+
+    });
+
+    $("#mFrm70002").off("select2:select", "#ProvinceRefNo_InactiveEmployeeInternal").on("select2:select", "#ProvinceRefNo_InactiveEmployeeInternal", function () {
+        var province = $('#ProvinceRefNo_InactiveEmployeeInternal').select2().val();
+        var municiplaity = $('#MunicipalityRefNo_InactiveEmployeeInternal');
+        var barangay = $('#BrgyRefNo_InactiveEmployeeInternal');
+        municiplaity.empty().trigger('change');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetMunicipalityList?PerfIndicatorID=' + province,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            municiplaity.append('<option id="0" value="0">N/A</option>');
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                municiplaity.append(option).trigger('change');
+            }
+
+            municiplaity.val(0);
+
+        });
+
+    });
+
+    $("#mFrm70002").off("select2:select", "#MunicipalityRefNo_InactiveEmployeeInternal").on("select2:select", "#MunicipalityRefNo_InactiveEmployeeInternal", function () {
+        var municiplaity = $('#MunicipalityRefNo_InactiveEmployeeInternal').select2().val();
+        var barangay = $('#BrgyRefNo_InactiveEmployeeInternal');
+        barangay.empty().trigger('change');
+        $.ajax({
+            type: 'GET',
+            //url: '/api/students/s/' + studentId
+            url: '../KPI/GetBarangayList?PerfIndicatorID=' + municiplaity,
+            dataType: 'json',
+        }).then(function (data) {
+            var jsonArray = JSON.parse(data);
+            barangay.append('<option id="0" value="0">N/A</option>');
+
+            for (var i = 0; i < jsonArray.length; i++) {
+                // create the option and append to Select2
+                var option = new Option(jsonArray[i][1], jsonArray[i][0], true, true);
+
+                barangay.append(option).trigger('change');
+            }
+
+            barangay.val(0);
+
+        });
+    });
+
+    // End - Internal Inactive Employees
+
+
+    // Start - KPI List
+
+    $("#mFrm1131").off("select2:select", "#EmployeeRefNo_DepartmentGlobe").on("select2:select", "#EmployeeRefNo_DepartmentGlobe", function () {
+
+        var employeerefno = $('#EmployeeRefNo_DepartmentGlobe').val();
+
+        //var employeename_dropdown = $('#EmployeeRefNo_DepartmentGlobe');
+
+
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: '@Url.Action("CheckDuplicateGLobeEmployee", "PAR")?empno=' + employeerefno,
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                if (jsonArray.length == 0 && employeerefno > 0) {
+
+
+
+
+
+                } else {
+                    if ($('#EmployeeRefNo_DepartmentGlobe').val() > 0) {
+
+
+
+                        var $select = $('#EmployeeRefNo_DepartmentGlobe');
+                        var selectedValue = $select.val();
+
+                        if (selectedValue) {
+                            $select.find('option:selected').remove();
+                            $select.trigger('change');
+                        }
+
+
+                        Toast.Error("This Employee is already on the list");
+                        //return false;
+
+                    }
+                }
+            }
+        })
+        //alert('Hello');
+
+    });
+    // End - KPI List
+
+</script>

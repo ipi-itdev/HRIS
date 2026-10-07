@@ -1,0 +1,109 @@
+﻿<section class="content-header">
+    <h1>Performance Evaluation (History)</h1>
+
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Evaluation</a></li>
+        <li class="active">History</li>
+    </ol>
+</section>
+<section class="content" style="position:relative">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-body" id="EVALUATE">
+                    <div id="tblList_EVALUATE_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="col-md-12">
+                            <table id="tblList_HISTORY" class="table table-bordered table-striped table-hover tblList" style="font-size:13px;">
+                                <thead id="tblHead">
+                                    <tr class="notfilter" role="row">
+                                        <th rowspan="1" colspan="1">ID</th>
+                                        <th rowspan="1" colspan="1" style="width:5%">Employee #</th>
+                                        <th rowspan="1" colspan="1" style="width:16%">Employee Name</th>
+                                        <th rowspan="1" colspan="1" style="width:20%">Department</th>
+                                        <th rowspan="1" colspan="1" style="width:13%">Job Title</th>
+                                        <th rowspan="1" colspan="1" style="width:5%">Job Grade</th>
+                                        <th rowspan="1" colspan="1" style="width:10%">Employment Status</th>
+                                        <th rowspan="1" colspan="1" style="width:8%">Purpose of Evaluation</th>
+                                        <th rowspan="1" colspan="1" style="width:10%">Period Covered</th>
+                                        <th rowspan="1" colspan="1" style="width:22%">Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblBody"></tbody>
+                                <tfoot></tfoot>
+                            </table>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+         $('.content-wrapper').waitMe('hide');
+		var table;
+		table = $("#tblList_HISTORY").DataTable({
+			"columnDefs": [{ "targets": 10, "data": null, "defaultContent": "<button type='button' style='width: 100%' id='btnView' class='btn btn-alert'>View Details</button>" },
+			 {
+				 "targets": [0],
+				 "visible": false
+			 }],
+			ajax: {
+				url: '@Url.Action("GetEmployeeListHistory", "KPI")',
+				type: 'POST',
+				datatype: 'application/json; charset=utf-8',
+				dataSrc: function (data) { return JSON.parse(data); },
+				error: function (e) { }
+			}
+		, order: [[1, 'asc']], pageResize: true,
+            initComplete: function () { }
+       
+	});
+
+	//--
+
+	    $('#tblList_HISTORY tbody').on('click', '#btnView', function () {
+		var data = table.row($(this).parents('tr')).data();
+		kpiAssignmentID = data[0];
+		employeeInfo = (data[2] + " \\ " + data[4] + " " + data[5]);
+		currentUser = '@ViewBag.cuser';
+	    var reportName;
+	    $.ajax({
+	        type: "POST",
+	        cache: false,
+            url: '../KPI/CheckTargets?kpiid=' + kpiAssignmentID + '&empRefNo=' + 0,
+	        success: function (data) {
+	            var jsonResult = JSON.parse(data);
+
+                if (parseInt(jsonResult[0][0]) == 1 && parseInt(jsonResult[0][3]) == 1) {
+	                reportName = "PEManager";
+	                URLVIEW = '../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "" + '&reportName=' + reportName;
+	            } else {
+	                reportName = "PerformanceEvaluation";
+	                URLVIEW = '../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "" + '&reportName=' + reportName;
+	            }
+	            var detailView = new KPISummaryReport(URLVIEW, "KEY PERFORMANCE INDICATOR", " CLOSE ");
+	            detailView.open();
+	        }
+	    })
+	});
+});
+
+</script>
+<style>
+    .tblList {
+        width: 100% !important;
+    }
+
+        .tblList td,
+        .tblList th {
+            white-space: normal;
+            -ms-text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+</style>

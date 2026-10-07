@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_9b2ff8_hristestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MenuUserRole">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="MenuRefNo" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="MenuRefNo" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SubDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FormType" Type="Int32" />
+    <Property Name="SeqNo" Type="Int32" />
+    <Property Name="MenuParentRefNo" Type="Int32" />
+    <Property Name="ImageFile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ControllerName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ActionName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UserRolesRefNo" Type="Int32" />
+    <Property Name="AllowView" Type="Boolean" />
+    <Property Name="AllowInsert" Type="Boolean" />
+    <Property Name="AllowUpdate" Type="Boolean" />
+    <Property Name="AllowDelete" Type="Boolean" />
+    <Property Name="AllowPrint" Type="Boolean" />
+    <Property Name="AllowApprove" Type="Boolean" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <Property Name="HasNew" Type="Boolean" />
+    <Property Name="MenuTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DetailControllerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DetailActionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HasDelete" Type="Boolean" />
+    <Property Name="wListPopUp" Type="Boolean" />
+    <Property Name="PopUpIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PopUpDetailViewAction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PopUpDetailViewController" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="wListPopUp2" Type="Boolean" />
+    <Property Name="PopUpIcon2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PopUpDetailViewAction2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PopUpDetailViewController2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OrderBy" Type="Int32" />
+    <Property Name="OrderByAs" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="PopUpPrint" Type="Boolean" />
+    <Property Name="PopUp2Print" Type="Boolean" />
+    <Property Name="PopUpSubAction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PopUp2SubAction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserRefNo" Type="Int32" />
+    <Property Name="IsDisplayOnly" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="PAREmployeeInfo">
+    <Key>
+      <PropertyRef Name="EmployeeRefNo" />
+      <PropertyRef Name="HMODC" />
+    </Key>
+    <Property Name="ID" Type="Int32" />
+    <Property Name="EmployeeRefNo" Type="Int32" Nullable="false" />
+    <Property Name="SubmittedDate" Type="DateTime" Precision="3" />
+    <Property Name="ReasonForChangeRefNo" Type="Int32" />
+    <Property Name="OtherReason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="EffectivityDate" Type="DateTime" Precision="3" />
+    <Property Name="ContractTemplateRefNo" Type="Int32" />
+    <Property Name="DepartmentRefNo" Type="Int32" />
+    <Property Name="JobBandRefNo" Type="Int32" />
+    <Property Name="JobPositionRefNo" Type="Int32" />
+    <Property Name="FowRefNo" Type="Int32" />
+    <Property Name="EmployeeTypeRefNo" Type="Int32" />
+    <Property Name="EmploymentStatusRefNo" Type="Int32" />
+    <Property Name="ClientAccountRefNo" Type="Int32" />
+    <Property Name="ClientAddress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="JobPosition" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DateHired" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EndDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ContractualDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateProbationary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateRegularized" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PayrollRateRefNo" Type="Int32" />
+    <Property Name="PayBasisRefNo" Type="Int32" />
+    <Property Name="EcolaComputationRefNo" Type="Int32" />
+    <Property Name="EcolaRateRefNo" Type="Int32" />
+    <Property Name="BasicRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NonTaxAllowance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ClientRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SSSGSISTag" Type="Boolean" />
+    <Property Name="PAGIBIGTag" Type="Boolean" />
+    <Property Name="PHICTag" Type="Boolean" />
+    <Property Name="SepTag" Type="Boolean" />
+    <Property Name="W13thMonth" Type="Boolean" />
+    <Property Name="HOLTag" Type="Boolean" />
+    <Property Name="SIL" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="HMODC" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="HMOAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OTAssumption" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ApprovalLevel" Type="Int32" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="ModifiedBy" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="FilingStatusRefNo" Type="Int32" />
+    <Property Name="NoofDays" Type="Decimal" Precision="38" Scale="20" />
+    <Property Name="DateNow" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="JobDescriptionPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="sclause" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AddtlPaidLeaves" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="APLProRata" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="IPICORE_DTSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MenuUserRoles" EntityType="Self.MenuUserRole" />
+    <EntitySet Name="PAREmployeeInfoes" EntityType="Self.PAREmployeeInfo" />
+  </EntityContainer>
+</Schema>

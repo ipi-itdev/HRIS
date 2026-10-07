@@ -1,0 +1,876 @@
+﻿@using WCORE.Utility;
+<section class="content-header">
+    <h1>Internal Employee (Active) : <b>@ViewBag.SubDescription</b></h1>
+</section>
+@*<section class="content" id="InternalEmployee">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="box box-primary">
+                <div class="col-xl-2 bhoechie-tab-menu">
+                    <div class="list-group">
+                        <div class="box-body box-profile">
+                            <img id="empPhoto_Int" onclick="" class="profile-user-img img-responsive img-circle" src="@ViewBag.EmpImage" alt="User profile picture">
+                            <input type="file" title="search image" id="file_int" name="file_int" accept="image/png, image/jpeg" onchange="show(this)" style="opacity:0.0;" />
+                        </div>
+                        <a href="#Details_Form_ActiveEmployeeInternal" data-toggle="tab" aria-expanded="true" class="list-group-item active text-center">Personal Information</a>
+                        @if (@ViewBag.AllowEmploymentInfo == true)
+                        {<a href="#Employment_Form_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Employment & Payroll Information</a>}
+                        @if (@ViewBag.AllowDependents == true)
+                        {<a href="#Dependents_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Dependents</a>}
+                        @if (@ViewBag.AllowDisciplinaryAction == true)
+                        {<a href="#Offense_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Disciplinary Action</a>}
+                        @if (@ViewBag.AllowPerformanceEvaluation == true)
+                        {<a href="#Performance_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Performance Evaluation</a>}
+                        @if (@ViewBag.AllowTraining == true)
+                        {<a href="#Training_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Training</a>}
+                        @if (@ViewBag.AllowMovement == true)
+                        {<a href="#EmpHistoryInternal_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Movement</a>}
+                        @if (@ViewBag.AllowAccountability == true)
+                        {<a href="#Accountability_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Accountability</a>}
+                        @if (@ViewBag.AllowPreDocuments == true)
+                        {<a href="#Requirements_Form_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Pre-Employment Documents</a>}
+                        <a href="#Other_Form_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Other</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>*@
+
+<section class="content" id="InternalEmployee">
+    <div class="box box-primary">
+        <div class="box-body">
+            <div class="col-xl-12">
+                <div class="row">
+                    <div class="col-xl-3 bhoechie-tab-menu">
+                        <div class="list-group">
+                            <div class="box-body box-profile" style="text-align: center;">
+                                <img id="empPhoto_Int" onclick="" class="profile-user-img img-responsive img-circle" src="@ViewBag.EmpImage" alt="User profile picture">
+                                <input type="file" title="search image" id="file_int" name="file_int" accept="image/png, image/jpeg" onchange="show(this)" style="opacity:0.0;" />
+                            </div>
+                            <a href="#Details_Form_ActiveEmployeeInternal" data-toggle="tab" aria-expanded="true" class="list-group-item active text-center">Personal Information</a>
+                            @if (@ViewBag.AllowEmploymentInfo == true)
+                            {<a href="#Employment_Form_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Employment & Payroll Information</a>}
+                            @if (@ViewBag.AllowDependents == true)
+                            {<a href="#Dependents_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Dependents</a>}
+                            @if (@ViewBag.AllowDisciplinaryAction == true)
+                            {<a href="#Offense_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Disciplinary Action</a>}
+                            @if (@ViewBag.AllowPerformanceEvaluation == true)
+                            {<a href="#Performance_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Performance Evaluation</a>}
+                            @if (@ViewBag.AllowTraining == true)
+                            {<a href="#Training_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Training</a>}
+                            @if (@ViewBag.AllowMovement == true)
+                            {<a href="#EmpHistoryInternal_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Movement</a>}
+                            @if (@ViewBag.AllowAccountability == true)
+                            {<a href="#Accountability_Lst_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Accountability</a>}
+                            @if (@ViewBag.AllowPreDocuments == true)
+                            {<a href="#Requirements_Form_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Pre-Employment Documents</a>}
+                            <a href="#Other_Form_ActiveEmployeeInternal" data-toggle="tab" class="list-group-item text-center">Other</a>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 bhoechie-tab">
+            
+                            <div style="float:right" id="btnList_ActiveEmployeeInternal">
+                                @if (@ViewBag.AllowInsert == true)
+                                {<button type="button" class="btn btn-primary" id="New_ActiveEmployeeInternal" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-file" title="New"></i>  New</button>}
+                                @if ((@ViewBag.AllowInsert == true) || (@ViewBag.AllowUpdate == true && @ViewBag.EmployeeID > 0))
+                                {<button type="button" class="btn btn-primary" id="Save_ActiveEmployeeInternal" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save</button>}
+                                @if (@ViewBag.AllowPrint == true && @ViewBag.EmployeeID > 0)
+                                {<button type="button" class="btn btn-primary" id="Print_ActiveEmployeeInternal"><i class="fa fa-print" title="Print"></i>  Print Profile</button>}
+                                <button type="button" class="btn btn-primary" id="Back_ActiveEmployeeInternal" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Back"></i>  Back</button>
+                            </div>
+
+                            <div class="bhoechie-tab-content active" id="Details_Form_ActiveEmployeeInternal">
+                                <h2 style="font-size:20px">
+                                    <i class="glyphicon glyphicon-user"></i> Employee Information
+                                </h2>
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs" id="Details_tab">
+                                        <li class="nav-item"><a class="nav-link" href="#Details_Frm_ActiveEmployeeInternal" data-toggle="tab" aria-expanded="true">Details</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#Contact_Form_ActiveEmployeeInternal" data-toggle="tab">Contact</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#AffiliationNo_Form_ActiveEmployeeInternal" data-toggle="tab">Government ID</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="Details_Frm_ActiveEmployeeInternal">
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="Details_Form_Internal_DetailView_ActiveEmployeeInternal">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="Details_Form_Internal_DetailView_2_ActiveEmployeeInternal">
+                                                </div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                            <br />
+                                            <b>HIGHEST EDUCATIONAL ATTAINMENT</b>
+                                            <div style="clear:both;"></div>
+                                            <br />
+                                            <div class="col-md-12">
+                                                <div class="tab-pane" id="HighestEducation_List_ActiveEmployeeInternal">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="clear:both;"></div>
+
+                                        <div class="tab-pane" id="Contact_Form_ActiveEmployeeInternal">
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="Contact_Form_Internal_DetailView_ActiveEmployeeInternal">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="Contact_Form_Internal_DetailView_2_ActiveEmployeeInternal">
+                                                    </div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div style="clear:both;"></div>
+                                                <br />
+                                                <b>EMERGENCY CONTACT</b>
+                                                <div style="clear:both;"></div>
+                                                <br />
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="ContactEmergency_Form_Internal_DetailView_ActiveEmployeeInternal">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="ContactEmergency_Form_Internal_DetailView_2_ActiveEmployeeInternal">
+                                                    </div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        <div class="tab-pane" id="AffiliationNo_Form_ActiveEmployeeInternal">
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="AffiliationNo_Form_Internal_DetailView_ActiveEmployeeInternal">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="AffiliationNo_Form_Internal_DetailView_2_ActiveEmployeeInternal">
+                                                </div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bhoechie-tab-content" id="Employment_Form_ActiveEmployeeInternal">
+                                <h2 style="font-size:20px">
+                                    <i class="glyphicon glyphicon-briefcase"></i> Employment & Payroll Information
+                                </h2>
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs" id="Employment_tab">
+                                        <li class="nav-item"><a class="nav-link" href="#Employment_Frm_ActiveEmployeeInternal" data-toggle="tab">Employment</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#JobDescription_Form_ActiveEmployeeInternal" data-toggle="tab">Job Description</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#Payroll_Form_ActiveEmployeeInternal" data-toggle="tab">Payroll</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#Benefits_Form_ActiveEmployeeInternal" data-toggle="tab">Benefits</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#HealthCard_Form_ActiveEmployeeInternal" data-toggle="tab">Insurance & HMO</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="Employment_Frm_ActiveEmployeeInternal">
+                                            <div class="col-md-6"><div class="form-group" id="Employment_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal"></div></div>
+                                            <div class="col-md-6"><div class="form-group" id="Employment_Form_EmploymentInfo_DetailView_2_ActiveEmployeeInternal"></div></div>
+                                            <div style="clear:both;"></div>
+                                            <div class="col-md-12">
+                                                <b>Separation Information</b>
+                                                <div style="clear:both;"></div>
+                                                <br />
+                                                <div class="col-md-6"><div class="form-group" id="SeparationInformation_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal"></div></div>
+                                                <div class="col-md-6"><div class="form-group" id="SeparationInformation_Form_EmploymentInfo_DetailView_2_ActiveEmployeeInternal"></div></div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        <div class="bhoechie-tab-content" id="JobDescription_Form_ActiveEmployeeInternal">
+                                            <div class="col-md-12">
+                                                <div class="form-group" id="JobDescription_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal"></div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        <div class="bhoechie-tab-content" id="Payroll_Form_ActiveEmployeeInternal">
+                                            <div class="col-md-6"><div class="form-group" id="Payroll_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal"></div></div>
+                                            <div class="col-md-6"><div class="form-group" id="Payroll_Form_EmploymentInfo_DetailView_2_ActiveEmployeeInternal"></div></div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        <div class="bhoechie-tab-content" id="Benefits_Form_ActiveEmployeeInternal">
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group" id="Benefits_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group" id="Benefits2_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group" id="Benefits3_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="tab-pane" id="OtherBenefits_List_ActiveEmployeeInternal">
+
+                                                </div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                        <div class="bhoechie-tab-content" id="HealthCard_Form_ActiveEmployeeInternal">
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="HealthCard_Form_Internal_DetailView_ActiveEmployeeInternal">
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group" id="HealthCard_Form_Internal_DetailView_2_ActiveEmployeeInternal">
+
+                                                </div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bhoechie-tab-content" id="Dependents_Lst_ActiveEmployeeInternal">
+                                <h2 style="font-size:20px">
+                                    <i class="glyphicon glyphicon-heart"></i> Dependents Information
+                                </h2>
+                                <div id="Dependents_List_ActiveEmployeeInternal"></div>
+                            </div>
+
+                            <div class="bhoechie-tab-content" id="Offense_Lst_ActiveEmployeeInternal">
+                                <h2 style="font-size:20px">
+                                    <i class="glyphicon glyphicon-tags"></i> Disciplinary Action
+                                </h2>
+                                <div id="Offense_List_ActiveEmployeeInternal"></div>
+                            </div>
+
+                            <div class="bhoechie-tab-content" id="Performance_Lst_ActiveEmployeeInternal">
+                                <h2 style="font-size:20px">
+                                    <i class="glyphicon glyphicon-star"></i> Performance Evaluation
+                                </h2>
+                                <div id="Performance_List_ActiveEmployeeInternal"></div>
+                            </div>
+
+                            <div class="bhoechie-tab-content" id="Training_Lst_ActiveEmployeeInternal">
+                                <h2 style="font-size:20px">
+                                    <i class="glyphicon glyphicon-send"></i> Training Information
+                                </h2>
+                                <div id="Training_List_ActiveEmployeeInternal"></div>
+                            </div>
+
+                            <div class="bhoechie-tab-content" id="EmpHistoryInternal_Lst_ActiveEmployeeInternal">
+                                <h2 style="font-size:20px">
+                                    <i class="glyphicon glyphicon-tasks"></i> Employee Movement
+                                </h2>
+                                <div id="EmpHistoryInternal_List_ActiveEmployeeInternal"></div>
+                            </div>
+
+                            <div class="bhoechie-tab-content" id="Accountability_Lst_ActiveEmployeeInternal">
+                                <h2 style="font-size:20px">
+                                    <i class="glyphicon glyphicon-qrcode"></i> Employee Accountability
+                                </h2>
+                                <div id="Accountability_List_ActiveEmployeeInternal"></div>
+                            </div>
+
+                            <div class="bhoechie-tab-content" id="Requirements_Form_ActiveEmployeeInternal">
+                                <h2 style="font-size:20px">
+                                    <i class="fa fa-globe"></i> Pre-Employment Documents
+                                </h2>
+                                <div class="col-md-6">
+                                    <div class="form-group" id="Requirements_Form_PreRequirements_DetailView_ActiveEmployeeInternal">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" id="Requirements_Form_PreRequirements_DetailView_2_ActiveEmployeeInternal">
+
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="bhoechie-tab-content" id="Other_Form_ActiveEmployeeInternal">
+                                <h2 style="font-size:20px">
+                                    <i class="fa fa-globe"></i> Other Information
+                                </h2>
+                                <div class="col-md-6">
+                                    <div class="form-group" id="Other_Form_Internal_DetailView_ActiveEmployeeInternal">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" id="Other_Form_Internal_DetailView_2_ActiveEmployeeInternal"></div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var pztudipi_int = null; var fxhdjipi_int = null ; var rawgeipi_int = null; var result_int = null; var IsNew_int = false; var HasNewDP_int = false;
+
+    function show(input) {
+        if (input.files && input.files[0]) { var filerdr = new FileReader(); filerdr.onload = function (e) { $('#empPhoto_Int').attr('src', e.target.result); }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(document).ready(function () {
+        $('.content-wrapper').waitMe('hide');
+        $("#empPhoto_Int").off("click").on("click" , function () { $("#file_int").trigger('click'); })
+        functionOne().done(functionTwo()).done(functionThree());
+        $('#tab>li>a').first().click();
+        $('#empDP_ActiveEmployeeInternal').on('click', function (evt) { evt.stopPropagation(); });
+
+        $("#InternalEmployee div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
+           
+            e.preventDefault(); $(this).siblings('a.active').removeClass("active");
+            $(this).addClass("active"); var index = $(this).index() - 1;
+            console.log(index);
+            $("#InternalEmployee div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+            $("#InternalEmployee div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+            
+        });
+
+        $(function () {
+            $('#btnList_ActiveEmployeeInternal').find('button').on('click', function () {
+                var ids = $(this).attr('id'); Message = ''; OkLabel = 'OK'; fAction = null; IsFired = false;
+                switch (ids.replace('Internal-', '').toUpperCase()) {
+                    case 'NEW_ActiveEmployeeInternal'.toUpperCase():
+                        Message = 'Create new employee?';
+                        OkLabel = 'New';
+                        fAction = function (result_int) {
+                                var URLView = '@Url.Action("Internal", "PIS")?mName=ActiveEmployeeInternal&pKey=-1';
+                                $('#content_ActiveEmployeeInternal').load(URLView, function () { });
+                        }
+                        break;
+                    case 'SAVE_ActiveEmployeeInternal'.toUpperCase():
+                        Message = 'Save changes?'; OkLabel = 'Save';
+                        fAction = function (result_int) {  if (Inetrnal_Validate() != false) { pztudipi_int.Save(); } }
+                        break;
+                    case 'DELETE_ActiveEmployeeInternal'.toUpperCase():
+                        Message = 'Are you sure you want to delete?'; OkLabel = 'Delete';
+                        fAction = function (result_int) {  pztudipi_int.Delete();  }
+                        break;
+                    case 'PRINT_ActiveEmployeeInternal'.toUpperCase():
+                        URLVIEW = '@Url.Action("Index","ReportView")?pKey=@ViewBag.EmployeeID&cAction=ExportEmployeeProfile';
+                        var detailView = new JIBModalList(URLVIEW);
+                        detailView.open();
+                        break;
+                    case 'BACK_ActiveEmployeeInternal'.toUpperCase():
+                        var URLView = '../ListView?ModelNo=10500';
+                        $('#content_ActiveEmployeeInternal').load(URLView, function () { });
+                }
+
+                if (ids.replace('Internal-', '').toUpperCase() != 'BACK_ActiveEmployeeInternal'.toUpperCase() && ids.replace('Internal-', '').toUpperCase() != 'PRINT_ActiveEmployeeInternal'.toUpperCase()) {
+                    BootstrapDialog.show({
+                        title: 'Internal Employee (Active)',
+                        icon: 'fa-circle-o',
+                        message: Message,
+                        closable: true,
+                        draggable: true,
+                        buttons: [{ id: 'btn-1', label: 'Cancel', cssClass: 'btn-warning', action: function (dialog) { dialog.close(); } },
+                                  { id: 'btn-2', label: 'Ok', cssClass: 'btn-primary', action: function (dialog) { var $button = this; $button.disable(); $button.spin(); fAction(); dialog.close(); } }]
+                    });
+                }
+            });
+        });
+        $("#Upload_ActiveEmployeeInternal").off("click").on("click", function () { $("#file_JD_EmploymentInfo_ActiveEmployeeInternal").trigger('click'); })
+        $("#Download_ActiveEmployeeInternal").off("click").on("click", function () {
+            if ($("#JobDescriptionPath_EmploymentInfoInternal").val()) { window.open('@Url.Action("Download", "ReportView")?fname=' + $("#JobDescriptionPath_EmploymentInfoInternal").val()) }
+        })
+    })
+
+    function Inetrnal_Validate() {
+        var objVal_int = JSON.parse(JSON.stringify(pztudipi_int));
+        var objValEI_int = JSON.parse(JSON.stringify(fxhdjipi_int));
+        var obj_int = $.extend({}, objVal_int, objValEI_int);
+        var valid_int = true;
+        $("#InternalEmployee .required").each(function () {
+            var fname_int = $(this).attr('name').split("_");
+            if (obj_int[fname_int[0]] == null || obj_int[fname_int[0]] == 0)
+            { Toast.Error($(this).attr('title') + " is required."); valid_int = false; return false; }
+        });
+        return valid_int;
+    }
+    function functionOne() {
+        var r = $.Deferred();
+        pztudipi_int = {
+            ID: null, EmployeeNumber: null, EmployeeRefNo: null, BiometricID: null, LastName: null, FirstName: null, MiddleName: null, Suffix: null, NickName: null, GenderRefNo: null, Birthdate: null, Age: null, BirthPlace: null, CivilStatusRefNo: 1, NationalityRefNo: 1, ReligionRefNo: 1, Height: null, Weight: null, BloodtypeRefNo: null, Allergies: null,
+            PersonalEmailAddress: null, WorkEmailAddress: null, SocialMedia: null, TelephoneNumber: null, MobileNumber: null, MobileNumber2: null, CurrentAddress: null, ProvinceAddress: null, CityRefNo: null, EmergencyName1: null, EmergencyAddress1: null, EmergencyContactNo1: null, EmergencyRelationship1: null, EmergencyName2: null, EmergencyAddress2: null, EmergencyContactNo2: null, EmergencyRelationship2: null,
+            TinNumber: null, PhilHealthNumber: null, SSSNumber: null, PagibigNumber: null, MalayanCoverageRefNo: null, MaxicareRefNo: null, MaxicareCardNo: null,
+            CreatedBy: null, CreatedDate: null, ModifiedBy: null, ModifiedDate: null, IsActive: null, EmployeeDependents: [], EmployeeHighestEducation: [], OtherBenefits: [], EmployeeOffense: [], EmployeePerformance: [], EmployeeTraining: [], EmployeeAccountability: [], EmpHistoryInternal: []
+            , IsDirty: false
+                , Save: function (Grid) {
+                        $.ajax({
+                            url: '../DetailView/Save',
+                            data: { mName: 'ActiveEmployeeInternal', JSONObject: JSON.stringify(pztudipi_int) },
+                            type: 'POST',
+                            datatype: 'application/json; charset=utf-8',
+                            beforeSend: function () { },
+                            success: function (data) {
+                                result_int = eval("(function(){return " + data + ";})()");
+                                pztudipi_int.ID = result_int.ID;
+                                pztudipi_int.IsDirty = false;
+                                if ('@ViewBag.AllowEmploymentInfo' == "True") { fxhdjipi_int.Save(); };
+                            },
+                            error: function (xhr, textStatus, error) {
+                                console.log(error);
+                            }
+                        });
+                }
+        , Delete: function () {
+            var item = [];
+            item.push(pztudipi_int);
+            $.ajax({
+                url: '../DetailView/Delete',
+                data: { mName: 'ActiveEmployeeInternal', JSONObject: JSON.stringify(item) },
+                type: 'POST',
+                datatype: 'application/json; charset=utf-8',
+                beforeSend: function () { },
+                success: function (data) {
+                    if (data.error != undefined) {
+                        alert(data.error);
+                        return;
+                    }
+                    Toast.Show("Deleted");
+                    URL = '../ListView?ModelNo=10500';
+                    $('#content_ActiveEmployeeInternal').load(URL, function () { });
+                },
+                error: function (xhr, textStatus, error) {
+                    console.log(error);
+                }
+            });
+        }
+        };
+        function Employee_DetailView() {
+            var self = $(this);
+            this.IsEditOnly = false;
+            var ObjectID = '@ViewBag.EmployeeID';
+            console.log('ito ung employee id: ' + ObjectID);
+            var dvFormat = [{Name: 'Details', Controls:[{ Name: 'ID', Type: 'Int', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'ID' },
+         { Name: 'EmployeeNumber', Caption: 'Employee Number', Type: 'String', IsEnabled: false, ColumnNo: 2, TbName: 'Details', ControlID: 'EmployeeNumber' },
+         { Name: 'BiometricID', Caption: 'Biometric ID', Type: 'String', ColumnNo: 2, TbName: 'Details', ControlID: 'BiometricID' },
+         { Name: 'LastName', Caption: 'Last Name', Type: 'String', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'LastName' },
+         { Name: 'FirstName', Caption: 'First Name', Type: 'String', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'FirstName' },
+         { Name: 'MiddleName', Caption: 'Middle Name', Type: 'String', ColumnNo: 0, TbName: 'Details', ControlID: 'MiddleName' },
+         { Name: 'Suffix', Type: 'String', ColumnNo: 0, TbName: 'Details', ControlID: 'Suffix' },
+         { Name: 'NickName', Caption: 'Nick Name', Type: 'String', ColumnNo: 0, TbName: 'Details', ControlID: 'NickName' },
+         { Name: 'GenderRefNo', Caption: 'Sex', Type: 'Int', ControlType: 'combobox', RefColumn: 'Gender', ControlModel: 'Gender', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'GenderRefNo' },
+         { Name: 'CivilStatusRefNo', Caption: 'Civil Status', Type: 'Int', ControlType: 'combobox', RefColumn: 'CivilStatus', ControlModel: 'CivilStatus', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 2, TbName: 'Details', ControlID: 'CivilStatusRefNo' },
+         { Name: 'Birthdate', Caption: 'Birth Date', Type: 'DateTime', ControlType: 'datepicker', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'Birthdate', strFormat: 'mm/dd/yyyy' },
+         { Name: 'Age', Type: 'Int', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'Age', AllowInsert: false, AllowUpdate: false },
+         { Name: 'BirthPlace', Caption: 'Birth Place', Type: 'String', ColumnNo: 0, TbName: 'Details', ControlID: 'BirthPlace' },
+         { Name: 'NationalityRefNo', Caption: 'Nationality', Type: 'Int', ControlType: 'combobox', RefColumn: 'Nationality', ControlModel: 'Nationality', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Details', ControlID: 'NationalityRefNo' },
+         { Name: 'ReligionRefNo', Caption: 'Religion', Type: 'Int', ControlType: 'combobox', RefColumn: 'Religion', ControlModel: 'Religion', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Details', ControlID: 'ReligionRefNo' },
+         { Name: 'Height', Type: 'String', ColumnNo: 2, TbName: 'Details', ControlID: 'Height' },
+         { Name: 'Weight', Type: 'String', ColumnNo: 2, TbName: 'Details', ControlID: 'Weight' },
+         { Name: 'BloodtypeRefNo', Caption: 'Blood Type', Type: 'Int', ControlType: 'combobox', RefColumn: 'BloodType', ControlModel: 'BloodType', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Details', ControlID: 'BloodtypeRefNo' },
+         { Name: 'Allergies', Type: 'String', ControlType: 'textarea', ColumnNo: 2, TbName: 'Details', ControlID: 'Allergies' }]},
+         { Name: 'Contact', Controls: [
+         { Name: 'PersonalEmailAddress', Caption: 'Primary Email', Type: 'String', IsRequired: true, ColumnNo: 0, TbName: 'Contact', ControlID: 'PersonalEmailAddress' },
+         { Name: 'WorkEmailAddress', Caption: 'Secondary Email', Type: 'String', ColumnNo: 0, TbName: 'Contact', ControlID: 'WorkEmailAddress' },
+         { Name: 'SocialMedia', Caption: 'Social Media', Type: 'String', ColumnNo: 0, TbName: 'Contact', ControlID: 'SocialMedia' },
+         { Name: 'TelephoneNumber', Caption: 'Telephone', Type: 'String', ColumnNo: 2, TbName: 'Contact', ControlID: 'TelephoneNumber', strFormat: '(999)999-9999' },
+         { Name: 'MobileNumber', Caption: 'Primary Mobile', Type: 'String', IsRequired: true, ColumnNo: 2, TbName: 'Contact', ControlID: 'MobileNumber', strFormat: '9999-999-9999' },
+         { Name: 'MobileNumber2', Caption: 'Secondary Mobile', Type: 'String', ColumnNo: 2, TbName: 'Contact', ControlID: 'MobileNumber2', strFormat: '9999-999-9999' },
+         { Name: 'CurrentAddress', Caption: 'Current Address', Type: 'String', IsRequired: true, ControlType: 'textarea', ColumnNo: 0, TbName: 'Contact', ControlID: 'CurrentAddress' },
+         { Name: 'ProvinceAddress', Caption: 'Permanent Address', Type: 'String', IsRequired: true, ControlType: 'textarea', ColumnNo: 2, TbName: 'Contact', ControlID: 'ProvinceAddress' },
+         { Name: 'CityRefNo', Caption: 'City', Type: 'Int', ControlType: 'combobox', RefColumn: 'City', ControlModel: 'City', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Contact', ControlID: 'CityRefNo' }]},
+         { Name: 'ContactEmergency', Controls: [
+         { Name: 'EmergencyName1', Caption: 'Name', Type: 'String', ColumnNo: 0, TbName: 'ContactEmergency', ControlID: 'EmergencyName1' },
+         { Name: 'EmergencyAddress1', Caption: 'Address', Type: 'String', ColumnNo: 0, TbName: 'ContactEmergency', ControlID: 'EmergencyAddress1' },
+         { Name: 'EmergencyContactNo1', Caption: 'Contact No.', Type: 'String', ColumnNo: 0, TbName: 'ContactEmergency', ControlID: 'EmergencyContactNo1' },
+         { Name: 'EmergencyRelationship1', Caption: 'Relationship', Type: 'String', ColumnNo: 0, TbName: 'ContactEmergency', ControlID: 'EmergencyRelationship1' },
+         { Name: 'EmergencyName2', Caption: 'Name 2', Type: 'String', ColumnNo: 2, TbName: 'ContactEmergency', ControlID: 'EmergencyName2' },
+         { Name: 'EmergencyAddress2', Caption: 'Address 2', Type: 'String', ColumnNo: 2, TbName: 'ContactEmergency', ControlID: 'EmergencyAddress2' },
+         { Name: 'EmergencyContactNo2', Caption: 'Contact No. 2', Type: 'String', ColumnNo: 2, TbName: 'ContactEmergency', ControlID: 'EmergencyContactNo2' },
+         { Name: 'EmergencyRelationship2', Caption: 'Relationship 2', Type: 'String', ColumnNo: 2, TbName: 'ContactEmergency', ControlID: 'EmergencyRelationship2' }]
+         },
+         {Name: 'AffiliationNo', Controls: [{ Name: 'TinNumber', Caption: 'TIN', Type: 'String', ColumnNo: 0, TbName: 'AffiliationNo', ControlID: 'TinNumber', strFormat:'999-999-999' },
+         { Name: 'PhilHealthNumber', Caption: 'PHILHEALTH No.', Type: 'String', ColumnNo: 0, TbName: 'AffiliationNo', ControlID: 'PhilHealthNumber', strFormat: '99-999999999-9' },
+         { Name: 'SSSNumber', Caption: 'SSS No.', Type: 'String', ColumnNo: 0, TbName: 'AffiliationNo', ControlID: 'SSSNumber', strFormat: '99-9999999-9' },
+         { Name: 'PagibigNumber', Caption: 'PAGIBIG No.', Type: 'String', ColumnNo: 0, TbName: 'AffiliationNo', ControlID: 'PagibigNumber', strFormat: '9999-9999-9999' }]
+         },
+         { Name: 'HealthCard', Controls: [{ Name: 'MalayanCoverageRefNo', Caption: 'Group Life Coverage', Type: 'Int', ControlType: 'combobox', RefColumn: 'GI', ControlModel: 'GroupInsurance', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Affiliation No', ControlID: 'MalayanCoverageRefNo' },
+         { Name: 'MaxicareRefNo', Caption: 'Maxicare Coverage', Type: 'Int', ControlType: 'combobox', RefColumn: 'MC', ControlModel: 'MaxicareCoverage', ColumnValue: 'MalayanCoverageRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Affiliation No', ControlID: 'MaxicareRefNo' },
+         { Name: 'MaxicareCardNo', Caption: 'Maxicare Card No.', Type: 'String', ColumnNo: 0, TbName: 'Affiliation No', ControlID: 'MaxicareCardNo' }]
+         },
+         { Name: 'Other', Controls:
+         [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' },
+         { Name: 'CreatedDate', Caption: 'Created Date', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' },
+         { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'ModifiedBy' },
+         { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'ModifiedDate' },
+         { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }]
+         },
+         { Name: 'Performance', Type: '10570', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: false, HasRemove: false, IsListView: true, PropertyName: 'EmployeePerformance' },
+         { Name: 'Training', Type: '10560', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeeTraining' },
+         { Name: 'Accountability', Type: '10540', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeeAccountability' },
+         { Name: 'EmpHistoryInternal', Type: '10590', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: false, HasRemove: false, IsListView: true, PropertyName: 'EmpHistoryInternal' },
+         { Name: 'Dependents', Type: '10530', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeeDependents' },
+         { Name: 'HighestEducation', Type: '10535', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeeHighestEducation' },
+         { Name: 'OtherBenefits', Type: '10520', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'OtherBenefits' },
+         { Name: 'Offense', Type: '10580', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeeOffense' }
+         ];
+            function GetControl(Selector, CtrlFormat) {
+                var control = new JIBControl(Selector, { PropertyName: CtrlFormat.Name, Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption), type: CtrlFormat.ControlType, Model: CtrlFormat.ControlModel, ControlID: CtrlFormat.ControlID, ControlFormat: CtrlFormat.strFormat }, CtrlFormat, 'ActiveEmployeeInternal');
+                control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+                control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+                control.ParentDiv = Selector
+                control.Init();
+                if (CtrlFormat.IsEnabled != undefined) control.SetEnabled(CtrlFormat.IsEnabled);
+                control.CurrentObject = pztudipi_int;
+                return control;
+            };
+            function InitNewObject(newObject) {
+                $.each(newObject, function (key, value) {
+                    if (key != "IsEditOnly") {
+                        pztudipi_int[key] = value;
+                    }
+                });
+                $.each(dvFormat, function (i, tabs) {
+                    if (tabs.IsListView != undefined) {
+                        Selector = $('#' + tabs.Name + '_List_ActiveEmployeeInternal');
+                        LoadListViewTab(Selector, tabs);
+                    }
+                    else {
+                        $.each(tabs.Controls, function (x, val) {
+                            if (val.ColumnNo == 2) {
+                                Selector = $('#' + tabs.Name + '_Form_Internal_DetailView_2_ActiveEmployeeInternal');
+                            } else { Selector = $('#' + tabs.Name + '_Form_Internal_DetailView_ActiveEmployeeInternal'); }
+                            var control = GetControl(Selector, val);
+                            control.SetValue(pztudipi_int[val.Name]);
+                        });
+                    }
+                });
+            }
+            this.OpenObject = function (CurrentObject) {
+                InitNewObject(CurrentObject)
+            }
+            this.InitDetailView = function (CurrentObject) {
+                $.ajax({
+                    url: '../DetailView/GetBaseObject',
+                    data: { model: 'ActiveEmployeeInternal', pKey: ObjectID },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        console.log('Success data: ' + data);
+                        if (ObjectID <= 0) {
+                            var newObject = eval("(function(){return " + data + ";})()");
+                            InitNewObject(newObject);
+                        } else {
+                            var jsonArray = JSON.parse(data);
+                            if (jsonArray.length == 0) return;
+                            var Columns = jsonArray[0];
+                            var Values = jsonArray[1];
+                            $.each(Columns, function (i, o) {
+                                CurrentObject[o] = Values[i];
+                            });
+                            $.each(dvFormat, function (x, tabs) {
+                                if (tabs.IsListView != undefined) {
+                                    Selector = $('#' + tabs.Name + '_List_ActiveEmployeeInternal');
+                                    LoadListViewTab(Selector, tabs);
+                                } else {
+                                    $.each(tabs.Controls, function (i, val) {
+                                        console.log('value ng column no:' + val.ColumnNo)
+                                        if (val.ColumnNo == 2) {
+                                            Selector = $('#' + tabs.Name + '_Form_Internal_DetailView_2_ActiveEmployeeInternal');
+                                        } else { Selector = $('#' + tabs.Name + '_Form_Internal_DetailView_ActiveEmployeeInternal'); }
+                                        var control = GetControl(Selector, val);
+                                        var ColumnIndex = Columns.indexOf(val.Name);
+                                        var Value = Values[ColumnIndex];
+                                        control.SetValue(Value);
+                                    });
+                                }
+                            });
+                        }
+                    }, error: function (e) { alert(e.responseText);  }
+                });
+            };
+        }
+
+        function LoadListViewTab(Selector, tabs) {
+            var URLView = '../ListView/ListIndexRefresh? ModelNo=MODEL_NAME&Description=MODEL_DESC&ColumnsWidth=0.7&IsAppendMode=True&ForeignKeyName=FKeyName&ForeignKey=FKey&ParentModel=MODEL_PARENT&AllowAddOth=ModAllowUpdate'; //change /ListView/ChildListIndex to /ListIndex/ListIndexRefresh
+            URLView = URLView.replace("MODEL_NAME", tabs.Type);
+            URLView = URLView.replace("MODEL_DESC", tabs.Name);
+            URLView = URLView.replace("FKeyName", tabs.FKey);
+            URLView = URLView.replace("FKey", tabs.FKeyValue);
+            URLView = URLView.replace("MODEL_PARENT", "ActiveEmployeeInternal");
+            URLView = URLView.replace("ModAllowUpdate", '@ViewBag.AllowUpdate');
+            Selector.load(URLView);
+            Selector.on('OnGridCreated', function (e, o) {
+                var h = Selector.parent().height();
+                var grid = o.Grid;
+                grid.ParentObject = pztudipi_int;
+                grid.ParentObjectProperty = tabs.PropertyName;
+                grid.rowHeight = 30;
+                grid.ID_ParentKey = pztudipi_int[tabs.FKeyValue];
+                grid.ForeignFieldKey = tabs.FKey != undefined ? tabs.FKey : null;
+                grid.IsPartialRefresh = false;
+                grid.getContainer().css('height', h - 10);
+                grid.getTable().css('height', h - 70);
+            });
+        }
+
+        var $itm_e = new Employee_DetailView();
+        $itm_e.InitDetailView(pztudipi_int);
+
+        return r;
+    };
+    function functionTwo() {
+        var s = $.Deferred();
+        if ('@ViewBag.AllowEmploymentInfo' == "True"){
+            fxhdjipi_int = {
+                ID: null, EmployeeRefNo: null, EmployeeNumber: null, EmployeeGroupRefNo: 1, EmployeeStatusRefNo: 1, EmployeeTypeRefNo: 5, EmploymentStatusRefNo: 2, DepartmentRefNo: null, JobBandRefNo: null, JobPositionRefNo: null, Skills: null, DateHired: null, DateProbationary: null, DateRegularized: null, LastDateOfEmployment: null, ReasonForSeperationRefNo: null, ReasonForSeparation: null, IsWithClearance: 0, IsForReHire: 0, WorkScheduleRefNo: null, PayrollParameterRefNo: 8, PayrollRateRefNo: 2, PayFrequencyRefNo: 1, PayBasisRefNo: 2, TaxStatusRefNo: 1, EcolaComputationRefNo: null, EcolaRateRefNo: null, BasicRate: 0, NonTaxAllowance: 0, HDMFAddCont: 0, BankRefNo: 3, AccountNo: null, SEPTag: null, W13thMonth: 1, HOLTag: 1, TaxTag: 1, PHICTag: 1, SSSGSISTag: 1, PAGIBIGTag: 1, PagibigPercent: 0, SIL: 0, HMOAmount: 0, HMODC: 0, FieldofWork: 0, CreatedBy: 1, CreatedDate: null, ModifiedBy: null, ModifiedDate: null, IsActive: 1
+                , IsDirty : false
+                , Save: function (Grid) {
+                    fxhdjipi_int['EmployeeRefNo'] = result_int.EmployeeRefNo
+                    fxhdjipi_int['EmployeeNumber'] = result_int.EmployeeNumber
+                    $.ajax({
+                        url: '../DetailView/Save',
+                        data: { mName: 'EmploymentInfoInternal', JSONObject: JSON.stringify(fxhdjipi_int) },
+                        type: 'POST',
+                        datatype: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            rawgeipi_int.Save();
+                        }
+                    });
+                }
+            };
+            function EmploymentInfo_DetailView() {
+                var self = $(this);
+                this.IsEditOnly = false;
+                var ObjectEIID = '@ViewBag.EmploymentID';
+                if ((('@ViewBag.AllowInsert' == 'True') && (ObjectEIID < 1)) || (('@ViewBag.AllowInsert' == 'True') && ('@Session["IsAdmin"]' ==  'True'))) {
+                    IsNew_int = true;
+                }
+                var dvFormat = [{
+                    Name: 'Details', Controls:
+                    [{ Name: 'ID', Type: 'Int', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'ID' }]},
+                {
+                    Name: 'Employment', Controls:
+                    [{ Name: 'EmployeeTypeRefNo', Caption: 'Rank Level', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, IsRequired: IsNew_int, RefColumn: 'ET', ControlModel: 'EmployeeType', ColumnValue: 'EmployeeTypeRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Employment', ControlID: 'EmployeeTypeRefNo' },
+                     { Name: 'EmploymentStatusRefNo', Caption: 'Employment Status', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, IsRequired: IsNew_int, RefColumn: 'ESM', ControlModel: 'EmploymentStatus', ColumnValue: 'EmploymentStatusRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Employment', ControlID: 'EmploymentStatusRefNo' },
+                     { Name: 'DepartmentRefNo', Caption: 'Department', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, IsRequired: IsNew_int, RefColumn: 'Dep', ControlModel: 'Department', ColumnValue: 'DepartmentRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Employment', ControlID: 'DepartmentRefNo' },
+                     { Name: 'JobBandRefNo', Caption: 'Job Band', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, RefColumn: 'JOB', ControlModel: 'JobBand', ColumnValue: 'JobBandRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Employment', ControlID: 'JobBandRefNo' },
+                     { Name: 'JobPositionRefNo', Caption: 'Job Position', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, IsRequired: IsNew_int, RefColumn: 'JOB', ControlModel: 'JobPosition', ColumnValue: 'JobPositionRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Employment', ControlID: 'JobPositionRefNo' },
+                     { Name: 'DateHired', Caption: 'Date Hired', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: IsNew_int, IsRequired: IsNew_int, ColumnNo: 2, TbName: 'Employment', ControlID: 'DateHired', strFormat: 'mm/dd/yyyy' },
+                     { Name: 'StartDate', Caption: 'Start Date', Type: 'DateTime', ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'StartDate', strFormat: 'mm/dd/yyyy' },
+                     { Name: 'EndDate', Caption: 'End Date', Type: 'DateTime', ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'EndDate', strFormat: 'mm/dd/yyyy' },
+                     { Name: 'ContractualDate', Caption: 'Contractual Date', Type: 'DateTime', ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'ContractualDate', strFormat: 'mm/dd/yyyy' },
+                     { Name: 'DateProbationary', Caption: 'Probationary Start Date', Type: 'DateTime', ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'DateProbationary', strFormat: 'mm/dd/yyyy' },
+                     { Name: 'DateRegularized', Caption: 'Date Regularized', Type: 'DateTime', ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'DateRegularized', strFormat: 'mm/dd/yyyy' },
+                     { Name: 'Skills', Caption: 'Technical Skills', Type: 'String', ControlType: 'textarea', IsEnabled: IsNew_int, ColumnNo: 0, TbName: 'Employment', ControlID: 'Skills' }]},
+                     { Name: 'SeparationInformation', Controls: [{ Name: 'LastDateOfEmployment', Caption: 'Last Day of Employment', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: true, ColumnNo:0 , TbName: 'Separation Information', ControlID: 'LastDateOfEmployment', strFormat: 'mm/dd/yyyy' },
+                     { Name: 'ReasonForSeperationRefNo', Caption: 'Reason Separation', Type: 'Int', ControlType: 'combobox', IsEnabled: true, RefColumn: 'RF', ControlModel: 'ReasonForSeperation', ColumnValue: 'ReasonForSeperationRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Separation Information', ControlID: 'ReasonForSeperationRefNo' },
+                     { Name: 'ReasonForSeparation', Caption: 'Other Reason', Type: 'String', ControlType: 'textarea', ColumnNo: 2, TbName: 'Separation Information', ControlID: 'ReasonForSeparation' },
+                     { Name: 'IsWithClearance', Caption: 'Is With Clearance?', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: IsNew_int, ColumnNo: 0, TbName: 'Separation Information', ControlID: 'IsWithClearance' },
+                     { Name: 'IsForReHire', Caption: 'Is For Re-Hire?', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: IsNew_int, ColumnNo: 2, TbName: 'Separation Information', ControlID: 'IsForReHire' }]
+                     },{Name: 'Payroll', Controls: [{ Name: 'WorkScheduleRefNo', Caption: 'Work Schedule', Type: 'Int', IsRequired: true, ControlType: 'combobox', IsEnabled: IsNew_int, IsRequired: IsNew_int, RefColumn: 'WS', ControlModel: 'WorkSchedule', ColumnValue: 'WorkScheduleRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Payroll', ControlID: 'WorkScheduleRefNo' },
+                     { Name: 'PayrollParameterRefNo', Caption: 'Payroll Parameter', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, IsRequired: IsNew_int, RefColumn: 'PM', ControlModel: 'PayrollParameter', ColumnValue: 'PayrollParameterRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Payroll', ControlID: 'PayrollParameterRefNo' },
+                     { Name: 'PayrollRateRefNo', Caption: 'Payroll Rate', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, IsRequired: IsNew_int, RefColumn: 'PR', ControlModel: 'PayrollRate', ColumnValue: 'PayrollRateRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Payroll', ControlID: 'PayrollRateRefNo' },
+                     { Name: 'PayFrequencyRefNo', Caption: 'Frequency', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, IsRequired: IsNew_int, RefColumn: 'FR', ControlModel: 'Frequency', ColumnValue: 'PayFrequencyRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Payroll', ControlID: 'PayFrequencyRefNo' },
+                     { Name: 'PayBasisRefNo', Caption: 'Pay Basis', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, IsRequired: IsNew_int, RefColumn: 'PB', ControlModel: 'PayBasis', ColumnValue: 'PayBasisRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Payroll', ControlID: 'PayBasisRefNo' },
+                     { Name: 'BasicRate', Caption: 'Basic Rate', Type: 'Decimal', IsEnabled: IsNew_int, IsRequired: IsNew_int, ColumnNo: 2, TbName: 'Payroll', ControlID: 'BasicRate' },
+                     { Name: 'NonTaxAllowance', Caption: 'Non-Tax Allowance', Type: 'Decimal', IsEnabled: IsNew_int, ColumnNo: 2, TbName: 'Payroll', ControlID: 'NonTaxAllowance' },
+                     { Name: 'TaxStatusRefNo', Caption: 'Tax Status', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, IsRequired: IsNew_int, RefColumn: 'TS', ControlModel: 'TaxStatus', ColumnValue: 'TaxStatusRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Payroll', ControlID: 'TaxStatusRefNo' },
+                     { Name: 'EcolaComputationRefNo', Caption: 'Ecola Computation', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, RefColumn: 'ECOM', ControlModel: 'ECOLAComputation', ColumnValue: 'EcolaComputationRefNo', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Payroll', ControlID: 'EcolaComputationRefNo' },
+                     { Name: 'EcolaRateRefNo', Caption: 'ECOLA Rate', Type: 'Int', ControlType: 'combobox', IsEnabled: IsNew_int, RefColumn: 'ER', ControlModel: 'EcolaRate', ColumnValue: 'EcolaRateRefNo', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Payroll', ControlID: 'EcolaRateRefNo' },
+                     { Name: 'HDMFAddCont', Caption: 'HDMF Personal Contribution', Type: 'Decimal', IsEnabled: IsNew_int, ColumnNo: 2, TbName: 'Payroll', ControlID: 'HDMFAddCont' },
+                     { Name: 'BankRefNo', Caption: 'Bank', Type: 'Int', ControlType: 'combobox', IsRequired: IsNew_int, IsRequired: IsNew_int, RefColumn: 'BNK', ControlModel: 'Bank', ColumnValue: 'BankRefNo', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Payroll', ControlID: 'BankRefNo' },
+                     { Name: 'AccountNo', Caption: 'Account', Type: 'String', ColumnNo: 2, TbName: 'Payroll', ControlID: 'AccountNo' }]},
+                     { Name: 'Other', Controls: [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' },
+                     { Name: 'CreatedDate', Caption: 'Created Date', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' },
+                     { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'ModifiedBy' },
+                     { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'ModifiedDate' },
+                     { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }]},
+                     { Name: 'JobDescription', Controls: [{ Name: 'JobDescription', Type: 'String', ControlType: 'texteditor', ColumnNo: 0, TbName: 'JobDescription', ControlID: 'JobDescription' }], IsTextEditor: true }];
+
+                function GetControl(Selector, CtrlFormat ) {
+                    var control = new JIBControl(Selector, { PropertyName: CtrlFormat.Name, Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption), type: CtrlFormat.ControlType, Model: CtrlFormat.ControlModel, ControlID: CtrlFormat.ControlID, ControlFormat: CtrlFormat.strFormat }, CtrlFormat, 'EmploymentInfoInternal');
+                    control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+                    control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+                    control.ParentDiv = Selector
+                    control.Init();
+                    if ( CtrlFormat.IsEnabled != undefined ) control.SetEnabled( CtrlFormat.IsEnabled );
+                    control.CurrentObject = fxhdjipi_int;
+                    return control;
+                };
+                function InitNewObject(newObject) {
+                    $.each(newObject, function(key, value) {
+                        if ( key != "IsEditOnly" ) {
+                            fxhdjipi_int[key] = value;
+                        }
+                    });
+                    $.each(dvFormat, function(i,tabs) {
+                        $.each(tabs.Controls, function (x, val) {
+                            if (tabs.Name == 'JobDescription') {
+                                Selector = $('#JobDescription_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal');
+                            } else {
+                                if (val.ColumnNo == 2) {
+                                    Selector = $('#' + tabs.Name + '_Form_EmploymentInfo_DetailView_2_ActiveEmployeeInternal');
+                                } else { Selector = $('#' + tabs.Name + '_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal'); }
+                            }
+                            var control = GetControl(Selector,val);
+                            control.SetValue(fxhdjipi_int[val.Name]);
+                        });
+                    });
+                }
+                this.OpenObject = function(CurrentObject) {
+                    InitNewObject(CurrentObject)
+                }
+                this.InitDetailView = function(CurrentObject) {
+                    $.ajax({
+                        url: '../DetailView/GetBaseObject',
+                        data: { model: 'EmploymentInfoInternal', pKey: ObjectEIID },
+                        type: 'POST',
+                        datatype: 'application/json; charset=utf-8',
+                        beforeSend: function () { },
+                        success: function (data) {
+                            if (ObjectEIID <= 0) {
+                                var newObject = eval("(function(){return " + data + ";})()");
+                                InitNewObject( newObject );
+                            } else {
+                                var jsonArray = JSON.parse(data);
+                                if (jsonArray.length == 0) return;
+                                var Columns = jsonArray[0];
+                                var Values = jsonArray[1];
+                                $.each(Columns,function(i,o){
+                                    CurrentObject[o] = Values[i];
+                                });
+                                $.each(dvFormat, function(x,tabs) {
+                                    $.each(tabs.Controls, function (i, val) {
+                                        if (tabs.Name == 'JobDescription') {
+                                            Selector = $('#JobDescription_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal');
+                                        } else {
+                                            if (val.ColumnNo == 2) {
+                                                Selector = $('#' + tabs.Name + '_Form_EmploymentInfo_DetailView_2_ActiveEmployeeInternal');
+                                            } else { Selector = $('#' + tabs.Name + '_Form_EmploymentInfo_DetailView_ActiveEmployeeInternal'); }
+                                        }
+                                        var control = GetControl(Selector,val);
+                                        var ColumnIndex = Columns.indexOf( val.Name );
+                                        var Value = Values[ColumnIndex];
+                                        control.SetValue(Value);
+                                    });
+                                });
+                            }
+                        }, error: function (e) { alert(e.responseText); }
+                    });
+                };
+            }
+            var $itm_ei = new EmploymentInfo_DetailView();
+            $itm_ei.InitDetailView(fxhdjipi_int);
+        }
+            return s;
+    }
+
+    function functionThree() {
+        var t = $.Deferred();
+        if ('@ViewBag.AllowPreDocuments' == "True"){
+            rawgeipi_int = { ID:null,EmployeeRefNo: null, Diploma:null,TOR:null,TC:null,NSOBC:null,NSOMC:null,NSODBC:null,SSSID:null,TINID:null,PHICID:null,PAGIBIGID:null,BIR:null,NBI:null,POLICE:null,BRGY:null,MEDICAL:null,CreatedBy:null,CreatedDate:null,ModifiedBy:null,ModifiedDate:null,IsActive:null
+                , IsDirty : false
+                , Save: function (Grid) {
+                    rawgeipi_int['EmployeeRefNo'] = result_int.EmployeeRefNo
+                    $.ajax({
+                        url: '../DetailView/Save',
+                        data: { mName :'PreRequirements' ,JSONObject : JSON.stringify(rawgeipi_int) },
+                        type: 'POST',
+                        datatype: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            if (fxhdjipi_int.LastDateOfEmployment  == undefined || fxhdjipi_int.LastDateOfEmployment == '') {
+                                var URLView = '@Url.Action("Internal", "PIS")?mName=ActiveEmployeeInternal&pKey=' + result_int.ID;
+                                $('#content_ActiveEmployeeInternal').load(URLView, function () { });
+                            } else {
+                                var URLView = '../ListView?ModelNo=10500';
+                                $('#content_ActiveEmployeeInternal').load(URLView, function () { });
+                            }
+                            Toast.Show("Internal Employee Information Save.");
+                        },
+                        error: function(xhr, textStatus, error) { console.log(error); }
+                    });
+                }
+
+            };
+            function PreRequirements_DetailView() {
+                var self = $(this);
+                this.IsEditOnly = false;
+                var ObjectPRID = '@ViewBag.PreRequirementsID';
+                var dvFormat = [{ Name: 'Requirements', Controls: [{ Name: 'Diploma', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Requirements', ControlID: 'Diploma' }, { Name: 'TOR', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Requirements', ControlID: 'TOR' }, { Name: 'TC', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Requirements', ControlID: 'TC' }, { Name: 'NSOBC', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Requirements', ControlID: 'NSOBC' }, { Name: 'NSOMC', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Requirements', ControlID: 'NSOMC' }, { Name: 'NSODBC', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Requirements', ControlID: 'NSODBC' }, { Name: 'SSSID', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Requirements', ControlID: 'SSSID' }, { Name: 'TINID', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 2, TbName: 'Requirements', ControlID: 'TINID' }, { Name: 'PHICID', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 2, TbName: 'Requirements', ControlID: 'PHICID' }, { Name: 'PAGIBIGID', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 2, TbName: 'Requirements', ControlID: 'PAGIBIGID' }, { Name: 'BIR', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 2, TbName: 'Requirements', ControlID: 'BIR' }, { Name: 'NBI', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 2, TbName: 'Requirements', ControlID: 'NBI' }, { Name: 'POLICE', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 2, TbName: 'Requirements', ControlID: 'POLICE' }, { Name: 'BRGY', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 2, TbName: 'Requirements', ControlID: 'BRGY' }, { Name: 'MEDICAL', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 2, TbName: 'Requirements', ControlID: 'MEDICAL' }] }, { Name: 'Other', Controls: [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' }, { Name: 'CreatedDate', Caption: 'Created Date', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' }, { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedBy' }, { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedDate' }, { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }] }];
+                function GetControl(Selector, CtrlFormat ) {
+                    var control = new JIBControl(Selector, { PropertyName: CtrlFormat.Name, Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption), type: CtrlFormat.ControlType, Model: CtrlFormat.ControlModel, ControlID: CtrlFormat.ControlID, ControlFormat: CtrlFormat.strFormat }, CtrlFormat, 'PreRequirements');
+                    control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+                    control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+                    control.ParentDiv = Selector
+                    control.Init();
+                    if ( CtrlFormat.IsEnabled != undefined ) control.SetEnabled( CtrlFormat.IsEnabled );
+                    control.CurrentObject = rawgeipi_int;
+                    return control;
+                };
+                function InitNewObject(newObject) {
+                    $.each(newObject, function(key, value) {
+                        if ( key != "IsEditOnly" ) {
+                            rawgeipi_int[key] = value;
+                        }
+                    });
+                    $.each(dvFormat, function(i,tabs) {
+                        $.each(tabs.Controls, function(x,val ) {
+                            if (val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_PreRequirements_DetailView_2_ActiveEmployeeInternal');
+                            } else { Selector = $('#' + tabs.Name + '_Form_PreRequirements_DetailView_ActiveEmployeeInternal'); }
+                            var control = GetControl(Selector,val);
+                            control.SetValue(rawgeipi_int[val.Name]);
+                        });
+                    });
+                }
+                this.OpenObject = function(CurrentObject) {
+                    InitNewObject(CurrentObject)
+                }
+                this.InitDetailView = function(CurrentObject) {
+                    $.ajax({
+                        url: '../DetailView/GetBaseObject',
+                        data: { model:'PreRequirements', pKey:ObjectPRID },
+                        type: 'POST',
+                        datatype: 'application/json; charset=utf-8',
+                        beforeSend: function () { },
+                        success: function (data) {
+                            if (ObjectPRID <= 0) {
+                                var newObject = eval("(function(){return " + data + ";})()");
+                                InitNewObject( newObject );
+                            } else {
+                                var jsonArray = JSON.parse(data);
+                                if (jsonArray.length == 0) return;
+                                var Columns = jsonArray[0];
+                                var Values = jsonArray[1];
+                                $.each(Columns,function(i,o){
+                                    CurrentObject[o] = Values[i];
+                                });
+                                $.each(dvFormat, function(x,tabs) {
+                                    $.each( tabs.Controls, function( i, val ) {
+                                        if (val.ColumnNo == 2) {
+                                            Selector = $('#' + tabs.Name + '_Form_PreRequirements_DetailView_2_ActiveEmployeeInternal');
+                                        } else { Selector = $('#' + tabs.Name + '_Form_PreRequirements_DetailView_ActiveEmployeeInternal'); }
+                                        var control = GetControl(Selector,val);
+                                        var ColumnIndex = Columns.indexOf( val.Name );
+                                        var Value = Values[ColumnIndex];
+                                        control.SetValue(Value);
+                                    });
+                                });
+                            }
+                        }, error: function ( e ) { alert(e.responseText); }
+                    });
+                };
+            }
+            var $itm_r = new PreRequirements_DetailView();
+            $itm_r.InitDetailView(rawgeipi_int);
+        }
+        return t;
+    }
+</script>

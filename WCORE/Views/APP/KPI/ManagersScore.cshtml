@@ -1,0 +1,113 @@
+﻿@System.Web.Optimization.Scripts.Render("~/Script/plugins/formslist")
+<section class="content-header">
+<h4><b>CORE COMPETENCIES</b><br><small>These are the resources and capabilities that comprise the strategic advantages of a business.</small></h4>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="styleshe  et">
+
+</section>
+
+<style>
+
+</style>
+
+<section class="content">
+<div class="row">
+   <div class="col-xs-12" style="margin-bottom : 120px;">
+                <div class="form-group" style="margin-top: 10px; margin-bottom : 10px;">
+                   <div class="input-group" style="position:relative; left:13%;" >
+                        <input type="text" id="txtScore" onkeypress="return (event.charCode !=8 && event.charCode ==0 || ( event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)))" class="form-control" placeholder="Enter score.." style="height: 50px; font-size: 35px; font-weight: bolder; text-align: center">
+                        <span class="input-group-btn" style="width:50px; padding-left : 10px">
+                            <button id="btnSubmitScore" class="btn btn-alert" type="button" style="height: 50px;"><b>Submit</b></button>
+                        </span>
+                    </div>
+                </div>
+	    </div>
+	</div>
+       <div style="display: block" >
+           <span style="color: darkred; float: left; margin-left: 5px"><b>Note : </b></span>
+           <span style="color: black; float: left; margin-left: 5px"><b>SCORE = RATING x WEIGHT</b></span>
+       </div><br/>
+      
+       <div style="display: block">
+       
+          <span style="color: darkred; float: left; margin-left: 45px"><b>*</b></span>
+          <span style="color: black; float: left;"><b>Rating is computed based on the percentage accomplishment.</b></span>
+
+       </div>
+
+<script>
+
+
+    $(document).ready(function () {
+        GetScore();
+
+    });
+
+
+    function GetScore() {
+                
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: '../KPI/GetManagerScorePartOne?kpiid=' + kpiAssignmentID,
+            success: function (data) {
+                var jsonResult = JSON.parse(data);
+                $("#txtScore").val(jsonResult[0][0])
+            }
+        })
+
+    }
+
+	
+    function validateDecimal(decimalValue) {
+
+        var rx = /^\d+(?:\.\d{1,2})?$/
+
+        if (rx.test(decimalValue)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+    $('#btnSubmitScore').on('click', function () {
+            
+        var score = txtScore.value;
+
+        if (validateDecimal(score) == false || parseFloat(score) < 0.00) {
+            Toast.Error("You have entered an invalid score.");
+
+        } else {
+
+            $.ajax({
+                type: "POST",
+                url: "../KPI/SetCompetencyScore",
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                data: JSON.stringify({ kpiid: kpiAssignmentID, score: score }),
+                success: function (data) {
+                    if (data == 'True') {
+                        Toast.Show("Score has been successfully submitted.");
+                    }
+                    else { Toast.Show("Score has not been submitted."); }
+                    $('#tblList_EVALUATE').DataTable().ajax.reload();
+
+                }
+            })
+        }
+	  
+	});
+	
+	function isNumberKey(evt)
+	{
+		var charCode = (evt.which) ? evt.which : event.keyCode
+		if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)){
+			return false;}else{	return true;}
+	}
+</script><div>
+			   <div style="clear:both;"></div>
+		   </div>
+</section>

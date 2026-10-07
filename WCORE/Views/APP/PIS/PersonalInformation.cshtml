@@ -1,0 +1,104 @@
+﻿<div class="box-header" id="btnList_@{@ViewBag.FormID}">
+	<div class="btn-group">
+		<h2 style="font-size:20px">
+			<i class="fa fa-user"></i> Personal Information
+		</h2>
+	</div>
+	<div style="float:right">
+		@if ((@ViewBag.AllowInsert == true) || (@ViewBag.AllowUpdate == true && @ViewBag.pid > 0))
+		{ <button type="button" class="btn btn-primary" id="Save_@{@ViewBag.FormID}"><i class="fa fa-save" title="Save"></i>  Save Personal Information</button> }
+	</div>
+</div>
+<div class="nav-tabs-custom">
+    <ul class="nav nav-tabs" id="Details_tab"  role="tablist">
+        <li class="nav-item active"><a href="#Details_Form_@ViewBag.mCode" class="nav-link active" data-toggle="tab" role="tab">Personal Information</a></li>
+        <li class="nav-item"><a href="#Contact_Form_@ViewBag.mCode" class="nav-link" data-toggle="tab" role="tab">Contact Information</a></li>
+		<li class="nav-item"><a href="#ContactEmergency_Form_@ViewBag.mCode" class="nav-link" data-toggle="tab" role="tab">Emergency Contact Information</a></li>
+		<li class="nav-item"><a href="#Dependents_List_@ViewBag.mCode" class="nav-link" data-toggle="tab" role="tab">Dependents</a></li>
+        <li class="nav-item"><a href="#AffiliationNo_Form_@ViewBag.mCode" class="nav-link" data-toggle="tab" role="tab">Government ID</a></li>
+		<li class="nav-item"><a href="#Other_Form_@ViewBag.mCode" class="nav-link" data-toggle="tab" role="tab">Other</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="Details_Form_@ViewBag.mCode" role="tabpanel">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" id="Details_@{@ViewBag.FormID}_dtlv">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" id="Details_@{@ViewBag.FormID}_dtlv2">
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+        <div class="tab-pane" id="Contact_Form_@ViewBag.mCode"  role="tabpanel">
+		  <div class="row">
+				<div class="col-md-6">
+					<div class="form-group" id="Contact_@{@ViewBag.FormID}_dtlv"></div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group" id="Contact_@{@ViewBag.FormID}_dtlv2"></div>
+				</div>
+		  </div>
+		  <div class="row">
+				<div class="col-md-6">
+					<b>PRESENT ADDRESS</b><br>
+					<div class="form-group" id="Address_@{@ViewBag.FormID}_dtlv"></div>
+				</div>
+				<div class="col-md-6">
+					<b>PERMANENT ADDRESS</b><br>
+					<div class="form-group" id="Address_@{@ViewBag.FormID}_dtlv2"></div>
+				</div>
+				<div style="clear:both;"></div>
+		  </div>
+        </div>
+		<div class="tab-pane" id="ContactEmergency_Form_@ViewBag.mCode"  role="tabpanel">
+			<div class="row">
+				<div class="col-md-6">
+					<b>PRIMARY EMERGENCY CONTACT</b><br>
+					<div class="form-group" id="ContactEmergency_@{@ViewBag.FormID}_dtlv">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<b>SECONDARY EMERGENCY CONTACT</b><br>
+					<div class="form-group" id="ContactEmergency_@{@ViewBag.FormID}_dtlv2">
+					</div>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+        </div>
+		<div class="tab-pane" id="Dependents_List_@ViewBag.mCode" role="tabpanel">
+			<div id="Dependents_List_@{@ViewBag.FormID}"></div>
+		</div>
+        <div class="tab-pane" id="AffiliationNo_Form_@ViewBag.mCode"  role="tabpanel">
+            <div class="col-md-6">
+                <div class="form-group" id="AffiliationNo_@{@ViewBag.FormID}_dtlv">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" id="AffiliationNo_@{@ViewBag.FormID}_dtlv2">
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+		<div class="tab-pane" id="Other_Form_@ViewBag.mCode"  role="tabpanel">
+            <div class="col-md-6">
+                <div class="form-group" id="Other_@{@ViewBag.FormID}_dtlv">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group" id="Other_@{@ViewBag.FormID}_dtlv2">
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+</div>
+@System.Web.Optimization.Scripts.Render("~/Script/Employee")
+<script>
+$(document).ready(function () {
+	let $mFrm = new Employee('@{@ViewBag.pid}'); $mFrm.mguid = '@{@ViewBag.mguid}'; $mFrm.mNm = '@{@ViewBag.mName}'; $mFrm.mNo = '@{@ViewBag.mNo}'; $mFrm.mDesc = '@{@ViewBag.Description}'; $mFrm.FKN =  '@{@ViewBag.FKeyName}'; $mFrm.FK =  '@{@ViewBag.pid}'; $mFrm.fid =  '@{@ViewBag.FormID}';
+	$('.content-wrapper').waitMe('hide');
+})
+</script>

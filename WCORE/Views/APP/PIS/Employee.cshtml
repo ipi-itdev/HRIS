@@ -1,0 +1,123 @@
+﻿@using WCORE.Utility;
+<section class="content-header">
+    <h1>Employee :<b>@ViewBag.SubDescription</b></h1>
+</section>
+<section class="content" id="@ViewBag.FormID">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+			<div class="box-header" id="btnList_@{@ViewBag.FormID}">
+				<div class="btn-group">
+					@if (@ViewBag.AllowInsert== true)
+					{<button type="button" class="btn btn-primary" id="New_@ViewBag.FormID" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  New</button>}
+					<button type="button" class="btn btn-primary" id="Back_@ViewBag.FormID" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Back to List"></i>  Back to List</button>
+				</div>
+				<div style="float:right">
+					@if (@ViewBag.AllowPrint == true && @ViewBag.pid > 0)
+                    { <button type="button" class="btn btn-primary" id="Print_@ViewBag.FormID"><i class="fa fa-print" title="Print"></i>  Print Profile</button> }
+                </div>
+			</div>
+            <div class="box-body">
+                <div class="row bhoechie-tab-container">
+					<div class="col-md-2 bhoechie-tab-menu">
+						<div class="list-group">
+							<div class="box-body box-profile">
+								<img id="empPhoto_@{@ViewBag.FormID}" onclick="" class="profile-user-img img-responsive img-circle" src="@ViewBag.EmpImage" alt ="User profile picture">
+								<input type="file" title="search image" id="fup_@{@ViewBag.FormID}" name="fup_@{@ViewBag.FormID}" accept="image/png, image/jpeg" onchange="show_@{@ViewBag.FormID}(this)" style="display:none;" />
+							</div>
+							<a href="#" id="PersonalInformation_Form_@ViewBag.FormID" data-toggle="tab" aria-expanded="true" class="list-group-item active text-center">Personal Information</a>
+							@if (@ViewBag.AllowEmploymentInfo == true)
+							{<a href="#" id="Employment_Form_@ViewBag.FormID"  data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Employment & Payroll Information</a>}
+							@if (@ViewBag.AllowHighestEducation == true)
+							{<a href="#" id="HighestEducation_List_@ViewBag.FormID" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Educational Attainment</a>}
+							@if (@ViewBag.AllowDisciplinaryAction == true)
+							{<a href="#" id="Offense_List_@ViewBag.FormID" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Disciplinary Action</a>}
+							@if (@ViewBag.AllowPerformanceEvaluation == true)
+							{<a href="#" id="Performance_List_@ViewBag.FormID" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Performance Evaluation</a>}
+							@if (@ViewBag.AllowTraining == true)
+							{<a href="#" id="Training_List_@ViewBag.FormID" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Training</a>}
+							@if (@ViewBag.AllowMovement == true)
+							{<a href="#" id="EmpHistory_List_@ViewBag.FormID" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Movement</a>}
+							@if (@ViewBag.AllowAccountability == true)
+							{<a href="#" id="Accountability_List_@ViewBag.FormID" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Accountability</a>}
+							@if (@ViewBag.AllowPreDocuments == true)
+							{<a href="#" id="Requirements_List_@ViewBag.FormID" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Pre-Employment Documents</a>}
+						</div>
+					</div>
+					<div class="col-md-10" id="frmEmployee_@ViewBag.FormID">
+					
+					</div>                           
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<script>
+$(document).ready(function () {
+	var frm = $('#frmEmployee_@ViewBag.FormID');
+	frm.load('../PIS/PersonalInformation?pid=@ViewBag.pid&mguid=@ViewBag.mguid');
+	$('#PersonalInformation_Form_@{@ViewBag.FormID}').click(function(){
+		frm.html(''); frm.load('../PIS/PersonalInformation?pid=@ViewBag.pid&mguid=@ViewBag.mguid');
+	})
+	$('#Employment_Form_@{@ViewBag.FormID}').click(function(){
+		frm.html(''); frm.load('../PIS/EmploymentInformation?pid=@ViewBag.EmploymentID&mguid=@ViewBag.EmploymentInfo');
+	})
+	$('#HighestEducation_List_@{@ViewBag.FormID}').click(function(){
+		frm.html(''); LoadListViewTab(frm,10235,@ViewBag.pid,'EmployeeRefNo',@ViewBag.mNo);
+	})
+	$('#Offense_List_@{@ViewBag.FormID}').click(function(){
+		frm.html(''); LoadListViewTab(frm,10280,@ViewBag.pid,'EmployeeRefNo',@ViewBag.mNo);
+	})
+	$('#Performance_List_@{@ViewBag.FormID}').click(function(){
+		frm.html(''); LoadListViewTab(frm,10270,@ViewBag.pid,'EmployeeRefNo',@ViewBag.mNo);
+	})
+	$('#Training_List_@{@ViewBag.FormID}').click(function(){
+		frm.html(''); LoadListViewTab(frm,10260,@ViewBag.pid,'EmployeeRefNo',@ViewBag.mNo);
+	})
+	$('#EmpHistory_List_@{@ViewBag.FormID}').click(function(){
+		frm.html(''); LoadListViewTab(frm,10290,@ViewBag.pid,'EmployeeRefNo',@ViewBag.mNo);
+	})
+
+	$('#Accountability_List_@{@ViewBag.FormID}').click(function(){
+		frm.html(''); LoadListViewTab(frm,10240,@ViewBag.pid,'EmployeeRefNo',@ViewBag.mNo);
+	})
+
+	$('#Requirements_List_@{@ViewBag.FormID}').click(function(){
+		frm.html(''); LoadListViewTab(frm,10250,@ViewBag.pid,'EmployeeRefNo',@ViewBag.mNo);
+	})
+	$('.content-wrapper').waitMe('hide');
+
+	$('#btnList_@{@ViewBag.FormID}').find('button').on('click', function() {
+        var ids = $(this).attr('id'); var Message = ''; var OkLabel = 'OK'; var fAction = null;
+        switch (ids.replace('_@{@ViewBag.FormID}','').toUpperCase()) {
+            case 'NEW':
+                Message = 'Create New?';
+                OkLabel = 'Create';
+                fAction = function(result) {  var URLView = '../INV/Items?pid=-1&mguid=@ViewBag.mguid'; $('#content_@{@ViewBag.FormID}').load(URLView, function () { }); }
+                break;
+            case 'Report':
+                Message = 'Save changes?';
+                OkLabel = 'Save';
+                fAction = function(result) { 
+                    if(ControlValidation(qcfutitm,self.mNm,self.fid) === true){
+                        if(ControlValidationUnique(qcfutitm,self.mNm,self.fid) === true) { qcfutitm.Save(); }
+                    }
+                };
+            break;
+                default:
+                Message = 'Are you sure you want to go back to list?';
+                OkLabel = 'Yes';
+                fAction = function(result) {  var URLView = '../ListView/ListIndex?mguid=@ViewBag.mguid'; $('#content_@{@ViewBag.FormID}').load(URLView, function () { }); }
+                break;
+        }
+        if(ids.toUpperCase() !== 'dropdownMenuButton'.toUpperCase()){
+            BootstrapDialog.show({
+                title: '@ViewBag.mTitle' , message: Message, closable: true, draggable: true,
+                buttons: [{ id: 'btn-1', label: 'Cancel' , cssClass: 'btn-warning', action: function(dialog) { dialog.close(); } },
+                            { id: 'btn-2', label: 'Ok', cssClass: 'btn-primary', action: function(dialog) { var $button = this;  $button.disable(); $button.spin(); fAction(); dialog.close(); } }]
+            });
+        }
+    });
+})
+</script>

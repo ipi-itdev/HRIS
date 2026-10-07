@@ -1,0 +1,299 @@
+﻿<section class="content-header">
+      <h1>WAIR Report</h1>
+      <ol class="breadcrumb">
+        <li><a href="javascript:void(0);" onclick="displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+      </ol>
+</section>
+<section class="content" id="DHSReport">
+    <div class="box box-primary">
+        <div class="box-header">
+            <div id="btnList_DHSReport">
+                @if (@ViewBag.AllowUpdate == true)
+                {<button type="button" class="btn btn-primary" id="Save_DHSReport" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save</button>}
+                <button type="button" class="btn btn-primary" id="Back_DHSReport" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Back to List"></i>  Back to List</button>
+				<div style="float:right;">
+                    @if (@ViewBag.AllowApprove == true && @ViewBag.PKey > 0)
+                    {<button type="button" class="btn btn-primary" id="Approve_DHSReport" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-up" title="Approve"></i>  @ViewBag.Action</button> }
+                </div>
+            </div>
+        </div>          
+        <div class="box-body">
+            <div class="row">
+				<div class="col-md-4">
+                    <div class="form-group" id="Details_Form_DHSReport_DetailView"></div>
+					<div>
+						<strong>Section II. Details of COVID-19 Prevention and Control</strong>
+						<i><p>Worker Details</p></i>
+						<div class="form-group" id="Worker_Form_DHSReport_DetailView"></div>
+						<i><p>Where were workers referred?</p></i>
+						<div class="form-group" id="Referred_Form_DHSReport_DetailView"></div>
+						<strong>Report on Testing (optional) performed</strong>
+						<i><p>RT-PCR</p></i>
+						<div class="form-group" id="RTPC_Form_DHSReport_DetailView"></div>
+						<i><p>GENE XPERT</p></i>
+						<div class="form-group" id="GENEXPERT_Form_DHSReport_DetailView"></div>
+						<i><p>Rapid Test</p></i>
+						<div class="form-group" id="Rapid_Form_DHSReport_DetailView"></div>
+						<i><p>Other Test</p></i>
+						<div class="form-group" id="OtherTest_Form_DHSReport_DetailView"></div>
+					</div>
+				</div>
+                <div class="col-md-8">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item active"><a href="#Details_Form_DHSReport" class="nav-link active" data-toggle="tab" role="tab">Report</a></li>
+							<li class="nav-item"><a href="#Attachment_Form_DHSReport" class="nav-link" data-toggle="tab" role="tab">Attachment</a></li>
+                            <li class="nav-item"><a href="#Other_Form_DHSReport" class="nav-link" data-toggle="tab" role="tab">Other</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Details_Form_DHSReport" role="tabpanel">
+                                <div class="col-md-12">
+                                    @if(@ViewBag.AllowPrint == true){ <iframe src="@Url.Action("ExportWAIRReport", "Covid")?pkey=@ViewBag.PKey#zoom=100" style="width:100%;  min-height:500px; height:157%"></iframe>}
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+							<div class="tab-pane" id="Attachment_Form_DHSReport" role="tabpanel">
+                                <div class="col-md-12">
+                                    <div class="form-group" id="Attachment_Form_DHSReport_DetailView">
+										@if (@ViewBag.AllowUpdate == true)
+										{<button type="button" class="btn btn-primary" id="Upload_DHSReport"><i class="fa fa-upload" title="Upload Attachment"></i>  Upload</button>}
+										<input type="file" title="search image" id="file_Attachment_DHSReport" name="file_Attachment_DHSReport" style="display:none;" onchange="showFileNameDHSReport(this)"/>
+									</div>
+                                </div>
+								<div class="col-md-12">
+									<div class="form-group">
+										@if(@ViewBag.AttachmentPath != ""){<iframe src="@ViewBag.AttachmentPath#zoom=100" style="width:100%;  min-height:500px; height:157%"></iframe>}
+									</div>
+								</div>
+                                <div style="clear:both;"></div>
+                            </div>
+                            <div class="tab-pane" id="Other_Form_DHSReport" role="tabpanel">
+                                <div class="col-md-6">
+                                    <div class="form-group" id="Other_Form_DHSReport_DetailView"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group" id="Other_Form_DHSReport_DetailView_2"></div>
+                                </div>
+                                <div style="clear:both;"></div>
+                            </div>
+                        </div>                                  
+                    </div>                                  
+                </div>
+            </div>
+        </div>
+</div>
+</section>
+@System.Web.Optimization.Scripts.Render("~/Script/INVItemsDetails")
+<script>
+$(document).ready(function () {
+	var $mFrm = new INVItemsDetails('@{@ViewBag.pid}'); $mFrm.mguid = '@{@ViewBag.mguid}'; $mFrm.mNm = '@{@ViewBag.mName}'; $mFrm.mNo = '@{@ViewBag.mNo}'; $mFrm.mDesc = '@{@ViewBag.Description}'; $mFrm.FKN =  '@{@ViewBag.FKeyName}'; $mFrm.FK =  '@{@ViewBag.pid}'; $mFrm.fid =  '@{@ViewBag.FormID}';
+	$('.content-wrapper').waitMe('hide');
+})
+</script>
+
+
+<script>
+ function showFileNameDHSReport(input) {
+    var file = $("#file_Attachment_DHSReport").val();
+    document.getElementById("AttachmentPath_DHSReport").value = file;
+}
+
+$(document).ready(function () {
+        var prwridhsr = { ID:null,ID:null,Year:null,PrincipalMale:null,PrincipalFemale:null,Screened:null,DeniedEntry:null,Referred:null,Death:null,BHERT:null,HealthFacility:null,HFacility:null,OtherFacility:null,OthFacility:null,DiagnosticTest:null,RTPRC:null,RTPRCNoTest:null,RTPCPositive:null,GENEXPERT:null,GENEXPERTNoTest:null,GENEXPERTPositive:null,Rapid:null,RapidTest:null,RapidPositive:null,OtherTesting:null,OtherType:null,OtherTest:null,OtherPositive:null,TotalCostTesting:null,CreatedBy:null,CreatedDate:null,ModifiedBy:null,ModifiedDate:null,IsActive:null 
+			, Save : function(Grid) { 
+            var valid = true;
+            $(".required").each(function() {
+                var objVal = JSON.parse(JSON.stringify( prwridhsr ));
+                if(objVal[$(this).attr('name')] == null) { Toast.Error( $(this).attr('name') + " is required." ); valid = false; return false; }
+            });
+            if(valid==true){
+                $.ajax({
+                    url: '/DetailView/Save',
+                    data: { mName :'DHSReport' ,JSONObject : JSON.stringify( prwridhsr ) },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) { 
+                        var resultdhsr = eval("(function(){return " + data + ";})()");
+						prwridhsr.ID = resultdhsr.ID;
+
+						var fileAttachment_data = $("#file_Attachment_DHSReport").prop("files")[0]; 
+                        var formAttachment_data = new FormData();                 
+                        formAttachment_data.append("file", fileAttachment_data)             
+                        $.ajax({
+                            url: '@Url.Action("UploadAttachment", "Covid")?pkey=' + prwridhsr.ID,
+                            type: 'POST',
+                            processData: false, 
+                            contentType: false, 
+                            dataType : 'json',
+                            data: formAttachment_data,
+                            complete: function() {
+                                var URLView = '@Url.Action("DHSReport", "Covid")?mName=DHSReport&pKey=' + prwridhsr.ID; $('#content_DHSReport').load(URLView, function () { });
+								Toast.Show( 'WAIR Report' + " Save" );
+                            }
+                        });        
+                    },
+                    error: function(xhr, textStatus, error) {
+                        console.log(error);
+                    }
+                }); 
+            } 
+        },Approve : function() {
+            var item = [];
+            item.push(prwridhsr);
+			$.ajax({
+				type: "POST",
+				cache: false,
+				url:  '../Covid/DHSReportApproved?pkey=' + prwridhsr.ID,
+				success: function (data) { 
+					if (data == 'True') {
+						var URLView = '../ListView?ModelNo=10000050';
+                        $('#content_DHSReport').load(URLView, function () { });
+                        Toast.Show( "Successfully " + '@ViewBag.Action' + ('@ViewBag.Action' == 'Approve' ? '' : 'ed'));
+					} 
+				}
+			});
+		}
+    };
+
+	$("#Upload_DHSReport").off("click").on("click",function() { $("#file_Attachment_DHSReport").trigger('click'); })
+
+    function DHSReport_DetailView() {
+        var self = $(this);
+        this.IsEditOnly = false;
+        var ObjectID = '@ViewBag.PKey';
+        var dvFormat = [{Name:'Details',Controls:[
+		 {Name:'ID',Type:'Int',IsEnabled:false,ControlModel:'DHSReport',ColumnNo:0,TbName:'Details',ControlID:'ID'}
+		,{Name:'MonthRefNo',Caption:'Month',IsEnabled:false,Type:'Int',ControlType:'combobox',RefColumn:'M',ControlModel:'Month',ColumnValue:'ID',DisplayColumnValue:'Description',ColumnNo:0,TbName:'Details',ControlID:'MonthRefNo',IsJson:false}
+		,{Name:'Year',IsEnabled:false,Type:'String',ControlModel:'DHSReport',ColumnNo:0,TbName:'Details',ControlID:'Year'}
+		,{Name:'Duration',IsEnabled:false,Type:'String',ControlModel:'DHSReport',ColumnNo:0,TbName:'Details',ControlID:'Duration'}
+		,{Name:'PrincipalMale',IsEnabled:false,Caption:'Male',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'Details',ControlID:'PrincipalMale'}
+		,{Name:'PrincipalFemale',IsEnabled:false,Caption:'Female',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'Details',ControlID:'PrincipalFemale'}]}
+		,{Name:'Worker',Controls:[{Name:'Screened',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'Worker',ControlID:'Screened'}
+		,{Name:'DeniedEntry',Caption:'Denied Entry',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'Worker',ControlID:'DeniedEntry'}
+		,{Name:'Referred',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'Worker',ControlID:'Referred'}
+		,{Name:'Death',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'Worker',ControlID:'Death'}]}
+		,{Name:'Referred',Controls:[{Name:'BHERT',Type:'Boolean',ControlType:'checkbox',ControlModel:'DHSReport',ColumnNo:0,TbName:'Referred',ControlID:'BHERT'}
+		,{Name:'HFacility',Caption:'Health Facility',Type:'String', ControlType: 'textarea',ControlModel:'DHSReport',ColumnNo:0,TbName:'Referred',ControlID:'HFacility'}
+		,{Name:'OthFacility',Caption:'Other Facility',Type:'String', ControlType: 'textarea',ControlModel:'DHSReport',ColumnNo:0,TbName:'Referred',ControlID:'OthFacility'}]}
+		,{Name:'RTPC',Controls:[{Name:'RTPRCNoTest',Caption:'No. of Test',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'RTPC',ControlID:'RTPRCNoTest'}
+		,{Name:'RTPCPositive',Caption:'No. of Positive',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'RTPC',ControlID:'RTPCPositive'}]}
+		,{Name:'GENEXPERT',Controls:[{Name:'GENEXPERTNoTest',Caption:'No. of Test',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'GENEXPERT',ControlID:'GENEXPERTNoTest'}
+		,{Name:'GENEXPERTPositive',Caption:'No. of Positive',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'GENEXPERT',ControlID:'GENEXPERTPositive'}]}
+		,{Name:'Rapid',Controls:[{Name:'RapidTest',Caption:'No. of Test',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'Rapid',ControlID:'RapidTest'}
+		,{Name:'RapidPositive',Caption:'No. of Positive',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'Rapid',ControlID:'RapidPositive'}]}
+		,{Name:'OtherTest',Controls:[{Name:'OtherType',Caption:'Other Type',Type:'String', ControlType: 'textarea',ControlModel:'DHSReport',ColumnNo:0,TbName:'OtherTest',ControlID:'OtherType'}
+		,{Name:'OtherTest',Caption:'No. of Test',Type:'String',ControlModel:'DHSReport',ColumnNo:0,TbName:'OtherTest',ControlID:'OtherTest'}
+		,{Name:'OtherPositive',Caption:'No. of Positive',Type:'Int',ControlModel:'DHSReport',ColumnNo:0,TbName:'OtherTest',ControlID:'OtherPositive'}
+		,{Name:'TotalCostTesting',Caption:'Total Cost',Type:'String',ControlModel:'DHSReport',ColumnNo:0,TbName:'OtherTest',ControlID:'TotalCostTesting'}]}
+		,{Name:'Attachment',Controls:[{ Name: 'AttachmentPath', Caption: 'Attachment Path', Type: 'String', IsEnabled: false,  ColumnNo: 0,  TbName: 'Attachment', ControlID: 'AttachmentPath' }]},
+		{Name:'Other',Controls:[{Name:'CreatedBy',Caption:'Created By',Type:'Int',ControlType:'combobox',IsEnabled:false,RefColumn:'[Created By]',ControlModel:'User',ColumnValue:'ID',DisplayColumnValue:'Description',ColumnNo:0,TbName:'Other',ControlID:'CreatedBy',IsJson:false},
+		{Name:'CreatedDate',Caption:'Date',Type:'String',IsEnabled:false,ControlModel:'DHSReport',ColumnNo:0,TbName:'Other',ControlID:'CreatedDate'},
+		{Name:'ModifiedBy',Caption:'Last Last Modified By',Type:'Int',ControlType:'combobox',IsEnabled:false,RefColumn:'[Last Modified By]',ControlModel:'User',ColumnValue:'ID',DisplayColumnValue:'Description',ColumnNo:2,TbName:'Other',ControlID:'ModifiedBy',IsJson:false},
+		{Name:'ModifiedDate',Caption:'Last Last Modified Date',Type:'String',IsEnabled:false,ControlModel:'DHSReport',ColumnNo:2,TbName:'Other',ControlID:'ModifiedDate'},
+		{Name:'IsActive',Type:'Boolean',ControlType:'checkbox',IsEnabled:false,ControlModel:'DHSReport',ColumnNo:0,TbName:'Other',ControlID:'IsActive'}]}];
+        function GetControl(Selector, CtrlFormat ) {
+        var control = new controly(Selector, { PropertyName: CtrlFormat.Name , Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption ), type : CtrlFormat.ControlType, Model : CtrlFormat.ControlModel, ControlID : CtrlFormat.ControlID , ControlFormat: CtrlFormat.strFormat },CtrlFormat,'DHSReport');
+        control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+        control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+        control.ParentDiv = Selector
+        control.Init();
+        if ( CtrlFormat.IsEnabled != undefined ) control.SetEnabled( CtrlFormat.IsEnabled );
+        control.CurrentObject = prwridhsr;
+            return control;           
+        };
+        function InitNewObject(newObject) { 
+            $.each(newObject, function(key, value) {
+                if ( key != "IsEditOnly" ) {
+					prwridhsr[key] = value;
+                }
+            });
+            $.each(dvFormat, function(i,tabs) {
+                $.each(tabs.Controls, function(x,val ) {
+                    if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_DHSReport_DetailView_2');
+                    } else{ Selector = $('#' + tabs.Name + '_Form_DHSReport_DetailView');}
+                    var control = GetControl(Selector,val);
+                    control.SetValue(prwridhsr[val.Name]);
+                });
+            });
+        }
+        this.OpenObject = function(CurrentObject) { 
+            InitNewObject(CurrentObject)
+        }
+        this.InitDetailView = function(CurrentObject) { 
+            $.ajax({
+                url: '/DetailView/GetBaseObject',
+                data: { model:'DHSReport', pKey:ObjectID },
+                type: 'POST',                   
+                datatype: 'application/json; charset=utf-8',
+                beforeSend: function () { },
+                success: function (data) {
+                    if ( ObjectID == -1 ) { 
+                        var newObject = eval("(function(){return " + data + ";})()");
+                        InitNewObject( newObject );
+                    } else {
+                        var jsonArray = JSON.parse(data);
+                        if (jsonArray.length == 0) return;
+                        var Columns = jsonArray[0];
+                        var Values = jsonArray[1]; 
+                        $.each(Columns,function(i,o){ 
+                            CurrentObject[o] = Values[i];
+                        });
+                        $.each(dvFormat, function(x,tabs) { 
+                            $.each( tabs.Controls, function( i, val ) {
+                                if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_DHSReport_DetailView_2');
+                                    } else{ Selector = $('#' + tabs.Name + '_Form_DHSReport_DetailView');}
+                                    var control = GetControl(Selector,val);
+                                    var ColumnIndex = Columns.indexOf( val.Name );
+                                    var Value = Values[ColumnIndex];
+                                    control.SetValue(Value);
+                            });
+                        });
+						}
+                    }, error: function ( e ) { alert(e.responseText); }
+            });
+        };       
+    }
+
+	$(function() { 
+		$('#btnList_DHSReport').find('button').on('click', function() { 
+			var ids = $(this).attr('id');
+			var Message = '';
+			var OkLabel = 'OK';
+			var fAction = null;
+			switch ( ids.replace('DHSReport-','').toUpperCase() ) {
+				case 'SAVE_DHSReport'.toUpperCase():
+					Message = 'Save changes?';
+					OkLabel = 'Save';
+					fAction = function(result) {  prwridhsr.Save();} 
+					break;
+				case 'APPROVE_DHSReport'.toUpperCase():
+					Message = 'Approve this request?';
+					OkLabel = 'Approve';
+					fAction = function(result) { prwridhsr.Approve();} 
+					break;
+				case 'BACK_DHSReport'.toUpperCase():
+					Message = 'Are you sure you want to go back to the list?';
+					OkLabel = 'Back to List to List';
+					fAction = function (result) { var URLView = '../ListView?ModelNo=10000050'; $('#content_DHSReport').load(URLView, function () { }); }
+					break;
+			}
+			BootstrapDialog.show({
+				title:'WAIR Report',
+				icon:'',
+				message: Message,
+				closable: true,
+				draggable: true,
+				buttons: [{ id: 'btn-1', label: 'Cancel' , cssClass: 'btn-warning', action: function(dialog) { dialog.close(); } },
+							{ id: 'btn-2', label: 'Ok', cssClass: 'btn-primary', action: function(dialog) { var $button = this;  $button.disable(); $button.spin(); fAction(); dialog.close(); } }]
+			});
+		});
+	});
+        
+	var $itm = new DHSReport_DetailView();
+	$itm.InitDetailView(prwridhsr);
+
+	$('#tab_DHSReport>li>a').first().click();
+})
+$('.content-wrapper').waitMe('hide');
+</script>

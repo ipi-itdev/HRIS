@@ -1,0 +1,110 @@
+﻿@using WCORE.Utility;
+
+
+<section class="content">
+    <div class="box-header">
+        <div class="box-tools pull-right">
+
+            <button type="button" class="btn btn-box-tool" data-widget="remove" id="XButton"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="btn-group-horizontal" id="btnList_@{@ViewBag.FormID}">
+            @if ((@ViewBag.AllowInsert == true && @ViewBag.pid <= 0) || (@ViewBag.AllowUpdate == true && @ViewBag.pid > 0))
+            {<button type="button" class="btn btn-primary" id="Save_@{@ViewBag.FormID}" ><i class="fa fa-save" title="Save"></i>  Save @ViewBag.Description</button>}
+            @if (@ViewBag.AllowDelete == true && @ViewBag.pid > 0)
+            {<button type="button" class="btn btn-primary" id="Delete_@{@ViewBag.FormID}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-trash-o" title="Delete"></i>  Delete @ViewBag.Description</button>}
+        </div>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs" id="tab_@{@ViewBag.FormID}" role="tablist">
+                        @foreach (var tab in ViewBag.Tabs)
+                        {
+                            if (@tab.IsListView == true)
+                            {
+                                <li><a href="#@{@tab.Name}_List_@{@ViewBag.FormID}" data-toggle="tab">@tab.Desc</a></li>
+                            }
+                            else
+                            {
+                                <li class="nav-item"><a href="#@{@tab.Name}_Form_@{@ViewBag.FormID}" data-toggle="tab" class="nav-link" data-toggle="tab" role="tab">@tab.Desc</a></li>
+                            }
+                        }
+                    </ul>
+                    <div class="tab-content">
+                        @foreach (var tabpane in ViewBag.Tabs)
+                        {
+                            if (@tabpane.IsListView == true)
+                            {<div class="tab-pane active" id="@{@tabpane.Name}_List_@{@ViewBag.FormID}" role="tabpanel"></div>
+
+
+                                <script>
+                                    $('.selection').on('click', function () {
+                                        alert($(this).find(":selected").val());
+                                    });
+                                </script>
+
+                            }
+
+
+                            else
+                            {
+                                <div class="tab-pane" id="@{@tabpane.Name}_Form_@{@ViewBag.FormID}" role="tabpanel">
+                                    <div class="col-md-12">
+                                        <div class="form-group" id="@{@tabpane.Name}_@{@ViewBag.FormID}_dtlv">
+
+                                            <script>
+                                                $('.selection').on('click', function () {
+                                                    alert($(this).find(":selected").val());
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group" id="@{@tabpane.Name}_@{@ViewBag.FormID}_dtlv2">
+
+                                            <script>
+                                                $('.selection').on('click', function () {
+                                                    alert($(this).find(":selected").val());
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+@{var ObjectID = Common.GenerateName();};
+let @{@ObjectID} = { @{@Html.Raw(ViewBag.ObjectProperties)} };
+@{var mFrmID = Common.GenerateName();};
+let @{@mFrmID} = new formyd(@{@ViewBag.pid});
+@{@mFrmID}.controller = 'DetailView';
+@{@mFrmID}.mguid = '@{@ViewBag.mguid}';
+@{@mFrmID}.mNm = '@{@ViewBag.mCode}';
+@{@mFrmID}.mNo = '@{@ViewBag.mNo}';
+@{@mFrmID}.mDesc = '@{@ViewBag.Description}';
+@{@mFrmID}.cObj =  @{@ObjectID};
+@{@mFrmID}.FKN =  '@{@ViewBag.FKeyName}';
+@{@mFrmID}.FK =  '@{@ViewBag.FKey}';
+@{@mFrmID}.fid =  '@{@ViewBag.FormID}';
+@{@mFrmID}.dvFormat =  @{@Html.Raw(ViewBag.DetailViewFormat)};
+$('.content-wrapper').waitMe('hide');
+$('.fa-times').on('click',function(){ $('#@{@ViewBag.FormID}').html('');})
+
+
+    </script>
+
+
+
+
+
+</section>
+
+  

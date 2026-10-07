@@ -1,0 +1,320 @@
+﻿<section class="content-header">
+		<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i><b>KPI LIST</b></a></li>
+		<li class="active"><b>KPI DETAILS</b></li>
+	</ol><br>
+@*<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">*@
+
+</section>
+<section class="content" style="position:relative">
+<div class="row">
+   <div class="col-xs-12">
+	   <div class="box box-primary">    
+			<div class="table-wrapper">
+                   <div class="table-title" style="margin-top: 10px; margin-bottom: 10px">
+                             <div class="row">
+                                  <div class="col-sm-1" >
+                                  <button id="btnAdd" style="font-size: 15px" type="button" class="btn btn-success" onclick="AdddNewKPI()"><i class="fa glyphicon glyphicon-plus" >
+                                    </i> <b>ADD NEW</b>
+                                  </button>
+                                  </div> 
+                             </div>
+                   </div>
+					<table class="table table-bordered" id="tableKPIList" style="cursor: pointer;">
+					<thead>
+						<tr>
+							<th rowspan="1" colspan="1" style="width:10%; font-size: 13px;" data-field="id">ID</th>
+						    <th rowspan="1" colspan="1" style="width:50%; font-size: 13px" data-field="kpi"><span style="color: red; font-size: 20px"><b>*</b></span>KPI</th>
+                           <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="KPIType"><span style="color: red; font-size: 20px"><b>*</b></span>FORMULA</th>
+							<th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>WEIGHT</th>        
+							<th > ACTION</th>
+						</tr>
+					</thead>
+					<tbody>
+				   
+					</tbody>
+				</table>
+			</div>
+		  </div>
+
+        <span style="color: darkred; float: left; margin-left: 2px"><b>Note : </b></span>
+        <span style="color: black; float: left; margin-left: 5px"><b> Make sure that the KPI's weight is exactly 100% in total.</b></span>
+	   </div>
+	</div>
+</section>
+
+<script>
+	evalRefNo = 0;
+	isReady = true;
+	var recID;
+	var count = 1;
+	kpiCheck = [];
+	var kpiId, saveType, status = 1, arrayID, kpiformula, kpiweight, kpitarget;
+	var table = $("#tableKPIList");
+	var index = $("tableKPIList tbody tr:last-child").index();
+	var perfindicatorid = kpilistid;
+
+
+	$(document).ready(function () {
+
+	    loadKPIListDetails();
+
+        empty = true;
+ 
+        $("#tableKPIList").off("click", ".addkpi").on("click", ".addkpi", function () {
+
+            var empty = false;
+            var input = $(this).parents("tr").find('input[type="text"]');
+
+			input.each(function () {
+
+				if ($(this).val().length == 0 || $(this).val() == 0.00 || $(this).val() == 0) {
+					empty = true;
+	/*				$(this).addClass("error");*/
+                    $(this).style.borderColor = "#f50000";
+				} else {
+
+					$(this).removeClass("error");
+              
+				}
+			});
+
+			//---
+
+			$(this).parents("tr").find(".error").first().focus();
+
+			if (!empty) {
+				input.each(function () {
+					$(this).parent("td").html($(this).val());
+				});
+
+				//--
+				var $tds = $(this).parents("tr").find('td'),
+					 id = $tds.eq(0).text(),
+					 kpi = $tds.eq(1).text(),
+				    formula = $tds.eq(2).val();
+                     weight = $tds.eq(3).text();
+                     kpi = kpi.replace(/'/g, "`");
+                     if (id == "-1") {
+					     saveType = 1;
+					 } else {
+					     saveType = 0;
+					 }
+
+					 if(isNumeric(weight) == true){
+
+					     if(weight > 100 || weight <= 0){	
+					         swal("Invalid Weight!", "Weight must not be less than or equal to zero/greater than 100.", "info");
+                             loadKPIListDetails(perfindicatorid);
+                             $("btnAdd").prop('disabled', false);
+	
+					     } else {
+					     
+					         $.ajax({                 
+					             type: "POST",
+					             url: "../KPIView/UpdatingPerformanceIndicatorDetails",
+					             contentType: "application/json; charset=utf-8",
+					             cache: false,
+                                 data: JSON.stringify({ saveType: saveType, id: id, kpiListID: perfindicatorid, kpiDesc: kpi, kpiType: $('#formula').val(), weight: weight, categoryID: categoryID }),
+					             success: function (data) {
+					                 if (data == 'True') {
+					                     status = 1;
+                                         loadKPIListDetails(perfindicatorid);
+					                     $(this).parents("tr").find(".add, .edit").toggle();
+					                     $(".add-newkpi").removeAttr("disabled");
+					                     $('#CategoryDetails').DataTable().ajax.reload();
+					                     $('#KPIAssignmentList_ListView_Table').DataTable().ajax.reload();
+					                     $('#KPIAssignmentDetails').DataTable().ajax.reload();
+					                     $('#KPIListInfo').DataTable().ajax.reload();
+					                     Toast.Show("KPI Details updated.");
+					                 }
+					                 else { status = 0; }
+					             }
+					         })
+					     }	
+                       
+                     } else {
+                         swal("Failed!", "Invalid Weight format.", "info");
+                         loadKPIListDetails(perfindicatorid);
+                         $("btnAdd").prop('disabled', false);
+					}    
+			}
+	    });
+
+	    // Edit row on edit button click
+	    $("#tableKPIList").off("click", ".editkpi").on("click", ".editkpi", function () {
+
+	        $(this).parents("tr").find("td:not(:last-child)").each(function () {
+		        
+	            if (count == 1) {
+
+	                $(this).html('<input id="kpiid" onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+		            count++;
+		            recID = $("#kpiid").val();
+                    $("btnAdd").prop('disabled', true);
+		        } else if (count == 2) { 
+		            $(this).html('<input onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+		            count++;
+		            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                    $("btnAdd").prop('disabled', true);
+
+		        } else if (count == 3) {
+		            if ($(this).text() == "A = P / T x 100") {
+                        $(this).html('<select id="formula" style="width: 100%; height: 32px; font-size: 12px"><option value="1">A = P / T x 100</option><option value="2">A = T / P x 100</option><option value="3">Budget Bracket</option></select>');
+		            } else if ($(this).text() == "A = T / P x 100") {
+                        $(this).html('<select id="formula" style="width: 100%; height: 32px; font-size: 12px"><option value="2">A = T / P x 100</option><option value="1">A = P / T x 100</option><option value="3">Budget Bracket</option></select>');
+                    } else if ($(this).text() == "Budget Bracket") {
+                        $(this).html('<select id="formula" style="width: 100%; height: 32px; font-size: 12px"><option value="3">Budget Bracket</option><option value="2">A = T / P x 100</option><option value="1">A = P / T x 100</option></select>');
+                    }
+		            count++;
+		            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                    $("btnAdd").prop('disabled', true);
+		       
+		        } else if (count == 4) {
+		            $(this).html('<input onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px">');
+		            count++;
+		            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                    $("btnAdd").prop('disabled', true);
+ 
+		        } else {
+		            count = 1;
+		            return false;
+		        }
+			});
+		});
+
+
+	    // Delete row on delete button click
+	    $("#tableKPIList").off("click", ".deletekpi").on("click", ".deletekpi", function () {
+
+	        var $tds = $(this).parents("tr").find('td'),
+                 id = $tds.eq(0).text();
+	        swal({
+	            title: "Are you sure?",
+	            text: "Once deleted, you will not be able to recover this record.",
+	            icon: "warning",
+	            buttons: true,
+	            dangerMode: true,
+	        })
+
+            .then((willDelete) => {
+                if (willDelete) {
+
+		                if((id == undefined || id == "")){
+		                    id = recID;
+		                    if(id != undefined){
+		                        $.ajax({                 
+		                            type: "POST",
+		                            cache: false,
+		                            url:'../KPIView/UpdatingPerformanceIndicatorDetails?saveType=' + 2 + '&id=' + id + '&kpiListID=' + 0 + '&kpiDesc=' + 'delete' + '&kpiType=' + 0 + '&weight=' + 0 + '&categoryID=' + categoryID,
+		                            success: function (data) {
+		                                if (data == 'True') {
+		                                    status = 1;
+		                                }
+		                                else { status = 0; }
+		                            }
+		                        })
+		                    }
+		                } else {
+		                
+		                    $.ajax({                 
+		                        type: "POST",
+		                        cache: false,
+		                        url:'../KPIView/UpdatingPerformanceIndicatorDetails?saveType=' + 2 + '&id=' + id + '&kpiListID=' + 0 + '&kpiDesc=' + 'delete' + '&kpiType=' + 0 + '&weight=' + 0 + '&categoryID=' + categoryID,
+		                        success: function (data) {
+		                            if (data == 'True') {
+		                                status = 1;
+		                            }
+		                            else { status = 0; }
+		                        }
+		                    })
+		                }
+
+		                $(this).parents("tr").find(".add, .edit").toggle();
+						$("btnAdd").prop('disabled', false);
+		                $(this).parents("tr").remove();
+		            }
+		        });
+          
+        
+	        });
+
+	});
+
+
+	function AdddNewKPI() {
+
+        var index2 = $("#tableKPIList tbody tr:last-child").index();
+        var row = '<tr>' +
+            '<td><input type="text" class="form-control" name="kpiid" id="kpiid" value="-1" style="font-size: 12px" disabled></td>' +
+            '<td><input type="text" class="form-control" name="kpi" id="kpi" value="Undefined" style="font-size: 12px" rows="5"></td>' +
+            '<td><select id="formula" style="width: 150px; height: 32px; font-size: 12px"><option value="1">A = P / T x 100</option><option value="2">A = T / P x 100</option><option value="3">Budget Bracket</option></select></td>' +
+            '<td><input onkeypress="return isNumberKey(event)" type="text" class="form-control" name="weight" id="weight" value="0" style="font-size: 12px"></td>' +
+            '<td>' +
+            '<a class="addkpi" title="Add" style="color: #27C46B; display: none; max-width:50px; width:auto; min-width:10px;"><i class="material-icons">&#xE03B;</i></a>' +
+            '<a class="editkpi" title="Edit" style="color: #FFC107;"><i class="material-icons">&#xE254;</i></a>' +
+            '<a class="deletekpi" title="Delete" style="color: #E34724;"><i class="material-icons">&#xE872;</i></a>' +
+            '</td>' +
+            '</tr>;'
+        $("#tableKPIList").append(row);
+        $("#tableKPIList tbody tr").eq(index2 + 1).find(".addkpi, .editkpi").toggle();
+        $('[data-toggle="tooltip"]').tooltip();
+        $("btnAdd").prop('disabled', true);
+    }
+
+	//--
+
+	function isNumberKey(evt)
+	{
+		var charCode = (evt.which) ? evt.which : event.keyCode
+		if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)){
+			return false;}else{	return true;}
+	}
+
+	function loadKPIListDetails() {
+
+	    var r = $.Deferred();
+
+	    var tableKPListDetails = $("#tableKPIList");
+
+	    tableKPListDetails.find('tr').each(function (i) {   
+	        if (!this.rowIndex) return;
+	        this.parentNode.removeChild(this);
+	    });
+
+	    jQuery.ajax({
+            url: '@Url.Action("GetPerformanceIndicatorListDetails", "KPI")?PerfIndicatorID=' + perfindicatorid+ '&CategoryID=' + categoryID,
+		    type: 'POST',
+		    datatype: 'application/json; charset=utf-8',
+		    success: function (data) {
+		        var jsonArray = JSON.parse(data);
+		        $("#tableKPIList tbody").remove(); 
+		        for (var i = 0; i < jsonArray.length; i++) {
+		            var trRow = '';
+		            trRow += '<tr><td style="font-size: 12px" disabled>' + jsonArray[i][0] + '</td><td style="font-size: 12px" rows="5">' + jsonArray[i][1] + '</td><td style="font-size: 12px">' + jsonArray[i][2] + '</td><td style="font-size: 12px">' + jsonArray[i][3].toFixed(2) + '</td>';
+		            trRow += '<td>' +
+							 '<a class="addkpi" title="Add" style="color: #27C46B; display: none; max-width:50px; width:auto; min-width:10px;"><i class="material-icons">&#xE03B;</i></a>' +
+                             '<a class="editkpi" title="Edit" style="color: #FFC107;"><i class="material-icons">&#xE254;</i></a>' +
+                             '<a class="deletekpi" title="Delete" style="color: #E34724;"><i class="material-icons">&#xE872;</i></a>' +
+							 '</td></tr>'
+		            $("#tableKPIList").append(trRow);
+		            $("#tableKPIList tbody tr").eq(index + 1).find(".add, .edit").toggle();
+		        }
+		    },
+		    error: function (e) {
+		    }
+		});
+
+        //---
+        return r;
+    };
+
+    function isNumeric(num){
+        return !isNaN(num)
+    }
+
+	$('#myParentDialog').trigger("OnDetailViewContentCreated");
+    $('#myParentDialog').unbind("OnDetailViewContentCreated");
+</script>

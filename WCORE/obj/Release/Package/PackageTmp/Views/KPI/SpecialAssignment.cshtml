@@ -1,0 +1,463 @@
+﻿<section class="content-header">
+		<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i><b>PART III</b></a></li>
+		<li class="active"><b>GROWTH, LEARNING AND SPECIAL ASSIGNMENTS</b></li>
+	</ol>
+<style>
+
+.row{
+	margin-top:40px;
+	/*padding: 0 10px;*/
+}
+
+.clickable{
+	cursor: pointer;   
+}
+
+.panel-heading span {
+	margin-top: -20px;
+	font-size: 12px;
+}
+<a href="~/Views/KPI/SpecialAssignment.cshtml">~/Views/KPI/SpecialAssignment.cshtml</a>
+.animated {
+-webkit-transition: height 0.2s;
+-moz-transition: height 0.2s;
+transition: height 0.2s;
+}
+
+textarea {
+	box-sizing: border-box;
+	resize: none;
+}
+
+.popover-medium {
+	max-width: 540px;
+	white-space: pre-line;
+}
+
+</style>
+
+</section>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h3 class="panel-title clickable" id="ratingHighest"><b>Core Strengths</b></h3>
+						@*<h3 class="panel-title clickable"> <a tabindex="0" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?fdsfds fsd fsdf sdf sdf sdfsd fsd fsdf sdfs dfsd fsdf sdf"><b>Core Strengths for (ratings 1.0 to 2.75)</b></a></h3>*@
+					<span class="pull-right clickable"><i class="fa fa-chevron-down"></i></span>
+				</div>
+				<div class="panel-body"><textarea data-autoresize rows="3" id="coreStrenghtsHighest" class="form-control animated" placeholder="Update your status" style="white-space: pre-line"></textarea></div>
+			</div>
+		</div>
+			<div class="col-sm-4">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<h3 class="panel-title clickable" id="ratingLowest"><b>Core Areas for improvement</b></h3>
+						<span class="pull-right clickable"><i class="fa fa-chevron-up"></i></span>
+					</div>
+					<div class="panel-body"><textarea data-autoresize rows="3"  id="coreStrengthsLowest" class="form-control animated" placeholder="Update your status" style="white-space: pre-line"></textarea></div>
+				</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title"><b>Action Plan with timeline & desired outcomes</b></h3>
+					<span class="pull-right clickable"><i class="fa fa-chevron-down"></i></span>
+				</div>
+				<div class="panel-body"><textarea data-autoresize rows="3" id="actionPlanA" class="form-control animated" placeholder="Update your status" style="white-space: pre-line"></textarea></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><b>Special assignment or project</b></h3>
+                    <span class="pull-right clickable"><i class="fa fa-chevron-down"></i></span>
+                </div>
+                <div class="panel-body"><textarea data-autoresize rows="3" id="specialAssignment" class="form-control animated" placeholder="Update your status" style="white-space: pre-line"></textarea></div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><b>Objectives or desired impact on growth</b></h3>
+                    <span class="pull-right clickable"><i class="fa fa-chevron-up"></i></span>
+                </div>
+                <div class="panel-body"><textarea data-autoresize rows="3" id="desiredObjectives" class="form-control animated" placeholder="Update your status" style="white-space: pre-line"></textarea></div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><b>Action Plan with timeline & desired outcomes</b></h3>
+                    <span class="pull-right clickable"><i class="fa fa-chevron-down"></i></span>
+                </div>
+                <div class="panel-body"><textarea data-autoresize rows="3" id="actionPlanB" class="form-control animated" placeholder="Update your status" style="white-space: pre-line"></textarea></div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><b>Personnel Action Request</b></h3>
+                    <span class="pull-right clickable"><i class="fa fa-chevron-down"></i></span>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="sel1"><b>Reason For Change</b></label>
+                        <select class="form-control" id="reasonforchange">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="sel1"><b>PAR Remarks</b></label>
+                            <textarea data-autoresize rows="3" id="parRemarks" class="form-control animated" placeholder="Write something here..." style="white-space: pre-line"></textarea>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/Contents/js/KPI/KPISpecialAssignment.js"></script>
+<script>
+
+	var reasonID;
+    var isReady = false;
+	var textarea = document.querySelector('textarea');
+	textarea.addEventListener('keydown', autosize);
+
+	$(document).ready(function () {
+
+	    loadPOPUPRatingHighest().done(loadPOPUPRatingLowest()).done(PopulateTextArea());
+
+		$(document).on('click', '.panel-heading span.clickable', function (e) {
+			var $this = $(this);
+			if (!$this.hasClass('panel-collapsed')) {
+				$this.parents('.panel').find('.panel-body').slideUp();
+				$this.addClass('panel-collapsed');
+				$this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+
+			} else {
+				$this.parents('.panel').find('.panel-body').slideDown();
+				$this.removeClass('panel-collapsed');
+				$this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+			}
+		})
+
+
+		jQuery.each(jQuery('textarea[data-autoresize]'), function() {
+			var offset = this.offsetHeight - this.clientHeight;
+
+			var resizeTextarea = function(el) {
+				jQuery(el).css('height', 'auto').css('height', el.scrollHeight + offset);
+			};
+			jQuery(this).on('keyup input', function() { resizeTextarea(this); }).removeAttr('data-autoresize');
+		});
+
+
+        //---
+		$(document).on('click', function (e) {
+		    $('[data-toggle="popover"],[data-original-title]').each(function () {
+		        //the 'is' for buttons that trigger popups
+		        //the 'has' for icons within a button that triggers a popup
+		        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+		            (($(this).popover('hide').data('bs.popover') || {}).inState || {}).click = false  // fix for BS 3.3.6
+		        }
+
+		    });
+		});
+
+		PopulateReasons();
+
+	})
+
+	function PopulateTextArea()
+	{
+		var r = $.Deferred();
+		jQuery.ajax({
+			url: '@Url.Action("GetSpecialComments", "KPI")?KPIAssignmentDetailsRefNo=' + kpiAssignmentID,
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			success: function (data) {
+
+				var jsonArray = JSON.parse(data);
+				if(jsonArray.length != 0){
+
+				    var coreH = jsonArray[0][0];
+				    var coreL = jsonArray[0][1];
+				    var actionA = jsonArray[0][2];
+				    var specialA = jsonArray[0][3];
+				    var objectives = jsonArray[0][4];
+					var actionB = jsonArray[0][5];
+                    reasonID = jsonArray[0][6];
+					var pRemarks = jsonArray[0][7];
+
+				    $("#coreStrenghtsHighest").val(coreH.replace(/<br>/g, "\n"));
+				    $("#coreStrengthsLowest").val(coreL.replace(/<br>/g, "\n"));
+				    $("#actionPlanA").val(actionA.replace(/<br>/g, "\n"));
+				    $("#specialAssignment").val(specialA.replace(/<br>/g, "\n"));
+				    $("#desiredObjectives").val(objectives.replace(/<br>/g, "\n"));
+					$("#actionPlanB").val(actionB.replace(/<br>/g, "\n"));
+					$("#actionPlanB").val(actionB.replace(/<br>/g, "\n"));
+                    $("#parRemarks").val(pRemarks.replace(/<br>/g, "\n"));
+				}
+			},
+			error: function (e) {
+			}
+		});
+
+		return r;
+	}
+
+	function PopulateReasons() {
+
+		jQuery.ajax({
+			url: '@Url.Action("GetReasonForChange", "KPI")',
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			success: function (data) {
+				var jsonArray = JSON.parse(data);
+                var sel = document.getElementById('reasonforchange') 
+				for (var i = 0; i < jsonArray.length; i++) {
+					var opt = document.createElement("option"); 
+
+                        opt.value = jsonArray[i][0].toString();
+                        opt.text = jsonArray[i][1].toString();
+                        sel.appendChild(opt); 
+				}
+
+       
+                setSelectedIndex(sel, reasonID)
+			},
+			error: function (e) {
+			}
+
+		});
+    }
+
+	function loadPOPUPRatingHighest() {
+		contentOnPopupHighest = "";
+		var s = $.Deferred();
+		jQuery.ajax({
+			url: '@Url.Action("GetPopupDetailsHighest", "KPI")?KPIAssignmentDetailsRefNo=' + kpiAssignmentID,
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			success: function (data) {
+				var jsonArray = JSON.parse(data);
+				for (var i = 0; i < jsonArray.length; i++) {
+					contentOnPopupHighest += (i + 1) + '. ' + jsonArray[i][1].toString() + ' [ ' + jsonArray[i][0].toFixed(2).toString() + ' ]\n';
+				}
+				populatePopUPDetailsHighest();
+			},
+			error: function (e) {
+			}
+
+		});
+
+		return s;
+	};
+
+	function loadPOPUPRatingLowest() {
+		contentOnPopupLowest = "";
+		var s = $.Deferred();
+		jQuery.ajax({
+			url: '@Url.Action("GetPopupDetailsLowest", "KPI")?KPIAssignmentDetailsRefNo=' + kpiAssignmentID,
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			success: function (data) {
+				var jsonArray = JSON.parse(data);
+				for (var i = 0; i < jsonArray.length; i++) {
+					contentOnPopupLowest += (i + 1) + '. ' + jsonArray[i][1].toString() + ' [ ' + jsonArray[i][0].toFixed(2).toString() + ' ]\n';
+				}
+				populatePopUPDetailsLowest();
+			},
+			error: function (e) {
+			}
+
+		});
+
+		return s;
+	};
+
+@*    function GetScoreSummary() {
+
+        var ss = $.Deferred();
+        jQuery.ajax({
+            url: '@Url.Action("GetScoreSummary", "KPI")?KPIAssignmentDetailsRefNo=' + kpiAssignmentID,
+		    type: 'POST',
+		    datatype: 'application/json; charset=utf-8',
+		    success: function (data) {
+		        var jsonArray = JSON.parse(data);
+		        finalScore = [0][0];
+		    },
+		    error: function (e) {
+		    }
+
+		});
+
+        return ss;
+
+    }*@
+
+	function populatePopUPDetailsHighest() {
+
+		$("#ratingHighest")
+		  .popover({
+		      trigger: "click blur",
+
+			  placement: 'right',
+			  toggle: "popover",
+			  tabindex: "0",
+			  html: true,
+			  content: contentOnPopupHighest,
+			  title: "Core Competency Results",
+			  container: 'body',
+			  //template: '<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Core Competency Results" data-content="amazing content">' + contentOnPopupHighest + '</a>'
+			  template: '<div class="popover popover-medium"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title" data-trigger="focus"></h3><div class="popover-content"><p></p></div></div></div>',
+		  })
+	};
+
+
+	function populatePopUPDetailsLowest() {
+
+		$("#ratingLowest")
+		  .popover({
+			  trigger: "click blur",
+			  placement: 'right',
+			  html: true,
+			  toggle: "popover",
+			  tabindex: "0",
+			  content: contentOnPopupLowest,
+			  title: "Core Competency Results",
+			  container: 'body',
+			  //template: '<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Core Competency Results" data-content="amazing content">' + contentOnPopupHighest + '</a>'
+			  template: '<div class="popover popover-medium"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title" data-trigger="focus"></h3><div class="popover-content"><p></p></div></div></div>',
+		  })
+	};
+
+	window.FieldCheck = function () {
+	    var s = $.Deferred();
+		if ($("#coreStrenghtsHighest").val() == "" || $("#coreStrengthsLowest").val() == "" || $("#actionPlanA").val() == "" || $("#specialAssignment").val() == "" || $("#desiredObjectives").val() == "" || $("#actionPlanB").val() == "" ||
+			$("#coreStrenghtsHighest").val() == undefined || $("#coreStrengthsLowest").val() == undefined || $("#actionPlanA").val() == undefined || $("#specialAssignment").val() == undefined || $("#desiredObjectives").val() == undefined || $("#actionPlanB").val() == undefined) {
+			isReady = false;
+		} else {
+			isReady = true;
+		}
+
+		return s;
+	};
+
+	window.RequiredFieldCheck = function () {
+
+	    if ($("#coreStrengthsLowest").val() == undefined || $("#actionPlanA").val() == undefined || (!$('#coreStrengthsLowest').val().replace(/\s/g, '').length) || (!$('#actionPlanA').val().replace(/\s/g, '').length)
+			|| $("#coreStrenghtsHighest").val() == undefined || (!$('#coreStrenghtsHighest').val().replace(/\s/g, '').length)) {
+
+            isReady = false;
+            ///Toast.Error("You are required to fill-in the Core Strengths, Core Areas for improvement and Action Plan.");
+		} else {
+            isReady = true;
+           
+	    }
+
+	}
+
+	window.UpdatingPartThree = function () {
+
+		var reasonID = $('#reasonforchange').val();
+
+		var t = $.Deferred();
+		var coreH = $("#coreStrenghtsHighest").val();
+		coreH = coreH.replace(/\n/g, "<br>");
+		coreH = coreH.replace(/'/g, "`");
+        coreH = coreH.replace(/%/g, "pct");
+
+		var coreL = $("#coreStrengthsLowest").val();
+		coreL = coreL.replace(/\n/g, "<br>");
+		coreL = coreL.replace(/'/g, "`");
+        coreL = coreL.replace(/%/g, "pct");
+
+		var actionA = $("#actionPlanA").val();
+		actionA = actionA.replace(/\n/g, "<br>");
+		actionA = actionA.replace(/'/g, "`");
+        actionA = actionA.replace(/%/g, "pct");
+
+		var specialA = $("#specialAssignment").val();
+		specialA = specialA.replace(/\n/g, "<br>");
+		specialA = specialA.replace(/'/g, "`");
+        specialA = specialA.replace(/%/g, "pct");
+
+		var objectives = $("#desiredObjectives").val();
+		objectives = objectives.replace(/\n/g, "<br>");
+		objectives = objectives.replace(/'/g, "`");
+        objectives = objectives.replace(/%/g, "pct");
+
+		var actionB = $("#actionPlanB").val();
+		actionB = actionB.replace(/\n/g, "<br>");
+		actionB = actionB.replace(/'/g, "`");
+        actionB = actionB.replace(/%/g, "pct");
+
+		var parrem = $("#parRemarks").val();
+		parrem = parrem.replace(/\n/g, "<br>");
+		parrem = parrem.replace(/'/g, "`");
+        parrem = parrem.replace(/%/g, "pct");
+
+
+		try {
+
+            $.ajax({
+                type: "POST",
+                url: "../KPI/UpdatepartThree",
+                contentType: "application/json; charset=utf-8",
+                cache: false,
+                data: JSON.stringify({
+                    KPIAssignmentDetailsRefNo: decodeURI(kpiAssignmentID), coreStrengthsHighest: decodeURI(coreH), coreStrengthsLowest: decodeURI(coreL), actionPlanA: decodeURI(actionA), specialAssignment: decodeURI(specialA),
+                    objectives: decodeURI(objectives), actionPlanB: decodeURI(actionB), reasonForChangeRefNo: decodeURI(reasonID), parremarks: decodeURI(parrem)
+                }),
+				success: function (data) {
+                    if (data == 'True') {
+
+                        isReady = true;
+                    }
+                }
+			})
+
+		} catch (e) {
+
+            isReady = false;
+            Toast.Error("Some text cannot be processed.");
+		}
+	}
+
+	function autosize() {
+		var el = this;
+		setTimeout(function () {
+			el.style.cssText = 'height:auto; padding:0';
+			// for box-sizing other than "content-box" use:
+			// el.style.cssText = '-moz-box-sizing:content-box';
+			el.style.cssText = 'height:' + el.scrollHeight + 'px';
+		}, 0);
+	}
+
+    function setSelectedIndex(s, valsearch) {
+
+        for (i = 0; i < s.options.length; i++) {
+
+            if (s.options[i].value == valsearch) {
+                s.options[i].selected = true;
+
+                break;
+            }
+        }
+        return;
+    }
+
+</script>

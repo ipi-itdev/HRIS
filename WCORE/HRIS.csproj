@@ -1,0 +1,1838 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WCORE</RootNamespace>
+    <AssemblyName>WCORE</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Use64BitIISExpress />
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <PrecompileBeforePublish>true</PrecompileBeforePublish>
+    <Prefer32Bit>false</Prefer32Bit>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile>Content/js/all.js</TypeScriptOutFile>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>5</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Azure.Core, Version=1.35.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.35.0\lib\net472\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity, Version=1.10.3.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Identity.1.10.3\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.4.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML, Version=0.96.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.96.0\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>bin\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.ClientDoc.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.ClientDoc.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CommLayer.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.CommLayer.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CommonControls.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.CommonControls.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CommonObjectModel.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.CommonObjectModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.Controllers.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.Controllers.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.CubeDefModel.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.CubeDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.DataDefModel.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.DataDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.DataSetConversion.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.DataSetConversion.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ObjectFactory, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.ObjectFactory.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.ObjectFactory.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.ReportDefModel.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.ReportDefModel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.ReportAppServer.XmlSerialize.13.0.3500\lib\net20\CrystalDecisions.ReportAppServer.XmlSerialize.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>bin\CrystalDecisions.ReportSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <HintPath>..\packages\CrystalReports.Shared.13.0.3500\lib\net20\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Authenticator, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleAuthenticator.3.2.0\lib\net462\Google.Authenticator.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.SqlClient, Version=5.0.0.0, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.5.2.0\lib\net462\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.56.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.56.0\lib\net461\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.56.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.Extensions.Msal.4.56.0\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.6.35.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.35.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.35.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.35.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.3.0, Culture=neutral, PublicKeyToken=c4ed5b9ae8358a28, processorArchitecture=MSIL">
+      <HintPath>..\packages\QRCoder.1.4.3\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.ConfigurationManager, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.6.0.1\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.6, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.6\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.1\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.35.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.1.0.2\lib\net461\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.7.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.6.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\APIController\PAREmpInfoController.cs" />
+    <Compile Include="Controllers\APP\CovidController.cs" />
+    <Compile Include="Controllers\APP\CSController.cs" />
+    <Compile Include="Controllers\APP\HCController.cs" />
+    <Compile Include="Controllers\APP\INVController.cs" />
+    <Compile Include="Controllers\APP\KPIController.cs" />
+    <Compile Include="Controllers\APP\PISController.cs" />
+    <Compile Include="Controllers\APP\PISInternalEmployeeActiveController.cs" />
+    <Compile Include="Controllers\APP\TMSController.cs" />
+    <Compile Include="Controllers\APP\TREController.cs" />
+    <Compile Include="Controllers\CAMController.cs" />
+    <Compile Include="Controllers\ErrorHandlerController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\KPIViewController.cs" />
+    <Compile Include="Controllers\MiscController.cs" />
+    <Compile Include="Controllers\PARController.cs" />
+    <Compile Include="Controllers\ReportViewController.cs" />
+    <Compile Include="Controllers\SurveyController.cs" />
+    <Compile Include="Controllers\_BASE\AppSetController.cs" />
+    <Compile Include="Controllers\_BASE\DetailViewController.cs" />
+    <Compile Include="Controllers\_BASE\ErrorController.cs" />
+    <Compile Include="Controllers\_BASE\HomeController.cs" />
+    <Compile Include="Controllers\_BASE\ListViewController.cs" />
+    <Compile Include="Controllers\_BASE\RVController.cs" />
+    <Compile Include="JIBAppDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JIBAppDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JIBAppDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JIBAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JIBAppDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JIBAppDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MenuUserRole.cs">
+      <DependentUpon>JIBAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APP\CAM\ClientAccount.cs" />
+    <Compile Include="Models\APP\CAM\Maintenance\Branch.cs" />
+    <Compile Include="Models\APP\CAM\Maintenance\ClientAccountHistory.cs" />
+    <Compile Include="Models\APP\CAM\Maintenance\ClientContactPerson.cs" />
+    <Compile Include="Models\APP\CAM\Maintenance\CostCenter.cs" />
+    <Compile Include="Models\APP\CAM\Maintenance\EmployeeClientContractHistory.cs" />
+    <Compile Include="Models\APP\CAM\Maintenance\RateBasis.cs" />
+    <Compile Include="Models\APP\CAM\Maintenance\ServiceOffered.cs" />
+    <Compile Include="Models\APP\CS\CommissionCost.cs" />
+    <Compile Include="Models\APP\CS\CommissionDetails.cs" />
+    <Compile Include="Models\APP\CS\Commission.cs" />
+    <Compile Include="Models\APP\CS\CommissionDetailsDetails.cs" />
+    <Compile Include="Models\APP\CS\CommissionDetailsDetailsTemp.cs" />
+    <Compile Include="Models\APP\CS\CommissionDetailsDetailsTempCost.cs" />
+    <Compile Include="Models\APP\CS\CommissionIncentives.cs" />
+    <Compile Include="Models\APP\CS\Disbursement.cs" />
+    <Compile Include="Models\APP\CS\DisbursementHistory.cs" />
+    <Compile Include="Models\APP\CS\FSQuota.cs" />
+    <Compile Include="Models\APP\CS\FSQuotaDetails.cs" />
+    <Compile Include="Models\APP\CS\FSQuotaPersonal.cs" />
+    <Compile Include="Models\APP\CS\LatePayments.cs" />
+    <Compile Include="Models\APP\CS\MRQuota.cs" />
+    <Compile Include="Models\APP\CS\MRQuotaDetails.cs" />
+    <Compile Include="Models\APP\CS\SeparationPay.cs" />
+    <Compile Include="Models\APP\GLOBE\DepartmentGlobe.cs" />
+    <Compile Include="Models\APP\GLOBE\GlobeDepartment.cs" />
+    <Compile Include="Models\APP\GLOBE\GlobeEmployee.cs" />
+    <Compile Include="Models\APP\GLOBE\GlobeSupervisor.cs" />
+    <Compile Include="Models\APP\INV\INVEmpAccountabilityAll.cs" />
+    <Compile Include="Models\APP\INV\INVEmpAccountabilityDetailsHist.cs" />
+    <Compile Include="Models\APP\INV\INVEmployeeMasterlistAll.cs" />
+    <Compile Include="Models\APP\INV\INVExtAvailableItems.cs" />
+    <Compile Include="Models\APP\INV\INVAvailableParts.cs" />
+    <Compile Include="Models\APP\INV\INVExtEmpAccountabilityDetails.cs" />
+    <Compile Include="Models\APP\INV\INVExtEmpAccountabilityActive.cs" />
+    <Compile Include="Models\APP\INV\INVEmpAccountabilityClientDetails.cs" />
+    <Compile Include="Models\APP\INV\INVEmpAccountabilityPending.cs" />
+    <Compile Include="Models\APP\INV\INVEXTEmployeeMasterlist.cs" />
+    <Compile Include="Models\APP\INV\INVEmployeeMasterlist.cs" />
+    <Compile Include="Models\APP\INV\INVAvailableItems.cs" />
+    <Compile Include="Models\APP\INV\INVEmpAccountabilityActive.cs" />
+    <Compile Include="Models\APP\INV\INVEmpAccountabilityDetails.cs" />
+    <Compile Include="Models\APP\INV\INVEmpAccountabilityHistory.cs" />
+    <Compile Include="Models\APP\INV\INVItemDetails.cs" />
+    <Compile Include="Models\APP\INV\INVItemHistory.cs" />
+    <Compile Include="Models\APP\INV\INVItemsAccountability.cs" />
+    <Compile Include="Models\APP\INV\INVItemsHistory.cs" />
+    <Compile Include="Models\APP\INV\INVItemsActive.cs" />
+    <Compile Include="Models\APP\INV\Maintenance\AccountabilityStatus.cs" />
+    <Compile Include="Models\APP\INV\Maintenance\EmpAccountability.cs" />
+    <Compile Include="Models\APP\INV\Maintenance\ItemsClassification.cs" />
+    <Compile Include="Models\APP\INV\Maintenance\ItemStatus.cs" />
+    <Compile Include="Models\APP\INV\Maintenance\Supplier.cs" />
+    <Compile Include="Models\APP\INV\Maintenance\ItemsType.cs" />
+    <Compile Include="Models\APP\KPI\AssignedTo.cs" />
+    <Compile Include="Models\APP\KPI\AssignedToExternal.cs" />
+    <Compile Include="Models\APP\KPI\AssignedToExternalList.cs" />
+    <Compile Include="Models\APP\KPI\AssignedToExternalList2.cs" />
+    <Compile Include="Models\APP\KPI\KPIAddChange.cs" />
+    <Compile Include="Models\APP\KPI\KPIAddChange2.cs" />
+    <Compile Include="Models\APP\KPI\KPIAddChange3.cs" />
+    <Compile Include="Models\APP\KPI\KPIList.cs" />
+    <Compile Include="Models\APP\KPI\CoreCompetency.cs" />
+    <Compile Include="Models\APP\KPI\EvaluationPurpose.cs" />
+    <Compile Include="Models\APP\KPI\ForApproval.cs" />
+    <Compile Include="Models\APP\KPI\KPI.cs" />
+    <Compile Include="Models\APP\KPI\KPIActiveEmployee.cs" />
+    <Compile Include="Models\APP\KPI\KPIAssignedTo.cs" />
+    <Compile Include="Models\APP\KPI\KPIAssignmentList.cs" />
+    <Compile Include="Models\APP\KPI\KPIClientSelect.cs" />
+    <Compile Include="Models\APP\KPI\KPIDepartmentSelect.cs" />
+    <Compile Include="Models\APP\KPI\KPIDetails.cs" />
+    <Compile Include="Models\APP\KPI\KPIDetailsType.cs" />
+    <Compile Include="Models\APP\KPI\KPIJobBandSelect.cs" />
+    <Compile Include="Models\APP\KPI\KPIJobTitleSelect.cs" />
+    <Compile Include="Models\APP\KPI\KPIListDetails_Managers.cs" />
+    <Compile Include="Models\APP\KPI\KPIListManager.cs" />
+    <Compile Include="Models\APP\KPI\KPIMain.cs" />
+    <Compile Include="Models\APP\KPI\KPIModal.cs" />
+    <Compile Include="Models\APP\KPI\KPIScoreCard.cs" />
+    <Compile Include="Models\APP\KPI\PerformanceIndicatorSelect.cs" />
+    <Compile Include="Models\APP\KPI\PerformancePercentage.cs" />
+    <Compile Include="Models\APP\KPI\TargetSettingExternal.cs" />
+    <Compile Include="Models\APP\KPI\TargetSettingRev.cs" />
+    <Compile Include="Models\APP\Maintenance\Covid\DHSMonitor.cs" />
+    <Compile Include="Models\APP\Maintenance\Covid\DHSReport.cs" />
+    <Compile Include="Models\APP\Maintenance\Covid\ForceLeave.cs" />
+    <Compile Include="Models\APP\Maintenance\Covid\Recommendation.cs" />
+    <Compile Include="Models\APP\CS\Maintenance\AccountType.cs" />
+    <Compile Include="Models\APP\CS\Maintenance\BusinessClass.cs" />
+    <Compile Include="Models\APP\CS\Maintenance\ChartofAccount.cs" />
+    <Compile Include="Models\APP\CS\CommissionRate.cs" />
+    <Compile Include="Models\APP\CS\NewAccountIncentive.cs" />
+    <Compile Include="Models\APP\Maintenance\FileUpload\FileType.cs" />
+    <Compile Include="Models\APP\Maintenance\FileUpload\FileUpload.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\Barangay.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\City.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\DurationCycle.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\FilingStatus.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\FilingStatusCovid.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\WorkLocation.cs" />
+    <Compile Include="Models\APP\Maintenance\GeneralInfo\Holiday.cs" />
+    <Compile Include="Models\APP\Maintenance\GeneralInfo\HolidayType.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\Month.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\PreEmpType.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\PreEmpTypeRefNo.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\Province.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\Region.cs" />
+    <Compile Include="Models\APP\Maintenance\GeneralInfo\ApprovalLevel.cs" />
+    <Compile Include="Models\APP\Maintenance\GeneralInfo\Bank.cs" />
+    <Compile Include="Models\APP\Maintenance\GeneralInfo\MarketingRep.cs" />
+    <Compile Include="Models\APP\Maintenance\GeneralInfo\Signatories.cs" />
+    <Compile Include="Models\APP\OTH\AllEmployee.cs" />
+    <Compile Include="Models\APP\OTH\Attrition.cs" />
+    <Compile Include="Models\APP\OTH\COE.cs" />
+    <Compile Include="Models\APP\OTH\Maintenance\COETemplate.cs" />
+    <Compile Include="Models\APP\OTH\Maintenance\Verification.cs" />
+    <Compile Include="Models\APP\OTH\Maintenance\VerificationTemplate.cs" />
+    <Compile Include="Models\APP\OTH\VerificationProcessed.cs" />
+    <Compile Include="Models\APP\OTH\VerificationRequest.cs" />
+    <Compile Include="Models\APP\OTH\ActiveFloatingEmployee.cs" />
+    <Compile Include="Models\APP\PAR\ChangeRequest\AuditChanges.cs" />
+    <Compile Include="Models\APP\PAR\ChangeRequest\AuditEmployeeHistoryDetails.cs" />
+    <Compile Include="Models\APP\PAR\ChangeRequest\AuditEmployeeHistory.cs" />
+    <Compile Include="Models\APP\PAR\ChangeRequest\AuditEmployee.cs" />
+    <Compile Include="Models\APP\PAR\ChangeRequest\AuditEmployeeNC.cs" />
+    <Compile Include="Models\APP\PAR\ChangeRequest\DependentsAudit.cs" />
+    <Compile Include="Models\APP\PAR\ChangeRequest\HighestEducationAudit.cs" />
+    <Compile Include="Models\APP\PAR\External\PARExternalApproved.cs" />
+    <Compile Include="Models\APP\PAR\External\PARExternalApprovedPending.cs" />
+    <Compile Include="Models\APP\PAR\External\PARExternalDisapproved.cs" />
+    <Compile Include="Models\APP\PAR\External\PARExternalRequest.cs" />
+    <Compile Include="Models\APP\PAR\Maintenance\AllContractTemplate.cs" />
+    <Compile Include="Models\APP\PAR\Maintenance\ContractTemplate.cs" />
+    <Compile Include="Models\APP\PAR\Maintenance\ContractTemplate_EXT.cs" />
+    <Compile Include="Models\APP\PAR\Maintenance\ContractTemplate_INT.cs" />
+    <Compile Include="Models\APP\PAR\Maintenance\ContractType.cs" />
+    <Compile Include="Models\APP\PAR\Maintenance\Terms.cs" />
+    <Compile Include="Models\APP\PAR\PARInternal\PARInternalApproved.cs" />
+    <Compile Include="Models\APP\PAR\PARInternal\PARInternalApprovedPending.cs" />
+    <Compile Include="Models\APP\PAR\PARInternal\PARInternalDisapproved.cs" />
+    <Compile Include="Models\APP\PAR\PARInternal\PARInternalRequest.cs" />
+    <Compile Include="Models\APP\PIS\EmailDeploymentDate.cs" />
+    <Compile Include="Models\APP\PIS\Employee.cs" />
+    <Compile Include="Models\APP\PIS\EmploymentInfo.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\BloodType.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\CivilStatus.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\Department.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\DisciplinaryAction.cs" />
+    <Compile Include="Models\APP\Maintenance\PayrollInfo\ECOLAComputation.cs" />
+    <Compile Include="Models\APP\Maintenance\PayrollInfo\ECOLARate.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\EmployeeGroup.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\EmployeeStatus.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\EmployeeType.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\EmploymentStatus.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\FOW.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\Frequency.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\Gender.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\GroupInsurance.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\JobBand.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\JobPosition.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\MaxicareCoverage.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\Nationality.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\Offense.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\OffenseCategory.cs" />
+    <Compile Include="Models\APP\Maintenance\PayrollInfo\PayBasis.cs" />
+    <Compile Include="Models\APP\Maintenance\PayrollInfo\PaymentTerms.cs" />
+    <Compile Include="Models\APP\Maintenance\PayrollInfo\PayrollParameter.cs" />
+    <Compile Include="Models\APP\Maintenance\PayrollInfo\PayrollRate.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\ReasonForChange.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\ReasonForSeperation.cs" />
+    <Compile Include="Models\APP\Maintenance\Fixed\Religion.cs" />
+    <Compile Include="Models\APP\Maintenance\PayrollInfo\TaxStatus.cs" />
+    <Compile Include="Models\APP\Maintenance\JobInfo\WorkSchedule.cs" />
+    <Compile Include="Models\APP\PIS\ExternalEmployee\Active\ExtActiveEmployee.cs" />
+    <Compile Include="Models\APP\PIS\ExternalEmployee\Floating\ExtFloatingEmployee.cs" />
+    <Compile Include="Models\APP\PIS\ExternalEmployee\Inactive\ExtInactiveEmployee.cs" />
+    <Compile Include="Models\APP\PIS\ExternalEmployee\Loading\ExtLoadingEmployee.cs" />
+    <Compile Include="Models\APP\PIS\Internal\Active\ActiveEmployeeInternal.cs" />
+    <Compile Include="Models\APP\PIS\Internal\Active\ActiveEmployeeInternal_2.cs" />
+    <Compile Include="Models\APP\PIS\Internal\Active\EmploymentInfoInternal.cs" />
+    <Compile Include="Models\APP\PIS\Internal\Inactive\InactiveEmployeeInternal.cs" />
+    <Compile Include="Models\APP\PIS\Internal\Inactive\InactiveEmploymentInfoInternal.cs" />
+    <Compile Include="Models\APP\PIS\Internal\New Load\NewEmploymentInfoInternal.cs" />
+    <Compile Include="Models\APP\PIS\Internal\New Load\NewLoadingEmployeeInternal.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\Accountability.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\Dependents.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\EmpHistory.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\EmpHistoryInternal.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\EmployeeOffense.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\HighestEducation.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\OtherBenefits.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\OtherBenefits2.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\OtherCost.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\Performance.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\PreRequirements.cs" />
+    <Compile Include="Models\APP\PIS\SubModule\Training.cs" />
+    <Compile Include="Models\APP\TMS\DTRApplicationApproval.cs" />
+    <Compile Include="Models\APP\TMS\DTRApplicationHistory.cs" />
+    <Compile Include="Models\APP\TMS\LeaveApplicationApproval.cs" />
+    <Compile Include="Models\APP\TMS\LeaveApplicationHistory.cs" />
+    <Compile Include="Models\APP\TMS\OBApplicationApproval.cs" />
+    <Compile Include="Models\APP\TMS\OBApplicationHistory.cs" />
+    <Compile Include="Models\APP\TMS\OTApplicationApproval.cs" />
+    <Compile Include="Models\APP\TMS\OTApplicationHistory.cs" />
+    <Compile Include="Models\APP\MaintenanceEnum.cs" />
+    <Compile Include="Models\_Administartive\AuditTrail.cs" />
+    <Compile Include="Models\_Administartive\ControlTypeField.cs" />
+    <Compile Include="Models\_Administartive\CommandTypeButton.cs" />
+    <Compile Include="Models\_Administartive\Company.cs" />
+    <Compile Include="Models\_Administartive\FormType.cs" />
+    <Compile Include="Models\_Administartive\MenuButton.cs" />
+    <Compile Include="Models\_Administartive\MenuColumns.cs" />
+    <Compile Include="Models\_Administartive\Menu.cs" />
+    <Compile Include="Models\_Administartive\Privileges.cs" />
+    <Compile Include="Models\_Administartive\System.cs" />
+    <Compile Include="Models\_Administartive\SystemMessage.cs" />
+    <Compile Include="Models\_Administartive\User.cs" />
+    <Compile Include="Models\_Administartive\UserRoles.cs" />
+    <Compile Include="PAREmployeeInfo.cs">
+      <DependentUpon>JIBAppDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\KPI\KPIPartial.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\KPI\KPIPartialManagers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\KPI\PerformanceEvaluation.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\ED_Regular %281%29.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ED_Regular %281%29.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\ED_Regular.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ED_Regular.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\ED_Regular_MWE.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ED_Regular_MWE.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\ED_Regular_MWE_ECOLA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ED_Regular_MWE_ECOLA.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\ED_Regular_P&amp;G.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ED_Regular_P&amp;G.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\ED_Regular_SMART.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ED_Regular_SMART.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\FSA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FSA.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\NA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NA.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\NFC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NFC.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\NFS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NFS.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\NOR.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NOR.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\NORA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NORA.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\NORI.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NORI.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\NPPE.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NPPE.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\NPTE.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NPTE.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\NUOWSI.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NUOWSI.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\NUS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NUS.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\PARext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PARext.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\ParReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParReport.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\RAN.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RAN.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT\RLRA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RLRA.rpt</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\ED_Regular.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\ED_Regular_MWE.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\ED_Regular_MWE_ECOLA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\ED_Regular_P&amp;G.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\ED_Regular_SMART.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\FSA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NFC.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NFS - Copy.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NFS.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NOR.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NORA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NORI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NPPE.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NPTE.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NUOWSI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\NUS.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\PARext.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\ParReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\RAN.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\EXT_Copy\RLRA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\PAR\INT\ID_Proby%28In-House%29.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Controllers\_BASE\BaseController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\BaseObject.cs" />
+    <Compile Include="Utility\Common.cs" />
+    <Compile Include="Utility\Database\DBHelper.cs" />
+    <Compile Include="Utility\Database\SQLBuilder\Enum.cs" />
+    <Compile Include="Utility\Database\SQLBuilder\IQueryBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\Database\SQLBuilder\SelectQueryBuilder.cs" />
+    <Compile Include="Utility\Database\SQLBuilder\SQLfunction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utility\Database\UnitOfWork.cs" />
+    <Compile Include="Utility\Header.cs" />
+    <Compile Include="Utility\JSONH.cs" />
+    <Compile Include="Utility\SysAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Contents\img\bg.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\img\ui-icons_444444_256x240.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\img\ui-icons_555555_256x240.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\js\INV\INVAccountabilityDetails.js" />
+    <Content Include="Contents\js\INV\INVEmpAccountabilityDetailsHist.js" />
+    <Content Include="Contents\js\INV\INVExtAccountabilityDetails.js" />
+    <Content Include="Contents\js\KPI\CAMCall.js" />
+    <Content Include="Contents\js\KPI\KPICoreCompetencies.js" />
+    <Content Include="Contents\js\KPI\KPICoreCompetenciesHR.js" />
+    <Content Include="Contents\js\KPI\KPIItem.js" />
+    <Content Include="Contents\js\KPI\KPIList.js" />
+    <Content Include="Contents\js\KPI\KPIPopup.js" />
+    <Content Include="Contents\js\KPI\KPIReportContainer.js" />
+    <Content Include="Contents\js\KPI\KPIScoring.js" />
+    <Content Include="Contents\js\KPI\KPISpecialAssignment.js" />
+    <Content Include="Contents\js\KPI\KPISummaryExternal.js" />
+    <Content Include="Contents\js\KPI\KPISummaryExternalMRtoMM.js" />
+    <Content Include="Contents\js\KPI\KPISummaryReport.js" />
+    <Content Include="Contents\js\KPI\KPISummaryReportGM.js" />
+    <Content Include="Contents\js\KPI\KPISummaryReportGM2.js" />
+    <Content Include="Contents\js\KPI\ManagersCore.js" />
+    <Content Include="Contents\js\KPI\ModalM.js" />
+    <Content Include="Contents\js\KPI\ModalS.js" />
+    <Content Include="Contents\js\KPI\Summary.js" />
+    <Content Include="Contents\js\PIS\EmployeeInfoAudit - Copy.js" />
+    <Content Include="Contents\js\PIS\ImportViewer.js" />
+    <Content Include="Contents\js\Scripts\APP\Covid\DHSReport.js" />
+    <Content Include="Contents\js\INV\INItemPartsStatus.js" />
+    <Content Include="Contents\js\PIS\EmploymentInfo.js" />
+    <Content Include="Contents\js\PIS\Employee.js" />
+    <Content Include="Contents\js\PIS\EmployeeInfoAudit.js" />
+    <Content Include="Contents\js\Scripts\JIBAngular.js" />
+    <Content Include="Contents\js\Scripts\JIBControl.js" />
+    <Content Include="Contents\js\Scripts\JIBForm.js" />
+    <Content Include="Contents\js\Scripts\JIBGrid.js" />
+    <Content Include="Contents\js\Scripts\JIBGrid_DV.js" />
+    <Content Include="Contents\js\Scripts\JIBModal.js" />
+    <Content Include="Contents\js\Scripts\JIBModalDD.js" />
+    <Content Include="Contents\js\Scripts\JIBModalList.js" />
+    <Content Include="Contents\js\Scripts\JIBModalSurvey.js" />
+    <Content Include="Contents\plugins\datatables\buttons.dataTables.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\datatables\buttons.html5.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\datatables\dataTables.buttons.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\datatables\jquery.dataTables.js" />
+    <Content Include="Contents\plugins\datatables\jszip.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\daterangepicker-bs3.css" />
+    <Content Include="Contents\plugins\daterangepicker.js" />
+    <Content Include="Contents\plugins\jquery\jquery-ui.css" />
+    <Content Include="Contents\plugins\jquery\jquery.js" />
+    <Content Include="Contents\plugins\jquery\jquery.slim.js" />
+    <Content Include="Contents\plugins\jquery\jquery.slim.min.js" />
+    <Content Include="Contents\plugins\system\formyd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\system\lfrcontroller.js" />
+    <Content Include="Contents\plugins\system\modieviewer.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\bootstrap-dialog.min.css" />
+    <Content Include="Contents\plugins\bootstrap\bootstrap-grid.min.css" />
+    <Content Include="Contents\plugins\bootstrap\bootstrap-reboot.min.css" />
+    <Content Include="Contents\plugins\bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="Contents\plugins\bootstrap\bootstrap.min.css" />
+    <Content Include="Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\popper.min.js" />
+    <Content Include="Contents\plugins\ckeditor\build-config.js" />
+    <Content Include="Contents\plugins\ckeditor\ckeditor.js" />
+    <Content Include="Contents\plugins\ckeditor\config.js" />
+    <Content Include="Contents\plugins\ckeditor\contents.css" />
+    <Content Include="Contents\plugins\ckeditor\lang\en-au.js" />
+    <Content Include="Contents\plugins\ckeditor\lang\en-ca.js" />
+    <Content Include="Contents\plugins\ckeditor\lang\en-gb.js" />
+    <Content Include="Contents\plugins\ckeditor\lang\en.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Contents\plugins\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\icons.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Contents\plugins\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Contents\plugins\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Contents\plugins\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Contents\plugins\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Contents\plugins\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Contents\plugins\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\dialog.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\dialog_ie.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\dialog_ie7.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\dialog_ie8.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\dialog_iequirks.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\editor.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\editor_gecko.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\editor_ie.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\editor_ie7.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\editor_ie8.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\editor_iequirks.css" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\icons.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\icons_hidpi.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\images\arrow.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\images\close.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\images\hidpi\close.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\images\hidpi\lock-open.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\images\hidpi\lock.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\images\hidpi\refresh.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\images\lock-open.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\images\lock.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\images\refresh.png" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\images\spinner.gif" />
+    <Content Include="Contents\plugins\ckeditor\styles.js" />
+    <Content Include="Contents\plugins\datatables\dataTables.bootstrap5.min.css" />
+    <Content Include="Contents\plugins\datatables\dataTables.bootstrap5.min.js" />
+    <Content Include="Contents\plugins\datatables\dataTables.responsive.min.js" />
+    <Content Include="Contents\plugins\datatables\images\sort_asc.png" />
+    <Content Include="Contents\plugins\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Contents\plugins\datatables\images\sort_both.png" />
+    <Content Include="Contents\plugins\datatables\images\sort_desc.png" />
+    <Content Include="Contents\plugins\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Contents\plugins\datatables\jquery.dataTables.min.css" />
+    <Content Include="Contents\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="Contents\plugins\jquery\external\jquery\jquery.js" />
+    <Content Include="Contents\plugins\jquery\images\ui-icons_444444_256x240.png" />
+    <Content Include="Contents\plugins\jquery\images\ui-icons_555555_256x240.png" />
+    <Content Include="Contents\plugins\jquery\images\ui-icons_777620_256x240.png" />
+    <Content Include="Contents\plugins\jquery\images\ui-icons_777777_256x240.png" />
+    <Content Include="Contents\plugins\jquery\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Contents\plugins\jquery\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Contents\plugins\jquery\jquery-ui.min.css" />
+    <Content Include="Contents\plugins\jquery\jquery-ui.structure.min.css" />
+    <Content Include="Contents\plugins\jquery\jquery-ui.theme.min.css" />
+    <Content Include="Contents\plugins\jquery\jquery.min.js" />
+    <Content Include="Contents\plugins\kendo\kendo.blueopal.min.css" />
+    <Content Include="Contents\plugins\kendo\kendo.common.min.css" />
+    <Content Include="Contents\plugins\ladda\ladda-themeless.css" />
+    <Content Include="Contents\plugins\ladda\ladda-themeless.min.css" />
+    <Content Include="Contents\plugins\ladda\ladda.css" />
+    <Content Include="Contents\css\Style.css" />
+    <Content Include="Contents\plugins\sweetalert\sweetalert.min.css" />
+    <Content Include="Contents\img\ipi-user-default.png" />
+    <Content Include="Contents\img\ipi.jpg" />
+    <Content Include="Contents\img\pea.png" />
+    <Content Include="Contents\img\pits-user-default.png" />
+    <Content Include="Contents\img\pits.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\img\stari-active.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\img\stari.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstable\bootstable.js" />
+    <Content Include="Contents\plugins\jquery\jquery.twbsPagination.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\ladda\ladda.min.css" />
+    <Content Include="Contents\plugins\prism\prism.css" />
+    <Content Include="Contents\plugins\bootstrap\responsive.bootstrap.min.js" />
+    <Content Include="Contents\js\Scripts\APP\KPIAddEmployee.js" />
+    <Content Include="Contents\js\Scripts\APP\KPICoreCompetencies.js" />
+    <Content Include="Contents\js\Scripts\APP\KPICoreCompetenciesHR.js" />
+    <Content Include="Contents\js\Scripts\APP\KPIPopup.js" />
+    <Content Include="Contents\js\Scripts\APP\KPIScoring.js" />
+    <Content Include="Contents\js\Scripts\APP\KPISpecialAssignment.js" />
+    <Content Include="Contents\js\Scripts\APP\KPISummaryExternal.js" />
+    <Content Include="Contents\js\Scripts\APP\KPISummaryReport.js" />
+    <Content Include="Contents\js\Scripts\APP\KPISummaryReportGM.js" />
+    <Content Include="Contents\js\Scripts\APP\ManagersCore.js" />
+    <Content Include="Contents\plugins\system\formy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\system\modieremarks.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\system\controly.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\js\INV\INVItemsDetails.js" />
+    <Content Include="Contents\plugins\system\reportie.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\system\griddy.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\system\modie.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\system\modiedd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\css\_all-skins.min.css" />
+    <Content Include="Contents\plugins\bootstrap\bootstrap-dialog.min.js" />
+    <Content Include="Contents\plugins\bootstrap\bootstrap.min.js" />
+    <Content Include="Contents\plugins\bootstrap\font-awesome.min.css" />
+    <Content Include="Contents\plugins\angular\tab.css" />
+    <Content Include="Contents\plugins\bootstrap\fonts\fontawesome-webfont.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\fonts\ionicons.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\ionicons.min.css" />
+    <Content Include="Contents\js\app.min.js" />
+    <Content Include="Contents\plugins\angular\angular-resource.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\angular\angular-route.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\angular\angular.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\sweetalert\sweetalert.min.js" />
+    <Content Include="Contents\plugins\toaster\toastr.css" />
+    <Content Include="Contents\plugins\toaster\toastr.min.js" />
+    <Content Include="Contents\plugins\bootstrap\ui-bootstrap-tpls.min.js" />
+    <Content Include="Contents\plugins\chartjs\Chart.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\datepicker\bootstrap-datepicker.js" />
+    <Content Include="Contents\plugins\datepicker\datepicker3.css" />
+    <Content Include="Contents\plugins\daterangepicker\daterangepicker.css" />
+    <Content Include="Contents\plugins\daterangepicker\daterangepicker.js" />
+    <Content Include="Contents\plugins\daterangepicker\moment.min.js" />
+    <Content Include="Contents\plugins\flot\excanvas.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.colorhelpers.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.canvas.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.categories.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.crosshair.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.errorbars.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.fillbetween.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.image.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.navigate.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.pie.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.resize.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.selection.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.stack.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.symbol.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.threshold.min.js" />
+    <Content Include="Contents\plugins\flot\jquery.flot.time.min.js" />
+    <Content Include="Contents\plugins\input-mask\jquery.inputmask.date.extensions.js" />
+    <Content Include="Contents\plugins\input-mask\jquery.inputmask.extensions.js" />
+    <Content Include="Contents\plugins\input-mask\jquery.inputmask.js" />
+    <Content Include="Contents\plugins\input-mask\jquery.inputmask.numeric.extensions.js" />
+    <Content Include="Contents\plugins\input-mask\jquery.inputmask.phone.extensions.js" />
+    <Content Include="Contents\plugins\input-mask\jquery.inputmask.regex.extensions.js" />
+    <Content Include="Contents\plugins\jquery\jquery-ui.min.js" />
+    <Content Include="Contents\plugins\morris\morris.css" />
+    <Content Include="Contents\plugins\morris\morris.min.js" />
+    <Content Include="Contents\plugins\morris\raphael.min.js" />
+    <Content Include="Contents\plugins\select2\i18n\ar.js" />
+    <Content Include="Contents\plugins\select2\i18n\az.js" />
+    <Content Include="Contents\plugins\select2\i18n\bg.js" />
+    <Content Include="Contents\plugins\select2\i18n\ca.js" />
+    <Content Include="Contents\plugins\select2\i18n\cs.js" />
+    <Content Include="Contents\plugins\select2\i18n\da.js" />
+    <Content Include="Contents\plugins\select2\i18n\de.js" />
+    <Content Include="Contents\plugins\select2\i18n\el.js" />
+    <Content Include="Contents\plugins\select2\i18n\en.js" />
+    <Content Include="Contents\plugins\select2\i18n\es.js" />
+    <Content Include="Contents\plugins\select2\i18n\et.js" />
+    <Content Include="Contents\plugins\select2\i18n\eu.js" />
+    <Content Include="Contents\plugins\select2\i18n\fa.js" />
+    <Content Include="Contents\plugins\select2\i18n\fi.js" />
+    <Content Include="Contents\plugins\select2\i18n\fr.js" />
+    <Content Include="Contents\plugins\select2\i18n\gl.js" />
+    <Content Include="Contents\plugins\select2\i18n\he.js" />
+    <Content Include="Contents\plugins\select2\i18n\hi.js" />
+    <Content Include="Contents\plugins\select2\i18n\hr.js" />
+    <Content Include="Contents\plugins\select2\i18n\hu.js" />
+    <Content Include="Contents\plugins\select2\i18n\id.js" />
+    <Content Include="Contents\plugins\select2\i18n\is.js" />
+    <Content Include="Contents\plugins\select2\i18n\it.js" />
+    <Content Include="Contents\plugins\select2\i18n\ja.js" />
+    <Content Include="Contents\plugins\select2\i18n\km.js" />
+    <Content Include="Contents\plugins\select2\i18n\ko.js" />
+    <Content Include="Contents\plugins\select2\i18n\lt.js" />
+    <Content Include="Contents\plugins\select2\i18n\lv.js" />
+    <Content Include="Contents\plugins\select2\i18n\mk.js" />
+    <Content Include="Contents\plugins\select2\i18n\ms.js" />
+    <Content Include="Contents\plugins\select2\i18n\nb.js" />
+    <Content Include="Contents\plugins\select2\i18n\nl.js" />
+    <Content Include="Contents\plugins\select2\i18n\pl.js" />
+    <Content Include="Contents\plugins\select2\i18n\pt-BR.js" />
+    <Content Include="Contents\plugins\select2\i18n\pt.js" />
+    <Content Include="Contents\plugins\select2\i18n\ro.js" />
+    <Content Include="Contents\plugins\select2\i18n\ru.js" />
+    <Content Include="Contents\plugins\select2\i18n\sk.js" />
+    <Content Include="Contents\plugins\select2\i18n\sr-Cyrl.js" />
+    <Content Include="Contents\plugins\select2\i18n\sr.js" />
+    <Content Include="Contents\plugins\select2\i18n\sv.js" />
+    <Content Include="Contents\plugins\select2\i18n\th.js" />
+    <Content Include="Contents\plugins\select2\i18n\tr.js" />
+    <Content Include="Contents\plugins\select2\i18n\uk.js" />
+    <Content Include="Contents\plugins\select2\i18n\vi.js" />
+    <Content Include="Contents\plugins\select2\i18n\zh-CN.js" />
+    <Content Include="Contents\plugins\select2\i18n\zh-TW.js" />
+    <Content Include="Contents\plugins\select2\select2.full.min.js" />
+    <Content Include="Contents\plugins\select2\select2.min.css" />
+    <Content Include="Contents\plugins\select2\select2.min.js" />
+    <Content Include="Contents\plugins\slimScroll\jquery.slimscroll.min.js" />
+    <Content Include="Contents\plugins\timepicker\bootstrap-timepicker.min.css" />
+    <Content Include="Contents\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Contents\plugins\treegrid\jquery.treegrid.bootstrap3.js" />
+    <Content Include="Contents\plugins\treegrid\jquery.treegrid.css" />
+    <Content Include="Contents\plugins\treegrid\jquery.treegrid.js" />
+    <Content Include="Contents\plugins\waitme\img.svg" />
+    <Content Include="Contents\plugins\waitme\waitMe.min.css" />
+    <Content Include="Contents\plugins\waitme\waitMe.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="JIBAppDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JIBAppDB.edmx</DependentUpon>
+      <LastGenOutput>JIBAppDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="JIBAppDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JIBAppDB.edmx</DependentUpon>
+      <LastGenOutput>JIBAppDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="robots.txt" />
+    <Content Include="Uploads\PISID\user-default.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\APP\INV\AccountabilityItemStatus.cshtml" />
+    <Content Include="Views\APP\INV\AccountabilityItemStatusChange.cshtml" />
+    <Content Include="Views\APP\INV\AccountabilityItemStatusChangetoActive.cshtml" />
+    <Content Include="Views\APP\INV\AccountabilityItemStatusChangetoRepair.cshtml" />
+    <Content Include="Views\APP\INV\AccountabilityItemStatusChangetoReturn.cshtml" />
+    <Content Include="Views\APP\INV\EmployeeAccountability.cshtml" />
+    <Content Include="Views\APP\INV\EmployeeAccountabilityHistory.cshtml" />
+    <Content Include="Views\APP\INV\ExtEmployeeAccountability.cshtml" />
+    <Content Include="Views\APP\INV\ItemPartsStatus.cshtml" />
+    <Content Include="Views\APP\INV\Items.cshtml" />
+    <Content Include="Views\APP\KPI\KPIListRev.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Contents\plugins\ladda\ladda-theme.scss" />
+    <Content Include="Contents\plugins\ladda\ladda.scss" />
+    <Content Include="Contents\plugins\ckeditor\plugins\scayt\CHANGELOG.md" />
+    <Content Include="Contents\plugins\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Contents\plugins\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Contents\plugins\ckeditor\plugins\wsc\LICENSE.md" />
+    <Content Include="Contents\plugins\ckeditor\plugins\wsc\README.md" />
+    <Content Include="Contents\plugins\ckeditor\skins\moono\readme.md" />
+    <EntityDeploy Include="JIBAppDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JIBAppDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="JIBAppDB.edmx.diagram">
+      <DependentUpon>JIBAppDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Contents\plugins\jquery\jquery.min.map" />
+    <Content Include="Contents\plugins\jquery\jquery.slim.min.map" />
+    <None Include="Properties\PublishProfiles\PIS.pubxml" />
+    <Content Include="Views\DV\_DetailList.cshtml" />
+    <Content Include="Views\DV\_Index.cshtml" />
+    <Content Include="Views\DV\_IndexDialog.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Home\ForgotPassword.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Main.cshtml" />
+    <Content Include="Views\LV\ListIndex.cshtml" />
+    <Content Include="Views\LV\_DetailList.cshtml" />
+    <Content Include="Views\LV\_Index.cshtml" />
+    <Content Include="Views\RV\RenderPDF.cshtml" />
+    <Content Include="Views\APP\TMS\DTRApplication_backup.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_Layout.cshtml" />
+    <Content Include="Views\APP\PIS\ContractInfo.cshtml" />
+    <Content Include="Views\Home\ResetPassword.cshtml" />
+    <Content Include="Report\CAM\ClientAccountReport.rpt" />
+    <Content Include="Report\KPI\KeyPerformanceIndicator.rpt" />
+    <Content Include="Report\KPI\KPIPartial.rpt" />
+    <Content Include="Report\KPI\KPIPartialManagers.rpt" />
+    <Content Include="Report\KPI\PEManager.rpt" />
+    <Content Include="Report\KPI\PerformanceEvaluation.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\ED_Regular.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\ED_Regular_MWE.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\ED_Regular_MWE_ECOLA.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\ED_Regular_P&amp;G.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\ED_Regular_SMART.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\FSA.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NA.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NFC.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NFS - Copy.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NFS.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NOR.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NORA.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NORI.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NPPE.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NPTE.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NUOWSI.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\NUS.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\PARext.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\ParReport.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\RAN.rpt" />
+    <Content Include="Report\PAR\EXT_Copy\RLRA.rpt" />
+    <Content Include="Report\PAR\INT\ID_Proby%28In-House%29.rpt" />
+    <Content Include="Report\PIS\COE.rpt" />
+    <Content Include="Report\PIS\DHSSummary.rpt" />
+    <Content Include="Report\PIS\DHSWairReport.rpt" />
+    <Content Include="Report\COMPLIANCE\DOLEContracttorsSemiAnnual.rpt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\INV\EmployeeAccountability.rpt" />
+    <Content Include="Report\PIS\EmployeeProfile.rpt" />
+    <Content Include="Report\PIS\EmployeeProfileAudit.rpt" />
+    <Content Include="Report\INV\ItemMasterlist.rpt" />
+    <Content Include="Report\PIS\LA.rpt" />
+    <Content Include="Views\RV\Index.cshtml" />
+    <Content Include="Report\TMS\TMS.rpt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\APP\TMS\OTApplication_backup.cshtml" />
+    <Content Include="Views\APP\TMS\LeaveApplication.cshtml" />
+    <Content Include="Views\APP\TMS\OBApplication.cshtml" />
+    <Content Include="Views\APP\PIS\Computation.cshtml" />
+    <Content Include="Views\APP\PIS\EmployeeAudit.cshtml" />
+    <Content Include="Views\APP\PIS\Employee.cshtml" />
+    <Content Include="Views\RV\RenderRpt.cshtml" />
+    <Content Include="Report\INV\AccountabilityMasterlist.rpt" />
+    <Content Include="Report\PIS\BirthdayList.rpt" />
+    <Content Include="Views\APP\PAR\Computation.cshtml" />
+    <Content Include="Views\APP\PAR\PARExternal.cshtml" />
+    <Content Include="Views\APP\PAR\PARInternal.cshtml" />
+    <Content Include="Views\APP\PAR\Verification.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Uploads\UserManual\Dashboard.pdf" />
+    <Content Include="Uploads\UserManual\LogMonitoring.pdf" />
+    <Content Include="Uploads\UserManual\DTRApplicationApproval.pdf" />
+    <Content Include="Uploads\UserManual\DTRApplicationHistory.pdf" />
+    <Content Include="Uploads\UserManual\ItemsClassification.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Uploads\UserManual\ItemsType.pdf" />
+    <Content Include="Uploads\UserManual\INVItemsActive.pdf" />
+    <Content Include="Views\DV\Index.cshtml" />
+    <Content Include="Uploads\UserManual\LeaveApplicationApproval.pdf" />
+    <Content Include="Uploads\UserManual\LeaveApplicationHistory.pdf" />
+    <Content Include="Uploads\UserManual\OBApplicationApproval.pdf" />
+    <Content Include="Uploads\UserManual\OBApplicationHistory.pdf" />
+    <Content Include="Uploads\UserManual\OTApplicationApproval.pdf" />
+    <Content Include="Uploads\UserManual\OTApplicationHistory.pdf" />
+    <Content Include="Uploads\UserManual\INVEmpAccountabilityActive.pdf" />
+    <Content Include="Uploads\UserManual\INVEmpAccountabilityHistory.pdf" />
+    <Content Include="Uploads\UserManual\Department.pdf" />
+    <Content Include="Uploads\UserManual\DisciplinaryAction.pdf" />
+    <Content Include="Uploads\UserManual\GroupInsurance.pdf" />
+    <Content Include="Uploads\UserManual\JobPosition.pdf" />
+    <Content Include="Uploads\UserManual\MaxicareCoverage.pdf" />
+    <Content Include="Uploads\UserManual\ApprovalLevel.pdf" />
+    <Content Include="Uploads\UserManual\City.pdf" />
+    <Content Include="Uploads\UserManual\Nationality.pdf" />
+    <Content Include="Uploads\UserManual\Offense.pdf" />
+    <Content Include="Uploads\UserManual\Religion.pdf" />
+    <Content Include="Uploads\UserManual\Signatories.pdf" />
+    <Content Include="Report\CORE\UserAccess.rpt" />
+    <Content Include="Views\APP\TRE\TREApplication.cshtml" />
+    <Content Include="Views\Home\Modal.cshtml" />
+    <Content Include="Uploads\UserManual\AbsentMonitoring.pdf" />
+    <Content Include="Views\APP\PIS\PersonalInformation.cshtml" />
+    <Content Include="Views\APP\PIS\EmploymentInformation.cshtml" />
+    <Content Include="Views\APP\CS\YTDPerformance.cshtml" />
+    <Content Include="Views\APP\INV\INVExtEmpAccountabilityDetails.cshtml" />
+    <Content Include="Views\APP\KPI\AddKPI.cshtml" />
+    <Content Include="Views\APP\KPI\AssignedEmployee.cshtml" />
+    <Content Include="Views\APP\KPI\AssignedTo.cshtml" />
+    <Content Include="Views\APP\KPI\AssignedToExternal.cshtml" />
+    <Content Include="Views\APP\KPI\CoreCompetenciesRev.cshtml" />
+    <Content Include="Views\APP\KPI\EvaluationMain.cshtml" />
+    <Content Include="Views\APP\KPI\KPIAssignment.cshtml" />
+    <Content Include="Views\APP\KPI\KPIHistory.cshtml" />
+    <Content Include="Views\APP\KPI\KPIList - Copy %282%29.cshtml" />
+    <Content Include="Views\APP\KPI\KPIList - Copy.cshtml" />
+    <Content Include="Views\APP\KPI\KPIList.cshtml" />
+    <Content Include="Views\APP\KPI\KPIListExternal.cshtml" />
+    <Content Include="Views\APP\KPI\KPIListManager.cshtml" />
+    <Content Include="Views\APP\KPI\KPIListPopup.cshtml" />
+    <Content Include="Views\APP\KPI\KPIMaintenance.cshtml" />
+    <Content Include="Views\APP\KPI\KPIModal.cshtml" />
+    <Content Include="Views\APP\KPI\KPIReport.cshtml" />
+    <Content Include="Views\APP\KPI\KPIScore.cshtml" />
+    <Content Include="Views\APP\KPI\KPIScorePerCategory.cshtml" />
+    <Content Include="Views\APP\KPI\KPISummary.cshtml" />
+    <Content Include="Views\APP\KPI\KPIYear.cshtml" />
+    <Content Include="Views\APP\KPI\ManagersScore.cshtml" />
+    <Content Include="Views\APP\KPI\PartialKPIReport.cshtml" />
+    <Content Include="Views\APP\KPI\ScoreCardPercentage.cshtml" />
+    <Content Include="Views\APP\KPI\SpecialAssignment.cshtml" />
+    <Content Include="Views\APP\KPI\TargetDetails.cshtml" />
+    <Content Include="Views\APP\KPI\TargetSetting.cshtml" />
+    <Content Include="Report\PIS\DOLEContracttorsSemiAnnual.rpt" />
+    <Content Include="Report\PIS\EmployeeAccountability.rpt" />
+    <Content Include="Report\PIS\ItemMasterlist.rpt" />
+    <Content Include="Views\APP\KPI\ViewPage1.cshtml" />
+    <Content Include="Views\APP\PIS\Internal.cshtml" />
+    <Content Include="Views\KPI\AddKPI.cshtml" />
+    <Content Include="Views\KPI\AssignedEmployee.cshtml" />
+    <Content Include="Views\KPI\AssignedTo.cshtml" />
+    <Content Include="Views\KPI\AssignedToExternal.cshtml" />
+    <Content Include="Views\KPI\CoreCompetencies.cshtml" />
+    <Content Include="Views\KPI\CoreCompetenciesRev.cshtml" />
+    <Content Include="Views\KPI\EmployeeSelect.cshtml" />
+    <Content Include="Views\KPI\Evaluation.cshtml" />
+    <Content Include="Views\KPI\EvaluationMain.cshtml" />
+    <Content Include="Views\KPI\KPIAssignment.cshtml" />
+    <Content Include="Views\KPI\KPIDetailsManager.cshtml" />
+    <Content Include="Views\KPI\KPIDisapproved.cshtml" />
+    <Content Include="Views\KPI\KPIHistory.cshtml" />
+    <Content Include="Views\KPI\KPIList.cshtml" />
+    <Content Include="Views\KPI\KPIListExternal.cshtml" />
+    <Content Include="Views\KPI\KPIListManager.cshtml" />
+    <Content Include="Views\KPI\KPIListNew.cshtml" />
+    <Content Include="Views\KPI\KPIListPopup.cshtml" />
+    <Content Include="Views\KPI\KPIListRev.cshtml" />
+    <Content Include="Views\KPI\KPIModal.cshtml" />
+    <Content Include="Views\KPI\KPIReport.cshtml" />
+    <Content Include="Views\KPI\KPIScore.cshtml" />
+    <Content Include="Views\KPI\KPIScorePerCategory.cshtml" />
+    <Content Include="Views\KPI\KPISummary.cshtml" />
+    <Content Include="Views\KPI\KPIYear.cshtml" />
+    <Content Include="Views\KPI\ManagersScore.cshtml" />
+    <Content Include="Views\KPI\PartialKPIReport.cshtml" />
+    <Content Include="Views\KPI\ScoreCardPercentage.cshtml" />
+    <Content Include="Views\KPI\SpecialAssignment.cshtml" />
+    <Content Include="Views\KPI\TargetDetails.cshtml" />
+    <Content Include="Views\KPI\TargetSetting.cshtml" />
+    <Content Include="Views\EV\HighestEducation.cshtml" />
+    <Content Include="Views\EV\Dependents.cshtml" />
+    <Content Include="Views\EV\Offense.cshtml" />
+    <Content Include="Views\EV\Training.cshtml" />
+    <Content Include="Views\EV\Accountability.cshtml" />
+    <Content Include="Views\EV\EmployeeInformation.cshtml" />
+    <Content Include="Views\EV\KPIDetailsManager.cshtml" />
+    <Content Include="Views\EV\PARInformation.cshtml" />
+    <Content Include="Views\APP\TMS\DTRApplication_backup2.cshtml" />
+    <Content Include="Views\APP\TMS\OTApplication.cshtml" />
+    <Content Include="Views\EV\EmployeeContacts.cshtml" />
+    <Content Include="Views\Home\Cronus.cshtml" />
+    <Content Include="Views\APP\TMS\DTRApplication.cshtml" />
+    <Content Include="Views\RV\AttritionReport.cshtml" />
+    <Content Include="Views\RV\ExpiringContract.cshtml" />
+    <Content Include="Views\RV\LoadingReport.cshtml" />
+    <Content Include="Views\RV\LoadingSummary.cshtml" />
+    <Content Include="Views\RV\DirectCost.cshtml" />
+    <Content Include="Views\RV\DirectCostSM.cshtml" />
+    <Content Include="Views\APP\PAR\ParReport.cshtml" />
+    <Content Include="Views\EV\Cost.cshtml" />
+    <Content Include="Views\EV\Benefits.cshtml" />
+    <Content Include="Views\RV\EmployeeListReport.cshtml" />
+    <Content Include="Views\RV\DOLESemiAnnual.cshtml" />
+    <Content Include="Views\Home\GoogleAuthKey.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contents\js\CS\" />
+    <Folder Include="Models\APP\TRE\" />
+    <Folder Include="Uploads\CPS\" />
+    <Folder Include="Views\APP\ListView\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\input-mask\phone-codes\phone-be.json" />
+    <Content Include="Contents\plugins\input-mask\phone-codes\phone-codes.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Contents\plugins\bootstrap\fonts\fontawesome-webfont.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\fonts\fontawesome-webfont.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\fonts\fontawesome-webfont.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\fonts\fontawesome-webfont.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\fonts\FontAwesome.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Contents\plugins\bootstrap\fonts\ionicons.eot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\fonts\ionicons.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Contents\plugins\bootstrap\fonts\ionicons.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Report\PAR\EXT\ED_Regular %281%29.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ED_Regular %281%29.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\ED_Regular.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ED_Regular.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\ED_Regular_MWE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ED_Regular_MWE.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\ED_Regular_MWE_ECOLA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ED_Regular_MWE_ECOLA.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\ED_Regular_P&amp;G.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ED_Regular_P&amp;G.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\ED_Regular_SMART.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ED_Regular_SMART.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\FSA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FSA.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\NA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NA.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\NFC.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NFC.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\NFS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NFS.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\NOR.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NOR.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\NORA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NORA.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\NORI.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NORI.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\NPPE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NPPE.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\NPTE.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NPTE.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\NUOWSI.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NUOWSI.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\NUS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>NUS.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\PARext.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PARext.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\ParReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ParReport.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\RAN.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RAN.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\RLRA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RLRA.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Report\PAR\EXT\blank.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>22498</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:6212/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,24 @@
+﻿@System.Web.Optimization.Scripts.Render("~/Script/plugins/formslist")
+<div id="myButton_@{@ViewBag.FormID}"></div>
+<div id="myParam_@{@ViewBag.FormID}" style="display:none"></div>
+<div id="@{@ViewBag.FormID}"></div>
+<div class="Model_ListView" id="@{@ViewBag.ViewId}" style="height:auto;"/>
+<script>
+    $(document).ready(function(){
+        var @{@ViewBag.ViewId}_Setting = { @Html.Raw(@ViewBag.tableFormat) };
+        var $Grid = new JIBGrid('@ViewBag.mName', '#@{@ViewBag.ViewId}', @{@ViewBag.ViewId}_Setting.Format, 'True', '@ViewBag.FormID', '@ViewBag.ParentModel');
+        $Grid.DataSourceUrl = '@Url.Action("Refresh")';      
+        $Grid.AllowInsert = '@ViewBag.HasNew';
+        $Grid.AllowDelete = '@ViewBag.HasDelete';
+        $Grid.AllowUpdate = '@ViewBag.AllowUpdate';
+        $Grid.DisplayPropertyName = @{@ViewBag.ViewId}_Setting.DisplayPropertyName;
+        $Grid.DeleteURL = '@Url.Action("Delete")';
+        $Grid.Parent = @{@ViewBag.ViewId};
+        $Grid.OrderBy = @{@ViewBag.OrderBy};
+        $Grid.OrderByAs = '@{@ViewBag.OrderByAs}';
+        $Grid.DetailViewURL = '@Html.Raw(@Url.Action("ChildIndex", "DetailView", new { mName = @ViewBag.mName, pKey = "PRIMARY_KEY", IsDetailList = "False", mNo = @ViewBag.mNo }))';
+        var $parent = $('#' + $('#@{@ViewBag.ViewId}').parent().attr('ID'));
+        $parent.trigger('OnGridCreated', { Grid: $Grid  });
+        $parent.unbind('OnGridCreated');     
+    })
+</script>

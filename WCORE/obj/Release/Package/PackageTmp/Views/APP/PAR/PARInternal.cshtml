@@ -1,0 +1,522 @@
+﻿@using WCORE.Utility;
+<section class="content-header">
+      <h1>Personnel Action Request (Internal)</h1>
+</section>
+<section class="content" id="PARInternalRequest">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+             <div class="box-body">
+                <div class="row">
+                    <div class="box-header">
+                        <div id="btnList_PARInternalRequest">
+                            @if (@ViewBag.AllowInsert == true)
+                            { <button type="button" class="btn btn-primary" id="New_PARInternalRequest" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-file" title="New" ></i>  New</button> }
+                            @if ((@ViewBag.AllowInsert == true && @ViewBag.PKey <= 0) || @ViewBag.AllowUpdate == true)
+                            { <button type="button" class="btn btn-primary" id="Save_PARInternalRequest" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save</button> }
+                            @if (@ViewBag.AllowDelete == true && @ViewBag.PKey > 0)
+                            { <button type="button" class="btn btn-primary" id="Delete_PARInternalRequest" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-close" title="Delete"></i>  Delete</button> } 
+                                <button type="button" class="btn btn-primary" id="Back_PARInternalRequest" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Back to List"></i>  Back to List</button>
+                            <div style="float:right;">
+                                @if (@ViewBag.AllowApprove == true && @ViewBag.PKey > 0)
+                                    {<button type="button" class="btn btn-primary" id="Approve_PARInternalRequest" ><i class="fa fa-thumbs-o-up" title="Approve" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"></i>  @ViewBag.Action</button> }
+                                @if (@ViewBag.DisAllowApprove == true && @ViewBag.PKey > 0){
+                                    <button type="button" class="btn btn-primary" id="Disapprove_PARInternalRequest"><i class="fa fa-thumbs-o-down" title="Disapprove" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"></i>  Disapprove</button>}
+                            </div>
+                        </div>
+                    </div>          
+                    <div class="col-xs-4">
+                        <div class="form-group" id="Details_Form_PARInternalRequest_DetailView"></div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs" id="tab_PARInternalRequest">
+                                <li class="active"><a href="#EmploymentInformation_Form_PARInternalRequest" data-toggle="tab" aria-expanded="true">Employment & Payroll Information</a></li>
+                                <li class=""><a href="#JobDescription_Form_PARInternalRequest" data-toggle="tab" aria-expanded="false">Job Description</a></li>
+                                <li class=""><a href="#Benefits_Form_PARInternalRequest" data-toggle="tab" aria-expanded="false">Benefits</a></li>
+                                <li><a href="#Other_Form_PARInternalRequest" data-toggle="tab">Other</a></li>
+                                @if (@ViewBag.PKey > 0 && @ViewBag.AL > 0 && @ViewBag.PrintContract == false){<li><a href="#Other_PARForm_PARInternalRequest" data-toggle="tab">Report</a></li> }
+                                </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="EmploymentInformation_Form_PARInternalRequest">
+                                    <div style="clear:both;"></div>
+                                    <br />
+                                    <b>EMPLOYMENT INFORMATION</b>
+                                        <div style="clear:both;"></div>
+                                    <br />
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="EmploymentInformation_Form_PARInternalRequest_DetailView"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="EmploymentInformation_Form_PARInternalRequest_DetailView_2"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <br />
+                                    <b>PAYROLL INFORMATION</b>
+                                        <div style="clear:both;"></div>
+                                    <br />
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="PayrollInformation_Form_PARInternalRequest_DetailView"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="PayrollInformation_Form_PARInternalRequest_DetailView_2"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="Benefits_Form_PARInternalRequest">
+                                    <b>OTHER BENEFITS</b> (Save request to display existing and add new benefits)
+                                    <br /><br />
+                                    <div class="col-md-12">
+                                        <div class="tab-pane" id="OtherBenefits_List_PARInternalRequest"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="JobDescription_Form_PARInternalRequest">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6"><div class="form-group" id="ProjectName_Form_PARInternalRequest_DetailView"></div></div>
+                                        <div class="col-md-6"><div class="form-group" id="ProjectName_Form_PARInternalRequest_DetailView_2"></div></div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group" id="JobDescription_Form_PARInternalRequest_DetailView"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="Other_Form_PARInternalRequest">
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="Other_Form_PARInternalRequest_DetailView"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="Other_Form_PARInternalRequest_DetailView_2"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="Other_PARForm_PARInternalRequest">
+                                    <div class="col-md-12">
+                                        @if(@ViewBag.PKey > 0 && @ViewBag.AL > 0 && @ViewBag.PrintContract == false){<iframe src="@Url.Action("ExportReportPARFORM", "ReportView")?pkey=@ViewBag.PKey#zoom=100" style="width:100%; min-height:500px; height:100%"></iframe>}
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                            </div>                                  
+                        </div>                                  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<script>
+    var uri = '../api/PAREmpInfo';
+    var rnoyv_ipi_intreq;
+    var isDuplicate = false;
+    var IsNew_intreq = @ViewBag.pid > 0  ? false : true;
+    var timer_intreq;
+    var result_intreq = null;
+
+    $(document).ready(function () {
+        functionOne();
+        $('#tab_PARInternalRequest>li>a').first().click();
+        $(function() {           
+            $('#btnList_PARInternalRequest').find('button').on('click', function() {
+                var ids = $(this).attr('id');
+                var Message = '';
+                var OkLabel = 'OK';
+                var fAction = null;
+                switch ( ids.replace('PARInternalRequest-','').toUpperCase() ) {
+                    case 'NEW_PARInternalRequest'.toUpperCase():
+                        Message = 'Create new Personnel Action Request?';
+                        OkLabel = 'New';
+                        fAction = function(result){
+                                var URLView = '@Url.Action("PARInternalRequest", "PAR")?mName=PARInternalRequest&pKey=-1&Icon=fa-users';
+                                $('#content_PARInternalRequest').load(URLView, function () { });
+                        }
+                        break;
+                    case 'SAVE_PARInternalRequest'.toUpperCase():
+                        if($('#ReasonForChangeRefNo_PARInternalRequest').val() == 3){  $('#DateRegularized_PARInternalRequest').val($('#EffectivityDate_PARInternalRequest').val()).trigger("change");
+                        $('#EmploymentStatusRefNo_PARInternalRequest').val(3).trigger("select2:select");  }
+
+                        Message = 'Save changes?';
+                        OkLabel = 'Save';
+                        fAction = function(result) { if (PARInternal_Validate() != false) { rnoyv_ipi_intreq.Save();}  else { return false; } }
+                        break;
+                    case 'DELETE_PARInternalRequest'.toUpperCase():
+                        Message = 'Are you sure you want to delete?';
+                        OkLabel = 'Delete';
+                        fAction = function(result) { rnoyv_ipi_intreq.Delete();}
+                        break;
+                    case 'APPROVE_PARInternalRequest'.toUpperCase():
+                        Message = 'Approve this request?';
+                        OkLabel = 'Approve';
+                        fAction = function(result) { if('@ViewBag.Action' == 'Review') { rnoyv_ipi_intreq.Save(); } rnoyv_ipi_intreq.Approve();} 
+                        break;
+                    case 'DISAPPROVE_PARInternalRequest'.toUpperCase():
+                        if (jQuery.trim($("#Remarks_PARInternalRequest").val()).length == 0) {Toast.Error("Please enter remarks."); return false; }
+                        else {
+                            Message = 'Disapprove this request?';
+                            OkLabel = 'Disapprove';
+                            fAction = function(result_intreq) { rnoyv_ipi_intreq.Disapprove();} 
+                        }
+                        break;
+                    case 'BACK_PARInternalRequest'.toUpperCase():
+                        Message = 'Are you sure you want to go back to the list?';
+                        OkLabel = 'Back to List to List';
+                        fAction = function (result) { var URLView = '../ListView?ModelNo=56'; $('#content_PARInternalRequest').load(URLView, function () { });}
+                        break;
+                }
+                
+                BootstrapDialog.show({
+                    title: 'Internal Personnel Action Request',
+                    icon: 'fa-circle-o',
+                    message: Message,
+                    closable: true,
+                    draggable: true,
+                    buttons: [{ id: 'btn-1', label: 'Cancel', cssClass: 'btn-warning', action: function (dialog) { dialog.close(); } },
+                              { id: 'btn-2', label: 'Ok', cssClass: 'btn-primary', action: function (dialog) { var $button = this; $button.disable(); $button.spin(); fAction(); dialog.close(); } }]
+                });
+            });
+        });
+
+       
+        $("#PARInternalRequest").off("select2:select","#EmployeeRefNo_PARInternalRequest").on("select2:select","#EmployeeRefNo_PARInternalRequest",function(){
+            var idreq = $('#EmployeeRefNo_PARInternalRequest').val();
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: '@Url.Action("CheckDuplicatePAR","PAR")?empno=' + idreq,
+                success: function (data) {
+                    var jsonArray = JSON.parse(data);
+                    if(jsonArray.length == 0 && idreq > 0) {
+                        $.getJSON(uri + '?empid=' + idreq + '&pkey=@ViewBag.PKey')
+                        .done(function (data) {
+                            $('#FOWRefNo_PARInternalRequest').val(data.FowRefNo).trigger("select2:select");
+                            $('#EmployeeTypeRefNo_PARInternalRequest').val(data.EmployeeTypeRefNo).trigger("select2:select");
+                            $('#EmploymentStatusRefNo_PARInternalRequest').val(data.EmploymentStatusRefNo).trigger("select2:select");
+                            $('#DepartmentRefNo_PARInternalRequest').val(data.DepartmentRefNo).trigger("select2:select");
+                            $('#JobBandRefNo_PARInternalRequest').val(data.JobBandRefNo).trigger("select2:select");
+                            $('#JobPositionRefNo_PARInternalRequest').val(data.JobPositionRefNo).trigger("select2:select");
+                            $('#StartDate_PARInternalRequest').val(data.StartDate).trigger("change");
+                            $('#EndDate_PARInternalRequest').val(data.EndDate).trigger("change");
+                            $('#DateHired_PARInternalRequest').val(data.DateHired).trigger("change");
+                            $('#ContractualDate_PARInternalRequest').val(data.ContractualDate).trigger("change");
+                            $('#DateProbationary_PARInternalRequest').val(data.DateProbationary).trigger("change");
+                            $('#DateRegularized_PARInternalRequest').val(data.DateRegularized).trigger("change");
+
+                            $('#PayrollRateRefNo_PARInternalRequest').val(data.PayrollRateRefNo).trigger("select2:select");
+                            $('#PayBasisRefNo_PARInternalRequest').val(data.PayBasisRefNo).trigger("select2:select");
+                            $('#EcolaComputationRefNo_PARInternalRequest').val(data.EcolaComputationRefNo).trigger("select2:select");
+                            $('#EcolaRateRefNo_PARInternalRequest').val(data.EcolaRateRefNo).trigger("select2:select");
+                            $('#BasicRate_PARInternalRequest').val(data.BasicRate).trigger("input");
+                            $('#NonTaxAllowance_PARInternalRequest').val(data.NonTaxAllowance).trigger("input");
+
+                            CKEDITOR.instances['JobDescription_PARInternalRequest'].setData(data.JobDescription, function () {
+                                this.checkDirty();
+                            });
+
+                            $('#IsUpdateSOW_PARInternalRequest').prop('checked',data.IsUpdateSOW == 1 ? 0 : 1).trigger('click');
+                    
+                            $('#ProjectName_PARInternalRequest').val(data.ProjectName).trigger('input');
+                    
+                            $("#SubmittedDate_PARInternalRequest").val(data.DateNow).trigger("change");
+                        })
+                } else { if($('#EmployeeRefNo_PARInternalRequest').val() > 0) {
+                    $('#EmployeeRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                    
+                    $('#FOWRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                    $('#EmployeeTypeRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                    $('#EmploymentStatusRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                    $('#DepartmentRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                    $('#JobBandRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                    $('#JobPositionRefNo_PARInternalRequest').val('').trigger("input");
+                    $('#StartDate_PARInternalRequest').val(null).trigger("change");
+                    $('#EndDate_PARInternalRequest').val(null).trigger("change");
+                    $('#DateHired_PARInternalRequest').val(null).trigger("change");
+                    $('#ContractualDate_PARInternalRequest').val(null).trigger("change");
+                    $('#DateProbationary_PARInternalRequest').val(null).trigger("change");
+                    $('#DateRegularized_PARInternalRequest').val(null).trigger("change");
+                    
+                    $('#PayrollRateRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                    $('#PayBasisRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                    $('#EcolaComputationRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                    $('#EcolaRateRefNo_PARInternalRequest').val(0).trigger("select2:select");
+                    $('#BasicRate_PARInternalRequest').val(0).trigger("input");
+                    $('#NonTaxAllowance_PARInternalRequest').val(0).trigger("input");
+
+                    CKEDITOR.instances['JobDescription_PARInternalRequest'].setData('', function () {
+                        this.checkDirty();
+                    });
+
+                    $('#IsUpdateSOW_PARInternalRequest').prop('checked', $('#IsUpdateSOW_PARInternalRequest').val() ?  true : false).trigger('click');
+                    
+                    $('#ProjectName_PARInternalRequest').val(0).trigger('input');
+                    
+                    Toast.Error("Duplicate entry is not allowed. Please complete the first entry before filing new par request."); return false;}}
+                }
+            })
+        })
+
+        $("#PARInternalRequest").off('select2:select',"#ReasonForChangeRefNo_PARInternalRequest").on("select2:select","#ReasonForChangeRefNo_PARInternalRequest",function(){       
+            if($('#ReasonForChangeRefNo_PARInternalRequest').val() == 3){ $('#DateRegularized_PARInternalRequest').addClass('required'); }
+            else{ $('#DateRegularized_PARInternalRequest').removeClass('required'); }
+        })
+    })
+
+    function PARInternal_Validate() {
+        
+        var valid_PARINT = true;
+        $("#PARInternalRequest .required").each(function() {
+            var fname_parintreq = $(this).attr('name').split("_");
+            var objVal = JSON.parse(JSON.stringify( rnoyv_ipi_intreq ));
+            if(objVal[fname_parintreq[0]] == null || objVal[fname_parintreq[0]] == 0)
+            { Toast.Error( $(this).attr('title') + " is required." ); valid_PARINT = false; return false; }
+        });
+        return valid_PARINT;
+    }
+    
+    function functionOne() {
+        var r = $.Deferred();
+        rnoyv_ipi_intreq = {
+            ID: null, EmployeeRefNo: null, SubmittedDate: null, ReasonForChangeRefNo: null, OtherReason: null, Justification: null,
+            EffectivityDate: null, ContractTemplateRefNo: null,Justification: null,EmployeeTypeRefNo: null, EmploymentStatusRefNo: null, DepartmentRefNo: null, JobBandRefNo: null, JobPositionRefNo: null,
+            DateHired: null, StartDate: null, EndDate: null, ContractualDate: null, DateProbationary: null, DateRegularized: null,
+            PayrollRateRefNo: null, PayBasisRefNo: null, PreviousBasicRate: null, BasicRate: null, NonTaxAllowance: 0, EcolaRateRefNo: null,
+            EcolaComputationRefNo: null, ProjectName: null , IsUpdateSOW: null, JobDescription: null, Remarks: null,  
+            CreatedBy: null, CreatedDate: null, ModifiedBy: null, ModifiedDate: null,
+            IsActive: null, OtherBenefits: []
+            , IsDirty : false
+            , Save : function(Grid) {
+                $.ajax({
+                    url: '../DetailView/Save',
+                    data: { mName :'PARInternalRequest' ,JSONObject : JSON.stringify( rnoyv_ipi_intreq ) },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        result_intreq = eval("(function(){return " + data + ";})()");
+                        rnoyv_ipi_intreq.ID = result_intreq.ID;
+                        rnoyv_ipi_intreq.IsDirty = false;
+                        var URLView = '@Url.Action("PARInternalRequest", "PAR")?mName=' + 'PARInternalRequest' + '&pKey=' + result_intreq.ID + '&Icon=' + 'fa-users';
+                        $('#content_PARInternalRequest').load(URLView, function () { });
+                        Toast.Show( 'Successfully Saved.' );
+                    },
+                    error: function(xhr, textStatus, error) {
+                        console.log(error);
+                    }
+                });
+            }
+            , Approve : function() {
+                var item = [];
+                item.push(rnoyv_ipi_intreq);
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url:  '../PAR/Approve?ID=' + rnoyv_ipi_intreq.ID + '&Model=' + 'PARInternalRequest' + '&ApprovalRefNo=2&IsExternal=0&rmk=' + rnoyv_ipi_intreq.Remarks + '&MenuRefNo=56',
+                    success: function (data) {
+                        if (data == 'True') {
+                            var URLView = '../ListView?ModelNo=56';
+                            $('#content_PARInternalRequest').load(URLView, function () { });
+                            Toast.Show("Successfully ");
+                        }
+                        else { Toast.Error("Error"); }
+                    }
+                });
+            }
+            , Disapprove : function() {
+                var item = [];
+                item.push(rnoyv_ipi_intreq);
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: '../PAR/Approve?ID=' + rnoyv_ipi_intreq.ID + '&Model=' + 'PARInternalRequest' + '&ApprovalRefNo=8&IsExternal=0&rmk=' + rnoyv_ipi_intreq.Remarks + '&MenuRefNo=56',
+                    success: function (data) {
+                        if (data == 'True') {  
+                            var URLView = '../ListView?ModelNo=56';
+                            $('#content_PARInternalRequest').load(URLView, function () { });
+                            Toast.Show( "Successfully Disapproved" );
+                        }
+                        else { Toast.Error("Error"); }
+                    }
+                });
+            }
+            , Delete : function() {
+                var item = [];
+                item.push(rnoyv_ipi_intreq);
+                $.ajax({
+                    url: '../DetailView/Delete',
+                    data: { mName :'PARInternalRequest' ,JSONObject : JSON.stringify(item) },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        if (data.error != undefined ) {
+                            alert(data.error);
+                            return;
+                        }
+                        Toast.Show( "Successfully Deleted" );
+                        var URLView = '../ListView?ModelNo=56';
+                        $('#content_PARInternalRequest').load(URLView, function () { });
+                    },
+                    error: function(xhr, textStatus, error) {
+                        console.log(error);
+                    }
+                });
+            }
+        };
+
+        function PARInternalRequest_DetailView() {
+            var editMain = false;
+            var editDetails = false;
+            if(('@ViewBag.AllowInsert' == 'True' && '@ViewBag.CStatus' <= '1') || ('@ViewBag.AllowUpdate' == 'True' && '@ViewBag.CStatus' > '1'))  { editMain = true;}
+            if('@ViewBag.AllowUpdate' == 'True') { editDetails = true}
+            var ObjectID = '@ViewBag.PKey';
+            var dvFormat = [{
+                        Name: 'Details', Controls: [{ Name: 'ID', Type: 'Int', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'ID' }
+                    , { Name: 'EmployeeRefNo', Caption: 'Employee', Type: 'Int',IsEnabled: editMain, ControlType: 'combobox', RefColumn: 'EMP', ControlModel: 'ActiveEmployeeInternal_2', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'EmployeeRefNo' }
+                    , { Name: 'SubmittedDate', Caption: 'Date Submitted', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'SubmittedDate' }
+                    , { Name: 'ReasonForChangeRefNo', Caption: 'Reason for Change', Type: 'Int',IsEnabled: editMain, ControlType: 'combobox', RefColumn: 'RC', ControlModel: 'ReasonForChange', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Details', ControlID: 'ReasonForChangeRefNo' }
+                    , { Name: 'OtherReason', Caption: 'Other Reason', Type: 'String',IsEnabled: editMain, ColumnNo: 0, TbName: 'Details', ControlID: 'OtherReason' }
+                    , { Name: 'Justification', Caption: 'Justification', Type: 'String',IsEnabled: editMain, ControlType: 'textarea', ColumnNo: 0, TbName: 'Details', ControlID: 'Justification' }
+                    , { Name: 'EffectivityDate', Caption: 'Effectivity Date', Type: 'DateTime',IsEnabled: editMain, ControlType: 'datepicker', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'EffectivityDate', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'ContractTemplateRefNo', Caption: 'Contract Template', Type: 'Int',IsEnabled: editMain, ControlType: 'combobox', RefColumn: 'ContractTemplate', ControlModel: 'ContractTemplate_INT', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'ContractTemplateRefNo' }
+                    , { Name: 'Remarks', Caption: 'Remarks', Type: 'String', ControlType: 'textarea',IsEnabled: editMain, ColumnNo: 0, TbName: 'Details', ControlID: 'Remarks' }]
+                    }, {Name: 'EmploymentInformation', Controls: [{ Name: 'EmployeeTypeRefNo', Caption: 'Rank Level', Type: 'Int', IsEnabled: editDetails, ControlType: 'combobox', RefColumn: 'EType', ControlModel: 'EmployeeType', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Employment Information', ControlID: 'EmployeeTypeRefNo' }
+                    , { Name: 'EmploymentStatusRefNo', Caption: 'Emp. Status', Type: 'Int', IsEnabled: editDetails, ControlType: 'combobox', RefColumn: 'ESM', ControlModel: 'EmploymentStatus', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Employment Information', ControlID: 'EmploymentStatusRefNo' }
+                    , { Name: 'DepartmentRefNo', Caption: 'Department', Type: 'Int', IsEnabled: editDetails, ControlType: 'combobox', RefColumn: 'Dep', ControlModel: 'Department', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Employment Information', ControlID: 'DepartmentRefNo' }
+                    , { Name: 'JobBandRefNo', Caption: 'JobBand', Type: 'Int', IsEnabled: editDetails, ControlType: 'combobox', RefColumn: 'Dep', ControlModel: 'JobBand', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Employment Information', ControlID: 'JobBandRefNo' }
+                    , { Name: 'JobPositionRefNo', Caption: 'Job Position', Type: 'Int', IsEnabled: editDetails, ControlType: 'combobox', RefColumn: 'Job', ControlModel: 'JobPosition', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Employment Information', ControlID: 'JobPositionRefNo' }
+                    , { Name: 'DateHired', Caption: 'Hiring Date', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: false, ColumnNo: 2, TbName: 'Employment Information', ControlID: 'DateHired', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'StartDate', Caption: 'Start Date', Type: 'DateTime', IsEnabled: editDetails, ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'StartDate', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'EndDate', Caption: 'End Date', Type: 'DateTime', IsEnabled: editDetails, ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'EndDate', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'ContractualDate', Caption: 'Contractual Date', Type: 'DateTime', IsEnabled: editDetails, ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'ContractualDate', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'DateProbationary', Caption: 'Probationary Start Date', Type: 'DateTime', IsEnabled: editDetails, ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'DateProbationary', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'DateRegularized', Caption: 'Date Regularized', Type: 'DateTime', IsEnabled: editDetails, ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'DateRegularized', strFormat: 'mm/dd/yyyy' }]
+                    }, {Name: 'PayrollInformation', Controls: [{ Name: 'PayrollRateRefNo', Caption: 'Payroll Rate', Type: 'Int', IsEnabled: editDetails, ControlType: 'combobox', RefColumn: 'PR', ControlModel: 'PayrollRate', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Payroll Information', ControlID: 'PayrollRateRefNo' }
+                    , { Name: 'PayBasisRefNo', Caption: 'Pay Basis', Type: 'Int', IsEnabled: editDetails, ControlType: 'combobox', RefColumn: 'PB', ControlModel: 'PayBasis', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Payroll Information', ControlID: 'PayBasisRefNo' }
+                    , { Name: 'BasicRate', Caption: 'Basic Rate', Type: 'Decimal', IsEnabled: editDetails, IsRequired: true, ColumnNo: 2, TbName: 'Payroll Information', ControlID: 'BasicRate' }
+                    , { Name: 'NonTaxAllowance', Caption: 'Non-Tax Allowance', Type: 'Decimal', IsEnabled: editDetails, ColumnNo: 2, TbName: 'Payroll Information', ControlID: 'NonTaxAllowance' }
+                    , { Name: 'EcolaRateRefNo', Caption: 'ECOLA Rate', Type: 'Int', IsEnabled: editDetails, ControlType: 'combobox', RefColumn: 'ER', ControlModel: 'EcolaRate', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Payroll Information', ControlID: 'EcolaRateRefNo' }
+                    , { Name: 'EcolaComputationRefNo', Caption: 'Ecola Computation', Type: 'Int', IsEnabled: editDetails, ControlType: 'combobox', RefColumn: 'ECOM', ControlModel: 'ECOLAComputation', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Payroll Information', ControlID: 'EcolaComputationRefNo' }]}
+                    , { Name: 'OtherBenefits', Type: '350', FKey: 'PARRefNo', FKeyValue: 'ID', HasNew: true, HasRemove: true , IsListView: true, PropertyName: 'OtherBenefits' }
+                    , { Name: 'Other', Controls: [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' } 
+                    , { Name: 'CreatedDate', Caption: 'Created Date', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' }
+                    , { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedBy' }
+                    , { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedDate' }
+                    , { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }]}
+                    , { Name: 'ProjectName', Controls: [{ Name: 'ProjectName', Caption: 'Project Name', Type: 'String', IsEnabled: editDetails,  ColumnNo: 0,  TbName: 'ProjectName', ControlID: 'ProjectName' }
+                    , { Name: 'IsUpdateSOW', Caption: 'Is Update SOW?', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 2,  TbName: 'JobDescription', ControlID: 'IsUpdateSOW' }]}
+                    , { Name: 'JobDescription', Controls: [{ Name: 'JobDescription', Type: 'String', ControlType: 'texteditor', ColumnNo: 0, TbName: 'JobDescription', ControlID: 'JobDescription' }], IsTextEditor: true }];
+            function GetControl(Selector, CtrlFormat ) {
+                var control = new controly(Selector, { PropertyName: CtrlFormat.Name , Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption ), type : CtrlFormat.ControlType, Model : CtrlFormat.ControlModel, ControlID : CtrlFormat.ControlID , ControlFormat: CtrlFormat.strFormat },CtrlFormat,'PARInternalRequest');
+                control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+                control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+                control.ParentDiv = Selector
+                control.Init();
+                if ( CtrlFormat.IsEnabled != undefined ) control.SetEnabled( CtrlFormat.IsEnabled );
+                control.CurrentObject = rnoyv_ipi_intreq;
+                return control;
+            };
+            function InitNewObject(newObject) {
+                $.each(newObject, function(key, value) {
+                    if ( key != "IsEditOnly" ) {
+                        rnoyv_ipi_intreq[key] = value;
+                    }
+                });
+                $.each(dvFormat, function(i,tabs) {
+                    if ( tabs.IsListView != undefined ) {
+                        Selector = $('#' + tabs.Name + '_List_PARInternalRequest');
+                        LoadListViewTab(Selector,tabs);
+                    }
+                    else {
+                        $.each(tabs.Controls, function(x,val ) {
+                            if (tabs.Name == 'JobDescription') {
+                                Selector = $('#JobDescription_Form_PARInternalRequest_DetailView');
+                            } else {if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_PARInternalRequest_DetailView_2');
+                            } else{ Selector = $('#' + tabs.Name + '_Form_PARInternalRequest_DetailView');}}
+                            var control = GetControl(Selector,val);
+                            control.SetValue(rnoyv_ipi_intreq[val.Name]);
+                        });
+                    }
+                });
+            }
+            this.OpenObject = function(CurrentObject) {
+                InitNewObject(CurrentObject)
+            }
+            this.InitDetailView = function(CurrentObject) {
+                $.ajax({
+                    url: '../DetailView/GetBaseObject',
+                    data: { model:'PARInternalRequest', pKey:ObjectID },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        if ( ObjectID <= 0 ) {
+                            var newObject = eval("(function(){return " + data + ";})()");
+                            InitNewObject( newObject );
+                        } else {
+                            var jsonArray = JSON.parse(data);
+                            if (jsonArray.length == 0) return;
+                            var Columns = jsonArray[0];
+                            var Values = jsonArray[1];
+                            $.each(Columns,function(i,o){
+                                CurrentObject[o] = Values[i];
+                            });
+                            $.each(dvFormat, function(x,tabs) {
+                                if ( tabs.IsListView != undefined ) {
+                                    Selector = $('#' + tabs.Name + '_List_PARInternalRequest');
+                                    LoadListViewTab(Selector,tabs);
+                                } else {
+                                    $.each( tabs.Controls, function( i, val ) {
+                                        if (tabs.Name == 'JobDescription') {
+                                            Selector = $('#JobDescription_Form_PARInternalRequest_DetailView');
+                                        } else {
+                                            if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_PARInternalRequest_DetailView_2');
+                                            } else{ Selector = $('#' + tabs.Name + '_Form_PARInternalRequest_DetailView');}}
+                                        var control = GetControl(Selector,val);
+                                        var ColumnIndex = Columns.indexOf( val.Name );
+                                        var Value = Values[ColumnIndex];
+                                        control.SetValue(Value);
+                                    });
+                                }
+                            });
+                        }
+                    }, error: function ( e ) { alert(e.responseText); }
+                });
+            };
+        }
+        function LoadListViewTab(Selector, tabs) {
+            var user = @ViewBag.userrefno;
+            /*var URLView = '../ListView/ChildListIndex?ModelNo=MODEL_NAME&Description=MODEL_DESC&ColumnsWidth=0.7&IsAppendMode=True&ForeignKeyName=FKeyName&ForeignKey=FKey&ParentModel=MODEL_PARENT&AllowAddOth=ModAllowUpdate';*/
+            var URLView = '../ListView/ListIndexRefresh?mguid=11030&PageNo=0&param=true&User='+user+'&PID=0';
+            //URLView = URLView.replace("MODEL_NAME", tabs.Type);
+            //URLView = URLView.replace("MODEL_DESC", tabs.Name);
+            //URLView = URLView.replace("FKeyName", tabs.FKey);
+           // URLView = URLView.replace("FKey", tabs.FKeyValue);
+            //URLView = URLView.replace("MODEL_PARENT", "PARInternalRequest");
+            //URLView = URLView.replace("ModAllowUpdate", '@ViewBag.AllowUpdate');
+            Selector.load(URLView);
+            Selector.on('OnGridCreated', function (e, o) {
+                var ctr = 0;
+                var h = Selector.parent().height();
+                var grid = o.Grid;
+                grid.ParentObject = rnoyv_ipi_intreq;
+                grid.ParentObjectProperty = tabs.PropertyName;
+
+                grid.rowHeight = 30;
+                grid.ID_ParentKey = rnoyv_ipi_intreq[tabs.FKeyValue];
+                grid.ForeignFieldKey = tabs.FKey != undefined ? tabs.FKey : null;
+                grid.IsPartialRefresh = false;
+                grid.Refresh();
+                grid.getContainer().css('height', h - 10 );
+                grid.getTable().css('height', h - 70);
+            });
+        }
+        var $itm = new PARInternalRequest_DetailView();
+        $itm.InitDetailView(rnoyv_ipi_intreq);
+        return r;
+    }
+
+
+function IsNan(val) {
+    if (isNaN(val) || val == undefined) { return 0; } else { return parseFloat(val).toFixed(2) }
+}
+</script>

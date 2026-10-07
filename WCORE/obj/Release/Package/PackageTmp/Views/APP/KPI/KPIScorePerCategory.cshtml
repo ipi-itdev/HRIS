@@ -1,0 +1,89 @@
+﻿<section class="content-header">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</section>
+<section class="content" style="position:center">
+<div class="row">
+   <div class="col-xs-12">
+        <div class="col-md-12">
+			<div class="form-group">
+                  <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                   <table id="TargetDetailsScore" style="width: 100%; font-size:12px;" class="table table-bordered table-striped table-hover tblList">
+		              <thead id="TargetHeadDetailsScore">
+		                  <tr class="notfilter" role="row">
+		                      <th style="width: 5%">ID</th>
+		                      <th style="width: 50%">KPI Category</th>
+                               <th style="width: 10%">Total Weight (%)</th>
+                               <th style="width: 8%">Status</th>
+                               <th style="width: 8%"></th>
+		                   </tr>
+		              </thead>
+		              <tbody id="TargetBodyDetailsScore"></tbody>
+		              <tfoot></tfoot>
+		          </table>
+                  </div>
+			</div>
+           </div>
+           <div style="clear:both;"></div>
+       </div>
+	</div>
+</section>
+
+<script>
+
+    $(document).ready(function () {
+        LoadTargetDetailsScore();
+    })
+
+    function LoadTargetDetailsScore() { 
+        var rs = $.Deferred();
+        var table3 = $("#TargetDetailsScore").DataTable({
+            "columnDefs": [{ "targets": 4, "data": null, "defaultContent": "<button type='button' onclick='RowDetailsScoreClick();' style='width: 100%' id='btnViewTargetDetailsScore' class='btn btn-alert'>Set Score</button>" }],
+            ajax: {
+                url: '@Url.Action("GetKPICategoryHeader", "KPI")?kpiid=' + kpiAssignmentID,
+                type: 'POST',
+                datatype: 'application/json; charset=utf-8',
+                dataSrc: function (data) {
+                    return JSON.parse(data);
+                },
+
+                error: function (e) { }
+            }
+			, order: [[1, 'asc']], pageResize: true, ordering: false, lengthChange: false, destroy: true,
+            initComplete: function () {
+
+            }
+        });
+
+        return rs;
+    };
+
+    function RowDetailsScoreClick() {
+        var tableCategoryDetailsScore = $('#TargetDetailsScore').DataTable();
+        $('#TargetDetailsScore tbody').off().on('click', '#btnViewTargetDetailsScore', function () {
+            var rowData = tableCategoryDetailsScore.row($(this).parents('tr')).data();
+            kpiAssignmentID = kpiAssignmentID;
+            categoryID = rowData[0].toString();
+            URL = "../KPI/KPIScore";
+            var detailView = new KPIList(URL, rowData[1]);
+            detailView.open();
+        })
+    }
+
+</script>
+<style>
+	.tblList {
+		width: 100% !important;
+	}
+		.tblList td,
+		.tblList th {
+			white-space: normal;
+			-ms-text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+</style>

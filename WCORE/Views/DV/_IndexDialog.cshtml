@@ -1,0 +1,283 @@
+﻿@using WCORE.Utility;
+<div class="box submodule" id="@{@ViewBag.FormID}">
+<div class="box-header">
+<div class="btn-group-horizontal" id="btnList_Child_@{@ViewBag.mName}">
+	@if (@ViewBag.AllowInsert == true)
+	{ <button type="button" class="btn btn-primary" id="Save" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save</button> }
+	@if (@ViewBag.AllowDelete == true && @ViewBag.pKey > 0)
+	{ <button type="button" class="btn btn-primary" id="Delete" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-delete" title="Delete"></i>  Delete</button> }
+</div>
+</div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs" id="tab_child_@{@ViewBag.mName}">
+                            @foreach (var tab in ViewBag.Tabs)
+                            {
+                                if (@tab.IsListView == true) { <li><a href="#@{@tab.Name}_List_Child_@{@ViewBag.mName}" data-toggle="tab">@tab.Desc</a></li> }
+                                else { <li><a href="#@{@tab.Name}_Form_Child_@{@ViewBag.mName}" data-toggle="tab">@tab.Desc</a></li> }
+                            }
+                        </ul>
+                    <div class="tab-content">
+                            @foreach (var tabpane in ViewBag.Tabs)
+                            {
+								if (@tabpane.IsListView == true)
+								{ <div class="tab-pane" id="@{@tabpane.Name}_List_Child_@{@ViewBag.mName}"></div> }
+								else if (@tabpane.IsTextEditor == true)
+								{ <div class="tab-pane" id="@{@tabpane.Name}_Form_HC" ></div> }
+								else
+								{
+									<div class="tab-pane" id="@{@tabpane.Name}_Form_Child_@{@ViewBag.mName}" >
+										<div class="col-md-6">
+											<div class="form-group" id ="@{@tabpane.Name}_Form_Child_@{@ViewBag.mName}_DetailView"></div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group" id ="@{@tabpane.Name}_Form_Child_@{@ViewBag.mName}_DetailView_2"></div>
+										</div>
+										<div style="clear:both;"></div>
+									</div>
+								}
+                            }           
+                    </div>      
+                    <div style="clear:both;" ></div>                            
+                </div>                                  
+            </div>
+        </div>
+	</div>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        var valid = true;
+        @{var ObjectID_Child = Common.GenerateName();}
+        var @{@ObjectID_Child} = { @{@Html.Raw(ViewBag.ObjectProperties)}  , IsDirty : false 
+            , Save : function(Grid) { 
+                if(@{@ObjectID_Child}['@ViewBag.FKeyName'] != undefined)
+                {
+                    @{@ObjectID_Child}['@ViewBag.FKeyName'] = '@ViewBag.FKey';
+                }
+                if(valid){
+                    $.ajax({
+                        url: '@Url.Action("Save")',
+                        data: { mName :'@{@ViewBag.mName}' ,JSONObject : JSON.stringify( @{@ObjectID_Child} ) },
+                        type: 'POST',
+                        datatype: 'application/json; charset=utf-8',
+                        beforeSend: function () { },
+                        success: function (data) { 
+                            if(@{@ObjectID_Child}.ID === undefined){ @{@ObjectID_Child}.ID = data.ID; }
+                            Toast.Show( '@{@ViewBag.Description}' + " Save" );
+                            $('#@{@ViewBag.FormID}').trigger("OnDetailViewSaved")
+                        },
+                        error: function(xhr, textStatus, error) {
+                            console.log(error);
+                        }
+                    });    
+                }
+            },
+        Delete : function() { 
+            var item = [];
+            item.push(@{@ObjectID_Child});
+            $.ajax({
+                url: '@Url.Action("Delete")',
+                data: { mName :'@{@ViewBag.mName}' ,JSONObject : JSON.stringify(item) },
+                type: 'POST',
+                datatype: 'application/json; charset=utf-8',
+                beforeSend: function () { },
+                success: function (data) { 
+                    if (data.error != undefined ) { 
+                        alert(data.error);
+                        return;
+                    }
+                    Toast.Show( "Successfully Deleted." );
+                    $('#@{@ViewBag.FormID}').trigger("OnDetailViewSaved")
+                },
+                error: function(xhr, textStatus, error) {
+                    console.log(error);
+                }
+            }); 
+        } 
+    };
+    function Validate() {
+        var objVal = JSON.parse(JSON.stringify(@{@ObjectID_Child}));
+        var valid = true;
+        $("#@{@ViewBag.FormID} .required").each(function () {
+            var fname_@{@ViewBag.mName}  = $(this).attr('name').split("_");
+            if (objVal[fname_@{@ViewBag.mName}[0]] == null || objVal[fname_@{@ViewBag.mName}[0]] == 0 || objVal[fname_@{@ViewBag.mName}[0]] == '')
+             { Toast.Error($(this).attr('title') + " is required."); valid = false; return false; }
+         });
+         return valid;
+     }
+     function @{@ViewBag.mName}_DetailView_Child() {
+        var self = $(this);
+        this.IsEditOnly = false;
+        var ObjectID = @{@ViewBag.pKey };
+        var dvFormat = @{@Html.Raw(ViewBag.DetailViewFormat)};
+        function GetControl_Child(Selector, CtrlFormat ) {
+            var control = new controly(Selector, { PropertyName: CtrlFormat.Name , Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption ), type : CtrlFormat.ControlType, Model : CtrlFormat.ControlModel, ControlID : CtrlFormat.ControlID ,  ControlFormat: CtrlFormat.strFormat },CtrlFormat,'@{@ViewBag.mName}');
+            control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+            control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+            control.ParentDiv = Selector
+            control.Init();
+            if ( CtrlFormat.IsEnabled != undefined ) control.SetEnabled( CtrlFormat.IsEnabled );
+            control.CurrentObject = @{@ObjectID_Child};
+            return control;           
+        };
+        function InitNewObject_Child(newObject) { 
+            $.each(newObject, function(key, value) {
+                if ( key != "IsEditOnly" ) {
+                    @{@ObjectID_Child}[key] = value;
+                }
+            });
+            $.each(dvFormat, function(i,tabs) {
+                if ( tabs.IsListView != undefined ) { 
+                    Selector = $('#' + tabs.Name + '_List_Child_@{@ViewBag.mName}');
+                    LoadListViewTab_Child(Selector,tabs);
+                } else {
+                    $.each(tabs.Controls, function(x,val ) {
+                        if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_Child_@{@ViewBag.mName}_DetailView_2');
+                        } else{ Selector = $('#' + tabs.Name + '_Form_Child_@{@ViewBag.mName}_DetailView');}
+                        var control = GetControl_Child(Selector,val);
+                        control.SetValue(@{@ObjectID_Child}[val.Name]);
+                    });
+                }
+            });
+        }
+        this.InitDetailView_Child = function(CurrentObject) { 
+            $.ajax({
+                url: '@{@Url.Action("GetBaseObject")}',
+                data: { model:'@{@ViewBag.mName}', pKey:ObjectID },
+                type: 'POST',
+                datatype: 'application/json; charset=utf-8',
+                beforeSend: function () { },
+                success: function (data) {
+                    if ( ObjectID == -1 ) { 
+                        var newObject = data;
+                        InitNewObject_Child( newObject );
+                    } else {
+                        var jsonArray = JSON.parse(data);
+                        if (jsonArray.length == 0) return;
+                        var Columns = jsonArray[0];
+                        var Values = jsonArray[1]; 
+                        $.each(Columns,function(i,o){ 
+                            CurrentObject[o] = Values[i];
+                        });
+                        $.each(dvFormat, function(x,tabs) { 
+                            if ( tabs.IsListView != undefined ) {               
+                                Selector = $('#' + tabs.Name + '_List_Child_@{@ViewBag.mName}');
+                                LoadListViewTab(Selector,tabs);
+                            } else {
+                                $.each( tabs.Controls, function( i, val ) {
+                                    if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_Child_@{@ViewBag.mName}_DetailView_2');
+                                    } else{ Selector = $('#' + tabs.Name + '_Form_Child_@{@ViewBag.mName}_DetailView');}
+                                    var control = GetControl_Child(Selector,val);
+                                    var ColumnIndex = Columns.indexOf( val.Name );
+                                    var Value = Values[ColumnIndex];
+                                    control.SetValue(Value);
+                                });
+                            }
+                        });
+                    }
+                }, error: function ( e ) { alert(e.responseText); }
+            });
+        };       
+    }
+    function LoadListViewTab_Child(Selector, tabs){  
+        var URLView = '../LV/ChildListIndex?ModelNo=MODEL_NAME&Description=MODEL_DESC&ColumnsWidth=0.7&IsAppendMode=True&ForeignKeyName=FKeyName&ForeignKey=FKey&ParentModel=MODEL_PARENT&AllowAddOth=ModAllowUpdate';
+        URLView = URLView.replace("MODEL_NAME", tabs.Type);
+        URLView = URLView.replace("MODEL_DESC", tabs.Name);
+        URLView = URLView.replace("FKeyName", tabs.FKey);
+        URLView = URLView.replace("FKey", tabs.FKeyValue);
+        URLView = URLView.replace("MODEL_PARENT", "@ViewBag.mName");
+        URLView = URLView.replace("ModAllowUpdate", '@ViewBag.AllowUpdate');
+        Selector.load(URLView);
+        Selector.on('OnGridCreated', function (e, o) {
+            var h = Selector.parent().height();
+            var grid = o.Grid; 
+            grid.ParentObject = @{@ObjectID_Child};
+            grid.ParentObjectProperty = tabs.PropertyName;
+            grid.OnAfterRefresh( function(event,object) { 
+                if ( !object.IsSuccess ) return;
+                @{@ObjectID_Child}[tabs.PropertyName] = [];
+                $.each( object.CollectionSource, function( i , o ) { 
+                    o["IsEditOnly"] = true;
+                    o["No"] = i; // Important
+                    o[tabs.FKey] =  @{@ObjectID_Child}[tabs.FKeyValue];
+                    @{@ObjectID_Child}[tabs.PropertyName].push( o );
+                });
+            } );
+            grid.OnAppendRow( function(e,o) { 
+                @{@ObjectID_Child}[tabs.PropertyName].push( o.AppendObject );
+                @{@ObjectID_Child}.IsDirty = true;
+            } );
+            grid.OnUpdateRow( function(e,o) { 
+                var Index = o.CurrentIndex;
+                var _currentObject = @{@ObjectID_Child}[tabs.PropertyName][Index];
+                $.each(o.CurrentObject,function(k,v){ 
+                    _currentObject[k] = v;
+                });
+                @{@ObjectID_Child}.IsDirty = true;
+            });
+            grid.rowHeight = 30;
+            grid.ID_ParentKey =  @{@ObjectID_Child}[tabs.FKeyValue];
+            grid.ForeignFieldKey = tabs.FKey != undefined ? tabs.FKey : null;
+            grid.IsPartialRefresh = false;
+            grid.Refresh();
+            grid.getContainer().css('height', h - 10 );
+            grid.getContainer().css('margin-top', '5px');
+            grid.getContainer().find('button').css('height','28px');
+            grid.getContainer().find('button').css('font-size','12px');
+            Selector.find('.detail').addClass('table-bordered');
+            grid.getTable().css('height', h - 70);
+            grid.getContainer().find('.slimScrollDiv').css('height','');
+            Selector.find('.table-header').css('background-color', 'dimgray');
+            Selector.find('.table-header').css('height', '25px');
+            @{@ObjectID_Child}_Grids.push(grid);
+        });
+    }
+
+    $(function() { 
+        $('#btnList_Child_@{@ViewBag.mName}').find('button').on('click', function() { 
+            var ids = $(this).attr('id');
+            var Message = '';
+            var OkLabel = 'OK';
+            var fAction = null;
+            switch ( ids.replace('@{@ViewBag.mName}-','').toUpperCase() ) {
+                case 'NEW':
+                    Message = 'Create new @{@ViewBag.Description}?';
+                    OkLabel = 'New';
+                    fAction = function(result){ 
+                            URL = URL = "../DV/ChildIndex?mName=@{@ViewBag.mName}&pKey=" + '-1' + "&IsAppendMode=false"; 
+                            $('#myParent').load(URL, function () { });} 
+                    break;
+                case 'SAVE':
+                    Message = 'Save changes?';
+                    OkLabel = 'Save';
+                    fAction = function(result) {  if (Validate() != false) {@{@ObjectID_Child}.Save();}}
+                    break;
+                case 'DELETE':
+                    Message = 'Are you sure you want to delete?';
+                    OkLabel = 'Delete';
+                    fAction = function(result) { @{@ObjectID_Child}.Delete();}
+                    break;
+                    }                           
+            BootstrapDialog.show({
+                title:'@{@ViewBag.Description}',
+                icon:'@{@ViewBag.Icon}',
+                message: Message,
+                closable: true,
+                draggable: true,
+                buttons: [{ id: 'btn-1', label: 'Cancel' , cssClass: 'btn-warning', action: function(dialog) { dialog.close(); } },
+                          { id: 'btn-2', label: 'Ok', cssClass: 'btn-primary', action: function(dialog) { var $button = this;  $button.disable(); $button.spin(); fAction(); dialog.close(); } }]
+            });
+        });
+    });
+    var $itm = new @{@ViewBag.mName}_DetailView_Child();
+    $itm.InitDetailView_Child(@{@ObjectID_Child});
+
+    $('#myParent_@{@ViewBag.mName}').trigger("OnDetailViewContentCreated" , { BaseObject: @{@ObjectID_Child}, DV : new @{@ViewBag.mName}_DetailView_Child() } );
+    $('#myParent_@{@ViewBag.mName}').unbind("OnDetailViewContentCreated");
+
+    $('#tab_child_@{@ViewBag.mName}>li>a').first().click();
+    })
+</script>
