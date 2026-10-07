@@ -1,0 +1,246 @@
+﻿<section class="content-header">
+      <h1>Contact Information</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-list"></i> DHS Dashboard</a></li>
+        <li class="active">Contact Information(Details)</li>
+      </ol>
+</section>
+<section class="content">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <div id="btnList_ALT1">
+				    <button type="button" class="btn btn-primary" id="AppplyContact" onclick="ApplyContactInfo()">Apply</button>
+                </div>
+             </div>          
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>Brgy. & City Address  </div>
+                            <div class="col-md-8"><input id="ciucity" class="select2 form-control" style="width: 100%; disabled="disabled"></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>Current Address  </div>
+                            <div class="col-md-8"><textarea rows="2" cols="45" id="currentAdd" class="form-control" style="resize:none" disabled="disabled" ></textarea> </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>Mobile Nos </div>
+                            <div class="col-md-4"><input type="text" id="mobilePrimary" ng-model="DHS.OldPrimaryMobileNumber" class="form-control" disabled="disabled" placeholder="Primary"></div>
+                            <div class="col-md-4"><input type="text" id="mobileSecondary" ng-model="DHS.OldSecondaryMobileNumber" class="form-control" disabled="disabled"  placeholder="Secondary"></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4">Landline No </div>
+                            <div class="col-md-8"><input type="text" id="landLine" ng-model="DHS.OldLandLineNumber" class="form-control" disabled="disabled"></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>Email Address </div>
+                            <div class="col-md-4"><input type="text" id="primaryEmail" ng-model="DHS.OldPrimaryEmailAddress" class="form-control" disabled="disabled" ng-change="checkCIUContent()" placeholder="Primary"></div>
+                            <div class="col-md-4"><input type="text" id="secondaryEmail" ng-model="DHS.OldSecondaryEmailAddress" class="form-control" disabled="disabled" ng-change="checkCIUContent()" placeholder="Secondary"></div>
+                        </div><br>
+                        Emergency Contact <br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>Name  </div>
+                            <div class="col-md-4"><input type="text" id="emergencyContact" ng-model="DHS.OldEmergencyContact" class="form-control" disabled="disabled" placeholder="Primary Contact Name"></div>
+                            <div class="col-md-4"><input type="text" id="emergencyRelationship" ng-model="DHS.OldEmergencyContactRelationship" class="form-control" disabled="disabled" placeholder="Relationship"></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>Address  </div>
+                            <div class="col-md-8"><textarea rows="2" id="emergencyAddress" cols="45" class="form-control" style="resize:none" ng-model="DHS.OldEmergencyContactAddress" disabled="disabled" ng-change="checkCIUContent()" /></textarea></div><br>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>Contact Number  </div>
+                            <div class="col-md-8"><input type="text" id="emergencyMobile" ng-model="DHS.OldEmergencyContactMobileNumber" class="form-control" disabled="disabled" placeholder="Mobile Number"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" ng-show="!DHS.CIUpdated">
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>New Brgy. & City  Address  </div>
+                            <div class="col-md-8"><select id="newciucity" class="select2 form-control" style="width: 100%;" ng-model="DHS.CityRefNo" ng-change="checkCIUContent()"></select></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>New Address  </div>
+                            <div class="col-md-8"><textarea rows="2" id="newcurrentAdd" cols="45" class="form-control" style="resize:none" ng-model="DHS.CurrentAddress" ng-change="checkCIUContent()"></textarea></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>New Mobile Nos </div>
+                            <div class="col-md-4"><input type="text" id="newmobilePrimary" class="form-control" ng-model="DHS.PrimaryMobileNumber" ng-change="checkCIUContent()" placeholder="Primary"></div>
+                            <div class="col-md-4"><input type="text" id="newmobileSecondary" class="form-control" ng-model="DHS.SecondaryMobileNumber" ng-change="checkCIUContent()" placeholder="Secondary"></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4">New Landline No </div>
+                            <div class="col-md-8"><input type="text" id="newlandLine" class="form-control" ng-model="DHS.LandLineNumber"></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>New Email Address </div>
+                            <div class="col-md-4"><input type="email" id="newprimaryEmail" class="form-control" ng-model="DHS.PrimaryEmailAddress" ng-change="checkCIUContent()" placeholder="Primary"></div>
+                            <div class="col-md-4"><input type="email" id="newsecondaryEmail" class="form-control" ng-model="DHS.SecondaryEmailAddress" ng-change="checkCIUContent()" placeholder="Secondary"></div>
+                        </div><br>
+                        Emergency Contact<br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>New Name </div>
+                            <div class="col-md-4"><input type="text" id="newemergencyContact" class="form-control" ng-model="DHS.EmergencyContact" ng-change="checkCIUContent()" placeholder="Primary Contact Name"></div>
+                            <div class="col-md-4"><input type="text" id="newemergencyRelationship" class="form-control" ng-model="DHS.EmergencyContactRelationship" ng-change="checkCIUContent()" placeholder="Relationship"></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>New Address </div>
+                            <div class="col-md-8"><textarea rows="2" id="newemergencyAddress" cols="45" class="form-control" style="resize:none" ng-model="DHS.EmergencyContactAddress" ng-change="checkCIUContent()"></textarea></div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-md-4"><span class="requiredtag" style="color:red">* </span>New Contact Number </div>
+                            <div class="col-md-8"><input type="text" id="newemergencyMobile" class="form-control" ng-model="DHS.EmergencyContactMobileNumber" ng-change="checkCIUContent()" placeholder="Mobile Number"></div>
+                        </div><br>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+</div>
+</section>
+<script>
+	var ciuObj
+    $(document).ready(function () {
+		ciuObj = { ID: 0, CityRefNo: 0, CurrentAddress: null, PrimaryMobileNumber: null, SecondaryMobileNumber: null ,LandLineNumber: null ,PrimaryEmailAddress: null
+					,SecondaryEmailAddress: null,EmergencyContact: null,EmergencyContactRelationship: null ,EmergencyContactAddress: null
+					,EmergencyContactMobileNumber: null }
+        loadData();
+    })
+
+    function ApplyContactInfo() {
+        ciuObj.CityRefNo = document.getElementById('newciucity').value;
+        ciuObj.CurrentAddress = document.getElementById('newcurrentAdd').value;
+        ciuObj.PrimaryMobileNumber = document.getElementById('newmobilePrimary').value;
+        ciuObj.SecondaryMobileNumber = document.getElementById('newmobileSecondary').value;
+        ciuObj.LandLineNumber= document.getElementById('newlandLine').value;
+        ciuObj.PrimaryEmailAddress = document.getElementById('newprimaryEmail').value;
+        ciuObj.SecondaryEmailAddress = document.getElementById('newsecondaryEmail').value;
+        ciuObj.EmergencyContact = document.getElementById('newemergencyContact').value;
+        ciuObj.EmergencyContactRelationship = document.getElementById('newemergencyRelationship').value;
+        ciuObj.EmergencyContactAddress = document.getElementById('newemergencyAddress').value;
+        ciuObj.EmergencyContactMobileNumber = document.getElementById('newemergencyMobile').value;
+		
+		if(checkVal(ciuObj.CityRefNo) == 0 || checkVal( ciuObj.CurrentAddress) == 0 || checkVal( ciuObj.PrimaryMobileNumber) == 0 || 
+		checkVal( ciuObj.PrimaryEmailAddress) == 0 || checkVal( ciuObj.EmergencyContact) == 0 || checkVal( ciuObj.EmergencyContactRelationship) == 0 || 
+		checkVal( ciuObj.EmergencyContactAddress) == 0 || checkVal( ciuObj.EmergencyContactMobileNumber) == 0) { Toast.Error("Please fill out all required fields(*)"); return false;}
+		else {
+			swal({
+				title: "Confirmation..", text: "Are you sure you want to apply the new contact information of this employee?", icon: "warning",
+				buttons: ['No, cancel it!', 'Yes, I am sure!'],
+				dangerMode: true,
+			}).then(function (isConfirm) {
+				if (isConfirm) {
+					$.ajax({
+						type: "POST",
+						cache: false,
+						url: '@Url.Action("UpdateDHSContact", "Covid")',
+						data: { JSONObject: JSON.stringify(ciuObj) },
+						success: function (data) { if(data == "True"){$('#AppplyContact').css('display', 'none'); Toast.Show('New contact information has been applied.');} else { Toast.Error('Please contact Dev Team');} }
+					})
+
+				}
+			})
+		}
+    }
+
+    function loadData() {
+
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: '@Url.Action("GetEmployeeContactInfo","Covid")?pkey=' + '@ViewBag.PKey',
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+				InitDropdownOTHVal('City', '#ciucity', jsonArray[0][0]);
+                $('#currentAdd').val(jsonArray[0][1]);
+                $('#mobilePrimary').val(jsonArray[0][2]);
+                $('#mobileSecondary').val(jsonArray[0][3]);
+
+                $('#landLine').val(jsonArray[0][4]);
+                $('#primaryEmail').val(jsonArray[0][5]);
+                $('#secondaryEmail').val(jsonArray[0][6]);
+                $('#emergencyContact').val(jsonArray[0][7]);
+                $('#emergencyRelationship').val(jsonArray[0][8]);
+                $('#emergencyAddress').val(jsonArray[0][9]);
+                $('#emergencyMobile').val(jsonArray[0][10]);
+
+                $('#newciucity').value = jsonArray[0][11];
+				InitDropdownOTHVal('City', '#newciucity', jsonArray[0][11]);
+                $('#newcurrentAdd').val(jsonArray[0][12]);
+                $('#newmobilePrimary').val(jsonArray[0][13]);
+                $('#newmobileSecondary').val(jsonArray[0][14]);
+
+                $('#newlandLine').val(jsonArray[0][15]);
+                $('#newprimaryEmail').val(jsonArray[0][16]);
+                $('#newsecondaryEmail').val(jsonArray[0][17]);
+                $('#newemergencyContact').val(jsonArray[0][18]);
+                $('#newemergencyRelationship').val(jsonArray[0][19]);
+                $('#newemergencyAddress').val(jsonArray[0][20]);
+                $('#newemergencyMobile').val(jsonArray[0][21]);
+				ciuObj.ID =  jsonArray[0][22];
+            }
+        })
+
+        if ('@ViewBag.CanModify' == 'False' && '@ViewBag.SuperApprover' == 'False') {
+            $('#AppplyContact').css('display', 'none');
+
+            $('#ciucity').prop("disabled", true);
+            $('#currentAdd').prop("disabled", true);
+            $('#mobilePrimary').prop("disabled", true);
+            $('#mobileSecondary').prop("disabled", true);
+
+            $('#landLine').prop("disabled", true);
+            $('#primaryEmail').prop("disabled", true);
+            $('#secondaryEmail').prop("disabled", true);
+            $('#emergencyContact').prop("disabled", true);
+            $('#emergencyRelationship').prop("disabled", true);
+            $('#emergencyAddress').prop("disabled", true);
+            $('#emergencyMobile').prop("disabled", true);
+
+            $('#newciucity').prop("disabled", true);
+      
+            $('#newcurrentAdd').prop("disabled", true);
+            $('#newmobilePrimary').prop("disabled", true);
+            $('#newmobileSecondary').prop("disabled", true);
+
+            $('#newlandLine').prop("disabled", true);
+            $('#newprimaryEmail').prop("disabled", true);
+            $('#newsecondaryEmail').prop("disabled", true);
+            $('#newemergencyContact').prop("disabled", true);
+            $('#newemergencyRelationship').prop("disabled", true);
+            $('#newemergencyAddress').prop("disabled", true);
+            $('#newemergencyMobile').prop("disabled", true);
+        }
+    }
+
+function InitDropdownOTHVal(mname, textboxControl, value) {
+    jQuery.ajax({
+        url: "../Home/GetList",
+        data: { Model: mname },
+        type: 'POST',
+        datatype: 'application/json; charset=utf-8',
+        success: function (data) {
+            var jsonArray = JSON.parse(data);
+            $(textboxControl).append('<option id="0" value="0">N/A</option>');
+            if (jsonArray.length == 0) return;
+            for (var i = 0; i < jsonArray.length; i++) {
+                Columns = jsonArray[i];
+                $(textboxControl).append('<option id=' + Columns[0] + ' value=' + Columns[0] + '>' + Columns[1] + '</option>');
+                if (value == Columns[0]) {
+                    $(textboxControl).find('option[value=' + value + ']').attr('selected', 'selected')
+                }
+            }
+        },
+        error: function (e) {
+        }
+    });
+    $(textboxControl).select2({dropdownParent: $("#myParent")});
+
+}
+
+function checkVal(val) {
+            if (val == 0 || val == '' || val == null || val == undefined) { return 0; } else { return 1; }
+        }
+
+</script>    
+

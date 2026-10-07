@@ -1,0 +1,331 @@
+﻿<section class="content" id="ImportEmployee" ng-controller="CronusController">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header" id="btnList_ImportEmployee">
+				<button type="button" class="btn btn-primary" id="Resend_ImportEmployee" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="New"></i>  Back to List</button>
+				<div style="float:right;">
+					@if(@ViewBag.AllowApprove == true){
+					 <button type="button" class="btn btn-primary" id="Resend_ImportEmployee" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="New"></i>  Re-send CPS Link</button>
+					 <button type="button" class="btn btn-primary" id="Import_ImportEmployee" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-plane" title="New"></i>  Import</button>
+					}                      
+				</div>
+            </div>          
+            <div class="box-body">
+                <div class="row bhoechie-tab-container">
+					<div class="col-md-2 bhoechie-tab-menu">
+						<div class="list-group">
+							<a href="#PersonalInformation_ImportEmployee" id="PersonalInformation_Form_ImportEmployee" data-toggle="tab" aria-expanded="true" class="list-group-item active text-center">Personal Information</a>
+							<a href="#Employment_ImportEmployee" id="Employment_Form_ImportEmployee"  data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Employment & Payroll Information</a>
+							<a href="#HighestEducation_ImportEmployee" id="HighestEducation_List_ImportEmployee" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Educational Attainment</a>
+							<a href="#Requirements_ImportEmployee" id="Requirements_List_ImportEmployee" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Pre-Employment Documents</a>
+						</div>
+					</div>
+					<div class="col-md-10 bhoechie-tab">
+						 <div class="bhoechie-tab-content active" id="PersonalInformation_ImportEmployee">
+							<h2 style="font-size:20px">
+                                <i class="fa fa-user"></i> Employee Information
+                            </h2>
+							<div class="nav-tabs-custom">
+								<ul class="nav nav-tabs" id="tab_ImportEmployee" role="tablist">
+									<li class="nav-item active"><a href="#Details_Form_ImportEmployee"  class="nav-link" data-toggle="tab" role="tab">Personal Information</a></li>
+									<li class="nav-item"><a href="#Contact_Form_ImportEmployee"  class="nav-link" data-toggle="tab" role="tab">Contact Information</a></li>
+									<li class="nav-item"><a href="#ContactEmergency_Form_ImportEmployee"  class="nav-link" data-toggle="tab" role="tab">Emergency Contact Information</a></li>
+									<li class="nav-item"><a href="#Dependents_Form_ImportEmployee"  class="nav-link" data-toggle="tab" role="tab">Dependents</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="Details_Form_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group" id="Details_ImportEmployee_dtlv">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group" id="Details_ImportEmployee_dtlv2">
+												</div>
+											</div>
+											<div style="clear:both;"></div>
+										</div>
+									</div>
+									<div class="tab-pane" id="Contact_Form_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group" id="Contact_ImportEmployee_dtlv">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group" id="Contact_ImportEmployee_dtlv2">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<b>Present Address</b>
+												<div class="form-group" id="Address_ImportEmployee_dtlv">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<b>Permanent Address</b>
+												<div class="form-group" id="Address_ImportEmployee_dtlv2">
+												</div>
+											</div>
+											<div style="clear:both;"></div>
+										</div>
+									</div>
+									<div class="tab-pane" id="ContactEmergency_Form_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-6">
+												<b>Primary Emergency Contact</b>
+												<div class="form-group" id="ContactEmergency_ImportEmployee_dtlv">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<b>Secondary Emergency Contact</b>
+												<div class="form-group" id="ContactEmergency_ImportEmployee_dtlv2">
+												</div>
+											</div>
+											<div style="clear:both;"></div>
+										</div>
+									</div>
+									<div class="tab-pane" id="Dependents_Form_ImportEmployee" role="tabpanel">
+										 <div id="DependentsAudit_List_ImportEmployee">
+											<table id="tblListDependentsAudit" class="table table-bordered table-striped table-hover tblList table-responsive nowrap dataTable no-footer" style="font-size:13px; width:100%;">
+												<thead id="tblHeadDependentsAudit">
+													<tr role="row">
+													<th width="400px">Name</th>
+													<th width="40%">Relationship</th>
+													<th width="20%">Birthdate</th>
+													<th width="10%">Age</th>
+													<th width="10%">Is PWD?</th>
+													</tr>
+												</thead>
+												<tbody></tbody>
+												<tfoot></tfoot>
+											</table>
+										 </div>
+									</div>
+								</div>                                  
+							</div>                                  
+						 </div>
+						 <div class="bhoechie-tab-content" id="Employment_ImportEmployee">
+							<h2 style="font-size:20px">
+                                <i class="fa fa-briefcase"></i> Employment & Payroll Information
+                            </h2>
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs" id="Employment_tab" role="tablist">
+                                    <li class="nav-item active"><a href="#Employment_Frm_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Employment</a></li>
+                                    <li class="nav-item"><a href="#JobDescription_Form_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Job Description</a></li>
+                                    <li class="nav-item"><a href="#Payroll_Form_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Payroll</a></li>
+                                    <li class="nav-item"><a href="#Benefits_Form_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Benefits</a></li>
+									<li class="nav-item"><a href="#Cost_Form_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Cost</a></li>
+                                    <li class="nav-item"><a href="#HealthCard_Form_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Insurance & HMO</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="Employment_Frm_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_ImportEmployee">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													
+												</div>
+											</div>
+											<div style="clear:both;"></div>
+										</div>
+                                    </div>
+                                    <div class="tab-pane" id="JobDescription_Form_ImportEmployee"  role="tabpanel">
+										<div class="col-md-6">
+											<div class="form-group" id="ProjectName_Form_ImportEmployee_DetailView_ActiveEmployee">
+											</div>
+										</div>
+                                        <div class="col-md-12">
+                                            <div class="form-group" id="JobDescription_Form_ImportEmployee_DetailView_ImportEmployee">
+												<textarea rows="4" cols="5" class="form-control" id="JobDescription_ImportEmployee" name="JobDescription_ImportEmployee" title="Job Description" disabled="disabled" style="background-color: rgb(238, 238, 238);"></textarea>
+											</div>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <div class="tab-pane" id="Payroll_Form_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group" id="Payroll_Form_ImportEmployee_DetailView_ImportEmployee">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group" id="Payroll_Form_ImportEmployee_DetailView_2_ImportEmployee">
+												</div>
+											</div>
+										</div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <div class="tab-pane" id="Benefits_Form_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group" id="Benefits_Form_ImportEmployee_DetailView_ActiveEmployee">
+												<div class="row form-group" id="cntr_HOLTag_ImportEmployee"><label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Holiday</label><div class="col-lg-8 control-container vcenter"><input type="checkbox" id="HOLTag_ImportEmployee" name="HOLTag_ImportEmployee" title="Holiday"></div></div><div class="row form-group" id="cntr_TaxTag_ImportEmployee"><label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Tax</label><div class="col-lg-8 control-container vcenter"><input type="checkbox" id="TaxTag_ImportEmployee" name="TaxTag_ImportEmployee" title="Tax"></div></div><div class="row form-group" id="cntr_SEPTag_ImportEmployee"><label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Separation Pay</label><div class="col-lg-8 control-container vcenter"><input type="checkbox" id="SEPTag_ImportEmployee" name="SEPTag_ImportEmployee" title="Separation Pay"></div></div><div class="row form-group" id="cntr_W13thMonth_ImportEmployee"><label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>13th Month</label><div class="col-lg-8 control-container vcenter"><input type="checkbox" id="W13thMonth_ImportEmployee" name="W13thMonth_ImportEmployee" title="13th Month"></div></div></div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group" id="Benefits2_Form_ImportEmployee_DetailView_ActiveEmployee">
+													<div class="row form-group" id="cntr_SIL_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>SIL</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="SIL_ImportEmployee" name="SIL_ImportEmployee" title="SIL"  disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_AddtlPaidLeaves_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Addtl Paid Leaves</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="AddtlPaidLeaves_ImportEmployee" name="AddtlPaidLeaves_ImportEmployee" title="Addtl Paid Leaves"  disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_APLProRata_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Pro-Rata?</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="checkbox" id="APLProRata_ImportEmployee" name="APLProRata_ImportEmployee" title="Pro-Rata?">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group" id="Benefits3_Form_ImportEmployee_DetailView_ActiveEmployee">
+												<div class="row form-group" id="cntr_HMODC_ImportEmployee">
+													<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>HMO DC(Annual)</label>
+													<div class="col-lg-8 control-container vcenter">
+														<input type="text" class="form-control" id="HMODC_ImportEmployee" name="HMODC_ImportEmployee" title="HMO DC(Annual)"  disabled="disabled" style="background-color: rgb(238, 238, 238);">
+													</div>
+												</div>
+												<div class="row form-group" id="cntr_HMOAmount_ImportEmployee">
+													<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>HMO Coverage(Annual)</label>
+													<div class="col-lg-8 control-container vcenter">
+														<input type="text" class="form-control" id="HMOAmount_ImportEmployee" name="HMOAmount_ImportEmployee" title="HMO Coverage(Annual)"  disabled="disabled" style="background-color: rgb(238, 238, 238);">
+													</div>
+												</div>
+												<div class="row form-group" id="cntr_OTAssumption_ImportEmployee">
+													<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>OT Assumption%</label>
+													<div class="col-lg-8 control-container vcenter">
+														<input type="text" class="form-control" id="OTAssumption_ImportEmployee" name="OTAssumption_ImportEmployee" title="OT Assumption%"  disabled="disabled" style="background-color: rgb(238, 238, 238);">
+													</div>
+												</div>
+											</div>
+											</div>
+										</div>
+                                        <div class="col-md-12">
+                                            <div class="tab-pane" id="OtherBenefits_List_ImportEmployee">
+												<h2 style="font-size:20px">
+													<i class="fa fa-money"></i> Other Benefits
+												</h2>
+												<table id="OtherBenefits" class="table table-bordered table-striped table-hover tblList table-responsive nowrap" style="font-size:13px; width:100%;">
+													<thead>
+														<tr class="notfilter">
+															<th width="200">Description</th>
+															<th width="200">Amount</th>
+															<th width="200">Terms</th>
+															<th width="200">Start Date</th>
+															<th width="200">End Date</th>
+														</tr>
+													</thead><tbody id="tblBody"></tbody>
+												</table>
+											</div>
+                                        </div>
+										<div class="col-md-12">
+                                            <div class="form-group" id="AdditionalClause_Form_ImportEmployee_DetailView_ImportEmployee">
+												<textarea rows="4" cols="5" class="form-control" id="AdditionalClause_ImportEmployee" name="AdditionalClause_ImportEmployee" title="Additional Clause" disabled="disabled" style="background-color: rgb(238, 238, 238);"></textarea>
+											</div>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <div class="tab-pane" id="HealthCard_Form_ImportEmployee" role="tabpanel">
+                                        <div class="col-md-6">
+                                            <div class="form-group" id="HealthCard_Form_Internal_DetailView_ImportEmployee">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group" id="HealthCard_Form_Internal_DetailView_2_ImportEmployee">
+
+                                            </div>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                </div>
+                            </div>
+						 </div>
+						 <div class="bhoechie-tab-content" id="HighestEducation_ImportEmployee">
+							<h2 style="font-size:20px">
+                                <i class="fa fa-globe"></i> Educational Attainment
+                            </h2>
+							<div id="HighestEducationAudit_List_ImportEmployee">
+								<table id="tblListHighestEducation" class="table table-bordered table-striped table-hover tblList table-responsive nowrap" style="font-size:13px; width:100%;">
+									<thead id="tblHeadHighestEducation">
+										<tr class="notfilter" role="row">
+										<th width="500">School</th>
+										<th width="500">Course</th>
+										<th width="100">Year Graduated</th>
+										</tr>
+									</thead>
+									<tbody id="tblBodyHighestEducation"></tbody>
+									<tfoot></tfoot>
+								</table>
+							</div>
+						 </div>
+						 <div class="bhoechie-tab-content" id="Requirements_ImportEmployee">
+							<h2 style="font-size:20px">
+                                <i class="fa fa-globe"></i> Pre-Employment Documents
+                            </h2>
+							<div class="col-md-6">
+								<div class="form-group" id="AffiliationNo_ImportEmployee_dtlv">
+									<div class="row form-group" id="cntr_TinNumber_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>TIN</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="TinNumber_ImportEmployee" name="TinNumber_ImportEmployee" title="TIN" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_PhilHealthNumber_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>PHILHEALTH No.</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PhilHealthNumber_ImportEmployee" name="PhilHealthNumber_ImportEmployee" title="PHILHEALTH No." disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_SSSNumber_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>SSS No.</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="SSSNumber_ImportEmployee" name="SSSNumber_ImportEmployee" title="SSS No." disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_PagibigNumber_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>PAGIBIG No.</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PagibigNumber_ImportEmployee" name="PagibigNumber_ImportEmployee" title="PAGIBIG No." disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div>									
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group" id="AffiliationNo_ImportEmployee_dtlv2"></div>
+							</div>
+							<div style="clear:both;"></div>
+							<div id="PreEmploymentRequirements_List_ImportEmployee">
+								<table id="tblListPreEmploymentRequirements" class="table table-bordered table-striped table-hover tblList table-responsive nowrap" style="font-size:13px; width:100%;">
+									<thead id="tblHeadPreEmploymentRequirements">
+										<tr class="notfilter" role="row">
+										<th>ID</th>
+										<th width="100">Requirements Type</th>
+										<th width="50">File</th>
+										</tr>
+									</thead>
+									<tbody id="tblBodyPreEmploymentRequirements"></tbody>
+									<tfoot></tfoot>
+								</table>
+							</div>
+						</div>
+					</div>                           
+				</div>
+        	</div>
+        </div>
+	</div>
+</div>
+</div>
+</section>
+</div>
+@System.Web.Optimization.Scripts.Render("~/Script/ImportViewer")
+<script>
+$(document).ready(function () {
+	let $mFrm = new ImportViewer('http://aaigcat-001-site9.htempurl.com','@{@ViewBag.pid}');
+	$('.content-wrapper').waitMe('hide');
+})
+</script>

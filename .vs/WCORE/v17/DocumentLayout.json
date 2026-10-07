@@ -1,0 +1,1500 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|d:\\ncaringal\\documents\\hrisv2\\hrisv2 pits\\sdmtportal-hrisv2-nrc-08c07ff4635f\\csgms\\wcore\\views\\dv\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\dv\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\par\\external\\parexternalrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\par\\external\\parexternalrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\pis\\externalemployee\\inactive\\extinactiveemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\pis\\externalemployee\\inactive\\extinactiveemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\pis\\externalemployee\\active\\extactiveemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\pis\\externalemployee\\active\\extactiveemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\home\\cronus.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\home\\cronus.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\ncaringal\\Documents\\API_PROD_UPDATED\\system-api\\apicoresystem\\Controllers\\CronusController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\_base\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\_base\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\plugins\\system\\lfrcontroller.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\plugins\\system\\lfrcontroller.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\home\\googleauthkey.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\home\\googleauthkey.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\_administartive\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\_administartive\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\ev\\offense.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\ev\\offense.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\pis\\externalemployee\\loading\\extloadingemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\pis\\externalemployee\\loading\\extloadingemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\app\\kpicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\app\\kpicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\ev\\employeeinformation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\ev\\employeeinformation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\plugins\\system\\formyd.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\plugins\\system\\formyd.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\utility\\baseobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\utility\\baseobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\_base\\detailviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\_base\\detailviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\plugins\\system\\griddy.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\plugins\\system\\griddy.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\plugins\\system\\controly.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\plugins\\system\\controly.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\kpi\\evaluationmain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\kpi\\evaluationmain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\app\\kpi\\evaluationmain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\app\\kpi\\evaluationmain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\par\\external\\parexternalapproved.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\par\\external\\parexternalapproved.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\parcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\parcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\kpiviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\kpiviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\kpi\\kpilist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\kpi\\kpilist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\app\\kpi\\kpilist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\app\\kpi\\kpilist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\app\\kpi\\kpilistpopup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\app\\kpi\\kpilistpopup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\app\\kpi\\targetdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\app\\kpi\\targetdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\plugins\\system\\modieviewer.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\plugins\\system\\modieviewer.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\app\\piscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\app\\piscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\rv\\directcost.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\rv\\directcost.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\rv\\dolesemiannual.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\rv\\dolesemiannual.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\reportviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\reportviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\pis\\internal\\active\\activeemployeeinternal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\pis\\internal\\active\\activeemployeeinternal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\rv\\attritionreport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\rv\\attritionreport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\lv\\listindex.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\lv\\listindex.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\app\\kpi\\kpihistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\app\\kpi\\kpihistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\utility\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\utility\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\lv\\_detaillist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\lv\\_detaillist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\_base\\listviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\_base\\listviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\app\\tmscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\app\\tmscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\app\\tms\\obapplication.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\app\\tms\\obapplication.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\oth\\attrition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\oth\\attrition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\pis\\externalemployee\\floating\\extfloatingemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\pis\\externalemployee\\floating\\extfloatingemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\pis\\internal\\inactive\\inactiveemployeeinternal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\pis\\internal\\inactive\\inactiveemployeeinternal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\pis\\internal\\new load\\newemploymentinfointernal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\pis\\internal\\new load\\newemploymentinfointernal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\pis\\internal\\active\\activeemployeeinternal_2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\pis\\internal\\active\\activeemployeeinternal_2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\pis\\internal\\new load\\newloadingemployeeinternal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\pis\\internal\\new load\\newloadingemployeeinternal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\par\\parinternal\\parinternalrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\par\\parinternal\\parinternalrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\ev\\benefits.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\ev\\benefits.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\js\\kpi\\kpisummaryreportgm2.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\js\\kpi\\kpisummaryreportgm2.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\ev\\cost.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\ev\\cost.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\ev\\accountability.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\ev\\accountability.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\js\\kpi\\kpisummaryreportgm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\js\\kpi\\kpisummaryreportgm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\js\\kpi\\kpisummaryreport.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\js\\kpi\\kpisummaryreport.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\kpi\\kpihistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\kpi\\kpihistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\rv\\loadingsummary.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\rv\\loadingsummary.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\par\\parinternal\\parinternaldisapproved.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\par\\parinternal\\parinternaldisapproved.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\par\\parinternal\\parinternalapproved.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\par\\parinternal\\parinternalapproved.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\js\\kpi\\kpisummaryexternal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\js\\kpi\\kpisummaryexternal.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\app\\tms\\dtrapplication.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\app\\tms\\dtrapplication.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\jibappdb.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\jibappdb.edmx||{C99AEA30-8E36-4515-B76F-496F5A48A6AA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\apicontroller\\parempinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\apicontroller\\parempinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\app_start\\webapiconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\globe\\departmentglobe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\globe\\departmentglobe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\globe\\globeemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\globe\\globeemployee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\globe\\globedepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\globe\\globedepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\controllers\\app\\invcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\controllers\\app\\invcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\inv\\invempaccountabilityhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\inv\\invempaccountabilityhistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\app\\inv\\items.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\app\\inv\\items.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\js\\inv\\invitemsdetails.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\js\\inv\\invitemsdetails.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\inv\\invitemsactive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\inv\\invitemsactive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\ev\\parinformation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\ev\\parinformation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\inv\\invitemdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\inv\\invitemdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\maintenance\\jobinfo\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\maintenance\\jobinfo\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\inv\\invemployeemasterlistall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\inv\\invemployeemasterlistall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\inv\\invemployeemasterlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\inv\\invemployeemasterlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\inv\\invempaccountabilityactive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\inv\\invempaccountabilityactive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\inv\\invempaccountabilityall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\inv\\invempaccountabilityall.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\inv\\invextempaccountabilityactive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\inv\\invextempaccountabilityactive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\models\\app\\maintenance\\jobinfo\\jobposition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\models\\app\\maintenance\\jobinfo\\jobposition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\js\\kpi\\kpicorecompetencies.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\js\\kpi\\kpicorecompetencies.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\js\\kpi\\kpispecialassignment.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\js\\kpi\\kpispecialassignment.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\kpi\\kpireport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\kpi\\kpireport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\kpi\\partialkpireport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\kpi\\partialkpireport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\app\\kpi\\partialkpireport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\app\\kpi\\partialkpireport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\contents\\js\\kpi\\kpiscoring.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\contents\\js\\kpi\\kpiscoring.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\wcore\\views\\kpi\\targetsetting.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD9A24AA-AA14-4B87-8C1C-A73C55C28716}|WCORE\\HRIS.csproj|solutionrelative:wcore\\views\\kpi\\targetsetting.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\DV\\Index.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\DV\\Index.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\DV\\Index.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\DV\\Index.cshtml",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAABQAAABDAgAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-07T09:14:16.767Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ListIndex.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\LV\\ListIndex.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\LV\\ListIndex.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\LV\\ListIndex.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\LV\\ListIndex.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-24T07:13:10.563Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "ListViewController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\_BASE\\ListViewController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\_BASE\\ListViewController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\_BASE\\ListViewController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\_BASE\\ListViewController.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAuwB4AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T03:07:52.089Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DetailViewController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\_BASE\\DetailViewController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\_BASE\\DetailViewController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\_BASE\\DetailViewController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\_BASE\\DetailViewController.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAAAFkAAACAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-22T08:06:53.003Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "_DetailList.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\LV\\_DetailList.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\LV\\_DetailList.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\LV\\_DetailList.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\LV\\_DetailList.cshtml",
+              "ViewState": "AgIAACkAAAAAAAAAAAAmwEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-29T07:10:12.46Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "griddy.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\plugins\\system\\griddy.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\plugins\\system\\griddy.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\plugins\\system\\griddy.js",
+              "RelativeToolTip": "WCORE\\Contents\\plugins\\system\\griddy.js",
+              "ViewState": "AgIAAOoAAAAAAAAAAAAgwAQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-04-11T05:14:17.642Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "formyd.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\plugins\\system\\formyd.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\plugins\\system\\formyd.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\plugins\\system\\formyd.js",
+              "RelativeToolTip": "WCORE\\Contents\\plugins\\system\\formyd.js",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAQwEMBAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-05-14T15:54:56.317Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BaseObject.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Utility\\BaseObject.cs",
+              "RelativeDocumentMoniker": "WCORE\\Utility\\BaseObject.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Utility\\BaseObject.cs",
+              "RelativeToolTip": "WCORE\\Utility\\BaseObject.cs",
+              "ViewState": "AgIAAGoBAAAAAAAAAAASwHIBAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T05:26:40.829Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "controly.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\plugins\\system\\controly.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\plugins\\system\\controly.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\plugins\\system\\controly.js",
+              "RelativeToolTip": "WCORE\\Contents\\plugins\\system\\controly.js",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-03-26T01:03:07.196Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "modieviewer.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\plugins\\system\\modieviewer.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\plugins\\system\\modieviewer.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\plugins\\system\\modieviewer.js",
+              "RelativeToolTip": "WCORE\\Contents\\plugins\\system\\modieviewer.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-03-26T02:24:58.178Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "KPIController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\APP\\KPIController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\APP\\KPIController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\APP\\KPIController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\APP\\KPIController.cs",
+              "ViewState": "AgIAAPYAAAAAAAAAAAD4v/0AAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-24T06:05:36.988Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "KPIList.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\KPIList.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\KPI\\KPIList.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\KPIList.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\KPI\\KPIList.cshtml",
+              "ViewState": "AgIAAFEBAAAAAAAAAAAnwBEBAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-28T02:09:18.148Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "EvaluationMain.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\EvaluationMain.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\KPI\\EvaluationMain.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\EvaluationMain.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\KPI\\EvaluationMain.cshtml",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAAADYBAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T01:19:54.637Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "EvaluationMain.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\EvaluationMain.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\APP\\KPI\\EvaluationMain.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\EvaluationMain.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\APP\\KPI\\EvaluationMain.cshtml",
+              "ViewState": "AgIAADEAAAAAAAAAAAAmwEMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-19T06:40:15.125Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "KPISummaryReportGM2.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPISummaryReportGM2.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\js\\KPI\\KPISummaryReportGM2.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPISummaryReportGM2.js",
+              "RelativeToolTip": "WCORE\\Contents\\js\\KPI\\KPISummaryReportGM2.js",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAAAJAAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-12-26T06:01:46.874Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "KPIViewController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\KPIViewController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\KPIViewController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\KPIViewController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\KPIViewController.cs",
+              "ViewState": "AgIAAAsBAAAAAAAAAAAYwBIBAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T03:31:55.811Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "PARInternalRequest.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalRequest.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalRequest.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalRequest.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalRequest.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-30T01:04:44.465Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "KPISummaryReport.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPISummaryReport.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\js\\KPI\\KPISummaryReport.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPISummaryReport.js",
+              "RelativeToolTip": "WCORE\\Contents\\js\\KPI\\KPISummaryReport.js",
+              "ViewState": "AgIAADIAAAAAAAAAAAAQwDwAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-15T03:37:21.105Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\_BASE\\HomeController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\_BASE\\HomeController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\_BASE\\HomeController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\_BASE\\HomeController.cs",
+              "ViewState": "AgIAAMQAAAAAAAAAAAAAANgAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-14T01:47:33.804Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Web.config",
+              "RelativeDocumentMoniker": "WCORE\\Web.config",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Web.config",
+              "RelativeToolTip": "WCORE\\Web.config",
+              "ViewState": "AgIAANwAAAAAAAAAAAAuwOEAAAAuAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-03-19T07:52:02.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "PARController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\PARController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\PARController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\PARController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\PARController.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAIwIUAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:05:44.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "TargetDetails.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\TargetDetails.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\APP\\KPI\\TargetDetails.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\TargetDetails.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\APP\\KPI\\TargetDetails.cshtml",
+              "ViewState": "AgIAADoBAAAAAAAAAAAAAD8BAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-08T03:04:41.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "KPIListPopup.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\KPIListPopup.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\APP\\KPI\\KPIListPopup.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\KPIListPopup.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\APP\\KPI\\KPIListPopup.cshtml",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAAAGMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-08T03:11:03.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Cronus.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\Home\\Cronus.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\Home\\Cronus.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\Home\\Cronus.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\Home\\Cronus.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAgwC4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-18T09:08:30.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PARExternalRequest.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PAR\\External\\PARExternalRequest.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PAR\\External\\PARExternalRequest.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PAR\\External\\PARExternalRequest.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PAR\\External\\PARExternalRequest.cs",
+              "ViewState": "AgIAAAwBAAAAAAAAAAAAAA8BAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T01:09:04.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GoogleAuthKey.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\Home\\GoogleAuthKey.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\Home\\GoogleAuthKey.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\Home\\GoogleAuthKey.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\Home\\GoogleAuthKey.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-12T06:43:33.133Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Offense.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\Offense.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\EV\\Offense.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\Offense.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\EV\\Offense.cshtml",
+              "ViewState": "AgIAAE4CAAAAAAAAAAAwwFsCAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-09T07:49:55.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\_Administartive\\User.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\_Administartive\\User.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\_Administartive\\User.cs",
+              "RelativeToolTip": "WCORE\\Models\\_Administartive\\User.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAA8wDUAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-12T06:27:26.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExtActiveEmployee.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Active\\ExtActiveEmployee.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Active\\ExtActiveEmployee.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Active\\ExtActiveEmployee.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Active\\ExtActiveEmployee.cs",
+              "ViewState": "AgIAAEQCAAAAAAAAAAAkwEgCAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T08:34:16.597Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ExtInactiveEmployee.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Inactive\\ExtInactiveEmployee.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Inactive\\ExtInactiveEmployee.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Inactive\\ExtInactiveEmployee.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Inactive\\ExtInactiveEmployee.cs",
+              "ViewState": "AgIAACYCAAAAAAAAAAAowCwCAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T08:19:17.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "lfrcontroller.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\plugins\\system\\lfrcontroller.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\plugins\\system\\lfrcontroller.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\plugins\\system\\lfrcontroller.js",
+              "RelativeToolTip": "WCORE\\Contents\\plugins\\system\\lfrcontroller.js",
+              "ViewState": "AgIAABcAAAAAAAAAAAAswDQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-07-22T07:28:32.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "KPIHistory.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\KPIHistory.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\APP\\KPI\\KPIHistory.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\KPIHistory.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\APP\\KPI\\KPIHistory.cshtml",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAADMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-02T06:35:56.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CronusController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\API_PROD_UPDATED\\system-api\\apicoresystem\\Controllers\\CronusController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\API_PROD_UPDATED\\system-api\\apicoresystem\\Controllers\\CronusController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\API_PROD_UPDATED\\system-api\\apicoresystem\\Controllers\\CronusController.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\API_PROD_UPDATED\\system-api\\apicoresystem\\Controllers\\CronusController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-14T07:15:51.17Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ExtLoadingEmployee.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Loading\\ExtLoadingEmployee.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Loading\\ExtLoadingEmployee.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Loading\\ExtLoadingEmployee.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Loading\\ExtLoadingEmployee.cs",
+              "ViewState": "AgIAAF0BAAAAAAAAAAAhwGUBAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T08:25:48.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "EmployeeInformation.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\EmployeeInformation.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\EV\\EmployeeInformation.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\EmployeeInformation.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\EV\\EmployeeInformation.cshtml",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAAALwAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-18T00:57:42.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "PARExternalApproved.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PAR\\External\\PARExternalApproved.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PAR\\External\\PARExternalApproved.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PAR\\External\\PARExternalApproved.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PAR\\External\\PARExternalApproved.cs",
+              "ViewState": "AgIAAAMBAAAAAAAAAAAAwA0BAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T10:02:56.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "KPIList.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\KPIList.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\APP\\KPI\\KPIList.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\KPIList.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\APP\\KPI\\KPIList.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-08T03:43:40.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "ActiveEmployeeInternal.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\Internal\\Active\\ActiveEmployeeInternal.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PIS\\Internal\\Active\\ActiveEmployeeInternal.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\Internal\\Active\\ActiveEmployeeInternal.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PIS\\Internal\\Active\\ActiveEmployeeInternal.cs",
+              "ViewState": "AgIAAPIBAAAAAAAAAAAwwPsBAACeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T07:25:13.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "AttritionReport.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\RV\\AttritionReport.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\RV\\AttritionReport.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\RV\\AttritionReport.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\RV\\AttritionReport.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADgAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-16T06:54:54.929Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "TMSController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\APP\\TMSController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\APP\\TMSController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\APP\\TMSController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\APP\\TMSController.cs",
+              "ViewState": "AgIAAKMAAAAAAAAAAAAowLgAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-09T03:14:22.381Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-20T07:37:48.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "DOLESemiAnnual.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\RV\\DOLESemiAnnual.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\RV\\DOLESemiAnnual.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\RV\\DOLESemiAnnual.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\RV\\DOLESemiAnnual.cshtml",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAEYAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-03T07:18:21.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "DirectCost.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\RV\\DirectCost.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\RV\\DirectCost.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\RV\\DirectCost.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\RV\\DirectCost.cshtml",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAAAJcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-06T00:43:09.693Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "PISController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\APP\\PISController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\APP\\PISController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\APP\\PISController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\APP\\PISController.cs",
+              "ViewState": "AgIAAMsAAAAAAAAAAAAtwOEAAABzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T06:55:24.891Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ReportViewController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\ReportViewController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\ReportViewController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\ReportViewController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\ReportViewController.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAkwFMAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T05:57:55.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "InactiveEmployeeInternal.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\Internal\\Inactive\\InactiveEmployeeInternal.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PIS\\Internal\\Inactive\\InactiveEmployeeInternal.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\Internal\\Inactive\\InactiveEmployeeInternal.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PIS\\Internal\\Inactive\\InactiveEmployeeInternal.cs",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAowJQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T07:57:55.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Common.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Utility\\Common.cs",
+              "RelativeDocumentMoniker": "WCORE\\Utility\\Common.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Utility\\Common.cs",
+              "RelativeToolTip": "WCORE\\Utility\\Common.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAA0wFQAAABsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-21T03:03:56.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Attrition.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\OTH\\Attrition.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\OTH\\Attrition.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\OTH\\Attrition.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\OTH\\Attrition.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-16T07:59:24.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "NewEmploymentInfoInternal.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\Internal\\New Load\\NewEmploymentInfoInternal.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PIS\\Internal\\New Load\\NewEmploymentInfoInternal.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\Internal\\New Load\\NewEmploymentInfoInternal.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PIS\\Internal\\New Load\\NewEmploymentInfoInternal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T08:04:29.589Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "OBApplication.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\TMS\\OBApplication.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\APP\\TMS\\OBApplication.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\TMS\\OBApplication.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\APP\\TMS\\OBApplication.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-18T00:23:02.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "ExtFloatingEmployee.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Floating\\ExtFloatingEmployee.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Floating\\ExtFloatingEmployee.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Floating\\ExtFloatingEmployee.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PIS\\ExternalEmployee\\Floating\\ExtFloatingEmployee.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAowJkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T08:11:48.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "ActiveEmployeeInternal_2.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\Internal\\Active\\ActiveEmployeeInternal_2.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PIS\\Internal\\Active\\ActiveEmployeeInternal_2.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\Internal\\Active\\ActiveEmployeeInternal_2.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PIS\\Internal\\Active\\ActiveEmployeeInternal_2.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAA1wDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T01:20:07.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "NewLoadingEmployeeInternal.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\Internal\\New Load\\NewLoadingEmployeeInternal.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PIS\\Internal\\New Load\\NewLoadingEmployeeInternal.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PIS\\Internal\\New Load\\NewLoadingEmployeeInternal.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PIS\\Internal\\New Load\\NewLoadingEmployeeInternal.cs",
+              "ViewState": "AgIAADsBAAAAAAAAAAAQwFIBAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T08:04:32.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "KPISummaryReportGM.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPISummaryReportGM.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\js\\KPI\\KPISummaryReportGM.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPISummaryReportGM.js",
+              "RelativeToolTip": "WCORE\\Contents\\js\\KPI\\KPISummaryReportGM.js",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-04-06T02:09:17.104Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "KPIHistory.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\KPIHistory.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\KPI\\KPIHistory.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\KPIHistory.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\KPI\\KPIHistory.cshtml",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAADYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-25T09:26:01.77Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "PARInternalApproved.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalApproved.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalApproved.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalApproved.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalApproved.cs",
+              "ViewState": "AgIAAKEAAAAAAAAAAAAkwKYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T10:02:30.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Cost.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\Cost.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\EV\\Cost.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\Cost.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\EV\\Cost.cshtml",
+              "ViewState": "AgIAAEEEAAAAAAAAAAAtwLoDAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-08T02:19:29.366Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\_Layout.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\_Layout.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-20T07:41:17.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Benefits.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\Benefits.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\EV\\Benefits.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\Benefits.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\EV\\Benefits.cshtml",
+              "ViewState": "AgIAAJoBAAAAAAAAAAAowKwBAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-22T01:27:28.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "Accountability.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\Accountability.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\EV\\Accountability.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\Accountability.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\EV\\Accountability.cshtml",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAtwK0AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-07T08:08:42.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "KPISummaryExternal.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPISummaryExternal.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\js\\KPI\\KPISummaryExternal.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPISummaryExternal.js",
+              "RelativeToolTip": "WCORE\\Contents\\js\\KPI\\KPISummaryExternal.js",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-03-19T09:02:55.861Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "LoadingSummary.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\RV\\LoadingSummary.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\RV\\LoadingSummary.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\RV\\LoadingSummary.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\RV\\LoadingSummary.cshtml",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAGYAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-25T05:14:55.797Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "PARInternalDisapproved.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalDisapproved.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalDisapproved.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalDisapproved.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\PAR\\PARInternal\\PARInternalDisapproved.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-05T02:24:37.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "DTRApplication.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\TMS\\DTRApplication.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\APP\\TMS\\DTRApplication.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\TMS\\DTRApplication.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\APP\\TMS\\DTRApplication.cshtml",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAAAIQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-09T03:15:38.402Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "JIBAppDB.edmx [Diagram1]",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\JIBAppDB.edmx",
+              "RelativeDocumentMoniker": "WCORE\\JIBAppDB.edmx",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\JIBAppDB.edmx [Diagram1]",
+              "RelativeToolTip": "WCORE\\JIBAppDB.edmx [Diagram1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001116|",
+              "WhenOpened": "2026-03-05T07:23:09.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "WebApiConfig.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\App_Start\\WebApiConfig.cs",
+              "RelativeDocumentMoniker": "WCORE\\App_Start\\WebApiConfig.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\App_Start\\WebApiConfig.cs",
+              "RelativeToolTip": "WCORE\\App_Start\\WebApiConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-05T07:01:23.479Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "DepartmentGlobe.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\GLOBE\\DepartmentGlobe.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\GLOBE\\DepartmentGlobe.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\GLOBE\\DepartmentGlobe.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\GLOBE\\DepartmentGlobe.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T09:13:21.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "GlobeEmployee.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\GLOBE\\GlobeEmployee.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\GLOBE\\GlobeEmployee.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\GLOBE\\GlobeEmployee.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\GLOBE\\GlobeEmployee.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T09:13:20.226Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "GlobeDepartment.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\GLOBE\\GlobeDepartment.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\GLOBE\\GlobeDepartment.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\GLOBE\\GlobeDepartment.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\GLOBE\\GlobeDepartment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-03T09:13:17.313Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "PAREmpInfoController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\APIController\\PAREmpInfoController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\APIController\\PAREmpInfoController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\APIController\\PAREmpInfoController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\APIController\\PAREmpInfoController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:08:09.192Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "INVEmpAccountabilityHistory.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVEmpAccountabilityHistory.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\INV\\INVEmpAccountabilityHistory.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVEmpAccountabilityHistory.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\INV\\INVEmpAccountabilityHistory.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T09:22:57.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "PARInformation.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\PARInformation.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\EV\\PARInformation.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\EV\\PARInformation.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\EV\\PARInformation.cshtml",
+              "ViewState": "AgIAALEAAAAAAAAAAAAAALwAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-04T07:41:12.803Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "INVItemsDetails.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\INV\\INVItemsDetails.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\js\\INV\\INVItemsDetails.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\INV\\INVItemsDetails.js",
+              "RelativeToolTip": "WCORE\\Contents\\js\\INV\\INVItemsDetails.js",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAABMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-04T07:36:02.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "Items.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\INV\\Items.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\APP\\INV\\Items.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\INV\\Items.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\APP\\INV\\Items.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-04T07:35:25.341Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "INVController.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\APP\\INVController.cs",
+              "RelativeDocumentMoniker": "WCORE\\Controllers\\APP\\INVController.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Controllers\\APP\\INVController.cs",
+              "RelativeToolTip": "WCORE\\Controllers\\APP\\INVController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwDIAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T07:35:01.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "INVItemsActive.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVItemsActive.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\INV\\INVItemsActive.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVItemsActive.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\INV\\INVItemsActive.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T05:52:23.898Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "INVItemDetails.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVItemDetails.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\INV\\INVItemDetails.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVItemDetails.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\INV\\INVItemDetails.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T06:50:15.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "INVEmployeeMasterlistAll.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVEmployeeMasterlistAll.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\INV\\INVEmployeeMasterlistAll.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVEmployeeMasterlistAll.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\INV\\INVEmployeeMasterlistAll.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T05:52:13.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "INVEmployeeMasterlist.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVEmployeeMasterlist.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\INV\\INVEmployeeMasterlist.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVEmployeeMasterlist.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\INV\\INVEmployeeMasterlist.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T05:52:09.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "INVEmpAccountabilityAll.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVEmpAccountabilityAll.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\INV\\INVEmpAccountabilityAll.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVEmpAccountabilityAll.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\INV\\INVEmpAccountabilityAll.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T03:15:34.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "INVExtEmpAccountabilityActive.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVExtEmpAccountabilityActive.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\INV\\INVExtEmpAccountabilityActive.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVExtEmpAccountabilityActive.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\INV\\INVExtEmpAccountabilityActive.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T03:14:15.59Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "INVEmpAccountabilityActive.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVEmpAccountabilityActive.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\INV\\INVEmpAccountabilityActive.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\INV\\INVEmpAccountabilityActive.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\INV\\INVEmpAccountabilityActive.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-04T03:14:00.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "Department.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\Maintenance\\JobInfo\\Department.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\Maintenance\\JobInfo\\Department.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\Maintenance\\JobInfo\\Department.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\Maintenance\\JobInfo\\Department.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T02:56:26.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "JobPosition.cs",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\Maintenance\\JobInfo\\JobPosition.cs",
+              "RelativeDocumentMoniker": "WCORE\\Models\\APP\\Maintenance\\JobInfo\\JobPosition.cs",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Models\\APP\\Maintenance\\JobInfo\\JobPosition.cs",
+              "RelativeToolTip": "WCORE\\Models\\APP\\Maintenance\\JobInfo\\JobPosition.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T02:25:59.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "KPICoreCompetencies.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPICoreCompetencies.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\js\\KPI\\KPICoreCompetencies.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPICoreCompetencies.js",
+              "RelativeToolTip": "WCORE\\Contents\\js\\KPI\\KPICoreCompetencies.js",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-14T07:01:50.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 85,
+              "Title": "KPISpecialAssignment.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPISpecialAssignment.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\js\\KPI\\KPISpecialAssignment.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPISpecialAssignment.js",
+              "RelativeToolTip": "WCORE\\Contents\\js\\KPI\\KPISpecialAssignment.js",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAI0AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-14T01:42:31.715Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 87,
+              "Title": "PartialKPIReport.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\PartialKPIReport.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\KPI\\PartialKPIReport.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\PartialKPIReport.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\KPI\\PartialKPIReport.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-06T03:59:00.356Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 89,
+              "Title": "KPIScoring.js",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPIScoring.js",
+              "RelativeDocumentMoniker": "WCORE\\Contents\\js\\KPI\\KPIScoring.js",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Contents\\js\\KPI\\KPIScoring.js",
+              "RelativeToolTip": "WCORE\\Contents\\js\\KPI\\KPIScoring.js",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAD8AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-01-06T03:44:08.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 86,
+              "Title": "KPIReport.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\KPIReport.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\KPI\\KPIReport.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\KPIReport.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\KPI\\KPIReport.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-06T03:38:52.304Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 88,
+              "Title": "PartialKPIReport.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\PartialKPIReport.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\APP\\KPI\\PartialKPIReport.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\APP\\KPI\\PartialKPIReport.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\APP\\KPI\\PartialKPIReport.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-06T03:59:32.153Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 90,
+              "Title": "TargetSetting.cshtml",
+              "DocumentMoniker": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\TargetSetting.cshtml",
+              "RelativeDocumentMoniker": "WCORE\\Views\\KPI\\TargetSetting.cshtml",
+              "ToolTip": "D:\\ncaringal\\Documents\\HRISv2\\HRISv2 PITS\\sdmtportal-hrisv2-nrc-08c07ff4635f\\CSGMS\\WCORE\\Views\\KPI\\TargetSetting.cshtml",
+              "RelativeToolTip": "WCORE\\Views\\KPI\\TargetSetting.cshtml",
+              "ViewState": "AgIAACgBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-26T04:12:53.578Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

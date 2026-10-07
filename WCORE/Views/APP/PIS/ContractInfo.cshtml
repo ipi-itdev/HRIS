@@ -1,0 +1,515 @@
+﻿<section class="content" id="ImportEmployee" ng-controller="CronusController">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header" id="btnList_ImportEmployee">
+				<button type="button" class="btn btn-primary" id="Back_ImportEmployee" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="New"></i>  Back to List</button>
+				<div style="float:right;">
+					@if(@ViewBag.AllowApprove == true){
+					 <button type="button" class="btn btn-primary" id="Resend_ImportEmployee" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="New"></i>  Re-send CPS Link</button>
+					 <button type="button" class="btn btn-primary" id="Import_ImportEmployee" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-plane" title="New"></i>  Import</button>
+					}                      
+				</div>
+            </div>          
+            <div class="box-body">
+                <div class="row bhoechie-tab-container">
+					<div class="col-md-2 bhoechie-tab-menu">
+						<div class="list-group">
+							<a href="#PersonalInformation_ImportEmployee" id="PersonalInformation_Form_ImportEmployee" data-toggle="tab" aria-expanded="true" class="list-group-item active text-center">Personal Information</a>
+							<a href="#Employment_ImportEmployee" id="Employment_Form_ImportEmployee"  data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Employment & Payroll Information</a>
+							<a href="#HighestEducation_ImportEmployee" id="HighestEducation_List_ImportEmployee" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Educational Attainment</a>
+							<a href="#Requirements_ImportEmployee" id="Requirements_List_ImportEmployee" data-toggle="tab" aria-expanded="true" class="list-group-item text-center">Pre-Employment Documents</a>
+						</div>
+					</div>
+					<div class="col-md-10 bhoechie-tab">
+						 <div class="bhoechie-tab-content active" id="PersonalInformation_ImportEmployee">
+							<h2 style="font-size:20px">
+                                <i class="fa fa-user"></i> Employee Information
+                            </h2>
+							<div class="nav-tabs-custom">
+								<ul class="nav nav-tabs" id="tab_ImportEmployee" role="tablist">
+									<li class="nav-item active"><a href="#Details_Form_ImportEmployee"  class="nav-link" data-toggle="tab" role="tab">Personal Information</a></li>
+									<li class="nav-item"><a href="#Contact_Form_ImportEmployee"  class="nav-link" data-toggle="tab" role="tab">Contact Information</a></li>
+									<li class="nav-item"><a href="#ContactEmergency_Form_ImportEmployee"  class="nav-link" data-toggle="tab" role="tab">Emergency Contact Information</a></li>
+									<li class="nav-item"><a href="#Dependents_Form_ImportEmployee"  class="nav-link" data-toggle="tab" role="tab">Dependents</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="Details_Form_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group" id="Details_ImportEmployee_dtlv">
+													<div class="row form-group" id="cntr_RFC_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>RFC#</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="RFC_ImportEmployee" name="RFC_ImportEmployee" title="RFC#" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_LastName_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Last Name</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="LastName_ImportEmployee" name="LastName_ImportEmployee" title="Last Name" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_FirstName_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>First Name</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="FirstName_ImportEmployee" name="FirstName_ImportEmployee" title="First Name" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_MiddleName_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Middle Name</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="MiddleName_ImportEmployee" name="MiddleName_ImportEmployee" title="Middle Name" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_Suffix_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Suffix</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="Suffix_ImportEmployee" name="Suffix_ImportEmployee" title="Suffix" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_NickName_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Nick Name</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="NickName_ImportEmployee" name="NickName_ImportEmployee" title="Nick Name" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_Birthdate_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Birth Date</label><div class="col-lg-8 control-container vcenter"><div class="form-group has-icon"><input type="text" class="form-control pull-right datepicker" id="Birthdate_ImportEmployee" name="Birthdate_ImportEmployee" title="Birth Date" disabled="disabled" style="background-color: rgb(238, 238, 238);"><span class="fa fa-calendar form-icon-feedback"></span></div></div></div><div class="row form-group" id="cntr_Age_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Age</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="Age_ImportEmployee" name="Age_ImportEmployee" title="Age" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_BirthPlace_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Birth Place</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="BirthPlace_ImportEmployee" name="BirthPlace_ImportEmployee" title="Birth Place" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group" id="Details_ImportEmployee_dtlv2">
+													<div class="row form-group" id="cntr_Gender_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Sex</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="Gender_ImportEmployee" name="Gender_ImportEmployee" title="Sex" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_CivilStatus_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Civil Status</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="CivilStatus_ImportEmployee" name="CivilStatus_ImportEmployee" title="Civil Status" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_Nationality_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Nationality</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="Nationality_ImportEmployee" name="Nationality_ImportEmployee" title="Nationality" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_Religion_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Religion</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="Religion_ImportEmployee" name="Religion_ImportEmployee" title="Religion" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_Height_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Height</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="Height_ImportEmployee" name="Height_ImportEmployee" title="Height" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_Weight_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Weight</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="Weight_ImportEmployee" name="Weight_ImportEmployee" title="Weight" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_Bloodtype_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Blood Type</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="Bloodtype_ImportEmployee" name="Bloodtype_ImportEmployee" title="Blood Type" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_Allergies_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Allergies</label><div class="col-lg-8 control-container"><textarea rows="4" cols="45" style="resize: none; background-color: rgb(238, 238, 238);" class="form-control" id="Allergies_ImportEmployee" name="Allergies_ImportEmployee" title="Allergies" disabled="disabled"></textarea></div></div>
+												</div>
+											</div>
+											<div style="clear:both;"></div>
+										</div>
+									</div>
+									<div class="tab-pane" id="Contact_Form_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group" id="Contact_ImportEmployee_dtlv">
+													<div class="row form-group" id="cntr_PersonalEmailAddress_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Primary Email</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PersonalEmailAddress_ImportEmployee" name="PersonalEmailAddress_ImportEmployee" title="Primary Email" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_WorkEmailAddress_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Secondary Email</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="WorkEmailAddress_ImportEmployee" name="WorkEmailAddress_ImportEmployee" title="Secondary Email" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_SocialMedia_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Social Media</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="SocialMedia_ImportEmployee" name="SocialMedia_ImportEmployee" title="Social Media" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group" id="Contact_ImportEmployee_dtlv2">
+													<div class="row form-group" id="cntr_MobileNumber_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Primary Mobile</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="MobileNumber_ImportEmployee" name="MobileNumber_ImportEmployee" title="Primary Mobile" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_MobileNumber2_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Secondary Mobile</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="MobileNumber2_ImportEmployee" name="MobileNumber2_ImportEmployee" title="Secondary Mobile" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_TelephoneNumber_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Telephone</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="TelephoneNumber_ImportEmployee" name="TelephoneNumber_ImportEmployee" title="Telephone" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<b>Present Address</b>
+												<div class="form-group" id="Address_ImportEmployee_dtlv">
+													<div class="row form-group" id="cntr_PresentRegion_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Region</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PresentRegion_ImportEmployee" name="PresentRegion_ImportEmployee" title="Region" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_PresentProvince_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Province</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PresentProvince_ImportEmployee" name="PresentProvince_ImportEmployee" title="Province" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_PresentCity_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>City</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PresentCity_ImportEmployee" name="PresentCity_ImportEmployee" title="City" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_PresentBarangay_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Barangay</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PresentBarangay_ImportEmployee" name="PresentBarangay_ImportEmployee" title="Barangay" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_CurrentAddress_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Address</label><div class="col-lg-8 control-container"><textarea rows="4" cols="45" style="resize: none; background-color: rgb(238, 238, 238);" class="form-control" id="CurrentAddress_ImportEmployee" name="CurrentAddress_ImportEmployee" title="Address" disabled="disabled"></textarea></div></div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<b>Permanent Address</b>
+												<div class="form-group" id="Address_ImportEmployee_dtlv2">
+													<div class="row form-group" id="cntr_PermanentRegion_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Region</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PermanentRegion_ImportEmployee" name="PermanentRegion_ImportEmployee" title="Region" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_PermanentProvince_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Province</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PermanentProvince_ImportEmployee" name="PermanentProvince_ImportEmployee" title="Province" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_PermanentCity_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>City</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PermanentCity_ImportEmployee" name="PermanentCity_ImportEmployee" title="City" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_PermanentBarangay_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Barangay</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PermanentBarangay_ImportEmployee" name="PermanentBarangay_ImportEmployee" title="Barangay" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_ProvinceAddress_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Address</label><div class="col-lg-8 control-container"><textarea rows="4" cols="45" style="resize: none; background-color: rgb(238, 238, 238);" class="form-control" id="ProvinceAddress_ImportEmployee" name="ProvinceAddress_ImportEmployee" title="Address" disabled="disabled"></textarea></div></div>
+												</div>
+											</div>
+											<div style="clear:both;"></div>
+										</div>
+									</div>
+									<div class="tab-pane" id="ContactEmergency_Form_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-6">
+												<b>Primary Emergency Contact</b>
+												<div class="form-group" id="ContactEmergency_ImportEmployee_dtlv">
+													<div class="row form-group" id="cntr_EmergencyName1_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Name</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="EmergencyName1_ImportEmployee" name="EmergencyName1_ImportEmployee" title="Name" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_EmergencyAddress1_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Address</label><div class="col-lg-8 control-container"><textarea rows="4" cols="45" style="resize: none; background-color: rgb(238, 238, 238);" class="form-control" id="EmergencyAddress1_ImportEmployee" name="EmergencyAddress1_ImportEmployee" title="Address" disabled="disabled"></textarea></div></div><div class="row form-group" id="cntr_EmergencyContactNo1_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Primary Contact No.</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="EmergencyContactNo1_ImportEmployee" name="EmergencyContactNo1_ImportEmployee" title="Primary Contact No." disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_EmergencySecondaryContact1_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Secondary Contact No.</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="EmergencySecondaryContact1_ImportEmployee" name="EmergencySecondaryContact1_ImportEmployee" title="Secondary Contact No." disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_EmergencyEmail1_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Email</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="EmergencyEmail1_ImportEmployee" name="EmergencyEmail1_ImportEmployee" title="Email" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_EmergencyRelationship1_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Relationship</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="EmergencyRelationship1_ImportEmployee" name="EmergencyRelationship1_ImportEmployee" title="Relationship" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<b>Secondary Emergency Contact</b>
+												<div class="form-group" id="ContactEmergency_ImportEmployee_dtlv2">
+													<div class="row form-group" id="cntr_EmergencyName2_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Name</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="EmergencyName2_ImportEmployee" name="EmergencyName2_ImportEmployee" title="Name" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_EmergencyAddress2_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Address</label><div class="col-lg-8 control-container"><textarea rows="4" cols="45" style="resize: none; background-color: rgb(238, 238, 238);" class="form-control" id="EmergencyAddress2_ImportEmployee" name="EmergencyAddress2_ImportEmployee" title="Address" disabled="disabled"></textarea></div></div><div class="row form-group" id="cntr_EmergencyContactNo2_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Primary Contact No.</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="EmergencyContactNo2_ImportEmployee" name="EmergencyContactNo2_ImportEmployee" title="Primary Contact No." disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_EmergencySecondaryContact12_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Secondary Contact No.</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="EmergencySecondaryContact12_ImportEmployee" name="EmergencySecondaryContact12_ImportEmployee" title="Secondary Contact No." disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_EmergencyEmail2_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Email</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="EmergencyEmail2_ImportEmployee" name="EmergencyEmail2_ImportEmployee" title="Email" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_EmergencyRelationship2_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Relationship</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="EmergencyRelationship2_ImportEmployee" name="EmergencyRelationship2_ImportEmployee" title="Relationship 2" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div>
+												</div>
+											</div>
+											<div style="clear:both;"></div>
+										</div>
+									</div>
+									<div class="tab-pane" id="Dependents_Form_ImportEmployee" role="tabpanel">
+										 <div id="DependentsAudit_List_ImportEmployee">
+											<table id="tblListDependentsAudit" class="table table-bordered table-striped">
+												<thead id="tblHeadDependentsAudit">
+													<tr role="row">
+													<th width="40%">Name</th>
+													<th width="20%">Relationship</th>
+													<th width="20%">Birthdate</th>
+													<th width="10%">Age</th>
+													<th width="10%">Is PWD?</th>
+													</tr>
+												</thead>
+											</table>
+										 </div>
+									</div>
+								</div>                                  
+							</div>                                  
+						 </div>
+						 <div class="bhoechie-tab-content" id="Employment_ImportEmployee">
+							<h2 style="font-size:20px">
+                                <i class="fa fa-briefcase"></i> Employment & Payroll Information
+                            </h2>
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs" id="Employment_tab" role="tablist">
+                                    <li class="nav-item active"><a href="#Employment_Frm_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Employment</a></li>
+                                    <li class="nav-item"><a href="#JobDescription_Form_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Job Description</a></li>
+                                    <li class="nav-item"><a href="#Payroll_Form_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Payroll</a></li>
+                                    <li class="nav-item"><a href="#Benefits_Form_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Benefits</a></li>
+									<li class="nav-item"><a href="#Cost_Form_ImportEmployee" class="nav-link" data-toggle="tab" role="tab">Cost</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="Employment_Frm_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_ImportEmployee">
+													<div class="row form-group" id="cntr_FieldofWork_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Field of Work</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="FieldofWork_ImportEmployee" name="FieldofWork_ImportEmployee" title="Field of Work" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_RankLevel_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Rank Level</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="RankLevel_ImportEmployee" name="RankLevel_ImportEmployee" title="Rank Level" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_EmploymentStatus_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Employment Status</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="EmploymentStatus_ImportEmployee" name="EmploymentStatus_ImportEmployee" title="Employment Status" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_Client_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Client</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="Client_ImportEmployee" name="Client_ImportEmployee" title="Client" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_ClientAddress_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Client Address</label>
+														<div class="col-lg-8 control-container vcenter">
+															<textarea rows="4" cols="5" class="form-control" id="ClientAddress_ImportEmployee" name="ClientAddress_ImportEmployee" title="Client Address" disabled="disabled" style="background-color: rgb(238, 238, 238);"></textarea>
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_JobPosition_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Job Position</label>
+														<div class="col-lg-8 control-container vcenter">
+															<textarea rows="4" cols="5" class="form-control" id="JobPosition_ImportEmployee" name="JobPosition_ImportEmployee" title="Job Position" disabled="disabled" style="background-color: rgb(238, 238, 238);"></textarea>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													<div class="row form-group" id="cntr_DateHired_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Date Hired</label>
+														<div class="col-lg-8 control-container vcenter">
+															<div class="form-group has-icon">
+																<input type="text" class="form-control" id="DateHired_ImportEmployee" name="DateHired_ImportEmployee" title="Date Hired" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+																<span class="fa fa-calendar form-icon-feedback"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													<div class="row form-group" id="cntr_StartDate_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Start Date</label>
+														<div class="col-lg-8 control-container vcenter">
+															<div class="form-group has-icon">
+																<input type="text" class="form-control" id="StartDate_ImportEmployee" name="StartDate_ImportEmployee" title="Start Date" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+																<span class="fa fa-calendar form-icon-feedback"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													<div class="row form-group" id="cntr_EndDate_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>End Date</label>
+														<div class="col-lg-8 control-container vcenter">
+															<div class="form-group has-icon">
+																<input type="text" class="form-control" id="EndDate_ImportEmployee" name="EndDate_ImportEmployee" title="End Date" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+																<span class="fa fa-calendar form-icon-feedback"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													<div class="row form-group" id="cntr_ContractualDate_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Contractual Date</label>
+														<div class="col-lg-8 control-container vcenter">
+															<div class="form-group has-icon">
+																<input type="text" class="form-control" id="ContractualDate_ImportEmployee" name="ContractualDate_ImportEmployee" title="Contractual Date" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+																<span class="fa fa-calendar form-icon-feedback"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													<div class="row form-group" id="cntr_ProbStartDate_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Prob. Start Date</label>
+														<div class="col-lg-8 control-container vcenter">
+															<div class="form-group has-icon">
+																<input type="text" class="form-control" id="ProbStartDate_ImportEmployee" name="ProbStartDate_ImportEmployee" title="Prob.Start Date" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+																<span class="fa fa-calendar form-icon-feedback"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													<div class="row form-group" id="cntr_DateRegularized_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Date Regularized</label>
+														<div class="col-lg-8 control-container vcenter">
+															<div class="form-group has-icon">
+																<input type="text" class="form-control" id="DateRegularized_ImportEmployee" name="DateRegularized_ImportEmployee" title="Date Regularized" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+																<span class="fa fa-calendar form-icon-feedback"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="form-group" id="Employment_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													<div class="row form-group" id="cntr_TechnicalSkills_ImportEmployee">
+														<label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>Technical Skills</label>
+														<div class="col-lg-8 control-container vcenter">
+															<textarea rows="4" cols="5" class="form-control" id="TechnicalSkills_ImportEmployee" name="TechnicalSkills_ImportEmployee" title="Technical Skills" disabled="disabled" style="background-color: rgb(238, 238, 238);"></textarea>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div style="clear:both;"></div>
+										</div>
+                                    </div>
+                                    <div class="tab-pane" id="JobDescription_Form_ImportEmployee"  role="tabpanel">
+										<div class="col-md-6">
+											<div class="form-group" id="ProjectName_Form_ImportEmployee_DetailView_ActiveEmployee">
+												<div class="row form-group" id="cntr_ProjectName_ImportEmployee">
+													<label class="col-lg-4 control-label style=" text-align:left"="">
+													<span style="visibility:hidden;">.  </span>Project Name</label>
+													<div class="col-lg-8 control-container vcenter">
+														<input type="text" class="form-control" id="ProjectName_ImportEmployee" name="ProjectName_ImportEmployee" title="Project Name" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+													</div>
+												</div>
+												<div class="row form-group" id="cntr_JobDescriptionPath_ImportEmployee">
+													<label class="col-lg-4 control-label style=" text-align:left"="">
+													<span style="visibility:hidden;">.  </span>Job Description Path</label>
+													<div class="col-lg-8 control-container vcenter">
+														<input type="text" class="form-control" id="JobDescriptionPath_ImportEmployee" name="JobDescriptionPath_ImportEmployee" title="Job Description Path" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+													</div>
+												</div>
+											</div>
+										</div>
+                                        <div class="col-md-12">
+                                            <div class="form-group" id="JobDescription_Form_ImportEmployee_DetailView_ImportEmployee">
+												<textarea rows="4" cols="5" class="form-control" id="JobDescription_ImportEmployee" name="JobDescription_ImportEmployee" title="Job Description" disabled="disabled" style="background-color: rgb(238, 238, 238);"></textarea>
+											</div>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <div class="tab-pane" id="Payroll_Form_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group" id="Payroll_Form_ImportEmployee_DetailView_ImportEmployee">
+													<div class="row form-group" id="cntr_WorkSchedule_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Work Schedule</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="WorkSchedule_ImportEmployee" name="WorkSchedule_ImportEmployee" title="Work Schedule" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_PayrollParameterRefNo_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Payroll Parameter</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="PayrollParameter_ImportEmployee" name="PayrollParameter_ImportEmployee" title="Payroll Parameter" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_PayrollRate_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Payroll Parameter</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="PayrollRate_ImportEmployee" name="PayrollRate_ImportEmployee" title="Payroll Rate" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_Frequency_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Frequency</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="Frequency_ImportEmployee" name="Frequency_ImportEmployee" title="Frequency" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_PayBasis_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Pay Basis</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="PayBasis_ImportEmployee" name="PayBasis_ImportEmployee" title="PayBasis" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group" id="Payroll_Form_ImportEmployee_DetailView_2_ImportEmployee">
+													<div class="row form-group" id="cntr_BasicRate_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Basic Rate</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="BasicRate_ImportEmployee" name="BasicRate_ImportEmployee" title="BasicRate" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_ClientRate_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Client Rate</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="ClientRate_ImportEmployee" name="ClientRate_ImportEmployee" title="Client Rate" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_EcolaComputation_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Ecola Computation</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="EcolaComputation_ImportEmployee" name="EcolaComputation_ImportEmployee" title="Ecola Computation" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_EcolaRate_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Ecola Rate</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="EcolaRate_ImportEmployee" name="EcolaRate_ImportEmployee" title="Ecola Rate" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_TaxStatus_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Tax Status</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="TaxStatus_ImportEmployee" name="TaxStatus_ImportEmployee" title="Tax Status" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>		
+												</div>
+											</div>
+										</div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <div class="tab-pane" id="Benefits_Form_ImportEmployee" role="tabpanel">
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group" id="Benefits_Form_ImportEmployee_DetailView_ActiveEmployee">
+												<div class="row form-group" id="cntr_HOLTag_ImportEmployee"><label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Holiday</label><div class="col-lg-8 control-container vcenter"><input type="checkbox" id="HOLTag_ImportEmployee" name="HOLTag_ImportEmployee" title="Holiday"></div></div><div class="row form-group" id="cntr_TaxTag_ImportEmployee"><label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Tax</label><div class="col-lg-8 control-container vcenter"><input type="checkbox" id="TaxTag_ImportEmployee" name="TaxTag_ImportEmployee" title="Tax"></div></div><div class="row form-group" id="cntr_SEPTag_ImportEmployee"><label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Separation Pay</label><div class="col-lg-8 control-container vcenter"><input type="checkbox" id="SEPTag_ImportEmployee" name="SEPTag_ImportEmployee" title="Separation Pay"></div></div><div class="row form-group" id="cntr_W13thMonth_ImportEmployee"><label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>13th Month</label><div class="col-lg-8 control-container vcenter"><input type="checkbox" id="W13thMonth_ImportEmployee" name="W13thMonth_ImportEmployee" title="13th Month"></div></div></div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group" id="Benefits2_Form_ImportEmployee_DetailView_ActiveEmployee">
+													<div class="row form-group" id="cntr_SIL_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>SIL</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="SIL_ImportEmployee" name="SIL_ImportEmployee" title="SIL"  disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_AddtlPaidLeaves_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Addtl Paid Leaves</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="text" class="form-control" id="AddtlPaidLeaves_ImportEmployee" name="AddtlPaidLeaves_ImportEmployee" title="Addtl Paid Leaves"  disabled="disabled" style="background-color: rgb(238, 238, 238);">
+														</div>
+													</div>
+													<div class="row form-group" id="cntr_APLProRata_ImportEmployee">
+														<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>Pro-Rata?</label>
+														<div class="col-lg-8 control-container vcenter">
+															<input type="checkbox" id="APLProRata_ImportEmployee" name="APLProRata_ImportEmployee" title="Pro-Rata?">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="form-group" id="Benefits3_Form_ImportEmployee_DetailView_ActiveEmployee">
+												<div class="row form-group" id="cntr_HMODC_ImportEmployee">
+													<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>HMO DC(Annual)</label>
+													<div class="col-lg-8 control-container vcenter">
+														<input type="text" class="form-control" id="HMODC_ImportEmployee" name="HMODC_ImportEmployee" title="HMO DC(Annual)"  disabled="disabled" style="background-color: rgb(238, 238, 238);">
+													</div>
+												</div>
+												<div class="row form-group" id="cntr_HMOAmount_ImportEmployee">
+													<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>HMO Coverage(Annual)</label>
+													<div class="col-lg-8 control-container vcenter">
+														<input type="text" class="form-control" id="HMOAmount_ImportEmployee" name="HMOAmount_ImportEmployee" title="HMO Coverage(Annual)"  disabled="disabled" style="background-color: rgb(238, 238, 238);">
+													</div>
+												</div>
+												<div class="row form-group" id="cntr_OTAssumption_ImportEmployee">
+													<label class="col-lg-4 control-label style=" text-align:left"=""><span style="visibility:hidden;">.  </span>OT Assumption%</label>
+													<div class="col-lg-8 control-container vcenter">
+														<input type="text" class="form-control" id="OTAssumption_ImportEmployee" name="OTAssumption_ImportEmployee" title="OT Assumption%"  disabled="disabled" style="background-color: rgb(238, 238, 238);">
+													</div>
+												</div>
+											</div>
+											</div>
+										</div>
+                                        <div class="col-md-12">
+                                            <div class="tab-pane" id="OtherBenefits_List_ImportEmployee">
+												<h2 style="font-size:20px">
+													Other Benefits
+												</h2>
+												<table id="OtherBenefits" class="table table-bordered table-striped">
+													<thead>
+														<tr class="notfilter">
+															<th width="40%">Description</th>
+															<th width="10%">Amount</th>
+															<th width="10%">Terms</th>
+															<th width="20%">Start Date</th>
+															<th width="20%">End Date</th>
+														</tr>
+													</thead>
+												</table>
+											</div>
+                                        </div>
+										<div class="col-md-12">
+											<h2 style="font-size:20px">
+												Additional Clause Under 3.3
+											</h2>
+                                            <div class="form-group" id="AdditionalClause_Form_ImportEmployee_DetailView_ImportEmployee">
+												<textarea rows="4" cols="5" class="form-control" id="AdditionalClause_ImportEmployee" name="AdditionalClause_ImportEmployee" title="Additional Clause" disabled="disabled" style="background-color: rgb(238, 238, 238);"></textarea>
+											</div>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <div class="tab-pane" id="Cost_Form_ImportEmployee" role="tabpanel">
+                                        <h2 style="font-size:20px">
+											Other Cost
+										</h2>
+										<table id="OtherBenefits" class="table table-bordered table-striped">
+											<thead>
+												<tr class="notfilter">
+													<th width="40%">Description</th>
+													<th width="10%">Amount</th>
+													<th width="10%">Terms</th>
+													<th width="20%">Start Date</th>
+													<th width="20%">End Date</th>
+												</tr>
+											</thead>
+										</table>
+                                    </div>
+                                </div>
+                            </div>
+						 </div>
+						 <div class="bhoechie-tab-content" id="HighestEducation_ImportEmployee">
+							<h2 style="font-size:20px">
+                                <i class="fa fa-globe"></i> Educational Attainment
+                            </h2>
+							<div id="HighestEducationAudit_List_ImportEmployee">
+								<table id="tblListHighestEducation" class="table table-bordered table-striped">
+									<thead id="tblHeadHighestEducation">
+										<tr class="notfilter" role="row">
+										<th width="50%">School</th>
+										<th width="40%">Course</th>
+										<th width="10%">Year Graduated</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						 </div>
+						 <div class="bhoechie-tab-content" id="Requirements_ImportEmployee">
+							<h2 style="font-size:20px">
+                                <i class="fa fa-globe"></i> Pre-Employment Documents
+                            </h2>
+							<div class="col-md-6">
+								<div class="form-group" id="AffiliationNo_ImportEmployee_dtlv">
+									<div class="row form-group" id="cntr_TinNumber_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>TIN</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="TinNumber_ImportEmployee" name="TinNumber_ImportEmployee" title="TIN" disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_PhilHealthNumber_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>PHILHEALTH No.</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PhilHealthNumber_ImportEmployee" name="PhilHealthNumber_ImportEmployee" title="PHILHEALTH No." disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_SSSNumber_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>SSS No.</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="SSSNumber_ImportEmployee" name="SSSNumber_ImportEmployee" title="SSS No." disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div><div class="row form-group" id="cntr_PagibigNumber_ImportEmployee"><label class="col-lg-4 control-label"><span style="visibility:hidden;">.  </span>PAGIBIG No.</label><div class="col-lg-8 control-container vcenter"><input type="text" class="form-control" id="PagibigNumber_ImportEmployee" name="PagibigNumber_ImportEmployee" title="PAGIBIG No." disabled="disabled" style="background-color: rgb(238, 238, 238);"></div></div>									
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group" id="AffiliationNo_ImportEmployee_dtlv2"></div>
+							</div>
+							<div style="clear:both;"></div>
+							<div id="PreEmploymentRequirements_List_ImportEmployee">
+								<table id="tblListPreEmploymentRequirements" class="table table-bordered table-striped">
+									<thead id="tblHeadPreEmploymentRequirements">
+										<tr class="notfilter" role="row">
+										<th>ID</th>
+										<th width="90%">Requirements Type</th>
+										<th width="10%">File</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						</div>
+					</div>                           
+				</div>
+        	</div>
+        </div>
+	</div>
+</div>
+</div>
+</section>
+</div>
+@System.Web.Optimization.Scripts.Render("~/Script/ImportViewer")
+<script>
+$(document).ready(function () {
+	let $mFrm = new ImportViewer(@ViewBag.pid);
+	$mFrm.mguid = '@ViewBag.mguid';
+	$mFrm.mNo = @ViewBag.mNo;
+	$('.content-wrapper').waitMe('hide');
+})
+</script>

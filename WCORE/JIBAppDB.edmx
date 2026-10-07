@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_9b2ff8_hristestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'db_9b2ff8_hristest.dbo.MenuUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MenuUserRoles">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MenuRefNo" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MenuRefNo" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="SubDescription" Type="varchar" MaxLength="500" />
+          <Property Name="FormType" Type="int" />
+          <Property Name="SeqNo" Type="int" />
+          <Property Name="MenuParentRefNo" Type="int" />
+          <Property Name="ImageFile" Type="varchar" MaxLength="100" />
+          <Property Name="ControllerName" Type="varchar" MaxLength="500" />
+          <Property Name="ActionName" Type="varchar" MaxLength="500" />
+          <Property Name="UserRolesRefNo" Type="int" />
+          <Property Name="AllowView" Type="bit" />
+          <Property Name="AllowInsert" Type="bit" />
+          <Property Name="AllowUpdate" Type="bit" />
+          <Property Name="AllowDelete" Type="bit" />
+          <Property Name="AllowPrint" Type="bit" />
+          <Property Name="AllowApprove" Type="bit" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="HasNew" Type="bit" />
+          <Property Name="MenuTitle" Type="varchar" MaxLength="100" />
+          <Property Name="DetailControllerName" Type="varchar" MaxLength="100" />
+          <Property Name="DetailActionName" Type="varchar" MaxLength="100" />
+          <Property Name="HasDelete" Type="bit" />
+          <Property Name="wListPopUp" Type="bit" />
+          <Property Name="PopUpIcon" Type="varchar" MaxLength="100" />
+          <Property Name="PopUpDetailViewAction" Type="varchar" MaxLength="100" />
+          <Property Name="PopUpDetailViewController" Type="varchar" MaxLength="100" />
+          <Property Name="wListPopUp2" Type="bit" />
+          <Property Name="PopUpIcon2" Type="varchar" MaxLength="100" />
+          <Property Name="PopUpDetailViewAction2" Type="varchar" MaxLength="200" />
+          <Property Name="PopUpDetailViewController2" Type="varchar" MaxLength="200" />
+          <Property Name="OrderBy" Type="int" />
+          <Property Name="OrderByAs" Type="varchar" MaxLength="5" />
+          <Property Name="PopUpPrint" Type="bit" />
+          <Property Name="PopUp2Print" Type="bit" />
+          <Property Name="PopUpSubAction" Type="varchar" MaxLength="100" />
+          <Property Name="PopUp2SubAction" Type="varchar" MaxLength="100" />
+          <Property Name="UserRefNo" Type="int" />
+          <Property Name="IsDisplayOnly" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'db_9b2ff8_hristest.dbo.PAREmployeeInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PAREmployeeInfo">
+          <Key>
+            <PropertyRef Name="EmployeeRefNo" />
+            <PropertyRef Name="HMODC" />
+          </Key>
+          <Property Name="ID" Type="int" />
+          <Property Name="EmployeeRefNo" Type="int" Nullable="false" />
+          <Property Name="SubmittedDate" Type="datetime" />
+          <Property Name="ReasonForChangeRefNo" Type="int" />
+          <Property Name="OtherReason" Type="varchar" MaxLength="500" />
+          <Property Name="Remarks" Type="varchar" MaxLength="1000" />
+          <Property Name="EffectivityDate" Type="datetime" />
+          <Property Name="ContractTemplateRefNo" Type="int" />
+          <Property Name="DepartmentRefNo" Type="int" />
+          <Property Name="JobBandRefNo" Type="int" />
+          <Property Name="JobPositionRefNo" Type="int" />
+          <Property Name="FowRefNo" Type="int" />
+          <Property Name="EmployeeTypeRefNo" Type="int" />
+          <Property Name="EmploymentStatusRefNo" Type="int" />
+          <Property Name="ClientAccountRefNo" Type="int" />
+          <Property Name="ClientAddress" Type="varchar" MaxLength="1000" />
+          <Property Name="JobPosition" Type="varchar" MaxLength="500" />
+          <Property Name="DateHired" Type="varchar" MaxLength="50" />
+          <Property Name="StartDate" Type="varchar" MaxLength="50" />
+          <Property Name="EndDate" Type="varchar" MaxLength="50" />
+          <Property Name="ContractualDate" Type="varchar" MaxLength="50" />
+          <Property Name="DateProbationary" Type="varchar" MaxLength="50" />
+          <Property Name="DateRegularized" Type="varchar" MaxLength="50" />
+          <Property Name="PayrollRateRefNo" Type="int" />
+          <Property Name="PayBasisRefNo" Type="int" />
+          <Property Name="EcolaComputationRefNo" Type="int" />
+          <Property Name="EcolaRateRefNo" Type="int" />
+          <Property Name="BasicRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NonTaxAllowance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ClientRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="JobDescription" Type="varchar(max)" />
+          <Property Name="SSSGSISTag" Type="bit" />
+          <Property Name="PAGIBIGTag" Type="bit" />
+          <Property Name="PHICTag" Type="bit" />
+          <Property Name="SepTag" Type="bit" />
+          <Property Name="W13thMonth" Type="bit" />
+          <Property Name="HOLTag" Type="bit" />
+          <Property Name="SIL" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="HMODC" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="HMOAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OTAssumption" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ApprovalLevel" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="FilingStatusRefNo" Type="int" />
+          <Property Name="NoofDays" Type="decimal" Precision="38" Scale="20" />
+          <Property Name="DateNow" Type="varchar" MaxLength="50" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="500" />
+          <Property Name="JobDescriptionPath" Type="varchar" MaxLength="1000" />
+          <Property Name="sclause" Type="varchar(max)" />
+          <Property Name="AddtlPaidLeaves" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="APLProRata" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="db_9b2ff8_hristestModelStoreContainer">
+          <EntitySet Name="MenuUserRoles" EntityType="Self.MenuUserRoles" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[MenuUserRoles].[ID] AS [ID], 
+[MenuUserRoles].[MenuRefNo] AS [MenuRefNo], 
+[MenuUserRoles].[Code] AS [Code], 
+[MenuUserRoles].[Description] AS [Description], 
+[MenuUserRoles].[SubDescription] AS [SubDescription], 
+[MenuUserRoles].[FormType] AS [FormType], 
+[MenuUserRoles].[SeqNo] AS [SeqNo], 
+[MenuUserRoles].[MenuParentRefNo] AS [MenuParentRefNo], 
+[MenuUserRoles].[ImageFile] AS [ImageFile], 
+[MenuUserRoles].[ControllerName] AS [ControllerName], 
+[MenuUserRoles].[ActionName] AS [ActionName], 
+[MenuUserRoles].[UserRolesRefNo] AS [UserRolesRefNo], 
+[MenuUserRoles].[AllowView] AS [AllowView], 
+[MenuUserRoles].[AllowInsert] AS [AllowInsert], 
+[MenuUserRoles].[AllowUpdate] AS [AllowUpdate], 
+[MenuUserRoles].[AllowDelete] AS [AllowDelete], 
+[MenuUserRoles].[AllowPrint] AS [AllowPrint], 
+[MenuUserRoles].[AllowApprove] AS [AllowApprove], 
+[MenuUserRoles].[IsAdmin] AS [IsAdmin], 
+[MenuUserRoles].[HasNew] AS [HasNew], 
+[MenuUserRoles].[MenuTitle] AS [MenuTitle], 
+[MenuUserRoles].[DetailControllerName] AS [DetailControllerName], 
+[MenuUserRoles].[DetailActionName] AS [DetailActionName], 
+[MenuUserRoles].[HasDelete] AS [HasDelete], 
+[MenuUserRoles].[wListPopUp] AS [wListPopUp], 
+[MenuUserRoles].[PopUpIcon] AS [PopUpIcon], 
+[MenuUserRoles].[PopUpDetailViewAction] AS [PopUpDetailViewAction], 
+[MenuUserRoles].[PopUpDetailViewController] AS [PopUpDetailViewController], 
+[MenuUserRoles].[wListPopUp2] AS [wListPopUp2], 
+[MenuUserRoles].[PopUpIcon2] AS [PopUpIcon2], 
+[MenuUserRoles].[PopUpDetailViewAction2] AS [PopUpDetailViewAction2], 
+[MenuUserRoles].[PopUpDetailViewController2] AS [PopUpDetailViewController2], 
+[MenuUserRoles].[OrderBy] AS [OrderBy], 
+[MenuUserRoles].[OrderByAs] AS [OrderByAs], 
+[MenuUserRoles].[PopUpPrint] AS [PopUpPrint], 
+[MenuUserRoles].[PopUp2Print] AS [PopUp2Print], 
+[MenuUserRoles].[PopUpSubAction] AS [PopUpSubAction], 
+[MenuUserRoles].[PopUp2SubAction] AS [PopUp2SubAction], 
+[MenuUserRoles].[UserRefNo] AS [UserRefNo], 
+[MenuUserRoles].[IsDisplayOnly] AS [IsDisplayOnly]
+FROM [dbo].[MenuUserRoles] AS [MenuUserRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PAREmployeeInfo" EntityType="Self.PAREmployeeInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[PAREmployeeInfo].[ID] AS [ID], 
+[PAREmployeeInfo].[EmployeeRefNo] AS [EmployeeRefNo], 
+[PAREmployeeInfo].[SubmittedDate] AS [SubmittedDate], 
+[PAREmployeeInfo].[ReasonForChangeRefNo] AS [ReasonForChangeRefNo], 
+[PAREmployeeInfo].[OtherReason] AS [OtherReason], 
+[PAREmployeeInfo].[Remarks] AS [Remarks], 
+[PAREmployeeInfo].[EffectivityDate] AS [EffectivityDate], 
+[PAREmployeeInfo].[ContractTemplateRefNo] AS [ContractTemplateRefNo], 
+[PAREmployeeInfo].[DepartmentRefNo] AS [DepartmentRefNo], 
+[PAREmployeeInfo].[JobBandRefNo] AS [JobBandRefNo], 
+[PAREmployeeInfo].[JobPositionRefNo] AS [JobPositionRefNo], 
+[PAREmployeeInfo].[FowRefNo] AS [FowRefNo], 
+[PAREmployeeInfo].[EmployeeTypeRefNo] AS [EmployeeTypeRefNo], 
+[PAREmployeeInfo].[EmploymentStatusRefNo] AS [EmploymentStatusRefNo], 
+[PAREmployeeInfo].[ClientAccountRefNo] AS [ClientAccountRefNo], 
+[PAREmployeeInfo].[ClientAddress] AS [ClientAddress], 
+[PAREmployeeInfo].[JobPosition] AS [JobPosition], 
+[PAREmployeeInfo].[DateHired] AS [DateHired], 
+[PAREmployeeInfo].[StartDate] AS [StartDate], 
+[PAREmployeeInfo].[EndDate] AS [EndDate], 
+[PAREmployeeInfo].[ContractualDate] AS [ContractualDate], 
+[PAREmployeeInfo].[DateProbationary] AS [DateProbationary], 
+[PAREmployeeInfo].[DateRegularized] AS [DateRegularized], 
+[PAREmployeeInfo].[PayrollRateRefNo] AS [PayrollRateRefNo], 
+[PAREmployeeInfo].[PayBasisRefNo] AS [PayBasisRefNo], 
+[PAREmployeeInfo].[EcolaComputationRefNo] AS [EcolaComputationRefNo], 
+[PAREmployeeInfo].[EcolaRateRefNo] AS [EcolaRateRefNo], 
+[PAREmployeeInfo].[BasicRate] AS [BasicRate], 
+[PAREmployeeInfo].[NonTaxAllowance] AS [NonTaxAllowance], 
+[PAREmployeeInfo].[ClientRate] AS [ClientRate], 
+[PAREmployeeInfo].[JobDescription] AS [JobDescription], 
+[PAREmployeeInfo].[SSSGSISTag] AS [SSSGSISTag], 
+[PAREmployeeInfo].[PAGIBIGTag] AS [PAGIBIGTag], 
+[PAREmployeeInfo].[PHICTag] AS [PHICTag], 
+[PAREmployeeInfo].[SepTag] AS [SepTag], 
+[PAREmployeeInfo].[W13thMonth] AS [W13thMonth], 
+[PAREmployeeInfo].[HOLTag] AS [HOLTag], 
+[PAREmployeeInfo].[SIL] AS [SIL], 
+[PAREmployeeInfo].[HMODC] AS [HMODC], 
+[PAREmployeeInfo].[HMOAmount] AS [HMOAmount], 
+[PAREmployeeInfo].[OTAssumption] AS [OTAssumption], 
+[PAREmployeeInfo].[ApprovalLevel] AS [ApprovalLevel], 
+[PAREmployeeInfo].[CreatedBy] AS [CreatedBy], 
+[PAREmployeeInfo].[ModifiedBy] AS [ModifiedBy], 
+[PAREmployeeInfo].[CreatedDate] AS [CreatedDate], 
+[PAREmployeeInfo].[ModifiedDate] AS [ModifiedDate], 
+[PAREmployeeInfo].[IsActive] AS [IsActive], 
+[PAREmployeeInfo].[FilingStatusRefNo] AS [FilingStatusRefNo], 
+[PAREmployeeInfo].[NoofDays] AS [NoofDays], 
+[PAREmployeeInfo].[DateNow] AS [DateNow], 
+[PAREmployeeInfo].[ProjectName] AS [ProjectName], 
+[PAREmployeeInfo].[JobDescriptionPath] AS [JobDescriptionPath], 
+[PAREmployeeInfo].[sclause] AS [sclause], 
+[PAREmployeeInfo].[AddtlPaidLeaves] AS [AddtlPaidLeaves], 
+[PAREmployeeInfo].[APLProRata] AS [APLProRata]
+FROM [dbo].[PAREmployeeInfo] AS [PAREmployeeInfo]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_9b2ff8_hristestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MenuUserRole">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="MenuRefNo" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MenuRefNo" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SubDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FormType" Type="Int32" />
+          <Property Name="SeqNo" Type="Int32" />
+          <Property Name="MenuParentRefNo" Type="Int32" />
+          <Property Name="ImageFile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ControllerName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ActionName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserRolesRefNo" Type="Int32" />
+          <Property Name="AllowView" Type="Boolean" />
+          <Property Name="AllowInsert" Type="Boolean" />
+          <Property Name="AllowUpdate" Type="Boolean" />
+          <Property Name="AllowDelete" Type="Boolean" />
+          <Property Name="AllowPrint" Type="Boolean" />
+          <Property Name="AllowApprove" Type="Boolean" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="HasNew" Type="Boolean" />
+          <Property Name="MenuTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DetailControllerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DetailActionName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HasDelete" Type="Boolean" />
+          <Property Name="wListPopUp" Type="Boolean" />
+          <Property Name="PopUpIcon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PopUpDetailViewAction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PopUpDetailViewController" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="wListPopUp2" Type="Boolean" />
+          <Property Name="PopUpIcon2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PopUpDetailViewAction2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PopUpDetailViewController2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OrderBy" Type="Int32" />
+          <Property Name="OrderByAs" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PopUpPrint" Type="Boolean" />
+          <Property Name="PopUp2Print" Type="Boolean" />
+          <Property Name="PopUpSubAction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PopUp2SubAction" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserRefNo" Type="Int32" />
+          <Property Name="IsDisplayOnly" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PAREmployeeInfo">
+          <Key>
+            <PropertyRef Name="EmployeeRefNo" />
+            <PropertyRef Name="HMODC" />
+          </Key>
+          <Property Name="ID" Type="Int32" />
+          <Property Name="EmployeeRefNo" Type="Int32" Nullable="false" />
+          <Property Name="SubmittedDate" Type="DateTime" Precision="3" />
+          <Property Name="ReasonForChangeRefNo" Type="Int32" />
+          <Property Name="OtherReason" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="EffectivityDate" Type="DateTime" Precision="3" />
+          <Property Name="ContractTemplateRefNo" Type="Int32" />
+          <Property Name="DepartmentRefNo" Type="Int32" />
+          <Property Name="JobBandRefNo" Type="Int32" />
+          <Property Name="JobPositionRefNo" Type="Int32" />
+          <Property Name="FowRefNo" Type="Int32" />
+          <Property Name="EmployeeTypeRefNo" Type="Int32" />
+          <Property Name="EmploymentStatusRefNo" Type="Int32" />
+          <Property Name="ClientAccountRefNo" Type="Int32" />
+          <Property Name="ClientAddress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="JobPosition" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="DateHired" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StartDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EndDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContractualDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateProbationary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateRegularized" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PayrollRateRefNo" Type="Int32" />
+          <Property Name="PayBasisRefNo" Type="Int32" />
+          <Property Name="EcolaComputationRefNo" Type="Int32" />
+          <Property Name="EcolaRateRefNo" Type="Int32" />
+          <Property Name="BasicRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NonTaxAllowance" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ClientRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SSSGSISTag" Type="Boolean" />
+          <Property Name="PAGIBIGTag" Type="Boolean" />
+          <Property Name="PHICTag" Type="Boolean" />
+          <Property Name="SepTag" Type="Boolean" />
+          <Property Name="W13thMonth" Type="Boolean" />
+          <Property Name="HOLTag" Type="Boolean" />
+          <Property Name="SIL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="HMODC" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="HMOAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OTAssumption" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ApprovalLevel" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="FilingStatusRefNo" Type="Int32" />
+          <Property Name="NoofDays" Type="Decimal" Precision="38" Scale="20" />
+          <Property Name="DateNow" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="JobDescriptionPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="sclause" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddtlPaidLeaves" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="APLProRata" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="IPICORE_DTSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MenuUserRoles" EntityType="Self.MenuUserRole" />
+          <EntitySet Name="PAREmployeeInfoes" EntityType="Self.PAREmployeeInfo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_9b2ff8_hristestModelStoreContainer" CdmEntityContainer="IPICORE_DTSEntities">
+          <EntitySetMapping Name="MenuUserRoles">
+            <EntityTypeMapping TypeName="db_9b2ff8_hristestModel.MenuUserRole">
+              <MappingFragment StoreEntitySet="MenuUserRoles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MenuRefNo" ColumnName="MenuRefNo" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SubDescription" ColumnName="SubDescription" />
+                <ScalarProperty Name="FormType" ColumnName="FormType" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+                <ScalarProperty Name="MenuParentRefNo" ColumnName="MenuParentRefNo" />
+                <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
+                <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="UserRolesRefNo" ColumnName="UserRolesRefNo" />
+                <ScalarProperty Name="AllowView" ColumnName="AllowView" />
+                <ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
+                <ScalarProperty Name="AllowUpdate" ColumnName="AllowUpdate" />
+                <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+                <ScalarProperty Name="AllowPrint" ColumnName="AllowPrint" />
+                <ScalarProperty Name="AllowApprove" ColumnName="AllowApprove" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="HasNew" ColumnName="HasNew" />
+                <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+                <ScalarProperty Name="DetailControllerName" ColumnName="DetailControllerName" />
+                <ScalarProperty Name="DetailActionName" ColumnName="DetailActionName" />
+                <ScalarProperty Name="HasDelete" ColumnName="HasDelete" />
+                <ScalarProperty Name="wListPopUp" ColumnName="wListPopUp" />
+                <ScalarProperty Name="PopUpIcon" ColumnName="PopUpIcon" />
+                <ScalarProperty Name="PopUpDetailViewAction" ColumnName="PopUpDetailViewAction" />
+                <ScalarProperty Name="PopUpDetailViewController" ColumnName="PopUpDetailViewController" />
+                <ScalarProperty Name="wListPopUp2" ColumnName="wListPopUp2" />
+                <ScalarProperty Name="PopUpIcon2" ColumnName="PopUpIcon2" />
+                <ScalarProperty Name="PopUpDetailViewAction2" ColumnName="PopUpDetailViewAction2" />
+                <ScalarProperty Name="PopUpDetailViewController2" ColumnName="PopUpDetailViewController2" />
+                <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+                <ScalarProperty Name="OrderByAs" ColumnName="OrderByAs" />
+                <ScalarProperty Name="PopUpPrint" ColumnName="PopUpPrint" />
+                <ScalarProperty Name="PopUp2Print" ColumnName="PopUp2Print" />
+                <ScalarProperty Name="PopUpSubAction" ColumnName="PopUpSubAction" />
+                <ScalarProperty Name="PopUp2SubAction" ColumnName="PopUp2SubAction" />
+                <ScalarProperty Name="UserRefNo" ColumnName="UserRefNo" />
+                <ScalarProperty Name="IsDisplayOnly" ColumnName="IsDisplayOnly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAREmployeeInfoes">
+            <EntityTypeMapping TypeName="db_9b2ff8_hristestModel.PAREmployeeInfo">
+              <MappingFragment StoreEntitySet="PAREmployeeInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EmployeeRefNo" ColumnName="EmployeeRefNo" />
+                <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
+                <ScalarProperty Name="ReasonForChangeRefNo" ColumnName="ReasonForChangeRefNo" />
+                <ScalarProperty Name="OtherReason" ColumnName="OtherReason" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="EffectivityDate" ColumnName="EffectivityDate" />
+                <ScalarProperty Name="ContractTemplateRefNo" ColumnName="ContractTemplateRefNo" />
+                <ScalarProperty Name="DepartmentRefNo" ColumnName="DepartmentRefNo" />
+                <ScalarProperty Name="JobBandRefNo" ColumnName="JobBandRefNo" />
+                <ScalarProperty Name="JobPositionRefNo" ColumnName="JobPositionRefNo" />
+                <ScalarProperty Name="FowRefNo" ColumnName="FowRefNo" />
+                <ScalarProperty Name="EmployeeTypeRefNo" ColumnName="EmployeeTypeRefNo" />
+                <ScalarProperty Name="EmploymentStatusRefNo" ColumnName="EmploymentStatusRefNo" />
+                <ScalarProperty Name="ClientAccountRefNo" ColumnName="ClientAccountRefNo" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="JobPosition" ColumnName="JobPosition" />
+                <ScalarProperty Name="DateHired" ColumnName="DateHired" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="ContractualDate" ColumnName="ContractualDate" />
+                <ScalarProperty Name="DateProbationary" ColumnName="DateProbationary" />
+                <ScalarProperty Name="DateRegularized" ColumnName="DateRegularized" />
+                <ScalarProperty Name="PayrollRateRefNo" ColumnName="PayrollRateRefNo" />
+                <ScalarProperty Name="PayBasisRefNo" ColumnName="PayBasisRefNo" />
+                <ScalarProperty Name="EcolaComputationRefNo" ColumnName="EcolaComputationRefNo" />
+                <ScalarProperty Name="EcolaRateRefNo" ColumnName="EcolaRateRefNo" />
+                <ScalarProperty Name="BasicRate" ColumnName="BasicRate" />
+                <ScalarProperty Name="NonTaxAllowance" ColumnName="NonTaxAllowance" />
+                <ScalarProperty Name="ClientRate" ColumnName="ClientRate" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="SSSGSISTag" ColumnName="SSSGSISTag" />
+                <ScalarProperty Name="PAGIBIGTag" ColumnName="PAGIBIGTag" />
+                <ScalarProperty Name="PHICTag" ColumnName="PHICTag" />
+                <ScalarProperty Name="SepTag" ColumnName="SepTag" />
+                <ScalarProperty Name="W13thMonth" ColumnName="W13thMonth" />
+                <ScalarProperty Name="HOLTag" ColumnName="HOLTag" />
+                <ScalarProperty Name="SIL" ColumnName="SIL" />
+                <ScalarProperty Name="HMODC" ColumnName="HMODC" />
+                <ScalarProperty Name="HMOAmount" ColumnName="HMOAmount" />
+                <ScalarProperty Name="OTAssumption" ColumnName="OTAssumption" />
+                <ScalarProperty Name="ApprovalLevel" ColumnName="ApprovalLevel" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FilingStatusRefNo" ColumnName="FilingStatusRefNo" />
+                <ScalarProperty Name="NoofDays" ColumnName="NoofDays" />
+                <ScalarProperty Name="DateNow" ColumnName="DateNow" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="JobDescriptionPath" ColumnName="JobDescriptionPath" />
+                <ScalarProperty Name="sclause" ColumnName="sclause" />
+                <ScalarProperty Name="AddtlPaidLeaves" ColumnName="AddtlPaidLeaves" />
+                <ScalarProperty Name="APLProRata" ColumnName="APLProRata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

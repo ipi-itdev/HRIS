@@ -1,0 +1,40 @@
+﻿@System.Web.Optimization.Scripts.Render("~/Script/plugins/formslist")
+<section class="content-header">
+      <h1>@ViewBag.DisplayName</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">@ViewBag.DisplayName</li>
+      </ol>
+</section>
+<section class="content">
+<div class="row">
+   <div class="col-xs-12">
+       <div class="box box-primary">
+           <div class="box-body">
+               <div class="col-md-5">
+                   <div class="Model_ListView" id="@{@ViewBag.ViewId}" style="height:auto;" />
+               </div>
+               <div class="col-md-7">
+                   <div id="@{@ViewBag.FormID}"></div>
+               </div>
+               <div style="clear:both;"></div>
+           </div>
+          </div>
+       </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function(){
+        var @{@ViewBag.ViewId}_Setting = { @Html.Raw(@ViewBag.tableFormat) };
+        var $Grid = new JIBGrid('@ViewBag.mName', '#@{@ViewBag.ViewId}', @{@ViewBag.ViewId}_Setting.Format, 'False', '@ViewBag.FormID', '@ViewBag.ParentModel');
+        $Grid.DataSourceUrl = '@Url.Action("Refresh")';      
+        $Grid.AllowInsert = '@ViewBag.HasNew';
+        $Grid.AllowDelete = '@ViewBag.HasDelete';
+        $Grid.DeleteURL = '@Url.Action("Delete")';
+        $Grid.Parent = @{@ViewBag.ViewId}
+        $Grid.DetailViewURL = '@Html.Raw(@Url.Action("ChildIndex", "DetailView", new { mName = @ViewBag.mName, pKey = "PRIMARY_KEY", IsDetailList = "True", mNo = @ViewBag.mNo }))';
+        var $parent = $('#' + $('#@{@ViewBag.ViewId}').parent().attr('ID'));
+        $parent.trigger('OnGridCreated', { Grid: $Grid  });
+        $parent.unbind('OnGridCreated');     
+    })
+</script>

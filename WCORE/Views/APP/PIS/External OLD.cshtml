@@ -1,0 +1,543 @@
+﻿@using WCORE.Utility;
+<section class="content-header">
+    <h1>Employee :<b>@ViewBag.SubDescription</b></h1>
+</section>
+<section class="content" id="@ViewBag.mCode">
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+			<div class="box-header" id="btnList_@ViewBag.mCode">
+				<div class="btn-group">
+					@if (@ViewBag.AllowUpdate == true)
+					{<button type="button" class="btn btn-primary" id="Save_@ViewBag.mCode" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save</button>}
+					<button type="button" class="btn btn-primary" id="Back_@ViewBag.mCode" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Back to List"></i>  Back to List</button>
+				</div>
+				<div style="float:right">
+					@if (@ViewBag.AllowPrint == true && @ViewBag.pid > 0)
+                    { <button type="button" class="btn btn-primary" id="Print_@ViewBag.mCode"><i class="fa fa-print" title="Print"></i>  Print Profile</button> }
+                </div>
+			</div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-12 bhoechie-tab-container">
+						<div class="row">
+							<div class="col-md-2 bhoechie-tab-menu">
+								<div class="list-group">
+									<div class="box-body box-profile">
+										<img id="empPhoto_@{@ViewBag.mCode}" onclick="" class="profile-user-img img-responsive img-circle" src="@ViewBag.EmpImage" alt ="User profile picture">
+										<input type="file" title="search image" id="fup_@{@ViewBag.mCode}" name="fup_@{@ViewBag.mCode}" accept="image/png, image/jpeg" onchange="show_@{@ViewBag.mCode}(this)" style="display:none;" />
+									</div>
+									<a href="#Details_Form_@ViewBag.mCode" data-toggle="tab" aria-expanded="true" class="list-group-item active text-center">Personal Information</a>
+									@if (@ViewBag.AllowEmploymentInfo == true)
+									{<a href="#Employment_Form_@ViewBag.mCode" data-toggle="tab" class="list-group-item text-center">Employment & Payroll Information</a>}
+									@if (@ViewBag.AllowHighestEducation == true)
+									{<a href="#HighestEducation_Lst_@ViewBag.mCode" data-toggle="tab" class="list-group-item text-center">Educational Attainment</a>}
+									@if (@ViewBag.AllowDependents == true)
+									{<a href="#Dependents_Lst_@ViewBag.mCode" data-toggle="tab" class="list-group-item text-center">Dependents</a>}
+									@if (@ViewBag.AllowDisciplinaryAction == true)
+									{<a href="#Offense_Lst_@ViewBag.mCode" data-toggle="tab" class="list-group-item text-center">Disciplinary Action</a>}
+									@if (@ViewBag.AllowPerformanceEvaluation == true)
+									{<a href="#Performance_Lst_@ViewBag.mCode" data-toggle="tab" class="list-group-item text-center">Performance Evaluation</a>}
+									@if (@ViewBag.AllowTraining == true)
+									{<a href="#Training_Lst_@ViewBag.mCode" data-toggle="tab" class="list-group-item text-center">Training</a>}
+									@if (@ViewBag.AllowMovement == true)
+									{<a href="#EmpHistory_Lst_@ViewBag.mCode" data-toggle="tab" class="list-group-item text-center">Movement</a>}
+									@if (@ViewBag.AllowAccountability == true)
+									{<a href="#Accountability_Lst_@ViewBag.mCode" data-toggle="tab" class="list-group-item text-center">Accountability</a>}
+									@if (@ViewBag.AllowPreDocuments == true)
+									{<a href="#Requirements_Form_@ViewBag.mCode" data-toggle="tab" class="list-group-item text-center">Pre-Employment Documents</a>}
+									<a href="#Other_Form_@ViewBag.mCode" data-toggle="tab" class="list-group-item text-center">Other</a>
+								</div>
+							</div>
+                            <div class="col-md-10 bhoechie-tab">
+                                <div class="bhoechie-tab-content active" id="Details_Form_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-user"></i> Employee Information
+                                    </h2>
+                                    <div class="nav-tabs-custom">
+                                        <ul class="nav nav-tabs" id="Details_tab"  role="tablist">
+                                            <li class="active"><a href="#Details_Frm_@ViewBag.mCode"  class="nav-link active" data-toggle="tab" role="tab">Details</a></li>
+                                            <li><a href="#Contact_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Contact</a></li>
+                                            <li><a href="#AffiliationNo_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Government ID</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="Details_Frm_@ViewBag.mCode">
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="Details_Form_Employee_DetailView_@ViewBag.mCode">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="Details_Form_Employee_DetailView_2_@ViewBag.mCode">
+                                                    </div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                                
+                                            </div>
+                                            <div style="clear:both;"></div>
+
+                                            <div class="tab-pane" id="Contact_Form_@ViewBag.mCode">
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="Contact_Form_Employee_DetailView_@ViewBag.mCode"></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="Contact_Form_Employee_DetailView_2_@ViewBag.mCode"></div>
+                                                </div>
+                                                <br />
+                                                <b>HOME ADDRESS</b>
+                                                <br />
+                                                <div class="col-md-6">
+                                                    <b>PRESENT</b><br>
+                                                    <div class="form-group" id="Address_Form_Employee_DetailView_@ViewBag.mCode"></div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <b>PERMANENT</b><br>
+                                                    <div class="form-group" id="Address_Form_Employee_DetailView_2_@ViewBag.mCode"></div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                                <br>
+                                                <b>EMERGENCY CONTACT</b>
+                                                <div style="clear:both;"></div>
+                                                <br>
+                                                <div class="col-md-6">
+                                                    <b>PRIMARY</b><br>
+                                                    <div class="form-group" id="ContactEmergency_Form_Employee_DetailView_@ViewBag.mCode">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <b>SECONDARY</b><br>
+                                                    <div class="form-group" id="ContactEmergency_Form_Employee_DetailView_2_@ViewBag.mCode">
+                                                    </div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                            <div class="tab-pane" id="AffiliationNo_Form_@ViewBag.mCode">
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="AffiliationNo_Form_Employee_DetailView_@ViewBag.mCode">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="AffiliationNo_Form_Employee_DetailView_2_@ViewBag.mCode">
+                                                    </div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bhoechie-tab-content" id="Employment_Form_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-briefcase"></i> Employment & Payroll Information
+                                    </h2>
+                                    <div class="nav-tabs-custom">
+                                        <ul class="nav nav-tabs" id="Employment_tab" role="tablist">
+                                            <li class="active"><a href="#Employment_Frm_@ViewBag.mCode" class="nav-link active" data-toggle="tab" role="tab">Employment</a></li>
+                                            <li><a href="#JobDescription_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Job Description</a></li>
+                                            <li><a href="#Payroll_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Payroll</a></li>
+                                            <li><a href="#Benefits_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Benefits</a></li>
+                                            <li><a href="#Cost_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Cost</a></li>
+                                            <li><a href="#HealthCard_Form_@ViewBag.mCode"  class="nav-link" data-toggle="tab" role="tab">Health Card</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="Employment_Frm_@ViewBag.mCode">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6"><div class="form-group" id="Employment_Form_EI@{@ViewBag.mCode}_DetailView_@ViewBag.mCode"></div></div>
+                                                    <div class="col-md-6"><div class="form-group" id="Employment_Form_EI@{@ViewBag.mCode}_DetailView_2_@ViewBag.mCode"></div></div>
+                                                    <div style="clear:both;"></div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div style="clear:both;"></div>
+                                                    <b>Separation Information</b>
+                                                    <div style="clear:both;"></div>
+                                                    <br />
+                                                    <div class="col-md-6"><div class="form-group" id="SeparationInformation_Form_EI@{@ViewBag.mCode}_DetailView_@ViewBag.mCode"></div></div>
+                                                    <div class="col-md-6"><div class="form-group" id="SeparationInformation_Form_EI@{@ViewBag.mCode}_DetailView_2_@ViewBag.mCode"></div></div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                            <div class="bhoechie-tab-content" id="JobDescription_Form_@ViewBag.mCode">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6"><div class="form-group" id="ProjectName_Form_EI@{@ViewBag.mCode}_DetailView_@ViewBag.mCode"></div></div>
+                                                    <div class="col-md-6"><div class="form-group" id="ProjectName_Form_EI@{@ViewBag.mCode}_DetailView_2_@ViewBag.mCode"></div></div>
+                                                    <div style="clear:both;"></div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="row form-group" id="cntr_ProjectName_EI@{@ViewBag.mCode}_@ViewBag.mCode">
+                                                            <label class="col-lg-4 control-label" style=" text-align:left" >
+                                                            </label>
+                                                            <div class="col-lg-8 control-container vcenter">
+                                                                @if((@ViewBag.AllowUpdate == true && @ViewBag.pid > 0) || (@ViewBag.AllowInsert == true && @ViewBag.pid < 1)){<button type="button" class="btn btn-primary" id="Upload_@ViewBag.mCode"><i class="fa fa-upload" title="New"></i>  Upload</button>}
+                                                                @if(@ViewBag.IsJDAttachment == true){<button type="button" class="btn btn-primary" id="View_@ViewBag.mCode"><i class="fa fa-download" title="New"></i>  View</button>}
+                                                                <input type="file" accept=".xls,.xlsx.doc,.docx,.pdf" id="file_JD_EI@{@ViewBag.mCode}_@ViewBag.mCode" name="file_JD_EI@{@ViewBag.mCode}_@ViewBag.mCode" style="display:none;" onchange="show_@{@ViewBag.mCode}FileName(this)"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" id="JobDescription_Form_EI@{@ViewBag.mCode}_DetailView_@ViewBag.mCode">
+                                                    </div>
+                                                </div>
+                                            <div style="clear:both;"></div>
+                                            </div>
+                                            <div class="bhoechie-tab-content" id="Payroll_Form_@ViewBag.mCode">
+                                                <div class="col-md-6"><div class="form-group" id="Payroll_Form_EI@{@ViewBag.mCode}_DetailView_@ViewBag.mCode"></div></div>
+                                                <div class="col-md-6"><div class="form-group" id="Payroll_Form_EI@{@ViewBag.mCode}_DetailView_2_@ViewBag.mCode"></div></div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                            <div class="bhoechie-tab-content" id="Benefits_Form_@ViewBag.mCode">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" id="Benefits2_Form_EI@{@ViewBag.mCode}_DetailView_@ViewBag.mCode">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group" id="Benefits3_Form_EI@{@ViewBag.mCode}_DetailView_@ViewBag.mCode">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="tab-pane" id="OtherBenefits_List_@ViewBag.mCode"></div>
+                                                </div>
+                                                <br />
+                                                <b>ADDITIONAL CLAUSE UNDER 3.3</b> 
+                                                <br /><br />
+                                                <div class="col-md-12">
+                                                    <div class="tab-pane" id="Clause_Form_EI@{@ViewBag.mCode}_DetailView_@ViewBag.mCode"></div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                            <div class="bhoechie-tab-content" id="Cost_Form_@ViewBag.mCode">
+                                                <div class="col-md-12">
+                                                    <div class="tab-pane" id="OtherCost_List_@ViewBag.mCode"></div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                            <div class="bhoechie-tab-content" id="HealthCard_Form_@ViewBag.mCode">
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="HealthCard_Form_Employee_DetailView_@ViewBag.mCode">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="HealthCard_Form_Employee_DetailView_2_@ViewBag.mCode">
+                                                    </div>
+                                                </div>
+                                                <div style="clear:both;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bhoechie-tab-content" id="HighestEducation_Lst_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-heart"></i> Educational Attainment
+                                    </h2>
+                                    <div id="HighestEducation_List_@ViewBag.mCode"></div>
+                                </div>
+
+                                <div class="bhoechie-tab-content" id="Dependents_Lst_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-heart"></i> Dependents Information
+                                    </h2>
+                                    <div id="Dependents_List_@ViewBag.mCode"></div>
+                                </div>
+
+                                <div class="bhoechie-tab-content" id="Offense_Lst_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-tags"></i> Disciplinary Action
+                                    </h2>
+                                    <div id="Offense_List_@ViewBag.mCode"></div>
+                                </div>
+
+                                <div class="bhoechie-tab-content" id="Performance_Lst_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-star"></i> Performance Evaluation
+                                    </h2>
+                                    <div id="Performance_List_@ViewBag.mCode"></div>
+                                </div>
+
+                                <div class="bhoechie-tab-content" id="Training_Lst_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-send"></i> Training Information
+                                    </h2>
+                                    <div id="Training_List_@ViewBag.mCode"></div>
+                                </div>
+
+                                <div class="bhoechie-tab-content" id="EmpHistory_Lst_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-tasks"></i> Employee Movement
+                                    </h2>
+                                    <div id="EmpHistory_List_@ViewBag.mCode"></div>
+                                </div>
+
+                                <div class="bhoechie-tab-content" id="Accountability_Lst_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-qrcode"></i> Employee Accountability
+                                    </h2>
+                                    <div class="col-md-12"><div id="Accountability_List_@ViewBag.mCode"></div></div>
+                                </div>
+
+                                <div class="bhoechie-tab-content" id="Requirements_Form_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-globe"></i> Pre-Employment Documents
+                                    </h2>
+                                    <div class="col-md-12">
+                                        <div class="form-group" id="PreRequirements_List_@ViewBag.mCode">
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+    
+                                <div class="bhoechie-tab-content" id="KPI_Form_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-qrcode"></i> Key Performance Indicator
+                                    </h2>
+                                    <div id="KPI_List_@ViewBag.mCode"></div>
+                                </div>
+                            
+                                <div class="bhoechie-tab-content" id="Other_Form_@ViewBag.mCode">
+                                    <h2 style="font-size:20px">
+                                        <i class="fa fa-globe"></i> Other Information
+                                    </h2>
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="Other_Form_Employee_DetailView_@ViewBag.mCode">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="Other_Form_Employee_DetailView_2_@ViewBag.mCode"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<script>
+    $(document).ready(function (){ 
+		$('.content-wrapper').waitMe('hide');
+    })
+    function functionOne() {
+        var r = $.Deferred();
+        pis_@{@ViewBag.mCode} = {
+            ID: null, EmployeeNumber: null, EmployeeRefNo: null, LastName: null, FirstName: null, MiddleName: null, Suffix: null
+            , NickName: null, GenderRefNo: null, CivilStatusRefNo: 1, Birthdate: null, Age: null, BirthPlace: null
+            , BloodtypeRefNo: null, Allergies: null, NationalityRefNo: 1, ReligionRefNo: 1, Height: null, Weight: null
+            , WorkEmailAddress: null, TelephoneNumber: null, SocialMedia: null, MobileNumber: null
+            , RegionRefNo: null,ProvinceRefNo: null, CityRefNo: null , BrgyRefNo: null, CurrentAddress: null
+			, PermanentRegionRefNo: null,PermanentProvinceRefNo: null,PermanentCityRefNo: null,PermanentBrgyRefNo: null, ProvinceAddress: null
+			, EmergencyName1: null, EmergencyAddress1: null, EmergencyContactNo1: null
+            , EmergencyRelationship1: null, EmergencyName2: null, EmergencyAddress2: null, EmergencyContactNo2: null
+            , EmergencyRelationship2: null, TinNumber: null, PhilHealthNumber: null
+            , SSSNumber: null, PagibigNumber: null, UCPBCardNo: null, UCPBPolicyNo: null, CreatedBy: null
+            , CreatedDate: null, ModifiedBy: null, ModifiedDate: null, IsActive: null, EmployeeDependents: [], EmployeeHighestEducation: [], OtherBenefits: [], OtherCost: []
+            , EmployeeOffense: [], EmployeePerformance: [], EmployeeTraining: [], EmployeeAccountability: [], EmpHistory: [], KPI: []
+            , IsDirty: false
+            , Save: function (Grid) {
+                $.ajax({
+                    url: '../DetailView/Save',
+                    data: { mName: '@ViewBag.mCode', JSONObject: JSON.stringify(pis_@{@ViewBag.mCode}) },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        res_@{@ViewBag.mCode} = eval("(function(){return " + data + ";})()"); pis_@{@ViewBag.mCode}.ID = res_@{@ViewBag.mCode}.ID; pis_@{@ViewBag.mCode}.IsDirty = false;
+							
+						var file_data = $("#fup_@{@ViewBag.mCode}").prop("files")[0]; 
+                        var form_data = new FormData();                 
+                        form_data.append("file", file_data)             
+                        $.ajax({
+                            url: '@Url.Action("UploadImage", "PIS")?pkey=' + res_@{@ViewBag.mCode}.EmployeeRefNo,
+                            type: 'POST',
+                            processData: false, 
+                            contentType: false, 
+                            dataType : 'json',
+                            data: form_data,
+                            complete: function() {
+                                emp_@{@ViewBag.mCode}.Save();
+                            }
+                        });  
+
+                    },
+                    error: function (xhr, textStatus, error) { console.log(error); }
+                });
+            }
+        };
+        function pis@{@ViewBag.mCode}_DetailView() {
+            let IsEnabled = true;
+            if ('@ViewBag.AllowUpdate' == "False" && @ViewBag.pid > 0) { IsEnabled = false; }
+            let dvFormat = [{ Name: 'Details', Controls: [ { Name: 'EmployeeNumber', Caption: 'Employee Number', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'EmployeeNumber' },
+                    { Name: 'LastName', Caption: 'Last Name', Type: 'String', IsRequired: true, ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'LastName' },
+                    { Name: 'FirstName', Caption: 'First Name', Type: 'String', IsRequired: true, ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'FirstName' },
+                    { Name: 'MiddleName', Caption: 'Middle Name', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'MiddleName' },
+                    { Name: 'Suffix', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'Suffix' },
+                    { Name: 'NickName', Caption: 'Nick Name', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'NickName' },
+                    { Name: 'GenderRefNo', Caption: 'Sex', Type: 'Int', ControlType: 'combobox', RefColumn: 'Gender', ControlModel: 'Gender', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'GenderRefNo' },
+                    { Name: 'CivilStatusRefNo', Caption: 'Civil Status', Type: 'Int', ControlType: 'combobox', RefColumn: 'CivilStatus', ControlModel: 'CivilStatus', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'CivilStatusRefNo' },
+                    { Name: 'Birthdate', Caption: 'Birth Date', Type: 'DateTime', ControlType: 'datepicker', IsRequired: true, ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'Birthdate', strFormat: 'mm/dd/yyyy' },
+                    { Name: 'Age', Type: 'Int', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'Age', AllowInsert: false, AllowUpdate: false },
+                    { Name: 'BirthPlace', Caption: 'Birth Place', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'BirthPlace' },
+                    { Name: 'NationalityRefNo', Caption: 'Nationality', Type: 'Int', ControlType: 'combobox', RefColumn: 'Nationality', ControlModel: 'Nationality', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'NationalityRefNo' },
+                    { Name: 'ReligionRefNo', Caption: 'Religion', Type: 'Int', ControlType: 'combobox', RefColumn: 'Religion', ControlModel: 'Religion', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'ReligionRefNo' },
+                    { Name: 'Height', Type: 'String', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'Height' },
+                    { Name: 'Weight', Type: 'String', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'Weight' },
+                    { Name: 'BloodtypeRefNo', Caption: 'Blood Type', Type: 'Int', ControlType: 'combobox', RefColumn: 'BloodType', ControlModel: 'BloodType', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'BloodtypeRefNo' },
+                    { Name: 'Allergies', Type: 'String', ControlType: 'textarea', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Details', ControlID: 'Allergies' }] },
+					{ Name: 'Contact', Controls: [ { Name: 'PersonalEmailAddress', Caption: 'Primary Email', Type: 'String', IsRequired: true, ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Contact', ControlID: 'PersonalEmailAddress' },
+                    { Name: 'WorkEmailAddress', Caption: 'Secondary Email', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Contact', ControlID: 'WorkEmailAddress' },
+                    { Name: 'SocialMedia', Caption: 'Social Media', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Contact', ControlID: 'SocialMedia' },
+                    { Name: 'TelephoneNumber', Caption: 'Telephone', Type: 'String', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Contact', ControlID: 'TelephoneNumber', strFormat: '(999)999-9999' },
+                    { Name: 'MobileNumber', Caption: 'Primary Mobile', Type: 'String', IsRequired: true, ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Contact', ControlID: 'MobileNumber', strFormat: '9999-999-9999' },
+                    { Name: 'MobileNumber2', Caption: 'Secondary Mobile', Type: 'String', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Contact', ControlID: 'MobileNumber2', strFormat: '9999-999-9999' }]},
+                    { Name: 'Address', Controls: [{ Name: 'RegionRefNo', Caption: 'Region', Type: 'Int', IsRequired: true, ControlType: 'combobox', RefColumn: 'RegionRefNo', ControlModel: 'Region', ColumnValue: 'RegionRefNo', DisplayColumnValue: 'Description', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Address', ControlID: 'RegionRefNo' },
+					{ Name: 'ProvinceRefNo', Caption: 'Province', Type: 'Int', IsRequired: true, ControlType: 'combobox', RefColumn: 'ProvinceRefNo', ControlModel: 'Province', ColumnValue: 'ProvinceRefNo', DisplayColumnValue: 'Description',FKName: 'RegionRefNo', FKValue: pis_@{@ViewBag.mCode}.RegionRefNo, ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Address', ControlID: 'ProvinceRefNo' },
+					{ Name: 'CityRefNo', Caption: 'City / Municipality', Type: 'Int', IsRequired: true, ControlType: 'combobox', RefColumn: 'City', ControlModel: 'City', ColumnValue: 'ID', DisplayColumnValue: 'Description',FKName: 'ProvinceRefNo', FKValue:pis_@{@ViewBag.mCode}.ProvinceRefNo, ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Address', ControlID: 'CityRefNo' },
+					{ Name: 'BrgyRefNo', Caption: 'Barangay', Type: 'Int', IsRequired: true, ControlType: 'combobox', RefColumn: 'City', ControlModel: 'Barangay', ColumnValue: 'ID', DisplayColumnValue: 'Description',FKName: 'CityRefNo', FKValue: pis_@{@ViewBag.mCode}.CityRefNo, ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Address', ControlID: 'BrgyRefNo' },
+					{ Name: 'CurrentAddress', Caption: 'Home No. /Floor No. /Block No. /Street', Type: 'String', IsRequired: true, ControlType: 'textarea', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'Address', ControlID: 'CurrentAddress' },
+					{ Name: 'PermanentRegionRefNo', Caption: 'Region', Type: 'Int', IsRequired: true, ControlType: 'combobox', RefColumn: 'PermanentRegionRefNo', ControlModel: 'Region', ColumnValue: 'RegionRefNo', DisplayColumnValue: 'Description', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Address', ControlID: 'PermanentRegionRefNo' },
+					{ Name: 'PermanentProvinceRefNo', Caption: 'Province', Type: 'Int', IsRequired: true, ControlType: 'combobox', RefColumn: 'ProvinceRefNo', ControlModel: 'Province', ColumnValue: 'ProvinceRefNo', DisplayColumnValue: 'Description',FKName: 'RegionRefNo', FKValue: pis_@{@ViewBag.mCode}.PermanentRegionRefNo, ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Address', ControlID: 'PermanentProvinceRefNo' },
+					{ Name: 'PermanentCityRefNo', Caption: 'Permanent City Address', Type: 'Int', IsRequired: true, ControlType: 'combobox', RefColumn: 'City', ControlModel: 'City', ColumnValue: 'ID', DisplayColumnValue: 'Description',FKName: 'ProvinceRefNo', FKValue: pis_@{@ViewBag.mCode}.PermanentProvinceRefNo, ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Address', ControlID: 'PermanentCityRefNo' },
+					{ Name: 'PermanentBrgyRefNo', Caption: 'Barangay', Type: 'Int', IsRequired: true, ControlType: 'combobox', RefColumn: 'Barangay', ControlModel: 'Barangay', ColumnValue: 'ID', DisplayColumnValue: 'Description',FKName: 'CityRefNo', FKValue: pis_@{@ViewBag.mCode}.PermanentCityRefNo, ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Address', ControlID: 'PermanentBrgyRefNo' },
+					{ Name: 'ProvinceAddress', Caption: 'Home No. /Floor No. /Block No. /Street', Type: 'String', IsRequired: true, ControlType: 'textarea', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'Address', ControlID: 'ProvinceAddress' }]},
+					{ Name: 'ContactEmergency', Controls: [{ Name: 'EmergencyName1', Caption: 'Name', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'ContactEmergency', ControlID: 'EmergencyName1' },
+                    { Name: 'EmergencyAddress1', Caption: 'Address', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'ContactEmergency', ControlID: 'EmergencyAddress1' },
+                    { Name: 'EmergencyContactNo1', Caption: 'Contact No.', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'ContactEmergency', ControlID: 'EmergencyContactNo1', strFormat: '9999-999-9999' },
+                    { Name: 'EmergencyRelationship1', Caption: 'Relationship', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'ContactEmergency', ControlID: 'EmergencyRelationship1' },
+                    { Name: 'EmergencyName2', Caption: 'Name', Type: 'String', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'ContactEmergency', ControlID: 'EmergencyName2' },
+                    { Name: 'EmergencyAddress2', Caption: 'Address', Type: 'String', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'ContactEmergency', ControlID: 'EmergencyAddress2' },
+                    { Name: 'EmergencyContactNo2', Caption: 'Contact No.', Type: 'String', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'ContactEmergency', ControlID: 'EmergencyContactNo2', strFormat: '9999-999-9999' },
+                    { Name: 'EmergencyRelationship2', Caption: 'Relationship', Type: 'String', ColumnNo: 2, IsEnabled: IsEnabled , TbName: 'ContactEmergency', ControlID: 'EmergencyRelationship2' }]},
+					{ Name: 'AffiliationNo', Controls: [{ Name: 'TinNumber', Caption: 'TIN', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'AffiliationNo', ControlID: 'TinNumber', strFormat: '999-999-999' },
+                    { Name: 'PhilHealthNumber', Caption: 'PHILHEALTH No.', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'AffiliationNo', ControlID: 'PhilHealthNumber', strFormat: '99-999999999-9' },
+                    { Name: 'SSSNumber', Caption: 'SSS No.', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'AffiliationNo', ControlID: 'SSSNumber', strFormat: '99-9999999-9' },
+                    { Name: 'PagibigNumber', Caption: 'PAGIBIG No.', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'AffiliationNo', ControlID: 'PagibigNumber', strFormat: '9999-9999-9999' }]},
+					{ Name: 'HealthCard', Controls: [{ Name: 'UCPBPolicyNo', Caption: 'GPA No.', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'HealthCard', ControlID: 'UCPBPolicyNo' },
+                    { Name: 'UCPBCardNo', Caption: 'HMO Card No.', Type: 'String', ColumnNo: 0, IsEnabled: IsEnabled , TbName: 'HealthCard', ControlID: 'UCPBCardNo' }]},
+                    { Name: 'Other', Controls: [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' },
+                    { Name: 'CreatedDate', Caption: 'Created Date', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' },
+                    { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'ModifiedBy' },
+                    { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'ModifiedDate' },
+                    { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }]},
+                    { Name: 'OtherBenefits', Type: '@ViewBag.OtherBenefits', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'OtherBenefits' },
+                    { Name: 'OtherCost', Type: '@ViewBag.OtherCost', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'OtherCost' }]
+					if ('@ViewBag.AllowHighestEducation' == 'True') { dvFormat.push({ Name: 'HighestEducation', Type: '@ViewBag.HighestEducation', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeeHighestEducation' }) }
+					if ('@ViewBag.AllowDependents' == 'True') { dvFormat.push({ Name: 'Dependents', Type: '@ViewBag.Dependents', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeeDependents' }) }
+					if ('@ViewBag.AllowDisciplinaryAction' == 'True') { dvFormat.push({ Name: 'Offense', Type: '@ViewBag.DisciplinaryAction', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeeOffense' }) }
+					if ('@ViewBag.AllowPerformanceEvaluation' == 'True') { dvFormat.push({ Name: 'Performance', Type: '@ViewBag.PerformanceEvaluation', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeePerformance' }); }
+					if ('@ViewBag.AllowTraining' == 'True') { dvFormat.push({ Name: 'Training', Type: '@ViewBag.Training', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeeTraining' }); }
+					if ('@ViewBag.AllowMovement' == 'True') { dvFormat.push({ Name: 'EmpHistory', Type: '@ViewBag.Movement', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: false, HasRemove: false, IsListView: true, PropertyName: 'EmpHistory' }) }
+					if ('@ViewBag.AllowAccountability' == 'True') { dvFormat.push({ Name: 'Accountability', Type: '@ViewBag.Accountability', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'EmployeeAccountability' }) }
+					if ('@ViewBag.AllowPreDocuments' == 'True') { dvFormat.push({ Name: 'PreRequirements', Type: '@ViewBag.PreDocuments', FKey: 'EmployeeRefNo', FKeyValue: 'EmployeeRefNo', HasNew: true, HasRemove: true, IsListView: true, PropertyName: 'PreRequirements' }) }
+
+			this.OpenObject = function(CurrentObject) {  InitNewObject(CurrentObject , pis_@{@ViewBag.mCode}, '@ViewBag.mCode' ,dvFormat , '@ViewBag.mCode') }
+			this.InitDetailView = function(CurrentObject) {  InitDetailView(CurrentObject,'@{@ViewBag.mName}',dvFormat,'@{@ViewBag.mName}','@ViewBag.pid'); };       
+
+        }
+        var $itm_e = new pis@{@ViewBag.mCode}_DetailView();
+        $itm_e.InitDetailView(pis_@{@ViewBag.mCode});
+
+        return r;
+    };
+
+    function functionTwo_@{@ViewBag.mCode}() {
+        var s = $.Deferred();
+        function EI@{@ViewBag.mCode}_DetailView() {
+			var emp_@{@ViewBag.mCode} = {
+            ID: null, EmployeeRefNo: null, EmployeeNumber: null, EmployeeGroupRefNo: 2, ClientAccountRefNo: null, FOWRefNo: 1,
+            EmployeeStatusRefNo: 1, EmployeeTypeRefNo: 5, EmploymentStatusRefNo: 1, JobPosition: null, Skills: null, StartDate: null, EndDate: null,
+            DateHired: null, ContractualDate: null, DateProbationary: null, DateRegularized: null, LastDateOfEmployment: null,
+            ReasonForSeperationRefNo: null, ReasonForSeparation: null, IsWithClearance:0 , IsForReHire:0, IsWithClearance:0 , IsForReHire:0, WorkSchedule: null, PayrollParameterRefNo: 7,
+            PayrollRateRefNo: 2, PayFrequencyRefNo: 1, PayBasisRefNo: 2, TaxStatusRefNo: 1, EcolaComputationRefNo: null,
+            EcolaRateRefNo: null, BasicRate: 0, ClientRate: 0, HDMFAddCont: 0, BankRefNo: 3, AccountNo: null, SEPTag: null,
+            W13thMonth: 1, HOLTag: 1, TaxTag: 1, PagibigPercent: 0, SIL: 0, AddtlPaidLeaves: 0 , APLProRata: false,
+            HMOAmount: 0, HMODC: 0, OTAssumption: 0, FieldofWork: null, JobDescription: null,  CreatedBy: 1, CreatedDate: null,
+            ModifiedBy: null, ModifiedDate: null, IsActive: 1 , ProjectName: null , JobDescriptionPath: null , sclause: null
+            , IsDirty: false
+            , Save: function (Grid) {
+                emp_@{@ViewBag.mCode}['EmployeeRefNo'] = res_@{@ViewBag.mCode}.EmployeeRefNo
+                emp_@{@ViewBag.mCode}['EmployeeNumber'] = res_@{@ViewBag.mCode}.EmployeeNumber
+                $.ajax({
+                    url: '../DetailView/Save',
+                    data: { mName: 'EI@{@ViewBag.mCode}', JSONObject: JSON.stringify(emp_@{@ViewBag.mCode}) },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        var fileJD_data = $("#file_JD_EI@{@ViewBag.mCode}_@ViewBag.mCode").prop("files")[0]; 
+                        var formJD_data = new FormData();                 
+                        formJD_data.append("file", fileJD_data)             
+                        $.ajax({
+                            url: '@Url.Action("UploadJD", "PIS")?pkey=' + res_@{@ViewBag.mCode}.EmployeeRefNo,
+                            type: 'POST',
+                            processData: false, 
+                            contentType: false, 
+                            dataType : 'json',
+                            data: formJD_data,
+                            complete: function() { 
+								Toast.Show("External Employee (@ViewBag.mTitle) information successfully saved.");
+								if((emp_@{@ViewBag.mCode}.LastDateOfEmployment  != null ||emp_@{@ViewBag.mCode}.LastDateOfEmployment  != undefined || emp_@{@ViewBag.mCode}.LastDateOfEmployment  != '' ) && (@ViewBag.mCode != 'InactiveEmployee'))
+								{   var URLView = '@Url.Action("Employee", "PIS")?mguid=@ViewBag.mguid&pid=' + res_@{@ViewBag.mCode}.ID; $('#content_@ViewBag.mCode').load(URLView, function () { });
+								}   else{ var URLView = '../ListView?ModelNo=@{@ViewBag.mNo}'; $('#content_@ViewBag.mCode').load(URLView, function () { }); }         
+							}
+                        });  
+                    }
+                });
+            } 
+
+            var dvFormat = [{ Name: 'Details', Controls: [{ Name: 'ID', Type: 'Int', IsEnabled: false, ColumnNo: 0,  TbName: 'Details', ControlID: 'ID' }] },
+			{ Name: 'Employment', Controls: [{ Name: 'FOWRefNo', Caption: 'Field of Work', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, RefColumn: 'FW', ControlModel: 'FOW', ColumnValue: 'FOWRefNo', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Employment', ControlID: 'FOWRefNo' },
+            { Name: 'EmployeeTypeRefNo', Caption: 'Rank Level', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, RefColumn: 'ET', ControlModel: 'EmployeeType', ColumnValue: 'EmployeeTypeRefNo', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Employment', ControlID: 'EmployeeTypeRefNo' },
+            { Name: 'EmploymentStatusRefNo', Caption: 'Employment Status', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, RefColumn: 'ESM', ControlModel: 'EmploymentStatus', ColumnValue: 'EmploymentStatusRefNo', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Employment', ControlID: 'EmploymentStatusRefNo' },
+            { Name: 'ClientAccountRefNo', Caption: 'Client', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, RefColumn: 'Client', ControlModel: 'ClientAccount', ColumnValue: 'ClientAccountRefNo', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Employment', ControlID: 'ClientAccountRefNo' },
+            { Name: 'ClientAddress', Caption: 'Client Address', Type: 'String', ControlType: 'textarea', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, ColumnNo: 0,  TbName: 'Employment', ControlID: 'ClientAddress' },
+            { Name: 'JobPosition', Caption: 'Job Position', Type: 'String', ControlType: 'textarea', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, ColumnNo: 0,  TbName: 'Employment', ControlID: 'JobPosition' },
+            { Name: 'DateHired', Caption: 'Date Hired', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Employment', ControlID: 'DateHired', strFormat: 'mm/dd/yyyy' },
+            { Name: 'StartDate', Caption: 'Start Date', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Employment', ControlID: 'StartDate', strFormat: 'mm/dd/yyyy' },
+            { Name: 'EndDate', Caption: 'End Date', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Employment', ControlID: 'EndDate', strFormat: 'mm/dd/yyyy' },
+            { Name: 'ContractualDate', Caption: 'Contractual Date', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Employment', ControlID: 'ContractualDate', strFormat: 'mm/dd/yyyy' },
+            { Name: 'DateProbationary', Caption: 'Prob. Start Date', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Employment', ControlID: 'DateProbationary', strFormat: 'mm/dd/yyyy' },
+            { Name: 'DateRegularized', Caption: 'Date Regularized', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Employment', ControlID: 'DateRegularized', strFormat: 'mm/dd/yyyy' },
+            { Name: 'Skills', Caption: 'Technical Skills', Type: 'String', ControlType: 'textarea', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Employment', ControlID: 'Skills' }]},
+            { Name: 'SeparationInformation', Controls: [{ Name: 'LastDateOfEmployment', Caption: 'Last Day of Employment', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: true, ColumnNo: 0,  TbName: 'Separation Information', ControlID: 'LastDateOfEmployment', strFormat: 'mm/dd/yyyy' },
+            { Name: 'ReasonForSeperationRefNo', Caption: 'Reason Separation', Type: 'Int', ControlType: 'combobox', IsEnabled: true, RefColumn: 'RF', ControlModel: 'ReasonForSeperation', ColumnValue: 'ReasonForSeperationRefNo', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Separation Information', ControlID: 'ReasonForSeperationRefNo' },
+            { Name: 'ReasonForSeparation', Caption: 'Other Reason', Type: 'String', ControlType: 'textarea', ColumnNo: 2,  TbName: 'Separation Information', ControlID: 'ReasonForSeparation' },
+            { Name: 'IsWithClearance', Caption: 'Is With Clearance?', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 0,  TbName: 'Separation Information', ControlID: 'IsWithClearance' },
+            { Name: 'IsForReHire', Caption: 'Is For Re-Hire?', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Separation Information', ControlID: 'IsForReHire' }]},
+            { Name: 'Payroll', Controls:[{ Name: 'WorkSchedule', Caption: 'Work Schedule', Type: 'String', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: false, ColumnNo: 0,  TbName: 'Payroll', ControlID: 'WorkSchedule' },
+            { Name: 'PayrollParameterRefNo', Caption: 'Payroll Parameter', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, RefColumn: 'PM', ControlModel: 'PayrollParameter', ColumnValue: 'PayrollParameterRefNo', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Payroll', ControlID: 'PayrollParameterRefNo' },
+            { Name: 'PayrollRateRefNo', Caption: 'Payroll Rate', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, RefColumn: 'PR', ControlModel: 'PayrollRate', ColumnValue: 'PayrollRateRefNo', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Payroll', ControlID: 'PayrollRateRefNo' },
+            { Name: 'PayFrequencyRefNo', Caption: 'Frequency', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, RefColumn: 'FR', ControlModel: 'Frequency', ColumnValue: 'PayFrequencyRefNo', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Payroll', ControlID: 'PayFrequencyRefNo' },
+            { Name: 'PayBasisRefNo', Caption: 'Pay Basis', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, RefColumn: 'PB', ControlModel: 'PayBasis', ColumnValue: 'PayBasisRefNo', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Payroll', ControlID: 'PayBasisRefNo' },
+            { Name: 'BasicRate', Caption: 'Basic Rate', Type: 'Decimal', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Payroll', ControlID: 'BasicRate' },
+            { Name: 'ClientRate', Caption: 'Client Rate', Type: 'Decimal', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Payroll', ControlID: 'ClientRate' },
+            { Name: 'TaxStatusRefNo', Caption: 'Tax Status', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, RefColumn: 'TS', ControlModel: 'TaxStatus', ColumnValue: 'TaxStatusRefNo', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Payroll', ControlID: 'TaxStatusRefNo' },
+            { Name: 'EcolaComputationRefNo', Caption: 'Ecola Computation', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, RefColumn: 'ECOM', ControlModel: 'ECOLAComputation', ColumnValue: 'EcolaComputationRefNo', DisplayColumnValue: 'Description', ColumnNo: 2,  TbName: 'Payroll', ControlID: 'EcolaComputationRefNo' },
+            { Name: 'EcolaRateRefNo', Caption: 'ECOLA Rate', Type: 'Int', ControlType: 'combobox', IsEnabled: endis_@{@ViewBag.mCode}, RefColumn: 'ER', ControlModel: 'EcolaRate', ColumnValue: 'EcolaRateRefNo', DisplayColumnValue: 'Description', ColumnNo: 2,  TbName: 'Payroll', ControlID: 'EcolaRateRefNo' },
+            { Name: 'HDMFAddCont', Caption: 'HDMF Personal Contribution', Type: 'Decimal', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 2,  TbName: 'Payroll', ControlID: 'HDMFAddCont' },
+            { Name: 'BankRefNo', Caption: 'Bank', Type: 'Int', ControlType: 'combobox', IsRequired: endis_@{@ViewBag.mCode}, IsRequired: endis_@{@ViewBag.mCode}, RefColumn: 'BNK', ControlModel: 'Bank', ColumnValue: 'BankRefNo', DisplayColumnValue: 'Description', ColumnNo: 2,  TbName: 'Payroll', ControlID: 'BankRefNo' },
+            { Name: 'AccountNo', Caption: 'Account', Type: 'String', ColumnNo: 2,  TbName: 'Payroll', ControlID: 'AccountNo' }]},
+			{ Name: 'Benefits2', Controls: [{ Name: 'SIL' ,Caption: 'Service Incentive Leave', Type: 'Decimal', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 0,  TbName: 'Benefits3', ControlID: 'SIL' },
+			{ Name: 'AddtlPaidLeaves',Caption: 'Addtl Paid Leaves', Type: 'Decimal', ColumnNo: 0, TbName: 'Benefits2', ControlID: 'AddtlPaidLeaves' },
+			{ Name: 'APLProRata',Caption: 'Pro-Rata?', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Benefits2', ControlID: 'APLProRata' }]},
+            { Name: 'Benefits3', Controls:[ { Name: 'HMODC', Caption: 'HMO DC(Annual)', Type: 'Decimal', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 0,  TbName: 'Benefits3', ControlID: 'HMODC' },
+            { Name: 'HMOAmount', Caption: 'HMO Coverage(Annual)', Type: 'Decimal', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 0,  TbName: 'Benefits3', ControlID: 'HMOAmount' },
+            { Name: 'OTAssumption', Caption: 'OT Assumption%', Type: 'Decimal', IsEnabled: endis_@{@ViewBag.mCode}, ColumnNo: 0,  TbName: 'Benefits3', ControlID: 'OTAssumption' }]},
+			{ Name: 'Other', Controls: [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Other', ControlID: 'CreatedBy' },
+            { Name: 'CreatedDate', Caption: 'Created Date', Type: 'String', IsEnabled: false, ColumnNo: 0,  TbName: 'Other', ControlID: 'CreatedDate' },
+            { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0,  TbName: 'Other', ControlID: 'ModifiedBy' },
+            { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ColumnNo: 0,  TbName: 'Other', ControlID: 'ModifiedDate' },
+            { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ColumnNo: 0,  TbName: 'Other', ControlID: 'IsActive' }]},
+            { Name: 'ProjectName', Controls: [{ Name: 'ProjectName', Caption: 'Project Name', Type: 'String',  ColumnNo: 0,  TbName: 'ProjectName', ControlID: 'ProjectName' },
+            { Name: 'JobDescriptionPath', Caption: 'Job Description Path', Type: 'String', IsEnabled: false,  ColumnNo: 0,  TbName: 'ProjectName', ControlID: 'JobDescriptionPath' }]},
+            { Name: 'JobDescription', Controls: [{ Name: 'JobDescription', Type: 'String', ControlType: 'texteditor', ColumnNo: 0,  TbName: 'JobDescription', ControlID: 'JobDescription' }], IsTextEditor: true }, 
+			{ Name: 'Clause', Controls: [{ Name: 'sclause',  Type: 'String', ControlType: 'texteditor',  ColumnNo: 0,  TbName: 'Clause', ControlID: 'sclause' }], IsTextEditor: true }];
+            this.OpenObject = function(CurrentObject) {  InitNewObject(CurrentObject , empacc_@{@ViewBag.mCode} , '@ViewBag.mCode' ,dvFormat , '@ViewBag.mCode') }
+			this.InitDetailView = function(CurrentObject) {  InitDetailView(CurrentObject,'@{@ViewBag.mName}',dvFormat,'@{@ViewBag.mName}','@ViewBag.EmploymentID'); };       
+        }
+        var $itm_ei = new EI@{@ViewBag.mCode}_DetailView();
+        $itm_ei.InitDetailView(emp_@{@ViewBag.mCode});
+        return s;
+
+		
+    }
+</script>

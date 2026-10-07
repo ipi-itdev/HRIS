@@ -1,0 +1,205 @@
+﻿<section class="content-header">
+    <h1>DTR Application</h1>
+    <ol class="breadcrumb">
+        <li><a href="javascript:void(0);" onclick="displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+    </ol>
+</section>
+<section class="content">
+<div class="box box-primary">
+	<div class="box-header">
+		<div id="btnList_@ViewBag.FormID">
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary" id="Back_@ViewBag.FormID" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Back"></i>  Back to List</button>
+				<button type="button" class="btn btn-primary" id="DTR_@ViewBag.FormID" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-file-pdf-o" title="Back"></i>  DTR Report</button>
+			</div>
+			<div style="float:right;">
+			@if(@ViewBag.AllowApprove == true)
+			{<div class="btn-group">
+				<button type="button" class="btn btn-primary" id="Calculate_@ViewBag.FormID" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-calculator" title="Calculate"></i>  Re-Generate</button>
+				<button class="btn btn-primary dropdown-toggle dropdown-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fa fa-cubes" title="Action"></i> Action
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<button type="button" class="dropdown-item btn btn-default" id="Approve_@ViewBag.FormID" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-up" title="Approve"></i>  Approve</button> 
+					<button type="button" class="dropdown-item btn btn-default" id="BacktoRequestor_@ViewBag.FormID" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-edit" title="Back to Requestor"></i>  Back to Requestor</button>
+				</div>
+			</div>
+			}
+			</div>
+		</div>
+	</div>
+    <div class="box-body" id="@ViewBag.FormID">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="row form-group">
+					<label class="col-lg-12 control-label style="text-align:left">Employee Name: </label>
+					<div class="col-lg-12 control-container vcenter">
+						<input type="text" class="form-control" value="@ViewBag.EmployeeName" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="col-lg-12 control-label style=" text-align:left">Payroll Date:  </label>
+					<div class="col-lg-12 control-container vcenter">
+						<input type="text" class="form-control" value="@ViewBag.PayrollDate" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="col-lg-12 control-label style=" text-align:left">Payroll Period:   </label>
+					<div class="col-lg-12 control-container vcenter">
+						<input type="text" class="form-control" value="@ViewBag.PayrollPeriod" disabled="disabled" style="background-color: rgb(238, 238, 238);">
+					</div>
+				</div>
+				<div class="row form-group">
+					<label class="col-lg-12 control-label style=" text-align:left">Client Account / Department:   </label>
+					<div class="col-lg-12 control-container vcenter">
+						<textarea rows="4" cols="45" style="resize:none" class="form-control" disabled="disabled" style="background-color: rgb(238, 238, 238);">@ViewBag.Department</textarea>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10">
+				<div class="nav-tabs-custom">
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="nav-item active"><a class="nav-link active" data-toggle="tab" href="#Details_Form_@ViewBag.FormID" role="tab">Details</a></li>
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Attachment_List_@ViewBag.FormID" role="tab">Attachments</a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="Details_Form_@ViewBag.FormID" role="tabpanel">
+							<table id="tblList_@{@ViewBag.FormID}" class="table table-bordered table-striped">
+								<thead id="tblHead_@{@ViewBag.FormID}">
+									<tr class="notfilter" role="row">
+										<th width="1%">ID</th>
+										<th width="12%">Work Date</th>
+										<th width="12%">Day Status</th>
+										<th width="10%">Shift Start</th>
+										<th width="10%">Shift End</th>
+										<th width="15%">Time In</th>
+										<th width="15%">Time Out</th>
+										<th width="40%">Remarks</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+						<div class="tab-pane" id="Attachment_List_@ViewBag.FormID" role="tabpanel">
+							<table id="tblAttachment_@{@ViewBag.FormID}" class="table table-bordered table-striped">
+								<thead id="tblAttachmentHead_@{@ViewBag.FormID}">
+									<tr class="notfilter" role="row">
+										<th width="1%">ID</th>
+										<th width="20%">File</th>
+										<th width="80%">Description</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<script>
+	function setEdit(){
+		if('@{@ViewBag.AllowApprove}' == "True" && '@{@ViewBag.AllowUpdate}' == "True"){ $("#tblList_@{@ViewBag.FormID}").SetEditable({ columnsEd: "7", onEdit: function (columnsEd) { uinfo(columnsEd); }}); }
+	}
+	$("#tblList_@{@ViewBag.FormID}").DataTable({ "createdRow": function( row, data, dataIndex ) { if ( data[2] == 'Restday' ) { $(row).addClass('bg-blue'); } if ( data[2] == 'Holiday' ) { $(row).addClass('bg-green'); } if ( data[2] == 'Incomplete' ) { $(row).addClass('bg-red'); } if ( data[2].includes('Leave') ) { $(row).addClass('bg-orange'); }},
+	ajax: { url: '@Url.Action("DTRData", "TMS")', data: { pkey: '@ViewBag.pkey' }, type: 'POST', datatype: 'application/json; charset=utf-8', dataSrc: function (data) { return JSON.parse(data); } } , "bDestroy": true , order: [[1, 'asc']], "paging": false, "searching": false, initComplete: function () {  setEdit();  } }); 
+	$("#tblAttachment_@{@ViewBag.FormID}").DataTable({
+		"columnDefs": [{
+			"targets": 1, "render": function (data, type, row)
+			
+			{
+                if (data != '') {
+                    return '<a href="' + data + '" target="_blank" onclick="window.open(\'' + data + '\' + location.search)">Open Link</a>';
+                } else {
+                    return data;
+                }
+
+			}
+			
+		}],
+    ajax: { url: '@Url.Action("DTRDataAttachment", "TMS")', data: { pkey: '@ViewBag.pkey' }, type: 'POST', datatype: 'application/json; charset=utf-8', dataSrc: function (data) { return JSON.parse(data); } } , order: [[1, 'asc']], "paging": false, "searching": false });
+	function uinfo(columnsEd) { var refno = columnsEd[0].childNodes[0].innerHTML; var remarks = columnsEd[0].childNodes[7].innerHTML; var Message = ''; var OkLabel = 'Update'; var fAction = null; Message = 'Are you sure you want to save/update the remarks?'; fAction = function (result) {
+    if (result) { $.ajax({ type: "POST", cache: false, url: '@Url.Action("TMSApplicationRemarks", "TMS")', data: { tmstype: 1 , pkey: refno , rmarks: remarks }, success: function (data) { if (data == 'True') { Toast.Show("Remarks successfully saved."); } else { Toast.Error("Error"); } } }); } else { }}; 
+	BootstrapDialog.confirm({ title: '@ViewBag.Caption', icon: 'fa-users', message: Message, closable: true, draggable: true, btnCancelLabel: 'Cancel', btnOKLabel: OkLabel, callback: fAction }); };
+	$('#btnList_@ViewBag.FormID').find('button').off('click').on('click', function() {
+		var ids = $(this).attr('id'), Message = '', OkLabel = 'OK', fAction = null;
+        switch ( ids.replace('@ViewBag.FormID-','').toUpperCase() ) {
+            case 'Approve_@ViewBag.FormID'.toUpperCase():
+                Message = 'Are you sure you want to approve this?';
+                OkLabel = 'Approve';
+                fAction = function(result){
+					if(result){
+						$.ajax({
+							type: "POST",
+							cache: false,
+							url: '../TMS/TMSApplicationApproval?tmstype=1&pkey=@ViewBag.pkey&status=40',
+							success: function (data) {
+								if (data == 'True') { 
+									Toast.Show("Successfully approved.");  
+									var URLView = '../ListView/ListIndex?mguid=@{@ViewBag.mguid}'; 
+									$('#content_@ViewBag.FormID').load(URLView, function () { });
+								}
+								else { Toast.Error("Error"); }
+							}
+						});
+					}
+				}
+                break;
+			case 'BacktoRequestor_@ViewBag.FormID'.toUpperCase():
+                Message = 'Are you sure you want to back this DTR application to the requestor?';
+                OkLabel = 'Ok';
+                fAction = function(result){
+					if(result){
+						URLVIEW = '../TMS/TMSApplicationApproval?tmstype=1&pkey=@ViewBag.pkey&status=1'
+						var redURLView = '../ListView/ListIndex?mguid=@{@ViewBag.mguid}'; 
+						var detailView = new modieremarks("DTR Application",URLVIEW,"Successfully Back to the Requestor.","Failed. Please contact administrator.",'@ViewBag.FormID',redURLView);
+						detailView.open();
+					}
+				}
+                break;
+            case 'Back_@ViewBag.FormID'.toUpperCase():
+				Message = 'Are you sure you want to go back to list?';
+				OkLabel = 'Back to List';
+                fAction = function(result){
+					if(result){
+						var URLView = '../ListView/ListIndex?mguid=@{@ViewBag.mguid}'; 
+						$('#content_@ViewBag.FormID').load(URLView, function () { });
+					}
+				}
+				break;
+			case 'DTR_@ViewBag.FormID'.toUpperCase():
+				var arr =  JSON.stringify({ID: @ViewBag.pkey});
+				URLVIEW = '@Url.Action("RenderRpt","RV")?mguid=@{@ViewBag.mguid}&arr=' + arr;
+				var detailView = new modieviewer(URLVIEW);
+				detailView.open();
+				break;
+			case 'Calculate_@ViewBag.FormID'.toUpperCase():
+				Message = 'Are you sure you want to re-generate DTR?';
+				OkLabel = 'Re-generate';
+                fAction = function(result){
+					if(result){
+						run_waitMe($('.content-wrapper'), 1, "roundBounce");
+						$.ajax({
+							type: "POST",
+							cache: false,
+							url: '@Url.Action("CalculateDTRApplication", "TMS")?pkey=@ViewBag.pkey',
+							success: function (data) {
+								if (data == 'True') { 
+									Toast.Show("Successfully Generated.");  
+									var URLView = '../TMS/DTRApplication?mguid=@{@ViewBag.mguid}&pid=@ViewBag.pkey'; 
+									$('#content_@ViewBag.FormID').load(URLView, function () { });
+								}
+								else { Toast.Error("Error"); }
+							}
+						});
+					}
+				}
+				break;
+		}
+		if(ids.toUpperCase() != 'dropdownMenuButton'.toUpperCase() && ids.toUpperCase() != 'DTR_@ViewBag.FormID'.toUpperCase()){
+			BootstrapDialog.confirm({ title: '@ViewBag.Caption', icon: 'fa-list', message: Message, closable: true, btnCancelLabel: 'Cancel', btnOKLabel: OkLabel, callback: fAction });
+		}
+	})
+	$('.content-wrapper').waitMe('hide');
+</script>
+

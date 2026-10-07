@@ -1,0 +1,395 @@
+﻿
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li class="active"><b>Key Performance Indicators</b></li>
+    </ol><br>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style type="text/css">
+                body {
+                    color: #404E67;
+                    background: #F5F7FA;
+                    /*font-family: 'Source Sans Pro', sans-serif;*/
+                }
+
+                .table-wrapper {
+                    width: 100%;
+                    /*margin: 30px auto;*/
+                    background: #fff;
+                    padding: 20px;
+                    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+                }
+
+                .table-title {
+                    padding-bottom: 10px;
+                    margin: 0 0 10px;
+                }
+
+                    .table-title h2 {
+                        margin: 6px 0 0;
+                        font-size: 22px;
+                    }
+
+                    .table-title .add-new {
+                        float: right;
+                        height: 30px;
+                        font-weight: bold;
+                        font-size: 5px;
+                        text-shadow: none;
+                        min-width: 100px;
+                        border-radius: 50px;
+                        line-height: 13px;
+                    }
+
+                        .table-title .add-new i {
+                            margin-right: 4px;
+                        }
+
+                table.table {
+                    table-layout: fixed;
+                }
+
+                    table.table tr th, table.table tr td {
+                        border-color: #e9e9e9;
+                    }
+
+                    table.table th i {
+                        font-size: 18px;
+                        margin: 0 5px;
+                        cursor: pointer;
+                    }
+
+                    table.table th:last-child {
+                        width: 100px;
+                    }
+
+                    table.table td a {
+                        cursor: pointer;
+                        display: inline-block;
+                        margin: 0 5px;
+                        /*min-width: 24px;*/
+
+                        max-width: 50px;
+                        width: auto;
+                        min-width: 10px;
+                    }
+
+                        table.table td a.add {
+                            color: #27C46B;
+                        }
+
+                        table.table td a.edit {
+                            color: #FFC107;
+                        }
+
+                        table.table td a.delete {
+                            color: #E34724;
+                        }
+
+                    table.table td i {
+                        /*font-size: 22px;*/
+
+                        max-width: 50px;
+                        width: auto;
+                        min-width: 10px;
+                    }
+
+                    table.table td a.add i {
+                        font-size: 22px;
+                        margin-right: -1px;
+                        position: relative;
+                        top: 3px;
+                        max-width: 50px;
+                        width: auto;
+                        min-width: 10px;
+                    }
+
+                    table.table .form-control {
+                        height: 32px;
+                        line-height: 32px;
+                        box-shadow: none;
+                        border-radius: 2px;
+                    }
+
+                        table.table .form-control.error {
+                            border-color: #f50000;
+                        }
+
+                    table.table td .add {
+                        display: none;
+                        max-width: 50px;
+                        width: auto;
+                        min-width: 10px;
+                    }
+
+                /*body {
+          background: #ffffff;
+          color: #414141;
+          font: 400 17px/2em 'Source Sans Pro', sans-serif;
+        }*/
+
+
+    </style>
+</section>
+<section class="content" style="position:center">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+
+                    @*    <div class="table-title">
+                        </div>
+                    *@
+                    <table class="table table-bordered" id="tablePARTONE">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px;" data-field="id">ID</th>
+                                <th rowspan="1" colspan="1" style="width:50%; font-size: 13px" data-field="kpi">KPI</th>
+                                <th rowspan="1" colspan="1" style="width:30%; font-size: 13px" data-field="target">TARGET</th>
+                                <th rowspan="1" colspan="1" style="width:30%; font-size: 13px" data-field="actual">ACTUAL</th>
+                                <th rowspan="1" colspan="1" style="width:35%; font-size: 13px" data-field="accomplished">ACCOMPLISHED</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="rating">RATING</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight">WEIGHT</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="score">SCORE</th>
+                                <th rowspan="1" colspan="1" style="width:50%; font-size: 13px" data-field="remarks">REMARKS</th>
+                                <th style="font-size: 13px"> ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    evalRefNo = 0;
+    forNext = 1;
+	isReady = true;
+	var count = 1;
+	var saveType, status = 1, arrayID, kpiformula, kpiweight, kpitarget;
+	var table = $("#tablePARTONE");
+	var index = $("tablePARTONE tbody tr:last-child").index();
+
+
+	$(document).ready(function () {
+		console.log('dito kaba dumadaan?');
+	    loadTable().done(GetScore()).done(GetCoreCompetencyScore());
+
+		// Add row on add button click
+		$(document).off("click", ".add").on("click", ".add", function () {
+			var empty = false;
+			var input = $(this).parents("tr").find('input[type="text"]');
+
+			count = 1;
+			input.each(function () {
+			    if (count == 4) {
+
+			        if (isNumeric($(this).val()) == false || !$(this).val() || $(this).val() < 0.00 || $(this).val() < 0.00) {
+			            $(this).addClass("error");
+			            empty = true;
+			            return false;
+			        } else {
+
+			            $(this).removeClass("error");
+			            empty = false;
+			        }
+			    } else{
+			            $(this).removeClass("error");
+			            empty = false;
+			    }
+
+			    count++;
+			});
+
+			//---
+
+			$(this).parents("tr").find(".error").first().focus();
+
+			if (!empty) {
+
+				input.each(function () {
+					$(this).parent("td").html($(this).val());
+				});
+
+				//--
+
+				var table = $("#tablePARTONE");
+				var $tds = $(this).parents("tr").find('td'),
+					 id = $tds.eq(0).text(),
+					 actual = $tds.eq(3).text();
+					 remarks = $tds.eq(8).text();
+					 remarks = remarks.replace(/'/g, "`");
+
+					 if (isNumeric(actual) == true) {
+					     if (actual >= 0 && actual <= 999999999999.00) {
+					         $.ajax({
+					             type: "POST",
+					             url: "../KPIView/SetActualScore",
+					             contentType: "application/json; charset=utf-8",
+					             cache: false,
+					             data:JSON.stringify({id: id, actual: actual, remarks: remarks}),
+					             success: function (data) {
+					                 if (data == 'True') {
+					                     $(".edit").prop("disabled", false);
+					                     status = 1;
+					                     loadTable();
+					                     forNext = 1;
+					                     $('#TargetDetailsScore').DataTable().ajax.reload();
+					                 }
+					                 else { status = 0; }
+					             }
+					         })
+					     } else {
+					         swal("Failed!", "Actual Performance is too large/too small.", "info");
+					         loadTable();
+
+					     }
+					 } else {
+					     swal("Failed!", "Invalid Actual Performance format.", "info");
+					     loadTable();
+					 }
+			}
+		});
+
+		// Edit row on edit button click
+		$(document).off("click", ".edit").on("click", ".edit", function () {
+		    count = 1;
+		    forNext = 0;
+		    $(".edit").prop("disabled", true);
+		    $(this).parents("tr").find("td:not(:last-child)").each(function () {
+
+				if ((count >= 1 && count <= 3) || (count >= 5  && count <= 8)) {
+					$(this).html('<input onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+					count++;
+					$(this).parents("tr").find(".add, .edit").toggle();
+
+				} else if (count == 4) {
+					$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+					count++;
+					$(this).parents("tr").find(".add, .edit").toggle();
+
+				} else if (count == 9) {
+					$(this).html('<input type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+					count++;
+				    $(this).parents("tr").find(".add, .edit").toggle();
+
+				} else {
+					count = 1;
+					return false;
+				}
+		    });
+		});
+	});
+
+	function isNumberKey(evt){
+		var charCode = (evt.which) ? evt.which : event.keyCode
+		if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)){
+			return false;}else{	return true;}
+	}
+
+	function GetScore() {
+	    var b = $.Deferred();
+	    $.ajax({
+	        type: "POST",
+	        cache: false,
+	        url: '../KPIView/GetScoreForReview?KPIAssignmentRefNo=' + kpiAssignmentID,
+	        success: function (data) {
+	            if (data == 'True') {
+	                status = 1;
+	            }
+	            else { status = 0; }
+	        }
+	    })
+
+	    return b;
+	}
+
+	function GetCoreCompetencyScore() {
+	    var c = $.Deferred();
+	    $.ajax({
+	        type: "POST",
+	        cache: false,
+	        url: '../KPIView/GetCoreCompeteScoreForReview?KPIAssignmentRefNo=' + kpiAssignmentID,
+	        success: function (data) {
+	            if (data == 'True') {
+	                status = 1;
+	            }
+	            else { status = 0; }
+	        }
+	    })
+
+	    return c;
+	}
+
+	function loadTable() {
+	    var a = $.Deferred();
+
+	    table.find('tr').each(function (i) {
+	        if (!this.rowIndex) return;
+	        this.parentNode.removeChild(this);
+	    });
+
+		jQuery.ajax({
+		    url: '@Url.Action("GetKPIIndicatorDetailsToScore", "KPI")?kpiAssignmentRefNo=' + kpiAssignmentID + '&categoryID=' + categoryID,
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			success: function (data) {
+				var jsonArray = JSON.parse(data);
+				for (var i = 0; i < jsonArray.length; i++) {
+
+					var trRow = '';
+
+					if (jsonArray[i][8] == "" || jsonArray[i][8] == undefined) {
+					    jsonArray[i][8] = "-"
+					}
+					if (jsonArray[i][3] < 0.00) {
+						jsonArray[i][5] = "-";
+						jsonArray[i][7] = "-";
+						trRow += '<tr><td style="font-size: 12px" disabled>' + jsonArray[i][0] + '</td><td style="font-size: 12px" rows="5" disabled>' + jsonArray[i][1] + '</td><td style="font-size: 12px" disabled>' + jsonArray[i][2].toFixed(2) + '</td><td style="font-size: 12px">' + jsonArray[i][3].toFixed(2) + '</td><td style="font-size: 12px" disabled>' + jsonArray[i][4] + '%' + '</td><td style="font-size: 12px">' + jsonArray[i][5] + '</td>' +
+						   '</td><td style="font-size: 12px" disabled>' + jsonArray[i][6] + '%' + '</td><td style="font-size: 12px" disabled>' + jsonArray[i][7] + '</td><td style="font-size: 12px" disabled>' + jsonArray[i][8] + '</td>';
+					} else {
+
+						trRow += '<tr><td style="font-size: 12px" disabled>' + jsonArray[i][0] + '</td><td style="font-size: 12px" rows="5" disabled>' + jsonArray[i][1] + '</td><td style="font-size: 12px" disabled>' + jsonArray[i][2].toFixed(2) + '</td><td style="font-size: 12px">' + jsonArray[i][3].toFixed(2) + '</td><td style="font-size: 12px" disabled>' + jsonArray[i][4] + '%' + '</td><td style="font-size: 12px">' + jsonArray[i][5].toFixed(2) + '</td>' +
+						'</td><td style="font-size: 12px" disabled>' + jsonArray[i][6] + '%' +  '</td><td style="font-size: 12px" disabled>' + jsonArray[i][7].toFixed(2) + '</td><td style="font-size: 12px" disabled>' + jsonArray[i][8] + '</td>';
+					}
+
+					trRow += '<td>' +
+							 '<a class="add" title=""><i class="material-icons">&#xE03B;</i></a>' +
+							 '<a class="edit" title=""><i class="material-icons">&#xE254;</i></a>' +
+							 //'<a class="delete" title="Delete"><i class="material-icons">&#xE872;</i></a>' +
+							 '</td></tr>';
+					$("#tablePARTONE").append(trRow);
+					$("tablePARTONE tbody tr").eq(index + 1).find(".add, .edit").toggle();
+				}
+			},
+			error: function (e) {
+			}
+		});
+
+	    return a;
+	}
+
+    function isNumeric(num) {
+        return !isNaN(num)
+    }
+
+</script>
+<style>
+    .tblList {
+        width: 100% !important;
+    }
+
+        .tblList td,
+        .tblList th {
+            white-space: normal;
+            -ms-text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+</style>

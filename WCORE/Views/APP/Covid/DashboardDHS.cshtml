@@ -1,0 +1,262 @@
+﻿<section class="content-header">
+	<h1>@ViewBag.Description</h1>
+	<ol class="breadcrumb">
+        <li><a href="javascript:void(0);" onclick="displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+    </ol>
+</section>
+<section class="content">
+  <div class="row">
+	  <div class="col-md-12">
+		   <div class="row">
+			  <div class="col-md-6">
+					<div class="box box-primary direct-chat direct-chat-danger">
+					<div class="box-header with-border">
+						<h1 class="box-title">Employee on Leave</h1>
+					</div>
+					<div class="box-body no-padding" style="height:300px; overflow-y:auto; overflow-x:hidden;">
+						<table class="table no-margin" id="OLT" class="table table-bordered table-striped" style="font:10px;">
+							<thead>
+								<tr>
+									<th>MR/DEP</th>
+									<th>Name</th>
+									<th>Leave Date</th>
+									<th>Leave Type</th>
+									<th>Reason</th>
+									<th>Client</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+					</div>
+			  </div>
+			  <div class="col-md-6">
+					<div class="box box-primary direct-chat direct-chat-warning">
+					<div class="box-header with-border">
+						<h1 class="box-title">No Health Forms</h1>
+					</div>
+					<div class="box-body no-padding" style="height:300px; overflow-y:auto; overflow-x:hidden;">
+						<table class="table no-margin" id="NOH" class="table table-bordered table-striped" style="font:10px;">
+							<thead>
+								<tr>
+									<th>MR</th>
+									<th>Name</th>
+									<th>Shift</th>
+									<th>Client</th>
+									<th>HR</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+					</div>
+			  </div>      
+		  </div>
+		  <div class="row">
+			  <div class="col-md-12">
+					<div class="box box-primary direct-chat direct-chat-danger">
+					<div class="box-header with-border">
+						<h1 class="box-title">Alert List (Symptoms and Exposure)</h1>
+					</div>
+					<div class="box-body no-padding" style="height:300px; overflow-y:auto; overflow-x:hidden;">
+						<table class="table no-margin" id="ALT1" class="table table-bordered table-striped" style="font:10px;">
+							<thead>
+								<tr>
+									<th></th>
+									<th>MR</th>
+									<th>Name</th>
+									<th>Contact</th>
+									<th>Client</th>
+									<th>Date</th>
+									<th>Shift</th>
+									<th>Location</th>
+									<th>Risk</th>
+									<th>Recommendation</th>
+									<th>Client Called</th>
+									<th>HR</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+					</div>
+			  </div>
+			<div class="col-md-6">
+				<div class="box box-primary direct-chat direct-chat-warning">
+				  <div class="box-header with-border">
+					<h1 class="box-title">Under Observation List</h1>
+				  </div>
+				  <div class="box-body no-padding" style="height:300px; overflow-y:auto; overflow-x:hidden;">
+					  <table class="table no-margin" id="UOL" class="table table-bordered table-striped" style="font:10px;">
+						  <thead>
+							  <tr>
+								 <th></th>
+								 <th>MR</th>
+								 <th>Name</th>
+								 <th>Shift</th>
+								 <th>Client</th>
+								 <th>Recommendation</th>
+								 <th>HR</th>
+							  </tr>
+						  </thead>
+						  <tbody>
+						  </tbody>
+					  </table>
+				  </div>
+				</div>
+			</div>  
+			<div class="col-md-6">
+				<div class="box box-primary direct-chat direct-chat-warning">
+				  <div class="box-header with-border">
+					<h1 class="box-title">Update Contact Information</h1>
+				  </div>
+				  <div class="box-body no-padding" style="height:300px; overflow-y:auto; overflow-x:hidden;">
+					  <table class="table no-margin" id="UCI" class="table table-bordered table-striped" style="font:10px;">
+						  <thead>
+							  <tr>
+								<th></th>
+								<th>MR</th>
+								<th>Name</th>
+								<th>Client</th>
+								<th>HR</th>
+							  </tr>
+						  </thead>
+						  <tbody>
+						  </tbody>
+					  </table>
+				  </div>
+				</div>
+			</div>
+		</div>
+	  </div>
+  </div>
+</section>
+<script>
+  $(document).ready(function () {
+	OLT(); NOH(); ALT1(); UCI();   UOL();
+	$('.content-wrapper').waitMe('hide');
+  })
+
+  function OLT(sdate,edate,bdate) {
+	let tableOLT = $("#OLT").DataTable({
+		  dom: "<'row'<'col-sm-6'i><'col-sm-2'B><'col-sm-4'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+		  ajax: {
+			  url: '@Url.Action("GetOLT", "Covid")',
+			  type: 'POST',
+			  datatype: 'application/json; charset=utf-8',
+			  dataSrc: function (data) {
+				  return JSON.parse(data);
+			  },
+			  error: function (e) { }
+		  },
+		  order: [[1, 'asc']], "bLengthChange": false,"bPaginate": false,buttons: [{ extend: 'excel', title: 'On Leave'}],
+		  fixedHeader: { header: true, footer: true }
+	  });
+	  setInterval( function () {
+		tableOLT.ajax.reload( null, false ); // user paging is not reset on reload
+	  }, 30000 );
+  }
+  
+  function NOH() {
+	  let tableNOH = $("#NOH").DataTable({
+	  dom: "<'row'<'col-sm-6'i><'col-sm-2'B><'col-sm-4'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+	  ajax: {
+			url: '@Url.Action("GetNoDHS", "Covid")',
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			dataSrc: function (data) { return JSON.parse(data); },
+			error: function (e) { }
+		},
+	  order: [[1, 'asc']], "bLengthChange": false, "bPaginate": false,buttons: [{ extend: 'excel', title: 'No Health Forms'}]
+	  });
+	  setInterval( function () {
+		tableNOH.ajax.reload( null, false ); // user paging is not reset on reload
+	  }, 30000 );
+  }
+
+  function ALT1() {
+	  let tableALT1 = $("#ALT1").DataTable({
+		dom: "<'row'<'col-sm-6'i><'col-sm-2'B><'col-sm-4'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+		  "columnDefs": [{ "targets": 0, "render": function (data, type, row) { return  "<button type='button' id='btn_alt1_' + data + ' class='btn fa fa-list'></button>"; }}],
+		  ajax: {
+			  url: '@Url.Action("GetALT1", "Covid")',
+			  type: 'POST',
+			  datatype: 'application/json; charset=utf-8',
+			  dataSrc: function (data) { return JSON.parse(data); },
+			  error: function (e) { }
+		  },
+		  "bLengthChange": false, "bPaginate": false,buttons: [{ extend: 'excel', title: 'Alert 1'}],
+		  fixedHeader: { header: true, footer: true },
+          initComplete: function () {
+			$('#ALT1 tbody').off('click').on('click', 'button', function () {
+				var URLVIEW = '@Url.Action("DHSMonitoring", "Covid")?pKey=' + tableALT1.row($(this).closest("tr")).data()[0] + '&moduleName=ALT1';
+                var detailView = new IPIModalList(URLVIEW);
+                detailView.open();
+			})
+		  }
+	  });
+	  setInterval( function () {
+		tableALT1.ajax.reload( null, false ); // user paging is not reset on reload
+	  }, 30000 );
+  }
+
+
+  function UOL(sdate,edate) {
+	let tableUOL = $("#UOL").DataTable({
+	dom: "<'row'<'col-sm-6'i><'col-sm-2'B><'col-sm-4'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+	"columnDefs": [{ "targets": 0, "render": function (data, type, row) { return  "<button type='button' id='btn_uol_' + data + ' class='btn fa fa-list' ></button>"; }}],
+		  ajax: {
+			  url: '@Url.Action("GetUOL", "Covid")?sdate=' + sdate + '&edate=' + edate,
+			  type: 'POST',
+			  datatype: 'application/json; charset=utf-8',
+			  dataSrc: function (data) {
+				  return JSON.parse(data);
+			  },
+			  error: function (e) { }
+		  },
+		  order: [[1, 'asc']], "bLengthChange": false, "bPaginate": false,buttons: [{ extend: 'excel', title: 'Under Observation'}],
+		  fixedHeader: { header: true, footer: true },
+          initComplete: function () {
+			$('#UOL tbody').off('click').on('click', 'button', function () {
+				var URLVIEW = '@Url.Action("DHSMonitoring", "Covid")?pKey=' + tableUOL.row($(this).closest("tr")).data()[0] + '&moduleName=CovidUOR';;
+                var detailView = new IPIModalList(URLVIEW);
+                detailView.open();
+			})
+		  }
+	  });
+	  setInterval( function () {
+		tableUOL.ajax.reload( null, false ); // user paging is not reset on reload
+	  }, 30000 );
+  }
+
+  function UCI() {
+	let tableUCI = $("#UCI").DataTable({
+		dom: "<'row'<'col-sm-6'i><'col-sm-2'B><'col-sm-4'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+		  "columnDefs": [{ "targets": 0, "render": function (data, type, row) { return  "<button type='button' id='btn_uci_' + data + '	 class='btn fa fa-list' ></button>"; }}],
+		  ajax: {
+			  url: '@Url.Action("GetUCI", "Covid")',
+			  type: 'POST',
+			  datatype: 'application/json; charset=utf-8',
+			  dataSrc: function (data) {
+				  return JSON.parse(data);
+			  },
+			  error: function (e) { }
+		  },
+		  order: [[1, 'asc']], "bLengthChange": false, "bPaginate": false,buttons: [{ extend: 'excel', title: 'Update Contact Information'}],
+		  fixedHeader: { header: true, footer: true },
+          initComplete: function () {
+			$('#UCI tbody').off('click').on('click', 'button', function () {
+				var URLVIEW = '@Url.Action("ContactInfo", "Covid")?pKey=' + tableUCI.row($(this).closest("tr")).data()[0] + '&moduleName=ContactInfo';
+                var detailView = new IPIModalList(URLVIEW);
+                detailView.open();
+			})
+		  }
+	  });
+	  setInterval( function () {
+		tableUCI.ajax.reload( null, false ); // user paging is not reset on reload
+	  }, 30000 );
+  }  
+</script>

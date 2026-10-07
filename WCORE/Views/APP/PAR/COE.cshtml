@@ -1,0 +1,354 @@
+﻿<section class="content-header">
+      <h1>COE</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-list"></i> COE List</a></li>
+        <li class="active">COE Details</li>
+      </ol>
+</section>
+<section class="content" id="COE">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <div id="btnList_COE">
+                    @if (@ViewBag.AllowInsert == true)
+                    { <button type="button" class="btn btn-primary" id="New_COE" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-file" title="New"></i>  New</button> }
+                    @if ((@ViewBag.AllowInsert == true && @ViewBag.PKey <= 0) || @ViewBag.AllowUpdate == true)
+                    { <button type="button" class="btn btn-primary" id="Save_COE" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save</button> }
+                    @if (@ViewBag.AllowDelete == true && @ViewBag.PKey > 0)
+                    { <button type="button" class="btn btn-primary" id="Delete_COE" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-close" title="Delete"></i>  Delete</button> } 
+                        <button type="button" class="btn btn-primary" id="Back_COE" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Back to List"></i>  Back to List</button>
+                    <div style="float:right;">
+                        @if (@ViewBag.AllowApprove == true && @ViewBag.PKey > 0)
+                        {<button type="button" class="btn btn-primary" id="Approve_COE" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-up" title="Approve"></i>  @ViewBag.Action</button> }
+                </div>
+             </div>          
+             <div class="box-body">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs" id="tab_COE">
+                                <li class="active"><a href="#Details_Form_COE" data-toggle="tab" aria-expanded="true">Details</a></li>
+                                <li><a href="#Other_Form_COE" data-toggle="tab">Other</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="Details_Form_COE">
+                                    <div class="col-md-12">
+                                        <div class="form-group" id="Details_Form_COE_DetailView">
+										</div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="Other_Form_COE">
+                                    <div class="col-md-12">
+                                        <div class="form-group" id="Other_Form_COE_DetailView">
+										</div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                            </div>                                  
+                        </div>                                  
+                    </div>
+					<div class="col-xs-8">
+						@* <iframe src="@Url.Action("COE", "ReportView")?pkey=@ViewBag.PKey#zoom=100" style="width:100%; min-height:500px; height:100%"></iframe> *@
+					</div>
+                </div>
+            </div>
+    </div>
+</div>
+</div>
+</section>
+<script>
+    $(document).ready(function () {
+        var wihap = { ID:null,EmployeeRefNo:null,RequestedDate:null,IssuedDate:null,COETemplateRefNo:null,Remarks:null,CreatedBy:null,CreatedDate:null,ModifiedBy:null,ModifiedDate:null,IsActive:null 
+            , IsDirty : false
+                , Save : function(Grid) { 
+                    var valid = true;
+                    $(".required").each(function() {
+                        var objVal = JSON.parse(JSON.stringify( wihap ));
+                        if(objVal[$(this).attr('name')] == null)
+                        { Toast.Error( $(this).attr('name') + " is required." ); valid = false; return false; }
+                    });
+
+                    $(".unique").each(function() {
+                        var objVal = JSON.parse(JSON.stringify( wihap ));
+                        if(objVal[$(this).attr('name')] != null)
+                        { 
+                            $.ajax({
+                                type: "POST",
+                                cache: false,
+                                async: false,
+                                url: '/DetailView/IsUnique',
+                                data: { ObjID: objVal["ID"], Obj: $(this).attr('name'),  ObjVal: objVal[$(this).attr('name')], mName :'COE'},
+                                success: function (data) {
+                                    var jsonArray = JSON.parse(data);
+                                    if (jsonArray.length > 0) { Toast.Error("Record is already exist."); valid = false; return false;  }
+                                }
+                            }); 
+                        }
+                    });
+
+                    if(valid==true){
+                        $.ajax({
+                            url: '/DetailView/Save',
+                            data: { mName :'COE' ,JSONObject : JSON.stringify( wihap ) },
+                            type: 'POST',
+                            datatype: 'application/json; charset=utf-8',
+                            beforeSend: function () { },
+                            success: function (data) { 
+                                if (data.AppErrorMessage != undefined ) { 
+                                    BootstrapDialog.show({
+                                        type: BootstrapDialog.TYPE_DANGER,
+                                        animate: false,
+                                        title: 'Application Exception',
+                                        message: data.AppErrorMessage});     
+                                    return;
+                                }
+
+                                if ( data.AppValidationMessage != undefined ) { 
+                                    BootstrapDialog.show({
+                                        animate: false,
+                                        size: BootstrapDialog.SIZE_LARGE,
+                                        type: BootstrapDialog.TYPE_INFO,
+                                        title: 'COE',
+                                        message: data.AppValidationMessage});     
+                                    return;
+                                }
+
+                                var result = eval("(function(){return " + data + ";})()");
+wihap.ID = result.ID;
+wihap.IsDirty = false;
+                                URL = '/DetailView/ChildIndex?mName=' + 'COE' + '&ViewID=' + '0' + '&pKey=' + result.ID + '&Icon=' + '';
+                                $('#content_COE').load(URL, function () { });
+                                Toast.Show( 'COE' + " Save" );
+                            },
+                            error: function(xhr, textStatus, error) {
+                                console.log(error);
+                            }
+                        }); 
+                    } 
+                }
+
+        , Approve : function() {
+            var item = [];
+            item.push(wihap);
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url:  '/DetailView/Approve?ID=' + wihap.ID + '&Model=' + 'COE' + '&ApprovalRefNo=2',
+                        success: function (data) {
+                            if (data == 'True') {  
+                                Toast.Show( "Approved" ); 
+                                URL = '/ListView?mName=' + 'COE' + '&ViewID=' + '0' + '&Icon=' + '';
+                                    $('#content_COE').load(URL, function () { });
+                                }
+                                else { Toast.Error("Error"); }
+                            }
+                    });
+                    }
+        , Disapprove : function() {
+            var item = [];
+            item.push(wihap);
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url: '/DetailView/Approve?ID=' + wihap.ID + '&Model=' + 'COE' + '&ApprovalRefNo=8',
+                                    success: function (data) {
+                                        if (data == 'True') {  Toast.Show( "Disapproved" ); }
+                                        else { Toast.Error("Error"); }
+                                    }
+                                });
+                            }
+        , Delete : function() { 
+            var item = [];
+            item.push(wihap);
+            $.ajax({
+                url: '/DetailView/Delete',
+                data: { mName :'COE' ,JSONObject : JSON.stringify(item) },
+                type: 'POST',
+                datatype: 'application/json; charset=utf-8',
+                beforeSend: function () { },
+                success: function (data) { 
+                    if (data.error != undefined ) { 
+                        alert(data.error);
+                        return;
+                    }
+                    Toast.Show( "Deleted" );
+                    URL = '/ListView?mName=' + 'COE' + '&ViewID=' + '0' + '&Icon=' + '';
+                    $('#content_COE').load(URL, function () { });
+                },
+                error: function(xhr, textStatus, error) {
+                    console.log(error);
+                }
+            }); 
+        }  
+    };
+    function COE_DetailView() {
+        var ObjectID = '@ViewBag.PKey';
+        var dvFormat = [{Name:'Details',Controls:[
+		{Name:'ID',Type:'Int',IsEnabled:false,ControlModel:'COE',ColumnNo:0,TbName:'Details',ControlID:'ID'},
+		{Name:'EmployeeRefNo',Caption:'Employee',Type:'Int',ControlType:'combobox',RefColumn:'Sig',ControlModel:'AllEmployee',ColumnValue:'ID',DisplayColumnValue:'Description',IsRequired:true,ColumnNo:0,TbName:'Details',ControlID:'EmployeeRefNo',IsJson:false},
+		{Name:'RequestedDate',Caption:'Requested Date',Type:'DateTime',ControlType:'datepicker',ControlModel:'COE',IsRequired:true,ColumnNo:0,TbName:'Details',ControlID:'RequestedDate',strFormat:'mm/dd/yyyy'},
+		{Name:'IssuedDate',Caption:'Issued Date',Type:'DateTime',ControlType:'datepicker',ControlModel:'COE',ColumnNo:0,TbName:'Details',ControlID:'IssuedDate',strFormat:'mm/dd/yyyy'},
+		{Name:'COETemplateRefNo',Caption:'COE Template',Type:'Int',ControlType:'combobox',RefColumn:'COET',ControlModel:'COETemplate',ColumnValue:'ID',DisplayColumnValue:'Description',IsRequired:true,ColumnNo:0,TbName:'Details',ControlID:'COETemplateRefNo',IsJson:false},
+		{Name:'Remarks',Type:'String',ControlType:'textarea',ControlModel:'COE',ColumnNo:0,TbName:'Details',ControlID:'Remarks'}]},
+		{Name:'Other',Controls:[{Name:'CreatedBy',Caption:'Created By',Type:'Int',ControlType:'combobox',IsEnabled:false,RefColumn:'[Created By]',ControlModel:'User',ColumnValue:'ID',DisplayColumnValue:'Description',ColumnNo:0,TbName:'Other',ControlID:'CreatedBy',IsJson:false},
+		{Name:'CreatedDate',Caption:'Date',Type:'String',IsEnabled:false,ControlModel:'COE',ColumnNo:0,TbName:'Other',ControlID:'CreatedDate'},
+		{Name:'ModifiedBy',Caption:'Last Last Modified By',Type:'Int',ControlType:'combobox',IsEnabled:false,RefColumn:'[Last Modified By]',ControlModel:'User',ColumnValue:'ID',DisplayColumnValue:'Description',ColumnNo:2,TbName:'Other',ControlID:'ModifiedBy',IsJson:false},
+		{Name:'ModifiedDate',Caption:'Last Last Modified Date',Type:'String',IsEnabled:false,ControlModel:'COE',ColumnNo:2,TbName:'Other',ControlID:'ModifiedDate'},{Name:'IsActive',Type:'Boolean',ControlType:'checkbox',IsEnabled:false,ControlModel:'COE',ColumnNo:0,TbName:'Other',ControlID:'IsActive'}]}];
+        
+		function GetControl(Selector, CtrlFormat ) {
+            var control = new JIBControl(Selector, { PropertyName: CtrlFormat.Name , Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption ), type : CtrlFormat.ControlType, Model : CtrlFormat.ControlModel, ControlID : CtrlFormat.ControlID , ControlFormat: CtrlFormat.strFormat },CtrlFormat,'COE');
+            control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+            control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+            control.ParentDiv = Selector
+            control.Init();
+            if ( CtrlFormat.IsEnabled != undefined ) control.SetEnabled( CtrlFormat.IsEnabled );
+            control.CurrentObject = wihap;
+                return control;           
+            };
+            function InitNewObject(newObject) { 
+                $.each(newObject, function(key, value) {
+                    if ( key != "IsEditOnly" ) {
+						wihap[key] = value;
+                    }
+                });
+                $.each(dvFormat, function(i,tabs) {
+                    if ( tabs.IsListView != undefined ) { 
+                        Selector = $('#' + tabs.Name + '_List_COE');
+                        LoadListViewTab(Selector,tabs);
+                    }
+                    else {
+                        $.each(tabs.Controls, function(x,val ) {
+                            if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_COE_DetailView_2');
+                            } else{ Selector = $('#' + tabs.Name + '_Form_COE_DetailView');}
+                            var control = GetControl(Selector,val);
+                            control.SetValue(wihap[val.Name]);
+                        });
+                    }
+                });
+        }
+        this.OpenObject = function(CurrentObject) { 
+            InitNewObject(CurrentObject)
+        }
+        this.InitDetailView = function(CurrentObject) { 
+            $.ajax({
+                url: '/DetailView/GetBaseObject',
+                data: { model:'COE', pKey:ObjectID },
+                type: 'POST',                   
+                datatype: 'application/json; charset=utf-8',
+                beforeSend: function () { },
+                success: function (data) {
+                    if ( ObjectID <= 0 ) { 
+                        var newObject = eval("(function(){return " + data + ";})()");
+                        InitNewObject( newObject );
+                    } else {
+                        var jsonArray = JSON.parse(data);
+                        if (jsonArray.length == 0) return;
+                        var Columns = jsonArray[0];
+                        var Values = jsonArray[1]; 
+                        $.each(Columns,function(i,o){ 
+                            CurrentObject[o] = Values[i];
+                        });
+                        $.each(dvFormat, function(x,tabs) { 
+                            if ( tabs.IsListView != undefined ) {               
+                                Selector = $('#' + tabs.Name + '_List_COE');
+                                LoadListViewTab(Selector,tabs);
+                            } else {
+                                $.each( tabs.Controls, function( i, val ) {
+                                    if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_COE_DetailView_2');
+                                        } else{ Selector = $('#' + tabs.Name + '_Form_COE_DetailView');}
+                                        var control = GetControl(Selector,val);
+                                        var ColumnIndex = Columns.indexOf( val.Name );
+                                        var Value = Values[ColumnIndex];
+                                        control.SetValue(Value);
+                                    });
+                                }
+                            });
+                    }
+                    }, error: function ( e ) { alert(e.responseText); }
+            });
+        };       
+    }
+    function LoadListViewTab(Selector, tabs){  
+        var URLView = '../ListView/ChildListIndex?ModelNo=MODEL_NAME&Description=MODEL_DESC&ColumnsWidth=0.7&IsAppendMode=True&ForeignKeyName=FKeyName&ForeignKey=FKey&ParentModel=MODEL_PARENT&AllowAddOth=ModAllowUpdate';
+        URLView = URLView.replace("MODEL_NAME", tabs.Type);
+        URLView = URLView.replace("MODEL_DESC", tabs.Name);
+        URLView = URLView.replace("FKeyName", tabs.FKey);
+        URLView = URLView.replace("FKey", tabs.FKeyValue);
+        URLView = URLView.replace("MODEL_PARENT", "COE");
+        URLView = URLView.replace("ModAllowUpdate", 'True');
+        Selector.load(URLView);
+            Selector.on('OnGridCreated', function (e, o) {
+                var ctr = 0;
+                var h = Selector.parent().height();
+                var grid = o.Grid; 
+                grid.ParentObject = wihap;
+                grid.ParentObjectProperty = tabs.PropertyName;
+                
+                grid.rowHeight = 30;
+                grid.ID_ParentKey = wihap[tabs.FKeyValue];
+                grid.ForeignFieldKey = tabs.FKey != undefined ? tabs.FKey : null;
+                grid.IsPartialRefresh = false;
+                grid.Refresh();
+                grid.getContainer().css('height', h - 10 );
+                grid.getTable().css('height', h - 70);
+            });
+        }
+
+        $(function() { 
+            $('#btnList_COE').find('button').on('click', function() { 
+                var ids = $(this).attr('id');
+                var Message = '';
+                var OkLabel = 'OK';
+                var fAction = null;
+                switch ( ids.replace('COE-','').toUpperCase() ) {
+                    case 'NEW_COE':
+                        Message = 'Create new COE?';
+                        OkLabel = 'New';
+                        fAction = function(result){
+                            if (result) {var  URLView = '/DetailView?mName=COE&pKey=-1';
+                                $('#content_COE').load(URLView, function () { });}
+                        }
+                        break;
+                    case 'SAVE_COE'.toUpperCase():
+                        Message = 'Save changes?';
+                        OkLabel = 'Save';
+                        fAction = function(result) {  wihap.Save();} 
+                        break;
+                    case 'DELETE_COE'.toUpperCase():
+                        Message = 'Are you sure you want to delete?';
+                        OkLabel = 'Delete';
+                        fAction = function(result) { wihap.Delete();}
+                        break;
+                    case 'APPROVE_COE'.toUpperCase():
+                        Message = 'Approve this request?';
+                        OkLabel = 'Approve';
+                        fAction = function(result) { wihap.Approve();} 
+                        break;
+                    case 'BACK_COE'.toUpperCase():
+                        var URLView = '/ListView?ModelNo=710';
+                        $('#content_COE').load(URLView, function () { });
+                }
+                        
+                if(ids.replace('COE-','').toUpperCase() != 'BACK_COE'.toUpperCase())
+                {
+                    BootstrapDialog.show({
+                        title:'COE',
+                        icon:'',
+                        message: Message,
+                        closable: true,
+                        draggable: true,
+                        buttons: [{ id: 'btn-1', label: 'Cancel' , cssClass: 'btn-warning', action: function(dialog) { dialog.close(); } },
+                                  { id: 'btn-2', label: 'Ok', cssClass: 'btn-primary', action: function(dialog) { var $button = this;  $button.disable(); $button.spin(); fAction(); dialog.close(); } }]
+                    });
+                }
+            });
+        });
+        
+        var $itm = new COE_DetailView();
+        $itm.InitDetailView(wihap);
+
+        $('#tab_COE>li>a').first().click();
+        })
+</script>

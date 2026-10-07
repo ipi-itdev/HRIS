@@ -1,0 +1,156 @@
+﻿<section class="content-header">
+    <h1>Regular Employee</h1>
+    <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-file-pdf-o"></i> Summary</a></li>
+    <li class="active">Regular Employee Report</li>
+    </ol>
+</section>
+<section class="content">
+<div class="row">
+      <div class="col-md-12">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="row form-group">
+                        <label class="col-lg-3 control-label" style="text-align:left">Start Date</label>
+                        <div class="col-lg-8 control-container vcenter">
+                        <div class="input-group date" style="width:100%;" >
+                        <input type="text" class="form-control pull-right datepicker" id="sdate" name="sdate" />
+                        <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                        </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+            </div>
+                <div class="col-md-4">
+                <div class="form-group">
+                    <div class="row form-group">
+                        <label class="col-lg-3 control-label" style="text-align:left">End  Date</label>
+                        <div class="col-lg-8 control-container vcenter">
+                        <div class="input-group date" style="width:100%;">
+                        <input type="text" class="form-control pull-right datepicker"  id="edate" name="edate"/>
+                        <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="btnList_Child_EmployeeMasterlist" class="no-padding">
+                <button type="button" class="btn btn-primary" id="Filter"><i class="fa fa-filter" title="Filter"></i>  Filter</button>
+            </div>
+      </div>
+</div>
+<div class="row">
+      <div class="col-md-12">
+            <table id="lstRegularEmployee" class="table table-bordered table-striped table-hover tblList table-responsive" style="font-size:13px; width:100%;">
+                <thead id="tblHead">
+                    <tr class="nofilters">
+                        <th class="wfilter">RFC/PAR No.</th>
+                        <th>Date & Time Approved</th>
+                        <th>Date of Regularization</th>
+                    </tr>
+                    <tr class="filters">
+                        <th class="wfilter">Employee</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tblBody"></tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</section>
+<script>
+    var IsPageLoad = false;
+    var tablemlistRegular;
+    var dateTime
+
+    $(document).ready(function () {
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var time = today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
+        dateTime = date + ' ' + time;
+
+        $('#sdate').attr('data-inputmask', "'alias': 'mm/dd/yyyy'");
+        $('#sdate').attr('data-mask', '');
+        $('#sdate').inputmask();
+        $('#sdate').val('1/1/2019');
+
+        $('#edate').attr('data-inputmask', "'alias': 'mm/dd/yyyy'");
+        $('#edate').attr('data-mask', '');
+        $('#edate').inputmask();
+        $('#edate').val('12/31/2019');
+
+        populateTable();
+        $('#Filter').off('click').on('click', function () {
+            populateTable();
+        })
+    })
+
+    function populateTable() {
+        if (IsPageLoad == true) { tablemlistRegular.destroy(); IsPageLoad = false; populateTable() } else {
+            IsPageLoad = true;
+            $('#lstRegularEmployee thead .filters th.wfilter').each(function () { $(this).html('<input type="text"/>'); });
+            tablemlistRegular = $("#lstRegularEmployee").DataTable({
+                dom: "<'row'<'col-sm-3'><'col-sm-3'l><'col-sm-2'B><'col-sm-4'p>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+                "autoWidth": false,
+                ajax: {
+                    url: '../PIS/PARRFClist?sdate=' + $('#sdate').val() + '&edate=' + $('#edate').val(),
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    dataSrc: function (data) { return JSON.parse(data); },
+                },
+                pageResize: true, bSortCellsTop: true, buttons: [{
+                    extend: 'excel', title: 'Masterlist' + ' ' + dateTime
+                }],
+                "deferRender": true, "bLengthChange": false
+            });
+
+            tablemlistRegular.columns('.wfilter').eq(0).each(function (colIdx) {
+                $('input', $('#lstRegularEmployee thead .filters th')[colIdx]).on('keyup change', function () {
+                    tablemlistRegular
+                .column(colIdx)
+                .search(this.value)
+                .draw();
+                });
+            });
+        }
+    }
+</script>
+<style>
+    
+.tblList {
+  width: 100% !important;
+}
+.filters input {
+   width: 100%;
+   display: block;
+   padding:2px;
+    height: 25px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.tblList td,
+.tblList th{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width:inherit;
+  overflow: hidden;
+}
+
+</style>

@@ -1,0 +1,272 @@
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Report\COMPLIANCE\DOLEContracttorsSemiAnnual.rpt
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\img\bg.gif
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\img\ui-icons_444444_256x240.png
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\img\ui-icons_555555_256x240.png
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\system\formyd.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\system\modieviewer.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\img\pits.png
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\img\stari-active.png
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\img\stari.png
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\jquery\jquery.twbsPagination.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\system\formy.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\system\modieremarks.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\system\lfrcontroller.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\system\controly.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\system\reportie.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\system\griddy.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\system\modie.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\system\modiedd.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\fontawesome-webfont.svg
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\ionicons.svg
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\angular\angular-resource.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\angular\angular-route.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\angular\angular.min.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\chartjs\Chart.min.js
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Uploads\PISID\user-default.png
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Report\TMS\TMS.rpt
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Uploads\UserManual\ItemsClassification.pdf
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\fontawesome-webfont.eot
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\fontawesome-webfont.ttf
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\fontawesome-webfont.woff
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\fontawesome-webfont.woff2
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\FontAwesome.otf
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\ionicons.eot
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\ionicons.ttf
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\ionicons.woff
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Antlr3.Runtime.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Castle.Core.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\EntityFramework.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Microsoft.CSharp.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Microsoft.Owin.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Microsoft.Owin.Security.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Microsoft.SqlServer.Types.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Microsoft.Web.Infrastructure.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Newtonsoft.Json.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Owin.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.ComponentModel.DataAnnotations.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Configuration.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Data.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Data.Entity.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Drawing.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.EnterpriseServices.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Net.Http.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Net.Http.Formatting.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Net.Http.WebRequest.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Runtime.Serialization.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Security.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.ServiceModel.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Threading.Tasks.Extensions.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Abstractions.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.ApplicationServices.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.DynamicData.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Entity.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Helpers.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Http.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Http.WebHost.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Mvc.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Optimization.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Razor.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Routing.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Services.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.WebPages.Deployment.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.WebPages.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.WebPages.Razor.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Windows.Forms.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Xml.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\WebGrease.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Antlr3.Runtime.pdb
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Castle.Core.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\EntityFramework.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Microsoft.Owin.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Microsoft.Owin.Security.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\Newtonsoft.Json.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Threading.Tasks.Extensions.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Optimization.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Net.Http.Formatting.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Helpers.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Http.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Http.WebHost.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Mvc.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.Razor.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.WebPages.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.WebPages.Deployment.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\System.Web.WebPages.Razor.xml
+D:\Git Solution\MIDAS\CSGMS\WCORE\obj\Debug\HRIS.csproj.ResolveComReference.cache
+D:\Git Solution\MIDAS\CSGMS\WCORE\obj\Debug\WCORE.Properties.Resources.resources
+D:\Git Solution\MIDAS\CSGMS\WCORE\obj\Debug\HRIS.csproj.GenerateResource.Cache
+D:\Git Solution\MIDAS\CSGMS\WCORE\obj\Debug\WCORE.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\obj\Debug\WCORE.pdb
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\WCORE.dll
+D:\Git Solution\MIDAS\CSGMS\WCORE\bin\WCORE.pdb
+D:\Git Solution\MIDAS\CSGMS\WCORE\obj\Debug\HRIS.csprojResolveAssemblyReference.cache
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Report\COMPLIANCE\DOLEContracttorsSemiAnnual.rpt
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\img\bg.gif
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\img\ui-icons_444444_256x240.png
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\img\ui-icons_555555_256x240.png
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\system\formyd.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\system\modieviewer.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\img\pits.png
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\img\stari-active.png
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\img\stari.png
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\jquery\jquery.twbsPagination.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\system\formy.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\system\modieremarks.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\system\lfrcontroller.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\system\controly.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\system\reportie.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\system\griddy.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\system\modie.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\system\modiedd.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\fontawesome-webfont.svg
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\ionicons.svg
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\angular\angular-resource.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\angular\angular-route.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\angular\angular.min.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\chartjs\Chart.min.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Uploads\PISID\user-default.png
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Report\TMS\TMS.rpt
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Uploads\UserManual\ItemsClassification.pdf
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\fontawesome-webfont.eot
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\fontawesome-webfont.ttf
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\fontawesome-webfont.woff
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\fontawesome-webfont.woff2
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\FontAwesome.otf
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\ionicons.eot
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\ionicons.ttf
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\bootstrap\fonts\ionicons.woff
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\WCORE.dll.config
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\WCORE.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\WCORE.pdb
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Antlr3.Runtime.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Castle.Core.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\CrystalDecisions.Shared.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\EntityFramework.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\log4net.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.CSharp.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.IdentityModel.Logging.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.IdentityModel.Tokens.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.Owin.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.Owin.Security.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.SqlServer.Types.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.Web.Infrastructure.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Newtonsoft.Json.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Owin.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.ComponentModel.DataAnnotations.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Configuration.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Data.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Data.Entity.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Drawing.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.EnterpriseServices.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Net.Http.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Net.Http.Formatting.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Net.Http.WebRequest.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Runtime.Serialization.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Security.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.ServiceModel.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Threading.Tasks.Extensions.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Abstractions.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.ApplicationServices.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.DynamicData.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Entity.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Helpers.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Http.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Http.WebHost.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Mvc.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Optimization.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Razor.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Routing.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Services.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.WebPages.Deployment.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.WebPages.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.WebPages.Razor.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Windows.Forms.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Xml.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\WebGrease.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Antlr3.Runtime.pdb
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Castle.Core.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\EntityFramework.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\log4net.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.IdentityModel.Logging.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.IdentityModel.Tokens.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.Owin.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Microsoft.Owin.Security.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Newtonsoft.Json.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Threading.Tasks.Extensions.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Optimization.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Net.Http.Formatting.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Helpers.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Http.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Http.WebHost.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Mvc.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.Razor.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.WebPages.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.WebPages.Deployment.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\System.Web.WebPages.Razor.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\cs\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\da\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\de\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\en\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\es\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\fi\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\fr\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\hu\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\it\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\ja\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\ko\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\nb-NO\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\nl\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\pl\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\pt\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\ru\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\sk\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\sv\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\th\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\tr\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\zh-CHS\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\zh-CHT\CrystalDecisions.Shared.resources.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\obj\Debug\HRIS.csproj.AssemblyReference.cache
+D:\Others\IPI\Solutions\CSGMS\WCORE\obj\Debug\HRIS.csproj.ResolveComReference.cache
+D:\Others\IPI\Solutions\CSGMS\WCORE\obj\Debug\WCORE.Properties.Resources.resources
+D:\Others\IPI\Solutions\CSGMS\WCORE\obj\Debug\HRIS.csproj.GenerateResource.cache
+D:\Others\IPI\Solutions\CSGMS\WCORE\obj\Debug\HRIS.csproj.CoreCompileInputs.cache
+D:\Others\IPI\Solutions\CSGMS\WCORE\obj\Debug\HRIS.csproj.CopyComplete
+D:\Others\IPI\Solutions\CSGMS\WCORE\obj\Debug\WCORE.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\obj\Debug\WCORE.pdb
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\datatables\buttons.dataTables.min.css
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\datatables\dataTables.buttons.min.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\ClosedXML.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\DocumentFormat.OpenXml.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\ExcelNumberFormat.dll
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\ClosedXML.pdb
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\ClosedXML.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\DocumentFormat.OpenXml.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\ExcelNumberFormat.xml
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\datatables\buttons.html5.min.js
+D:\Others\IPI\Solutions\CSGMS\WCORE\bin\Contents\plugins\datatables\jszip.min.js

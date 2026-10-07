@@ -1,0 +1,44 @@
+﻿@using WCORE.Utility;
+<section class="content-header">
+      <h1>@ViewBag.Description <i style="font-size:13px">  @ViewBag.SubDescription</i></h1>
+      <ol class="breadcrumb">
+		<li><a href="javascript:void(0);" onclick="displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+	  </ol>
+</section>
+<section class="content">
+<div class="box box-primary">
+	<div class="box-body">
+		<div class="row">
+			<div class="col-md-2">
+				<div class="form-group" id ="@{@ViewBag.mCode}_FilterView"></div>
+				<div id="btnList_@ViewBag.mCode">
+					<button type="button" class="btn btn-primary" id="Filter_@{@ViewBag.mCode}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-filter" title="Filter"></i>  Filter</button>
+					<button type="button" class="btn btn-primary" id="Clear_@{@ViewBag.mCode}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-eraser" title="Clear Filter"></i>  Clear</button>
+				</div>
+			</div>
+			<div class="col-md-10">
+				<iframe id="rptframe_@{@ViewBag.mCode}" src="" style="width:100%; min-height:500px; height:100%"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+<script>
+$(document).ready(function () {
+	@{var ObjectID = Common.GenerateName();}
+    var @{@ObjectID} = { @{@Html.Raw(ViewBag.FilterDefaultValue)} };
+	initFilter(@{@Html.Raw(ViewBag.FilterView)},@{@ObjectID} , '@{@ViewBag.mCode}');
+	$('#Filter_@{@ViewBag.mCode}').off('click').on('click',function () {
+		run_waitMe($('.container'), 1, "roundBounce");
+		var arr = JSON.stringify(@{@ObjectID});
+		$('#rptframe_@{@ViewBag.mCode}').attr('src', '@Url.Action("rptSource", "RV")?mguid=@{@ViewBag.mguid}&param=' + arr );
+		$('.container').waitMe('hide');
+	});
+	$('#Clear_@{@ViewBag.mCode}').off('click').on('click',function () {
+		$('#@{@ViewBag.mCode}_FilterView').html('');
+		@{@ObjectID} = { @{@Html.Raw(ViewBag.FilterDefaultValue)} }
+		initFilter(@{@Html.Raw(ViewBag.FilterView)},@{@ObjectID} , '@{@ViewBag.mCode}');
+	});
+	$('.content-wrapper').waitMe('hide');
+});
+

@@ -1,0 +1,783 @@
+﻿@System.Web.Optimization.Scripts.Render("~/Script/plugins/formslist")
+<section class="content-header">
+    <h1>KPI Assignment (External)</h1>
+</section>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    #myInput_External {
+        background-image: url('/Contents/img/searchicon.png');
+        background-position: 10px 8px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 55px;
+        border: 1px solid #ddd;
+        margin-bottom: 15px;
+    }
+
+    #KPIAssignmentDetails_External {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 18px;
+    }
+
+        #KPIAssignmentDetails_External th, #KPIAssignmentDetails td {
+            text-align: left;
+            padding: 12px;
+        }
+
+    #KPIAssignmentDetails_External tr {
+        border-bottom: 1px solid #ddd;
+    }
+
+        #KPIAssignmentDetails_External tr.header, #KPIAssignmentDetails tr:hover {
+            background-color: #f1f1f1;
+        }
+</style>
+
+<!--<section class="content" style="position:center">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+                    <div class="col-md-7">
+                        <div class="box-body" id="CRONUS_External">
+                            <div id="tblList_CRONUS_wrapper_External" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                <div class="col-sm-6">
+                                    <div class="btn-group" id="btnChildList_PerformanceIndicatorMain_ListView_Table_External">
+                                        <button type="button" class="btn btn-default" id="New_External"><i class="fa fa-file" title="New"></i> New</button>
+                                    </div>
+                                </div>
+                                <table id="KPIListInfo_External" class="table table-bordered table-striped table-hover tblList" style="font-size:13px; width: 100%">
+                                    <thead id="tblHeadKPIAssignment_External">
+                                        <tr class="notfilter" role="row">
+                                            <th>jobPositionRefNo_Ext</th>
+                                            <th>ID</th>
+                                            <th>CLIENT NAME</th>
+                                            <th>KPI GROUP NAME</th>
+                                            <th>KPI GROUP ID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblBodyKPIAssignment_External"></tbody>
+                                    <tfoot></tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div id="myParents_KPIAssignmentList_External">
+                            <section class="content" id="myParents_KPIAssignmentList_KPIAssignmentList_External">
+                                <div class="btn-group-horizontal" id="btnList_Child_KPIAssignmentList_External">
+                                    <button type="button" class="btn btn-primary" id="Save_External"><i class="fa fa-save" title="Save"></i>  Save</button>
+                                    <button type="button" class="btn btn-primary" id="Delete_External"><i class="fa fa-close" title="Delete"></i>  Delete</button>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="nav-tabs-custom">
+                                                        <ul class="nav nav-tabs" id="tab_child_KPIAssignmentList_External">
+                                                            <li class="active"><a href="#Details_Form_Child_KPIAssignmentList_External" data-toggle="tab" aria-expanded="true">Details</a></li>
+                                                            <li><a href="#AssignedTo_List_Child_KPIAssignmentList_External" data-toggle="tab">Assigned To</a></li>-->
+                                                            @*<li><a href="#Other_Form_Child_KPIAssignmentList" data-toggle="tab">Other</a></li>*@
+                                                        <!--</ul>
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="Details_Form_Child_KPIAssignmentList_External">
+                                                                <div class="col-md-12"> 
+                                                                    <div class="form-group" id="Details_Form_Child_KPIAssignmentList_DetailView_External"></div>
+                                                                </div>
+                                                                <div style="clear:both;"></div>
+                                                            </div><br>
+                                                            <div class="tab-pane" id="AssignedTo_List_Child_KPIAssignmentList_External">
+                                                                <div class="box">
+                                                                    <div class="table-wrapper">
+                                                                        <div class="table-title">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-8">
+                                                                                    <button type='button' id='btnEnroll_External' class="btn btn-success">ENROLL</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div><br>
+                                                                        <input type="text" id="myInput_External" onkeyup="AssignedToJobSearch_External()" placeholder="Search for names or job position.." title="Type in a name">
+                                                                        <table id="KPIAssignmentDetails_External" class="table table-bordered" ; font-size: 9px;">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th style="width:10%"><input type="checkbox" id="flowcheckall_External" value="" checked/></th>
+                                                                                    <th style="width:8%">ID</th>
+                                                                                    <th style="width:20%">Employee #</th>
+                                                                                    <th style="width:55%">Employee</th>
+                                                                                    <th style="width:55%">Job Position</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tfoot>
+                                                                            </tfoot>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane" id="Other_Form_Child_KPIAssignmentList_External">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group" id="Other_Form_Child_KPIAssignmentList_DetailView_External"></div>
+                                                                </div>
+                                                                <div style="clear:both;"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div style="clear:both;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+<section class="content" style="position:center">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+                    <div class="col-md-12">
+                        <div class="box-body" id="CRONUS_External">
+                            <div id="tblList_CRONUS_wrapper_External" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                <div class="col-sm-6">
+                                    <div class="btn-group" id="btnChildList_PerformanceIndicatorMain_ListView_Table_External">
+                                        <button type="button" class="btn btn-primary" id="New_External"><i class="fa fa-file" title="New"></i> New</button>
+                                    </div>
+                                    <table id="KPIListInfo_External" class="table table-bordered table-striped table-hover tblList" style="font-size:13px; width: 100%">
+                                        <thead id="tblHeadKPIAssignment_External">
+                                            <tr class="notfilter" role="row">
+                                                <th>JOBPOSITIONREFNO</th>
+                                                <th>ID</th>
+                                                <th>JOB TITLE</th>
+                                                <th>KPI GROUP NAME</th>
+                                                <th>KPI GROUP ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblBodyKPIAssignment_External"></tbody>
+                                        <tfoot></tfoot>
+                                    </table>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-5">
+                        <div id="myParents_KPIAssignmentList_External">
+                            <section class="content" id="myParents_KPIAssignmentList_KPIAssignmentList_External">
+                                <div class="btn-group-horizontal" id="btnList_Child_KPIAssignmentList_External">
+                                    <button type="button" class="btn btn-primary" id="Save_External"><i class="fa fa-save" title="Save"></i>  Save</button>
+                                    <button type="button" class="btn btn-primary" id="Delete_External"><i class="fa fa-close" title="Delete"></i>  Delete</button>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="nav-tabs-custom">
+                                                        <ul class="nav nav-tabs" id="tab_child_KPIAssignmentList_External">
+                                                            <li class="nav-link active"><a href="#Details_Form_Child_KPIAssignmentList_External" data-toggle="tab" aria-expanded="true">Details</a></li>
+                                                            <li class="nav-link active"><a href="#AssignedTo_List_Child_KPIAssignmentList_External" data-toggle="tab">Assigned To</a></li>
+                                                            @*<li><a href="#Other_Form_Child_KPIAssignmentList" data-toggle="tab">Other</a></li>*@
+                                                        </ul>
+                                                        <div class="tab-content">
+                                                            <div class="tab-pane active" id="Details_Form_Child_KPIAssignmentList_External">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group" id="Details_Form_Child_KPIAssignmentList_DetailView_External"></div>
+                                                                </div>
+                                                                <div style="clear:both;"></div>
+                                                            </div><br>
+                                                            <div class="tab-pane" id="AssignedTo_List_Child_KPIAssignmentList_External">
+                                                                <div>
+                                                                    <div class="box">
+                                                                        <div class="table-wrapper">
+                                                                            <div class="table-title">
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-8">
+                                                                                        <button type='button' id='btnEnroll_External' class="btn btn-success">ENROLL</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div><br>
+                                                                            <input type="text" id="myInput" onkeyup="AssignedToJobSearch_External()" placeholder="Search for names or job position.." title="Type in a name">
+                                                                            <table id="KPIAssignmentDetails_External" class="table table-bordered" ; font-size: 9px;">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th style="width:10%"><input type="checkbox" id="flowcheckall" value="" checked /></th>
+                                                                                        <th style="width:30%">ID</th>
+                                                                                        <th style="width:30%">EMPLOYEE #</th>
+                                                                                        <th style="width:55%">EMPLOYEE</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tfoot>
+                                                                                </tfoot>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="tab-pane" id="Other_Form_Child_KPIAssignmentList_External">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group" id="Other_Form_Child_KPIAssignmentList_DetailView_External"></div>
+                                                                    </div>
+                                                                    <div style="clear:both;"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div style="clear:both;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!--<div class="col-md-7">
+            <div id="myParents_KPIAssignmentList">
+                <section class="content" id="myParents_KPIAssignmentList_KPIAssignmentList">
+                    <div class="btn-group-horizontal" id="btnList_Child_KPIAssignmentList">
+                        <button type="button" class="btn btn-primary" id="Save"><i class="fa fa-save" title="Save"></i>  Save</button>
+                        <button type="button" class="btn btn-primary" id="Delete"><i class="fa fa-close" title="Delete"></i>  Delete</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="nav-tabs-custom">
+                                            <ul class="nav nav-tabs" id="tab_child_KPIAssignmentList">
+                                                <li class="nav-link active"><a href="#Details_Form_Child_KPIAssignmentList" data-toggle="tab" aria-expanded="true">Details</a></li>
+                                                <li class="nav-link active"><a href="#AssignedTo_List_Child_KPIAssignmentList" data-toggle="tab">Assigned To</a></li>-->
+        @*<li><a href="#Other_Form_Child_KPIAssignmentList" data-toggle="tab">Other</a></li>*@
+        <!--</ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="Details_Form_Child_KPIAssignmentList">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group" id="Details_Form_Child_KPIAssignmentList_DetailView"></div>
+                                                    </div>
+                                                    <div style="clear:both;"></div>
+                                                </div><br>
+                                                <div class="tab-pane" id="AssignedTo_List_Child_KPIAssignmentList">
+                                                    <div class="box">
+                                                        <div class="table-wrapper">
+                                                            <div class="table-title">
+                                                                <div class="row">
+                                                                    <div class="col-sm-8">
+                                                                        <button type='button' id='btnEnroll' class="btn btn-success">ENROLL</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div><br>
+                                                            <input type="text" id="myInput" onkeyup="AssignedToJobSearch()" placeholder="Search for names or job position.." title="Type in a name">
+                                                            <table id="KPIAssignmentDetails" class="table table-bordered" ; font-size: 9px;">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="width:10%"><input type="checkbox" id="flowcheckall" value="" checked /></th>
+                                                                        <th style="width:20%">ID</th>
+                                                                        <th style="width:30%">EMPLOYEE #</th>
+                                                                        <th style="width:55%">EMPLOYEE</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tfoot>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="Other_Form_Child_KPIAssignmentList">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group" id="Other_Form_Child_KPIAssignmentList_DetailView"></div>
+                                                    </div>
+                                                    <div style="clear:both;"></div>
+                                                </div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>-->
+
+
+
+    </div>
+
+    <script>
+
+    var recordID_Ext = [];
+    var jobPositionRefNo_Ext = [];
+    var KPIGroupID_Ext = [];
+    var KPIListID_Ex = [];
+    var isForSAVE = true;
+	var kpilistid_Ex, ktldg_ex, kpiyear;
+	var valid = true;
+    var updateType_Ex = 0;
+	var tableAssignment_Ext;
+	var tableKPIDetails_Ex;
+	var jobrefNo_Ext;
+
+	function loadKPIListAssignment_Ext() {
+	    var r = $.Deferred();
+        $('.content-wrapper').waitMe('hide');
+	    $('#KPIListInfo_External').DataTable().destroy();
+
+		tableAssignment_Ext = $("#KPIListInfo_External").DataTable({
+			"columnDefs": [
+			 {
+				 "targets": [0, 4],
+				 "visible": false
+			 }],
+			ajax: {
+				url: '@Url.Action("GetKPIListsClient", "KPI")',
+					type: 'POST',
+					datatype: 'application/json; charset=utf-8',
+					dataSrc: function (data) {
+
+					    jobPositionRefNo_Ext.length = 0;
+					    KPIGroupID_Ext.length = 0;
+                        KPIListID_Ex.length = 0;
+
+							if(JSON.parse(data) == ""){
+								kpilistid_Ex = -1;
+								updateType_Ex = 1;
+								jobrefNo_Ext = 0;
+								return JSON.parse(data);
+							} else {
+							    var jsonArray = JSON.parse(data);
+							    for(var i = 0; i < jsonArray.length; i++){
+                                    KPIListID_Ex[i] = jsonArray[i][1];
+							        jobPositionRefNo_Ext[i] = jsonArray[i][0];
+							        KPIGroupID_Ext[i] = jsonArray[i][4];
+							    }
+								jobrefNo_Ext = jsonArray[0][0];
+								kpilistid_Ex = jsonArray[0][1];
+								return JSON.parse(data);
+							}
+
+
+						 },
+
+					error: function (e) {}
+				}
+			, order: [[1, 'asc']], pageResize: true, ordering: false, lengthChange: false,
+			initComplete: function () {
+				if (kpilistid_Ex != undefined || kpilistid_Ex != "") {
+
+                    Reload_Ext(kpilistid_Ex, jobrefNo_Ext);
+
+			    }
+			}
+		});
+			return r;
+	};
+
+		function loadKPIListDetailsTarget_Ext(clientID) {
+
+        $('#KPIAssignmentDetails_External').DataTable().destroy();
+        var input, filter;
+        input = document.getElementById("myInput_External");
+        filter = input.value.toUpperCase();
+        tableKPIDetails_Ex = $('#KPIAssignmentDetails_External').DataTable({
+				'columnDefs': [{
+					'targets': [0],
+					'className': 'dt-body-center',
+					'render': function (data, type, full, meta) {
+							return '<input type="checkbox" name="id[]" value="1" checked>';
+					}
+				}],
+
+				'order': [1, 'asc'], info: false, paging: false, searching: false,
+				ajax: {
+                    url: '@Url.Action("GetClientEmployeeAssignedTO", "KPI")?JobPositionRefNo=' + clientID + '&searchValue=' + filter,
+					type: 'POST',
+					datatype: 'application/json; charset=utf-8',
+					dataSrc: function (data) { return JSON.parse(data); },
+					error: function (e) { }
+				}
+			});
+	};
+
+    $(document).ready(function () {
+
+	    loadKPIListAssignment_Ext();
+		ktldg_ex = {
+            ID: null, ClientRefNo: null, Year: null, ID: null, CreatedBy: null, CreatedDate: null, ModifiedBy: null, ModifiedDate: null, IsActive: null, IsDirty: false
+		};
+
+		//--
+
+	    //var tableAssignment_Ext2 = $('#KPIListInfo').DataTable();
+
+		var tableAssignment_Ext2 = $('#KPIListInfo_External').DataTable();
+		$('#KPIListInfo_External tbody').off().on('click', 'tr', function () {
+
+		    //if (tableAssignment_Ext2 != null && tableAssignment_Ext2.Rows.Count>0){
+
+		    var data = tableAssignment_Ext.row(this).data();
+		    if(data != undefined){
+                $('#Details_Form_Child_KPIAssignmentList_DetailView_External').html('');
+                kpilistid_Ex = data[1];
+				jobrefNo_Ext = data[0];
+                $('#KPIAssignmentDetails_External').DataTable().destroy();
+
+                Reload_Ext(data[1], data[0]);
+		    updateType_Ex = 0;
+                $('#Delete_External').removeAttr('disabled');
+                $('#btnEnroll_External').removeAttr('disabled');
+		    }
+		});
+
+
+        $("#flowcheckall_External").click(function () {
+            $('#KPIAssignmentDetails_External tbody input[type="checkbox"]').prop('checked', this.checked);
+		});
+	})
+
+	function Reload_Ext(rowID_Ex, job_Ex){
+
+
+        loadKPIListDetailsTarget_Ext(job_Ex);
+
+        $('#Details_Form_Child_KPIAssignmentList_DetailView_External').empty();
+        var $itm = new KPIAssignmentList_DetailView_Child_External(rowID_Ex);
+	        $itm.InitDetailView_Child_Ext(ktldg_ex);
+
+	}
+
+	function KPIAssignmentList_DetailView_Child_External(rowID_Ex) {
+		var self = $(this);
+		this.IsEditOnly = false;
+		var ObjectID = rowID_Ex;
+		var dvFormat_Ext = [{
+			Name: 'Details', Controls: [
+				{ Name: 'ID', Type: 'Int', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Details', ControlID: 'ID' },
+                { Name: 'JobPositionRefNo', Caption: 'Client', Type: 'Int', ControlType: 'combobox', RefColumn: 'E', ControlModel: 'KPIClientSelect', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'ClientRefNo' },
+				{ Name: 'PerfIndicatorListRefNo', Caption: 'KPI Group Name', Type: 'Int', ControlType: 'combobox', RefColumn: 'EGroup', ControlModel: 'PerformanceIndicatorSelect', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: false, ColumnNo: 0, TbName: 'Details', ControlID: 'PerfIndicatorListRefNo' }]
+				//{ Name: 'Year', Type: 'Varchar', IsEnabled: true, ControlType: 'text', ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Details', ControlID: 'Year', IsRequired: true}]
+		}, { Name: 'AssignedTo', Controls: [] }];
+		//, {
+		//Name: 'Other', Controls: [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' },
+		//    { Name: 'CreatedDate', Caption: 'Date', Type: 'String', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' }, { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedBy' }, { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedDate' }, { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ControlModel: 'KPIAssignmentList', ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }
+		function GetControl_Child_Ext(Selector, CtrlFormat) {
+			var control = new IPIControl(Selector, { PropertyName: CtrlFormat.Name, Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption), type: CtrlFormat.ControlType, Model: CtrlFormat.ControlModel, ControlID: CtrlFormat.ControlID, ControlFormat: CtrlFormat.strFormat }, CtrlFormat, 'KPIAssignmentList');
+			control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+			control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+			control.ParentDiv = Selector
+			control.Init();
+			if (CtrlFormat.IsEnabled != undefined) control.SetEnabled(CtrlFormat.IsEnabled);
+			control.CurrentObject = ktldg_ex;
+			return control;
+		};
+		function InitNewObject_Child_Ext(newObject) {
+			$.each(newObject, function (key, value) {
+				if (key != "IsEditOnly") {
+					ktldg_ex[key] = value;
+				}
+			});
+			$.each(dvFormat_Ext, function (i, tabs) {
+				if (tabs.IsListView != undefined) {
+                    Selector = $('#' + tabs.Name + '_List_Child_KPIAssignmentList_External');
+					LoadListViewTab_Child(Selector, tabs);
+				} else {
+					$.each(tabs.Controls, function (x, val) {
+                        Selector = $('#' + tabs.Name + '_Form_Child_KPIAssignmentList_DetailView_External');
+						var control = GetControl_Child_Ext(Selector, val);
+						control.SetValue(ktldg_ex[val.Name]);
+					});
+				}
+			});
+		}
+		this.InitDetailView_Child_Ext = function (CurrentObject) {
+			$.ajax({
+				url: '/DetailView/GetBaseObject',
+				data: { model: 'KPIAssignmentList', pKey: ObjectID },
+				type: 'POST',
+				datatype: 'application/json; charset=utf-8',
+				beforeSend: function () { },
+				success: function (data) {
+					if (ObjectID == -1) {
+						var newObject = eval("(function(){return " + data + ";})()");
+						InitNewObject_Child_Ext(newObject);
+					} else {
+						var jsonArray = JSON.parse(data);
+						if (jsonArray.length == 0) return;
+						var Columns = jsonArray[0];
+						var Values = jsonArray[1];
+						$.each(Columns, function (i, o) {
+							CurrentObject[o] = Values[i];
+						});
+						$.each(dvFormat_Ext, function (x, tabs) {
+							if (tabs.IsListView != undefined) {
+                                Selector = $('#' + tabs.Name + '_List_Child_KPIAssignmentList_External');
+								LoadListViewTab_Child(Selector, tabs);
+							} else {
+								$.each(tabs.Controls, function (i, val) {
+                                    Selector = $('#' + tabs.Name + '_Form_Child_KPIAssignmentList_DetailView_External');
+									var control = GetControl_Child_Ext(Selector, val);
+									var ColumnIndex = Columns.indexOf(val.Name);
+									var Value = Values[ColumnIndex];
+									control.SetValue(Value);
+								});
+							}
+						});
+					}
+				}, error: function (e) { alert(e.responseText); }
+			});
+           
+		};
+	}
+
+	//--
+
+        $('#btnEnroll_External').on('click', function () {
+            Enroll_External();
+	});
+
+	function Enroll_External(){
+
+				recordID_Ext.length = 0;
+				var values = "";
+				var selector = '#KPIAssignmentDetails_External td input:checked';
+				$.each($(selector), function (idx, val) {
+				    var id = $(this).parent().siblings(":first").text();
+					recordID_Ext.push(id);
+
+				});
+
+				if (recordID_Ext && recordID_Ext.length) {
+					values = JSON.stringify(recordID_Ext.toString());
+				} else { values = "000"; }
+
+				//---
+
+				if(recordID_Ext.length != 0){
+
+					swal({
+						title: "Confirmation..",
+						text: "Are you sure you want to enroll the selected employee(s)?",
+						icon: "info",
+						buttons: true,
+						dangerMode: true,
+					})
+					.then((willDelete) => {
+						if (willDelete) {
+
+							$.ajax({
+					         type: "POST",
+                             url: "../KPIView/UpdateKPIAssignedTo",
+                             contentType: "application/json; charset=utf-8",
+                             cache: false,
+                                data: JSON.stringify({ id: values, kpilistid: kpilistid_Ex}),
+					        success: function (data) {
+						        if (data == 'True') {
+						            Toast.Show("The selected employee(s) has been successfully enrolled.");
+                                    $('#KPIAssignmentDetails_External').DataTable().ajax.reload();
+						        }
+						        else { Toast.Show("Something went wrong."); }
+					        }
+					     })
+				}});
+			 }
+	}
+
+			function setModalMaxHeight(element) {
+				this.$element = $(element);
+				this.$content = this.$element.find('.modal-content');
+				var borderWidth = this.$content.outerHeight() - this.$content.innerHeight();
+				var dialogMargin = $(window).width() < 768 ? 20 : 60;
+				var contentHeight = $(window).height() - (dialogMargin + borderWidth);
+				var headerHeight = this.$element.find('.modal-header').outerHeight() || 0;
+				var footerHeight = this.$element.find('.modal-footer').outerHeight() || 0;
+				var maxHeight = contentHeight - (headerHeight + footerHeight);
+
+				this.$content.css({
+					'overflow': 'hidden'
+				});
+
+				this.$element
+				  .find('.modal-body').css({
+					  'max-height': maxHeight,
+					  'overflow-y': 'auto'
+				  });
+			}
+
+			$('.modal').on('show.bs.modal', function () {
+				$(this).show();
+				setModalMaxHeight(this);
+			});
+
+			$(window).resize(function () {
+				if ($('.modal.in').length == 1) {
+					setModalMaxHeight($('.modal.in'));
+				}
+			});
+
+			/* CodeMirror */
+			$('.code').each(function () {
+				var $this = $(this),
+					$code = $this.text(),
+					$mode = $this.data('language');
+
+				$this.empty();
+				$this.addClass('cm-s-bootstrap');
+				CodeMirror.runMode($code, $mode, this);
+			});
+
+
+        $('#New_External').on('click', function () {
+			        updateType_Ex = 1;
+           Reload_Ext(-1, -1);
+            $('#Delete_External').attr("disabled", "disabled");
+            $('#btnEnroll_External').attr("disabled", "disabled");
+			});
+
+		$('#Save_External').on('click', function () {
+            if (ktldg_ex.ClientRefNo == null) { ktldg_ex.ClientRefNo = jobrefNo_Ext }
+            if ($('#select2-ClientRefNo_KPIAssignmentList-container').text() == "N/A" || $('#select2-ClientRefNo_KPIAssignmentList-container').text() == ""){
+				    Toast.Error("Please fill-in all the required fields.");
+				} else {
+                if (ktldg_ex.ClientRefNo == null) { ktldg_ex.ClientRefNo = jobrefNo_Ext }
+				    if(updateType_Ex == 1 && jobPositionRefNo_Ext.length != 0){
+				        for(var i = 0; i < jobPositionRefNo_Ext.length; i++){
+                            if (jobPositionRefNo_Ext[i] == ktldg_ex.ClientRefNo && KPIGroupID_Ext[i] == ktldg_ex.PerfIndicatorListRefNo){
+				                isForSAVE = false;
+				                break;
+				            }
+				        }
+                    } else if (updateType_Ex == 0 && jobPositionRefNo_Ext.length != 0) {
+                        for (var i = 0; i < jobPositionRefNo_Ext.length; i++) {
+                            if ((jobPositionRefNo_Ext[i] == ktldg_ex.ClientRefNo && KPIGroupID_Ext[i] == ktldg_ex.PerfIndicatorListRefNo)){
+
+						if (KPIListID_Ex[i] == kpilistid_Ex){
+				                    isForSAVE = true;
+									updateType_Ex = 0;
+
+				                    break;
+				                } else {
+				                    isForSAVE = false;
+				                    break;
+				                }
+				            }
+				        }
+				    }
+
+				    if(isForSAVE == false){
+				        Toast.Error("Duplicate Entry.");
+				        isForSAVE = true;
+					} else if (isForSAVE == true) {
+
+                        if (ktldg_ex.ClientRefNo == null) { ktldg_ex.ClientRefNo = jobrefNo_Ext }
+
+				        $.ajax({
+				            type: "POST",
+                            url: "../KPIView/UpdatingKPIList",
+				            contentType: "application/json; charset=utf-8",
+				            cache: false,
+                            data: JSON.stringify({ kpiAssigmentRefNo: kpilistid_Ex, updateType: updateType_Ex, JobPositionRefNo: ktldg_ex.ClientRefNo, PerformanceIndicatorRefNo: ktldg_ex.PerfIndicatorListRefNo, Type: 2}),
+				            success: function (data) {
+				                if (data == 'True') {
+
+                                    $('#Delete_External').removeAttr('disabled');
+                                    $('#btnEnroll_External').removeAttr('disabled');
+
+									if (updateType_Ex == 0) {
+										$('#KPIListInfo_External').DataTable().ajax.reload();
+
+										Reload_Ext(kpilistid_Ex, ktldg_ex.ClientRefNo);
+									} else {
+
+				                        loadKPIListAssignment_Ext();//.done(Reload(kpilistid, jobrefNo_Ext));
+				                    }
+				                    Toast.Show("KPI Assignment successfully updated.");
+				                    updateType_Ex = 0;
+				                }
+				                else { Toast.Show("Something went wrong.") }
+				            }
+				        })
+				    }
+				}
+			});
+
+		$('#Delete_External').on('click', function () {
+            if (ktldg_ex.ClientRefNo == null) { ktldg_ex.ClientRefNo = jobrefNo_Ext }
+				swal({
+					title: "Do you want to continue?",
+					text: "Are you sure you want to delete this record?",
+					icon: "info",
+					buttons: true,
+					dangerMode: true,
+				})
+				 .then((willDelete) => {
+					 if (willDelete) {
+
+						$.ajax({
+						type: "POST",
+						cache: false,
+                            url: '../KPIView/UpdatingKPIList?kpiAssigmentRefNo=' + kpilistid_Ex + '&updateType=' + 2 + '&JobPositionRefNo=' + ktldg_ex.ClientRefNo + '&PerformanceIndicatorRefNo=' + ktldg_ex.PerfIndicatorListRefNo + '&Type=' + 2,
+						success: function (data) {
+							if (data == 'True') {
+							    $('#KPIAssignment').DataTable().destroy();
+							    loadKPIListAssignment_Ext();
+                                updateType_Ex = 0;
+								}
+							}
+						})
+
+				}});
+			});
+
+
+        function AssignedToJobSearch_External() {
+            var input, filter;
+            input = document.getElementById("myInput_External");
+            filter = input.value.toUpperCase();
+
+            $('#KPIAssignmentDetails_External').DataTable().destroy();
+            tableKPIDetails_Ex = $('#KPIAssignmentDetails_External').DataTable({
+				'columnDefs': [{
+					'targets': [0],
+					'className': 'dt-body-center',
+					'render': function (data, type, full, meta) {
+							return '<input type="checkbox" name="id[]" value="1" checked>';
+					}
+				}],
+
+				'order': [1, 'asc'], info: false, paging: false, searching: false,
+				ajax: {
+                    url: '@Url.Action("GetClientEmployeeAssignedTO", "KPI")?JobPositionRefNo=' + jobrefNo_Ext + '&searchValue=' + filter,
+					type: 'POST',
+					datatype: 'application/json; charset=utf-8',
+					dataSrc: function (data) { return JSON.parse(data); },
+					error: function (e) { }
+				}
+			});
+	};
+
+    </script><div>
+        <div style="clear:both;"></div>
+    </div>
+</section>

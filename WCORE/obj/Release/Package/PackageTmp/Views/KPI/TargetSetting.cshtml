@@ -1,0 +1,896 @@
+﻿@using WCORE.Utility;
+<section class="content-header">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <style>
+        .table-wrapper {
+            width: 100%;
+            /*margin: 30px auto;*/
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+
+            .table-title h2 {
+                margin: 6px 0 0;
+                font-size: 22px;
+            }
+
+            .table-title .add-new {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 12px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+            }
+
+                .table-title .add-new i {
+                    margin-right: 4px;
+                }
+
+        table.table {
+            table-layout: fixed;
+        }
+
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+            }
+
+            table.table th i {
+                font-size: 13px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+            table.table th:last-child {
+                width: 100px;
+            }
+
+            table.table td a {
+                cursor: pointer;
+                display: inline-block;
+                margin: 0 5px;
+                /*min-width: 24px;*/
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+                table.table td a.add {
+                    color: #27C46B;
+                }
+
+                table.table td a.edit {
+                    color: #FFC107;
+                }
+
+                table.table td a.delete {
+                    color: #E34724;
+                }
+
+            table.table td i {
+                font-size: 19px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td a.add i {
+                font-size: 24px;
+                margin-right: -1px;
+                position: relative;
+                top: 3px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table .form-control {
+                height: 32px;
+                line-height: 32px;
+                box-shadow: none;
+                border-radius: 2px;
+            }
+
+                table.table .form-control.error {
+                    border-color: #f50000;
+                }
+
+            table.table td .add {
+                display: none;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+    </style>
+
+    <section class="content-header">
+        <h1>Target Setting</h1>
+    </section>
+
+    <section class="content" id="TargetSettingRev">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <div id="btnList_TargetSettingRev">
+                            @if (@ViewBag.AllowInsert == true)
+                            {<button type="button" class="btn btn-primary" id="New_TargetSettingRev"><i class="fa fa-file" title="New"></i>  New</button>}
+                            @if ((@ViewBag.AllowInsert == true && @ViewBag.PKey <= 0) || @ViewBag.AllowUpdate == true)
+                            {<button type="button" class="btn btn-primary" id="Save_TargetSettingRev"><i class="fa fa-save" title="Save"></i>  Save</button>}
+                            @if (@ViewBag.AllowDelete == true && @ViewBag.PKey > 0)
+                            {<button type="button" class="btn btn-primary" id="Delete_TargetSettingRev"><i class="fa fa-close" title="Delete"></i>  Delete</button>}
+                            <button type="button" class="btn btn-primary" id="Back_TargetSettingRev"><i class="fa fa-sign-in" title="Back"></i>  Back</button>
+                            <div style="float:right;">
+                                @if (@ViewBag.AllowApprove == true && @ViewBag.PKey > 0)
+                                {<button type="button" class="btn btn-primary" id="Approve_TargetSettingRev"><i class="fa fa-thumbs-o-up" title="Approve"></i>  Proceed</button>}
+                                @*<button type="button" class="btn btn-primary" id="Approve_TargetSettingRev"><i class="fa fa-thumbs-o-up" title="Approve"></i>  @ViewBag.Action</button>*@
+                                @*<button type="button" class="btn btn-primary" id="Disapprove_TargetSettingRev"><i class="fa fa-thumbs-o-down" title="Disapprove"></i>  Disapprove</button>}*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="form-group" id="Details_Form_TargetSettingRev_DetailView"></div>
+                            </div>
+                            <div class="col-xs-8">
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs" id="tab_TargetSettingRev">
+                                        <li class="active">
+                                            <a href="#Details_Form_TargetSettingRev" data-toggle="tab" aria-expanded="true">Details</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="Details_Form_TargetSettingRev">
+                                            <div class="col-md-12">
+                                                <div class="form-group" id="Other_Form_Child_KPIList_DetailView">
+                                                    <div id="tblList_CRONUS_wrapper_Details" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                                        <button type="button" class="btn btn-alert add-kpigroup"><i class="fa glyphicon glyphicon-change" id="btnKPIGroup"></i><b> ADD KPI / CHANGE KPI</b></button>
+                                                        <table id="TargetDetails_Table" style="width: 100%; font-size:12px;" class="table table-bordered table-striped table-hover tblList">
+                                                            <thead id="TargetHeadDetails">
+                                                                <tr class="notfilter" role="row">
+                                                                    <th style="width: 10%">ID</th>
+                                                                    <th style="width: 40%">KPI Category</th>
+                                                                    <th style="width: 20%">Total Weight (%)</th>
+                                                                    <th style="width: 20%">Status</th>
+                                                                    <th style="width:20%"></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="TargetBodyDetails"></tbody>
+                                                            <tfoot></tfoot>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="clear:both;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</section>
+
+    <script type="text/javascript">
+    var IsForManager = 0;
+    var IsForEvaluation = 0;
+    currentUser = '@ViewBag.cuserPriv';
+    evalRefNo = 0;
+    var columnCount = 1;
+    var recID;
+    var getDate;
+    var purposeID;
+    var kpiGroupOptionsID = [];
+    var kpiGroupOptionsName = [];
+    var inputOptions = {};
+    var setTargets = [];
+    var setWeights =  [];
+    targetReady = true;
+    var kpiassignmentrefno, empRefNo;
+    var count = 1;
+    var kpiId, saveType, status = 1, arrayID, kpiformula, kpiweight, kpitarget;
+    var table = $("#tableKPITargetSetting");
+    var index = $("tableKPITargetSetting tbody tr:last-child").index();
+    var totalWeight = 0;
+    var oStartDate;
+    var oEndDate;
+    var oDueDate;
+    //---
+    var rnoyv_ipi_kpiintreq;
+    var isDuplicate = false;
+    var IsNew_kpiintreq = @ViewBag.Pkey > 0  ? false : true;
+    var timer_kpiintreq;
+    var result_kpiintreq = null;
+    var dialogTitle = "";
+    var isSubmitted = 0;
+
+    $(document).ready(function () {
+        functionOne().done(LoadTargetDetails());
+
+        $(".add-kpigroup").click(function () {
+
+
+            if ($('#ID_TargetSettingRev').val() == "-1") {
+
+                Toast.Error("You have to save evaluation details to continue.");
+
+            } else if ($('#PerformancePercentageID_TargetSettingRev').val() == 3) {
+
+                Toast.Error("This type of evaluation doesn't need KPI.");
+
+            } else {
+                URLVIEW = '../KPI/KPIListPopup';
+                kpiassignmentrefno = '@ViewBag.PKey';
+                var detailView = new KPIPopup(URLVIEW, "KPI GROUP LIST", "CLOSE");
+                detailView.open();
+            }
+        });
+
+
+         $(".delete-kpigroup").click(function () {
+
+             swal({
+                 title: "Do you want to continue?",
+                 text: "This will remove the current kpi group assigned.",
+                 icon: "warning",
+                 buttons: true,
+                 dangerMode: true,
+             })
+                 .then((willDelete) => {
+                     if (willDelete) {
+                         RemoveKPIPerEmployee();
+                     }
+                 });
+
+         });
+
+         $.ajax({
+             type: "POST",
+             cache: false,
+             url: '../KPI/CheckTargets?kpiid=' + '@ViewBag.PKey' + '&empRefNo=' + 0,
+             success: function (data) {
+
+                 var jsonResult = JSON.parse(data);
+
+                 if (parseInt(jsonResult[0][3]) == 1) { dialogTitle = "Internal"; } else { dialogTitle = "External"; }
+
+                 var sel = document.getElementById('PerformancePercentageID_TargetSettingRev')
+
+                 PopulateWeightPercentage(parseInt(jsonResult[0][0]), jsonResult[0][6])
+
+             }
+          })
+
+
+        //---
+
+        $('#tab_TargetSettingRev>li>a').first().click();
+        $(function() {
+            $('#btnList_TargetSettingRev').find('button').on('click', function() {
+                var ids = $(this).attr('id');
+                var Message = '';
+                var OkLabel = 'OK';
+                var fAction = null;
+                switch ( ids.replace('TargetSettingRev-','').toUpperCase() ) {
+                    case 'NEW_TargetSettingRev'.toUpperCase():
+                        Message = 'Are you sure you want to enroll an employee for evaluation?';
+                        OkLabel = 'New';
+                        fAction = function(result){
+                           if (result) {
+                               var URLView = '@Url.Action("TargetSetting", "KPI")?mName=' + 'TargetSettingRev' + '&pKey=' + '-1' + '&Icon=' + 'fa-users';
+
+                               isSubmitted = 0;
+                                $('#content_TargetSettingRev').load(URLView, function () {});  }
+                        }
+                        break;
+                    case 'SAVE_TargetSettingRev'.toUpperCase():
+                        Message = 'Save changes?';
+                        OkLabel = 'Save';
+                        fAction = function(result) { if (result){  if (PARExternal_Validate() != false) {
+                            isSubmitted = 0;
+                            oStartDate = new Date($("#StartDate_TargetSettingRev").val());
+                            oEndDate = new Date($("#EndDate_TargetSettingRev").val());
+                            oDueDate = new Date($("#SubmissionDate_TargetSettingRev").val());
+
+                            if(isDateValid(oStartDate) == false || isDateValid(oEndDate) == false || isDateValid(oDueDate) == false){
+
+                                swal("Failed!", "Invalid entered date/s", "info");
+                            } else {
+
+                                if($('#EvalPurposeRefNo_TargetSettingRev').val() == 3){ // FOR REGULARIZATION
+                                    if($('#EmployeeRefNo_TargetSettingRev').val() == -1){
+                                        Toast.Error("Employee name is required.");
+                                    } else {
+                                        $("#Details_Form_TargetSettingRev_DetailView").empty(); rnoyv_ipi_kpiintreq.Save();
+                                    }
+
+                                } else {
+                                    if(oDueDate > oEndDate){
+                                        if(oStartDate >= oEndDate){
+                                            swal("Failed!", "Invalid Start and End Period.", "info");
+                                        } else {
+
+                                            if($('#EmployeeRefNo_TargetSettingRev').val() == -1){
+                                                Toast.Error("Employee name is required.");
+                                            } else {
+                                                $("#Details_Form_TargetSettingRev_DetailView").empty(); rnoyv_ipi_kpiintreq.Save();
+                                            }
+
+                                        }
+                                    } else {
+
+                                        Toast.Error("Due date must at least greater than the End of period.");
+                                    }
+                                }
+                            }
+
+                        } } else { return false; } }
+                        break;
+                    case 'DELETE_TargetSettingRev'.toUpperCase():
+                        Message = 'Are you sure you want to delete?';
+                        OkLabel = 'Delete';
+                        fAction = function(result) { if ( result ) { rnoyv_ipi_kpiintreq.Delete();}}
+                        break;
+                    case 'APPROVE_TargetSettingRev'.toUpperCase():
+                            Message = 'Do you want to proceed to evaluation?';
+                            OkLabel = 'Submit';
+                            fAction = function(result) { if (result){  if (PARExternal_Validate() != false) {
+
+                                if (isSubmitted == 0) {
+
+                                    kpiAssignmentID = '@ViewBag.PKey';
+                                    employeeInfo = $("#select2-EmployeeRefNo_TargetSettingRev-container").text().toUpperCase();
+
+                                    $.ajax({
+                                        type: "POST",
+                                        cache: false,
+                                        url: '../KPI/CheckTargets?kpiid=' + kpiAssignmentID + '&empRefNo=' + 0,
+                                        success: function (data) {
+
+                                            var jsonResult = JSON.parse(data);
+
+                                            if (parseInt(jsonResult[0][3]) == 1) { dialogTitle = "Internal"; } else { dialogTitle = "External"; }
+
+                                            if ((parseInt(jsonResult[0][3]) == 1 || parseInt(jsonResult[0][3]) == 2) && parseInt(jsonResult[0][4]) == 1 && parseInt(jsonResult[0][5]) == 0) {
+
+                                                if (parseInt(jsonResult[0][1]) == 0) {
+                                                    Toast.Error("There are still KPI's with no target.");
+
+                                                } else {
+
+                                                    if (parseInt(jsonResult[0][0]) == 0) {
+                                                        var remarks = "";
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            cache: false,
+                                                            url: '../KPIView/EvaluationDoneTrigger?actionID=' + 1 + '&kpiAssignmentRefNo=' + kpiAssignmentID + '&remarks=' + remarks,
+                                                            success: function (data) {
+                                                                if (data == 'True') {
+                                                                    var URLView = '../ListView/ListIndex?mguid=1097'; $('#content_TargetSettingRev').load(URLView, function () { });
+
+                                                                    URL = "../KPI/KPIScorePerCategory";
+                                                                    var detailView = new KPIScoring(URL, employeeInfo, "NEXT");
+                                                                    detailView.open();
+
+                                                                }
+                                                            }
+                                                        })
+
+                                                    } else {
+                                                        var remarks = "";
+                                                        $.ajax({
+                                                            type: "POST",
+                                                            cache: false,
+                                                            url: '../KPIView/EvaluationDoneTrigger?actionID=' + 1 + '&kpiAssignmentRefNo=' + kpiAssignmentID + '&remarks=' + remarks,
+                                                            success: function (data) {
+                                                                if (data == 'True') {
+                                                                    var URLView = '../ListView/ListIndex?mguid=1097'; $('#content_TargetSettingRev').load(URLView, function () { });
+
+                                                                    URL = "../KPI/ManagersScore";
+                                                                    var detailView = new ManagersCore(URL, employeeInfo, 1);
+                                                                    detailView.open();
+
+                                                                }
+                                                            }
+                                                        })
+                                                    }
+
+                                                }
+                                            } else if ((parseInt(jsonResult[0][3]) == 1 || parseInt(jsonResult[0][3]) == 2) && parseInt(jsonResult[0][4]) == 0 && parseInt(jsonResult[0][5]) == 0) {
+                                                Toast.Error("You need add KPI for the employee.");
+
+                                            } else if ((parseInt(jsonResult[0][3]) == 1 || parseInt(jsonResult[0][3]) == 2) && parseInt(jsonResult[0][4]) == 0 && parseInt(jsonResult[0][5]) == 1) {
+                                                var remarks = "";
+                                                $.ajax({
+                                                    type: "POST",
+                                                    cache: false,
+                                                    url: '../KPIView/EvaluationDoneTrigger?actionID=' + 1 + '&kpiAssignmentRefNo=' + kpiAssignmentID + '&remarks=' + remarks,
+                                                    success: function (data) {
+                                                        if (data == 'True') {
+                                                            var URLView = '../ListView/ListIndex?mguid=1097'; $('#content_TargetSettingRev').load(URLView, function () { });
+
+                                                            URL = "../KPI/CoreCompetenciesRev";
+                                                            var detailView = new KPICoreCompetencies(URL, employeeInfo);
+                                                            detailView.open();
+
+                                                        }
+                                                    }
+                                                })
+                                            }
+
+                                        }
+                                    })
+
+                                    isSubmitted = 1;
+                                }
+
+                            } } else { return false; } }
+                        break;
+                    case 'DISAPPROVE_TargetSettingRev'.toUpperCase():
+                        if (jQuery.trim($("#Remarks_TargetSettingRev").val()).length == 0) {Toast.Error("Please enter remarks."); return false; }
+                        else {
+                            Message = 'Disapprove this request?';
+                            OkLabel = 'Disapprove';
+                            fAction = function (result_kpiintreq) { if (result_kpiintreq) { rnoyv_ipi_kpiintreq.Disapprove($("#Remarks_TargetSettingRev").val()); isSubmitted = 0;} }}
+                        break;
+                    case 'BACK_TargetSettingRev'.toUpperCase():
+                        Message = 'Are you sure you want to go back to the list?';
+                        OkLabel = 'Back to List';
+                        fAction = function (result) { if (result) { var URLView = '../ListView/ListIndex?mguid=1097'; $('#content_TargetSettingRev').load(URLView, function () { });}}
+                        break;
+                }
+
+                BootstrapDialog.confirm({
+
+                    title:'Target Setting(' + dialogTitle + ')',
+                    icon:'fa-circle-o',
+                    message: Message,
+                    closable: true,
+                    draggable: true,
+                    btnCancelLabel: 'Cancel',
+                    btnOKLabel: OkLabel,
+                    callback: fAction
+
+
+                });
+            });
+        });
+
+        $('#Compute_TargetSettingRev').on('click', function () {
+            InitializeValue();
+        })
+
+        $("#TargetSettingRev").off("select2:select","#EmployeeRefNo_TargetSettingRev").on("click","#EmployeeRefNo_TargetSettingRev",function(){
+            if($('#EvalPurposeRefNo_TargetSettingRev').val() != 0){
+            } else { $("#EmployeeRefNo_TargetSettingRev").empty();}
+
+            $("#EmployeeRefNo_TargetSettingRev").val("N/A").trigger("change");
+
+        })
+
+        $("#TargetSettingRev").off("select2:select", "#EmployeeRefNo_TargetSettingRev").on("select2:select", "#EmployeeRefNo_TargetSettingRev", function () {
+
+            var refNO =  $('#EmployeeRefNo_TargetSettingRev').val();
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: '../KPI/CheckTargets?kpiid=' + '@ViewBag.PKey' + '&empRefNo=' + refNO,
+                success: function (data) {
+                    var jsonResult = JSON.parse(data);
+                    PopulateWeightPercentage(parseInt(jsonResult[0][0]));
+                }
+            })
+
+        })
+
+        $("#TargetSettingRev").off("select2:select","#EvalPurposeRefNo_TargetSettingRev").on("select2:select","#EvalPurposeRefNo_TargetSettingRev",function(){
+
+            purposeID = $('#EvalPurposeRefNo_TargetSettingRev').val();
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: '@Url.Action("KPIActiveEmployee","KPI")?EvalPurposeRefNo=' + purposeID,
+                        success: function (data) {
+                            var jsonArray = JSON.parse(data);
+                            $("#EmployeeRefNo_TargetSettingRev").empty();
+                            $("#EmployeeRefNo_TargetSettingRev").append('<option id=' + -1 + ' value=' + -1 + '>' + 'N/A' + '</option>');
+                            for (var i = 0; i < jsonArray.length; i++) {
+                                $("#EmployeeRefNo_TargetSettingRev").append('<option id=' + jsonArray[i][0] + ' value=' + jsonArray[i][1] + '>' + jsonArray[i][2] + '</option>');
+                            }
+                        }
+                })
+
+                if(("#SubmissionDate_TargetSettingRev").value == undefined || ("#SubmissionDate_TargetSettingRev").value == ""){
+                    if(purposeID == 3){
+                        var today = new Date();
+                        var dd = today.getDate();
+                        var mm = today.getMonth()+1; //January is 0!
+                        var yyyy = today.getFullYear();
+
+                        if(dd<10) {
+                            dd = '0'+dd
+                        }
+
+                        if(mm<10) {
+                            mm = '0'+mm
+                        }
+                        today = mm + '/' + dd + '/' + yyyy;
+                        $("#SubmissionDate_TargetSettingRev").val(today).trigger("change");
+
+                        if(("#StartDate_TargetSettingRev").value == undefined || ("#StartDate_TargetSettingRev").value == "" || ("#EndDate_TargetSettingRev").value == undefined || ("#EndDate_TargetSettingRev").value == ""){
+                            $("#StartDate_TargetSettingRev").val(today).trigger("change");
+                            $("#EndDate_TargetSettingRev").val(today).trigger("change");
+                        }
+
+                    } else {
+
+                        $("#SubmissionDate_TargetSettingRev").prop("disabled", false);
+                    }
+
+                } else {
+
+                    if(purposeID == 3){
+
+                        $("#SubmissionDate_TargetSettingRev").prop("disabled", true);
+
+                    }  else {
+
+                        $("#SubmissionDate_TargetSettingRev").prop("disabled", false);
+                    }
+                }
+        })
+        $('.content-wrapper').waitMe('hide');
+    })
+
+
+    function PARExternal_Validate() {
+        var valid_PAREXT = true;
+        $("#TargetSettingRev .required").each(function() {
+            var fname_parextreq = $(this).attr('name').split("_");
+            var objVal = JSON.parse(JSON.stringify( rnoyv_ipi_kpiintreq ));
+            if(objVal[fname_parextreq[0]] == null || objVal[fname_parextreq[0]] == 0)
+            { Toast.Error( $(this).attr('title') + " is required." ); valid_PAREXT = false; return false; }
+        });
+        return valid_PAREXT;
+    }
+
+    function UpdateDueDate(recID)
+    {
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url:  '../KPIView/UpdatingDueDate?KPIAssignmentRefNo=' + recID,
+            success: function (data) {
+                if (data == 'True') {
+                }
+                else { Toast.Error("Error"); }
+            }
+        });
+    }
+
+    function functionOne() {
+        var r = $.Deferred();
+        rnoyv_ipi_kpiintreq = {  ID: null, PerformancePercentageID: null, EmployeeRefNo: null, EvalPurposeRefNo: null , PeriodStart: null, PeriodEnd: null, Remarks: null, CreatedBy: null, CreatedDate: null, ModifiedBy: null, ModifiedDate: null, IsActive: null
+            , IsDirty : false
+            , Save : function(Grid) {
+                //alert(JSON.stringify(rnoyv_ipi_kpiintreq));
+                    $.ajax({
+                        url: '../DetailView/Save',
+                        data: { mName :'TargetSettingRev' ,JSONObject : JSON.stringify( rnoyv_ipi_kpiintreq ) },
+                        type: 'POST',
+                        datatype: 'application/json; charset=utf-8',
+                        beforeSend: function () { },
+                        success: function (data) {
+                            result_kpiintreq = eval("(function(){return " + data + ";})()");
+                            rnoyv_ipi_kpiintreq.ID = result_kpiintreq.ID;
+                            rnoyv_ipi_kpiintreq.IsDirty = false;
+                            var URLView = '@Url.Action("TargetSetting", "KPI")?mName=' + 'TargetSettingRev' + '&pKey=' + result_kpiintreq.ID + '&Icon=' + 'fa-users';
+                            $('#content_TargetSettingRev').load(URLView, function () { });
+                            UpdateDueDate(result_kpiintreq.ID);
+                            Toast.Show( 'Successfully Saved.');
+                        },
+                        error: function(xhr, textStatus, error) {
+                            console.log(error);
+                        }
+                    });
+
+
+            }
+            , Approve : function() {
+                var item = [];
+                item.push(rnoyv_ipi_kpiintreq);
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    //int id, POSTData data, int ApprovalRefNo, int IsExternal, string remarks
+                    url:  '../PAR/Approve?ID=' + rnoyv_ipi_kpiintreq.ID + '&Model=' + 'TargetSettingRev' + '&ApprovalRefNo='+9+'&IsExternal=1' + '&rmk=' + '' + '&MenuRefNo=' + 1097,
+                    success: function (data) {
+                        if (data == 'True') {
+                            var URLView = '../ListView/ListIndex?mguid=1097';
+                            $('#content_TargetSettingRev').load(URLView, function () { });
+
+
+                        }
+                        else { Toast.Error("Error"); }
+                    }
+                });
+            }
+            , Disapprove : function(remarks) {
+                var item = [];
+                item.push(rnoyv_ipi_kpiintreq);
+                $.ajax({
+                    type: "POST",
+                    url: "../PAR/Approve",
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    data: JSON.stringify({ID: rnoyv_ipi_kpiintreq.ID, Model: 'TargetSettingRev', ApprovalRefNo: '3', IsExternal: '1', rmk: remarks, MenuRefNo: 1097}),
+                    success: function (data) {
+                        if (data == 'True') {
+                            var URLView = '../ListView/ListIndex?mguid=1097';
+                            $('#content_TargetSettingRev').load(URLView, function () { });
+                            Toast.Show( "Successfully Disapproved" );
+                        }
+                        else { Toast.Error("Error"); }
+                    }
+                });
+            }
+            , Delete : function() {
+                var item = [];
+                item.push(rnoyv_ipi_kpiintreq);
+                $.ajax({
+                    url: '../DetailView/Delete',
+                    data: { mName :'TargetSettingRev' ,JSONObject : JSON.stringify(item) },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        if (data.error != undefined ) {
+                            alert(data.error);
+                            return;
+                        }
+                        Toast.Show( "Successfully Deleted" );
+                        var URLView = '../ListView/ListIndex?mguid=1097';
+                        $('#content_TargetSettingRev').load(URLView, function () { });
+                    },
+                    error: function(xhr, textStatus, error) {
+                        console.log(error);
+                    }
+                });
+            }
+        };
+        function TargetSettingRev_DetailView() {
+            var self = $(this);
+            this.IsEditOnly = false;
+            var ObjectID = '@ViewBag.PKey';
+
+            var dvFormat = [{ Name: 'Details', Controls:
+                [{ Name: 'ID', Type: 'Int', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'ID' },
+                { Name: 'EvalPurposeRefNo', IsEnabled: '@ViewBag.PKey' > 0 ? false:true, Caption: 'Purpose', Type: 'Int', ControlType: 'combobox', RefColumn: 'ep', ControlModel: 'EvaluationPurpose', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'EvalPurposeRefNo' },
+                { Name: 'EmployeeRefNo', IsEnabled: '@ViewBag.PKey' > 0 ? false : true, Caption: 'Employee Name', Type: 'Int', ControlType: 'combobox', RefColumn: 'en', ControlModel: 'KPIActiveEmployee', ColumnValue: 'EmployeeRefNo', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'EmployeeRefNo' },
+                { Name: 'PerformancePercentageID', IsEnabled: true, Caption: '% Weight', Type: 'Int', ControlType: 'combobox', RefColumn: 'es', ControlModel: 'PerformancePercentage', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'PerformancePercentageID' },
+                { Name: 'StartDate', Caption: 'Start of Period', Type: 'String', strFormat: 'mm/dd/yyyy', ControlType: 'datepicker', ControlModel: 'TargetSettingRev', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'StartDate' },
+                { Name: 'EndDate', Caption: 'End of Period', Type: 'String', strFormat: 'mm/dd/yyyy', ControlType: 'datepicker', ControlModel: 'TargetSettingRev', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'EndDate' },
+                { Name: 'SubmissionDate', Caption: 'Due Date', Type: 'String', strFormat: 'mm/dd/yyyy', ControlType: 'datepicker', ControlModel: 'TargetSettingRev', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'SubmissionDate' },
+                { Name: 'Remarks', Type: 'String', ControlType: 'textarea', ControlModel: 'TargetSettingRev', ColumnNo: 0, TbName: 'Details', ControlID: 'Remarks' }] },
+                { Name: 'Other', Controls:
+                [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' },
+                { Name: 'CreatedDate', Caption: 'Date', Type: 'String', IsEnabled: false, ControlModel: 'TargetSettingRev', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' },
+                { Name: 'ModifiedBy', Caption: 'Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedBy' },
+                { Name: 'ModifiedDate', Caption: 'Modified Date', Type: 'String', IsEnabled: false, ControlModel: 'TargetSettingRev', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedDate' },
+                { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ControlModel: 'TargetSettingRev', ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }] }];
+            function GetControl(Selector, CtrlFormat ) {
+                var control = new JIBControl(Selector, { PropertyName: CtrlFormat.Name , Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption ), type : CtrlFormat.ControlType, Model : CtrlFormat.ControlModel, ControlID : CtrlFormat.ControlID , ControlFormat: CtrlFormat.strFormat },CtrlFormat,'TargetSettingRev');
+                control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+                control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+                control.ParentDiv = Selector
+                control.Init();
+                if ( CtrlFormat.IsEnabled != undefined ) control.SetEnabled( CtrlFormat.IsEnabled );
+                control.CurrentObject = rnoyv_ipi_kpiintreq;
+                return control;
+            };
+            function InitNewObject(newObject) {
+                $.each(newObject, function(key, value) {
+                    if ( key != "IsEditOnly" ) {
+                        rnoyv_ipi_kpiintreq[key] = value;
+                    }
+                });
+                $.each(dvFormat, function(i,tabs) {
+                    if ( tabs.IsListView != undefined ) {
+                        Selector = $('#' + tabs.Name + '_List_TargetSettingRev');
+                        LoadListViewTab(Selector,tabs);
+                    }
+                    else {
+                        $.each(tabs.Controls, function(x,val ) {
+                            if (tabs.Name == 'JobDescription') {
+                                Selector = $('#JobDescription_Form_TargetSettingRev_DetailView');
+                            } else {if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_TargetSettingRev_DetailView_2');
+                                } else{ Selector = $('#' + tabs.Name + '_Form_TargetSettingRev_DetailView');}}
+                            var control = GetControl(Selector,val);
+                            control.SetValue(rnoyv_ipi_kpiintreq[val.Name]);
+                        });
+                    }
+                });
+            }
+            this.OpenObject = function(CurrentObject) {
+                InitNewObject(CurrentObject)
+            }
+            this.InitDetailView = function(CurrentObject) {
+                $.ajax({
+                    url: '../DetailView/GetBaseObject',
+                    data: { model:'TargetSettingRev', pKey:ObjectID },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        if ( ObjectID <= 0 ) {
+                            var newObject = eval("(function(){return " + data + ";})()");
+                            InitNewObject( newObject );
+                        } else {
+                            var jsonArray = JSON.parse(data);
+                            if (jsonArray.length == 0) return;
+                            var Columns = jsonArray[0];
+                            var Values = jsonArray[1];
+                            $.each(Columns,function(i,o){
+                                CurrentObject[o] = Values[i];
+                            });
+                            $.each(dvFormat, function(x,tabs) {
+
+                                if ( tabs.IsListView != undefined ) {
+                                    Selector = $('#' + tabs.Name + '_List_TargetSettingRev');
+                                    LoadListViewTab(Selector,tabs);
+                                } else {
+                                    $.each( tabs.Controls, function( i, val ) {
+
+                                        if (tabs.Name == 'JobDescription') {
+                                            Selector = $('#JobDescription_Form_TargetSettingRev_DetailView');
+                                        } else {
+                                            if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_TargetSettingRev_DetailView_2');
+                                            } else{ Selector = $('#' + tabs.Name + '_Form_TargetSettingRev_DetailView');}}
+                                        var control = GetControl(Selector,val);
+                                        var ColumnIndex = Columns.indexOf( val.Name );
+                                        var Value = Values[ColumnIndex];
+                                        control.SetValue(Value);
+                                    });
+                                }
+
+                            });
+                        }
+                    }, error: function ( e ) { alert(e.responseText); }
+                });
+            };
+
+            //--
+        }
+        function LoadListViewTab(Selector, tabs){
+            var URLView = '../ListView/ChildListIndex?ModelNo=MODEL_NAME&Description=MODEL_DESC&ColumnsWidth=0.7&IsAppendMode=True&ForeignKeyName=FKeyName&ForeignKey=FKey&ParentModel=PMod&AllowAddOth=ModAllowUpdate';
+            URLView = URLView.replace("MODEL_NAME", tabs.Type);
+            URLView = URLView.replace("MODEL_DESC", tabs.Name);
+            URLView = URLView.replace("FKeyName", tabs.FKey);
+            URLView = URLView.replace("FKey", tabs.FKeyValue);
+            URLView = URLView.replace("PMod", "TargetSettingRev");
+            URLView = URLView.replace("ModAllowUpdate", '@ViewBag.AllowUpdate');
+            Selector.load(URLView);
+            Selector.on('OnGridCreated', function (e, o) {
+                var ctr = 0;
+                var h = Selector.parent().height();
+                var grid = o.Grid;
+                grid.ParentObject = rnoyv_ipi_kpiintreq;
+                grid.ParentObjectProperty = tabs.PropertyName;
+
+                grid.rowHeight = 30;
+                grid.ID_ParentKey = rnoyv_ipi_kpiintreq[tabs.FKeyValue];
+                grid.ForeignFieldKey = tabs.FKey != undefined ? tabs.FKey : null;
+                grid.IsPartialRefresh = false;
+                grid.Refresh();
+                grid.getContainer().css('height', h - 10 );
+                grid.getTable().css('height', h - 70);
+            });
+        }
+        var $itm = new TargetSettingRev_DetailView();
+        $itm.InitDetailView(rnoyv_ipi_kpiintreq);
+        return r;
+    }
+
+    //--
+
+    function LoadModal() {
+        var s = $.Deferred();
+        loadTable();
+    }
+
+    function isNumberKey(evt)
+    {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)){
+            return false;}else{	return true;}
+    }
+
+    function RowDetailsClick() {
+        var tableTargetDetails = $('#TargetDetails_Table').DataTable();
+        $('#TargetDetails_Table tbody').off().on('click', '#btnViewTargetDetails', function () {
+            var rowData = tableTargetDetails.row($(this).parents('tr')).data();
+
+            kpilistid = '@ViewBag.PKey'
+            categoryID = rowData[0].toString();
+            URL = "../KPI/TargetDetails";
+            var detailView = new KPIList(URL, rowData[1]);
+            detailView.open();
+        })
+    }
+
+
+    function LoadTargetDetails() {
+        var rs = $.Deferred();
+        var table3 = $("#TargetDetails_Table").DataTable({
+            "columnDefs": [{"targets": 4, "data": null, "defaultContent": "<button type='button' style='width: 100%' id='btnViewTargetDetails' onclick='RowDetailsClick()' class='btn btn-alert'>View Details</button>" }],
+            ajax: {
+                url: '@Url.Action("GetKPICategoryHeaderTargetSetting", "KPI")?kpiid=' + '@ViewBag.PKey',
+                type: 'POST',
+                datatype: 'application/json; charset=utf-8',
+                dataSrc: function (data) {
+                    return JSON.parse(data);
+                },
+
+                error: function (e) { }
+            }
+			, order: [[1, 'asc']], pageResize: true, ordering: false, lengthChange: false, destroy: true, searching: false,
+            initComplete: function () {
+
+            }
+        });
+
+        return rs;
+    };
+
+    function PopulateWeightPercentage(isManager, weightID) {
+
+		jQuery.ajax({
+            url: '@Url.Action("GetWeightPercentage", "KPI")?isForManager=' + isManager,
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			success: function (data) {
+                var jsonArray = JSON.parse(data);
+
+                $("#PerformancePercentageID_TargetSettingRev").empty();
+                $("#PerformancePercentageID_TargetSettingRev").append('<option value=' + 0 + '>' + 'N/A' + '</option>');
+                for (var i = 0; i < jsonArray.length; i++) {
+
+                    if (jsonArray[i][0] == weightID) {
+                        $("#PerformancePercentageID_TargetSettingRev").append('<option value=' + jsonArray[i][0] + ' selected="selected">' + jsonArray[i][1] + '</option>');
+                    } else { $("#PerformancePercentageID_TargetSettingRev").append('<option value=' + jsonArray[i][0] + '>' + jsonArray[i][1] + '</option>'); }
+
+                }
+
+			},
+			error: function (e) {
+			}
+
+		});
+    }
+
+    function isNumeric(num){
+        return !isNaN(num)
+    }
+
+    function isDateValid(date) {
+        return ((new Date(date)).toString() !== "Invalid Date") ? true : false;
+    }
+    </script>

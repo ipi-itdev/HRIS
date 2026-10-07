@@ -1,0 +1,377 @@
+﻿@*@System.Web.Optimization.Scripts.Render("~/Script/KPIScoring")*@
+@System.Web.Optimization.Scripts.Render("/Script/AllKPIScripts")
+<section class="content-header">
+    <h1>On-going</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Evaluation</a></li>
+        <li class="active">On-goings</li>
+    </ol>
+</section>
+<section class="content" style="position:center">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-body" id="EVALUATE">
+                    <div id="tblList_EVALUATE_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="col-sm-6">
+                            <button type="button" style="margin-top: 5px" class="btn btn-primary" id="btnRefreshOngoing" onclick="OngoingRefresh();"><i class="fa fa-refresh" title="Refresh"></i> Refresh</button>
+                        </div>
+                        <table id="tblList_EVALUATE" class="table table-bordered table-striped table-hover tblList" style="font-size:13px;">
+                            <thead id="tblHeadEvaluate">
+                                <tr class="notfilter" role="row">
+                                    <th rowspan="1" colspan="1">ID</th>
+                                    <th rowspan="1" colspan="1" style="width:5%">Employee #</th>
+                                    <th rowspan="1" colspan="1" style="width:16%">Employee Name</th>
+                                    <th rowspan="1" colspan="1" style="width:20%">Client / Department</th>
+                                    <th rowspan="1" colspan="1" style="width:13%">Job Title</th>
+                                    <th rowspan="1" colspan="1" style="width:5%">Job Grade</th>
+                                    <th rowspan="1" colspan="1" style="width:10%">Employment Status</th>
+                                    <th rowspan="1" colspan="1" style="width:8%">Purpose of Evaluation</th>
+                                    <th rowspan="1" colspan="1" style="width:10%">Period Covered</th>
+                                    <th rowspan="1" colspan="1" style="width:10%">Remarks</th>
+                                    <th rowspan="1" colspan="1" style="width:22%">Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblBodyEvaluate"></tbody>
+                            <tfoot></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Contents/js/KPI/KPIScoring.js"></script>
+<script src="~/Contents/js/KPI/KPICoreCompetencies.js"></script>
+<script src="~/Contents/js/KPI/KPICoreCompetenciesHR.js"></script>
+<script src="~/Contents/js/KPI/KPISummaryReport.js"></script>
+<script src="~/Contents/js/KPI/ManagersCore.js"></script>
+<script src="~/Contents/js/KPI/KPISpecialAssignment.js"></script>
+<script src="~/Contents/js/KPI/KPISummaryReportGM.js"></script>
+<script src="~/Contents/js/KPI/KPISummaryReportGM2.js"></script>
+<script src="~/Contents/js/KPI/KPISummaryExternal.js"></script>
+<script src="~/Contents/js/KPI/Summary.js"></script>
+<script>
+
+    var reportName = "";
+	$(document).ready(function () {
+        $('.content-wrapper').waitMe('hide');
+	var table;
+	table = $("#tblList_EVALUATE").DataTable({
+		"columnDefs": [{ "targets": 11, "data": null, "defaultContent": "<button type='button' style='width: 100%' id='btnView' class='btn btn-alert'>VIEW</button>" },
+		 {
+			 "targets": [0],
+			 "visible": false
+		 }],
+			ajax: {
+			url: '@Url.Action("GetEmployeeListForEvaluation", "KPI")',
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			dataSrc: function (data) { return JSON.parse(data); },
+			error: function (e) { }
+		}
+		, order: [[1, 'asc']], pageResize: true,  "lengthChange": false,
+		initComplete: function () { }
+	});
+
+    //--
+
+    $('#tblList_EVALUATE tbody').on('click', '#btnView', function () {
+
+        var tableEval = $('#tblList_EVALUATE').DataTable();
+
+        var data = tableEval.row($(this).parents('tr')).data();
+		kpiAssignmentID = data[0];
+		employeeInfo = (data[2] + " \\ " + data[4] + " " + data[5]);
+		currentUser = '@ViewBag.cuserPriv';
+        cellValue = data[10];
+
+        if ('@ViewBag.cuserPriv' == 51) {
+
+	        // HR MANAGER
+
+	        categoryID = 5;
+
+	        if (cellValue == "For Completion (KPI Scores)") {
+                URL = "../../KPI/KPIScore";
+	            var detailView = new KPIScoring(URL, employeeInfo, "NEXT");
+	            detailView.open();
+	        } else if (cellValue == "For Completion (Core Competency)") {
+                URL = "../../KPI/CoreCompetenciesRev";
+	            var detailView = new KPICoreCompetencies(URL, employeeInfo);
+	            detailView.open();
+	        } else if (cellValue == "For Completion (Growth, Learning and Special Assignments)") {
+				URL = "../../KPI/SpecialAssignment";
+				console.log('ito yung url: ' + URL);
+	            var detailView = new KPISpecialAssignment(URL, employeeInfo, "FINISH");
+	            detailView.open();
+	        } else if (cellValue == "For Review (KPI Scores)") {
+                URL = "../../KPI/KPIScore";
+				var detailView = new KPIScoring(URL, employeeInfo, "MARK AS REVIEWED");
+				detailView.open();
+			} else if (cellValue == "For Review (Core Competency)") {
+                URL = "../../KPI/CoreCompetenciesRev";
+				var detailView = new KPICoreCompetenciesHR(URL, employeeInfo);
+				detailView.open();
+			} else if (cellValue == "For Review (Growth, Learning and Special Assignments)") {
+                URL = "../../KPI/SpecialAssignment";
+				var detailView = new KPISpecialAssignment(URL, employeeInfo, "DONE");
+				detailView.open();
+			} else if (cellValue == "For Review (Initial)") {
+                URLVIEW = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation"
+				var detailView = new KPISummaryReport(URLVIEW, "PERFORMANCE EVALUATION SUMMARY", "ENDORSE");
+				detailView.open();
+			} else if (cellValue == "For Approval by General Manager") {
+                URLVIEW = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+			    var detailView = new KPISummaryReport(URLVIEW, "PERFORMANCE EVALUATION SUMMARY", "CLOSE");
+			    detailView.open();
+			}
+
+	    } else if ('@ViewBag.cuserPriv' == 55) {
+	        // GENERAL MANAGER
+
+	        $.ajax({
+	            type: "POST",
+	            cache: false,
+                url: '../KPI/CheckTargets?kpiid=' + kpiAssignmentID + '&empRefNo=' + 0,
+	            success: function (data) {
+	                var jsonResult = JSON.parse(data);
+
+                    if (parseInt(jsonResult[0][0]) == 1 && parseInt(jsonResult[0][3]) == 1) { // IS FOR MANAGER
+
+	                    if ((parseInt(jsonResult[0][2]) == 1)) {
+
+	                        if (cellValue == "For Completion (KPI Scores)") {
+                                URL = "../../KPI/ManagersScore";
+	                            var detailView = new ManagersCore(URL, employeeInfo, 1);
+	                            detailView.open();
+
+	                        } else if (cellValue == "For Completion (Core Competency)") {
+                                URL = "../../KPI/ManagersScore";
+	                            var detailView = new ManagersCore(URL, employeeInfo, 3);
+	                            detailView.open();
+
+	                        } else if (cellValue == "For Completion (Growth, Learning and Special Assignments)") {
+                                URL = "../../KPI/ManagersScore";
+	                            var detailView = new ManagersCore(URL, employeeInfo, 3);
+	                            detailView.open();
+	                        }
+
+	                    } else {
+
+	                        if (cellValue == "For Completion (KPI Scores)") {
+                                URL = "../../KPI/KPIScorePerCategory";
+	                            var detailView = new KPIScoring(URL, employeeInfo, "NEXT");
+	                            detailView.open();
+	                        } else if (cellValue == "For Completion (Core Competency)") {
+                                URL = "../../KPI/ManagersScore";
+	                            var detailView = new ManagersCore(URL, employeeInfo, 3);
+	                            detailView.open();
+
+	                        } else if (cellValue == "For Completion (Growth, Learning and Special Assignments)") {
+								URL = "../../KPI/SpecialAssignment";
+                                console.log('ito yung url: ' + URL);
+	                            var detailView = new KPISpecialAssignment(URL, employeeInfo, "FINISH");
+	                            detailView.open();
+	                        }
+	                    }
+
+	                    if (cellValue == "For Approval by Chief Executive Officer") {
+                            URLVIEW = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "PARTIAL" + '&reportName=' + "PEManager";
+                            var detailView = new KPISummaryReport(URLVIEW, "KEY PERFORMANCE INDICATOR", "CLOSE");
+	                        detailView.open();
+	                    }
+
+	                } else {
+
+	                    categoryID = 5;
+
+	                    if (cellValue == "For Completion (KPI Scores)") {
+                            URL = "../../KPI/KPIScorePerCategory";
+	                        var detailView = new KPIScoring(URL, employeeInfo, "NEXT");
+	                        detailView.open();
+	                    } else if (cellValue == "For Completion (Core Competency)") {
+                            URL = "../../KPI/CoreCompetenciesRev";
+	                        var detailView = new KPICoreCompetencies(URL, employeeInfo);
+	                        detailView.open();
+	                    } else if (cellValue == "For Completion (Growth, Learning and Special Assignments)") {
+							URL = "../../KPI/SpecialAssignment";
+                            console.log('ito yung url: ' + URL);
+	                        var detailView = new KPISpecialAssignment(URL, employeeInfo, "FINISH");
+	                        detailView.open();
+						} else if (cellValue == "For Approval by General Manager") {
+							var buttonlabel = "";
+                            if (parseInt(jsonResult[0][3]) == 1) { buttonlabel = 'MARK AS FOR REVIEW' } else { buttonlabel = 'SEND BACK'}
+
+							URL = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+
+                            var detailView = new KPISummaryReportGM(URL, "PERFORMANCE EVALUATION SUMMARY", buttonlabel);
+	                        detailView.open();
+
+	                    }
+	                }
+	            }
+	        })
+
+	    } else if ('@ViewBag.cuserPriv' == 61) { // CEO
+
+	        if (cellValue == "For Approval by Chief Executive Officer") {
+	            URLVIEW = '../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "PARTIAL" + '&reportName=' + "PEManager";
+	            var detailView = new KPISummaryReportGM(URLVIEW, "KEY PERFORMANCE INDICATOR", "SEND BACK");
+	            detailView.open();
+
+	        }
+
+	    } else if ('@ViewBag.cuserPriv' == 53 || '@ViewBag.cuserPriv' == 59 || '@ViewBag.cuserPriv' == 60 || '@ViewBag.cuserPriv' == 56 || '@ViewBag.cuserPriv' == 66 || '@ViewBag.cuserPriv' == 70) {
+
+	        // MANAGER
+
+			$.ajax({
+				type: "POST",
+				cache: false,
+				url: '../KPI/CheckTargets?kpiid=' + kpiAssignmentID + '&empRefNo=' + 0,
+				success: function (data) {
+					var jsonResult = JSON.parse(data);
+
+					categoryID = 5;
+
+					if (cellValue == "For Completion (KPI Scores)") {
+
+                        URL = "../../KPI/KPIScore";
+						var detailView = new KPIScoring(URL, employeeInfo, "NEXT");
+						detailView.open();
+					} else if (cellValue == "For Completion (Core Competency)") {
+                        URL = "../../KPI/CoreCompetenciesRev";
+						var detailView = new KPICoreCompetencies(URL, employeeInfo);
+						detailView.open();
+					} else if (cellValue == "For Completion (Growth, Learning and Special Assignments)") {
+                        URL = "../../KPI/SpecialAssignment";
+						var detailView = new KPISpecialAssignment(URL, employeeInfo, "FINISH");
+						detailView.open();
+					} else if (cellValue == "For Review (Initial)" || cellValue == "For Review (KPI Scores)" || cellValue == "For Review (Core Competency)" ||
+                        cellValue == "For Review (Growth, Learning and Special Assignments)" || cellValue == "For Approval by General Manager" || cellValue == "For Review by (MSM)") {
+
+                        URLVIEW = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+                        var detailView = new KPISummaryReport(URLVIEW, "PERFORMANCE EVALUATION SUMMARY", "CLOSE");
+						detailView.open();
+
+					} else if (cellValue == "For Approval by Marketing Manager" && '@ViewBag.cuserPriv' == 53) {
+
+						var buttonlabel = "";
+						if (parseInt(jsonResult[0][3]) == 1) { buttonlabel = 'MARK AS FOR REVIEW' } else { buttonlabel = 'SEND BACK' }
+
+                        URL = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+						var detailView = new KPISummaryReportGM(URL, "PERFORMANCE EVALUATION SUMMARY", buttonlabel);
+						detailView.open();
+
+
+                    } else if (cellValue == "For Review by (DFM)" || cellValue == "For Review by (APJ)" ) {
+                        URLVIEW = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+                        var detailView = new KPISummaryExternal(URLVIEW, "PERFORMANCE EVALUATION SUMMARY", "CLOSE");
+						detailView.open();
+
+					}
+					else {
+
+                        URL = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+						var detailView = new KPISummaryReportGM(URL, "PERFORMANCE EVALUATION SUMMARY");
+						detailView.open();
+					}
+				}
+			})
+
+	    } else if ('@ViewBag.cuserPriv' == 54) {
+
+	        // MRs FOR EXTERNAL
+
+	        categoryID = 5;
+
+	        if (cellValue == "For Completion (KPI Scores)") {
+                URL = "../../KPI/KPIScore";
+	            var detailView = new KPIScoring(URL, employeeInfo, "NEXT");
+	            detailView.open();
+	        } else if (cellValue == "For Completion (Core Competency)") {
+                URL = "../../KPI/CoreCompetenciesRev";
+	            var detailView = new KPICoreCompetencies(URL, employeeInfo);
+	            detailView.open();
+	        } else if (cellValue == "For Completion (Growth, Learning and Special Assignments)") {
+                URL = "../../KPI/SpecialAssignment";
+	            var detailView = new KPISpecialAssignment(URL, employeeInfo, "FINISH");
+	            detailView.open();
+			} else if (cellValue == "For Review (Initial)" || cellValue == "For Review (KPI Scores)" || cellValue == "For Review (Core Competency)" ||
+                cellValue == "For Review (Growth, Learning and Special Assignments)" || cellValue == "For Approval by General Manager" || cellValue == "For Approval by Marketing Manager" || cellValue == "For Review by (DFM)" || cellValue == "For Review by (APJ)") {
+
+                URLVIEW = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+                var detailView = new KPISummaryReport(URLVIEW, "PERFORMANCE EVALUATION SUMMARY", "CLOSE");
+	            detailView.open();
+            } else if (cellValue == "For Review by (MSM)" || "For Review by (JBF1)" || "For Review by (RLP)" ) {
+
+                URLVIEW = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+                var detailView = new KPISummaryReportGM2(URLVIEW, "PERFORMANCE EVALUATION SUMMARY", "SEND BACK");
+                detailView.open();
+            } else {
+
+                URL = '../../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+	            var detailView = new KPISummaryReportGM(URL, "PERFORMANCE EVALUATION SUMMARY");
+	            detailView.open();
+	        }
+
+		}
+		else if ('@ViewBag.cuserPriv' == 74 || '@ViewBag.cuserPriv' == 72) {
+
+    // OPS SUPERVISOR FOR EXTERNAL
+
+    categoryID = 5;
+
+    if (cellValue == "For Completion (KPI Scores)") {
+        URL = "../KPI/KPIScore";
+        var detailView = new KPIScoring(URL, employeeInfo, "NEXT");
+        detailView.open();
+    } else if (cellValue == "For Completion (Core Competency)") {
+        URL = "../KPI/CoreCompetenciesRev";
+        var detailView = new KPICoreCompetencies(URL, employeeInfo);
+        detailView.open();
+    } else if (cellValue == "For Completion (Growth, Learning and Special Assignments)") {
+        URL = "../KPI/SpecialAssignment";
+        var detailView = new KPISpecialAssignment(URL, employeeInfo, "FINISH"); // change KPISpecialAssignments to KPISpecialAssignment 1-14-2026 
+        detailView.open();
+	} else if (cellValue == "For Review (Initial)" || cellValue == "For Review (KPI Scores)" || cellValue == "For Review (Core Competency)" ||
+        cellValue == "For Review (Growth, Learning and Special Assignments)" || cellValue == "For Approval by General Manager" || cellValue == "For Approval by Marketing Manager" || cellValue == "For Review by (DFM)" || cellValue == "For Review by (ASA)" || cellValue == "For Review by (JZB)" || cellValue == "For Review by (KSR)" || cellValue == "For Review by (RAN)" || cellValue == "For Review by (RLP)" || cellValue == "For Review by (RRR)" || cellValue == "For Review by (ACF)" || cellValue == "For Review by (ATA)" || cellValue == "For Review by (FLG)" || cellValue == "For Review by (MQT)" || cellValue == "For Review by (MSM)" || cellValue == "For Review by (APJ)" || cellValue == "For Review by (RLP)") {
+
+        URLVIEW = '../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+        var detailView = new KPISummaryReport(URLVIEW, "PERFORMANCE EVALUATION SUMMARY", " CLOSE ");
+        detailView.open();
+    } else {
+
+        URL = '../KPI/KPIReport?KPIAssignmentDetailsID=' + kpiAssignmentID + '&status=' + "DRAFT" + '&reportName=' + "PerformanceEvaluation";
+        var detailView = new KPISummaryReportGM(URL, "PERFORMANCE EVALUATION SUMMARY");
+        detailView.open();
+    }
+
+}
+
+	});
+    });
+
+
+    function OngoingRefresh() {
+
+        $('#tblList_EVALUATE').DataTable().ajax.reload();
+    }
+
+</script>
+<style>
+    .tblList {
+        width: 100% !important;
+    }
+
+        .tblList td,
+        .tblList th {
+            white-space: normal;
+            -ms-text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+</style>

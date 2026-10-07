@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+}
+<script src='https://www.google.com/recaptcha/api.js' async defer></script>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+<div class="login" ng-controller="GoogleAuthKeyController">
+    <div class="login-box">
+        <div class="login-box-body">
+            <div class="login-logo"></div>
+            <br />
+
+            @if (Convert.ToInt32(Session["UserGoogleAuthKey"]) == 0)
+            {
+                <div class="form-group has-icon text-center">
+                    <img src="@Session["BarcodeImageUrl"]" width="100" height="100" class="img-fluid" />
+                    <label class="control-label mb-2" for="inputError">
+                        Please scan the QR Code using Google Authenticator
+                        (Download the application via Google Play)
+                        Please enter Google Authentication Key
+                    </label>
+                </div>
+
+                @*<div class="form-group has-icon">
+
+            </div>
+            <div class="form-group has-icon">
+
+            </div>*@
+            }
+            else
+            {
+                <div class="form-group has-icon text-center">
+                    @*<img src="@Session["BarcodeImageUrl"]" width="100" height="100" class="img-fluid" />*@
+                    Please enter Google Authentication Key
+                </div>
+              
+            }
+
+            <h2>{{ RCode }}</h2>
+
+            <div class="form-group has-icon">
+                <input type="text" class="form-control" placeholder="Google Authentication Key" ng-model="User.GoogleAuthKey" required>
+                <span class="fa fa-lock form-icon-feedback"></span>
+            </div>
+            @*<div class="text-center">
+                <div style="display: inline-block;">
+                    <div class="g-recaptcha" data-sitekey="6Lf1r6UZAAAAAH2MV58lJAswvRYo0fDiMeVIdjaj"></div>
+                    <br />
+                </div>
+            </div>*@
+            <div class="box-header">
+                <div class="box-title">
+                    <a href="#" ng-click="flogin()">Back to Login.</a>
+                </div>
+                <div class="box-tools pull-right">
+                    <button type="submit" class="btn btn-primary" ng-click="googleauth()" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

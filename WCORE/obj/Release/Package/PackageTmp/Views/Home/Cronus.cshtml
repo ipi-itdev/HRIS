@@ -1,0 +1,88 @@
+﻿<section class="content-header">
+    <h1>Import Employee</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Import Employee</li>
+    </ol>
+</section>
+<section class="content" style="position:absolute">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-body" id="CRONUS">
+                    <div id="tblList_CRONUS_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <table id="tblList_CRONUS" class="table table-bordered table-striped table-hover tblList" style="font-size:13px;">
+                            <thead id="tblHead_CRONUS">
+                                <tr class="notfilter" role="row">
+								<th rowspan="1" colspan="1">ID</th>
+								<th rowspan="1" colspan="1" width="100">Contract Type</th>
+								<th rowspan="1" colspan="1" width="100">Type</th>
+								<th rowspan="1" colspan="1" width="200">Name</th>
+								<th rowspan="1" colspan="1" width="200">Job Title</th>
+								<th rowspan="1" colspan="1" width="300">Company</th>
+								<th rowspan="1" colspan="1" width="150">Start Date</th>
+								<th rowspan="1" colspan="1" width="150">End Date</th>
+								<th rowspan="1" colspan="1" width="150">Basic Salary</th>
+								<th rowspan="1" colspan="1" width="150">Client Rate</th>
+								<th rowspan="1" colspan="1" width="150">Total No of Days</th>
+								<th></th>
+								</tr>
+                            </thead>
+                            <tbody id="tblBody_CRONUS"></tbody>
+                            <tfoot></tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+$(document).ready(function () {
+    $('.content-wrapper').waitMe('hide');
+    var table_CRONUS;
+    table_CRONUS = $("#tblList_CRONUS").DataTable({
+        "columnDefs": [{ "targets": 11, "data": null, "defaultContent": "<button type='button' id='btnNew' class='btn btn-success'>Import</button>" }],
+		 ajax: {
+			url: 'http://aaigcat-001-site14.itempurl.com/api/cronus?pkey=1',
+             headers: { "x-api-key": "14D7F4F394ECBC8B70BFDCDFFE2A93B3" },
+			type: 'GET',
+			datatype: 'application/json; charset=utf-8',
+			dataSrc: function (data) { return JSON.parse(data); },
+			error: function (e) { } },
+        order: [[1, 'asc']]
+    });
+
+    $('#tblList_CRONUS tbody').off('click', '#btnNew').on('click', '#btnNew', function () {
+        var cdata = table_CRONUS.row($(this).parents('tr')).data();
+        var Message = '';
+        var OkLabel = 'OK';
+        var fAction = null;
+        Message = 'Are you sure you want to import the data?';
+        OkLabel = 'Import';
+        fAction = function (result) {
+            $.ajax({
+                type: "POST",
+				async:false,
+                 headers: { "x-api-key": "14D7F4F394ECBC8B70BFDCDFFE2A93B3" },
+                url: 'http://aaigcat-001-site14.itempurl.com/api/cronus/ImportContract?ContractID=' + cdata[0],
+                success: function () { $('#tblList_CRONUS').DataTable().ajax.reload(); Toast.Show("Successfully Imported."); },
+				error: function(){ Toast.Error("Import Failed."); }
+            });
+        }
+        BootstrapDialog.show({
+            title: 'Import information from Cronus',
+            icon: 'fa-users',
+            message: Message,
+            closable: true,
+            draggable: true,
+            buttons: [{ id: 'btn-1', label: 'Cancel', cssClass: 'btn-warning', action: function (dialog) { dialog.close(); } },
+                      { id: 'btn-2', label: 'Ok', cssClass: 'btn-primary', action: function (dialog) { var $button = this; $button.disable(); $button.spin(); fAction(); dialog.close(); } }]
+        });
+    });
+})
+</script>
+<style>
+    .tblList { width: 100% !important; }
+	.tblList td,.tblList th { white-space: normal; text-overflow: ellipsis; overflow: hidden; }
+</style>

@@ -1,0 +1,531 @@
+﻿<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i><b>ACCOUNTABILITY LIST</b></a></li>
+        <li class="active"><b>ACCOUNTABILITY DETAILS</b></li>
+    </ol><br>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style type="text/css">
+        .table-wrapper {
+            width: 100%;
+            /*margin: 30px auto;*/
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+
+            .table-title h2 {
+                margin: 6px 0 0;
+                font-size: 22px;
+            }
+
+            .table-title .add-newkpi {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 5px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+            }
+
+                .table-title .add-newkpi i {
+                    margin-right: 4px;
+                }
+
+        table.table {
+            table-layout: fixed;
+        }
+
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+            }
+
+            table.table th i {
+                font-size: 18px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+            table.table th:last-child {
+                width: 100px;
+            }
+
+            table.table td a {
+                cursor: pointer;
+                display: inline-block;
+                margin: 0 5px;
+                /*min-width: 24px;*/
+
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+                table.table td a.addkpi {
+                    color: #27C46B;
+                }
+
+                table.table td a.editkpi {
+                    color: #FFC107;
+                }
+
+                table.table td a.deletekpi {
+                    color: #E34724;
+                }
+
+            table.table td i {
+                font-size: 22px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td a.addkpi i {
+                /*font-size: 22px;*/
+                margin-right: -1px;
+                position: relative;
+                top: 3px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table .form-control {
+                height: 32px;
+                line-height: 32px;
+                box-shadow: none;
+                border-radius: 2px;
+            }
+
+                table.table .form-control.error {
+                    border-color: #f50000;
+                }
+
+            table.table td .addkpi {
+                display: none;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+    </style>
+</section>
+<section class="content" style="position:relative">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+
+                    @*    <div class="table-title">
+                        </div>
+                    *@
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-1" style="margin-left: 45px">
+                                <button style="font-size: 15px" type="button" class="btn btn-success add-newkpi" id="add-newkpi" onclick="addrow_kpi()">
+                                    <i class="fa glyphicon glyphicon-plus" id="btnAdd">
+                                    </i>ADD NEW
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered" id="tableKPIList">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width:10%; font-size: 13px;" data-field="id">ID</th>
+                                <th rowspan="1" colspan="1" style="width:50%; font-size: 13px" data-field="kpi"><span style="color: red; font-size: 20px"><b>*</b></span>Description</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="KPIType"><span style="color: red; font-size: 20px"><b>*</b></span>Date Issued</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Date Returned</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Remarks</th>
+                                <th> ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <span style="color: darkred; float: left; margin-left: 2px"><b>Note : </b></span>
+            <span style="color: black; float: left; margin-left: 5px"><b>If there's no remarks please input 'NULL' </b></span>
+        </div>
+    </div>
+</section>
+
+<script>
+	var recID;
+	var count = 1;
+	var saveType;
+    var perfindicatorid = @ViewBag.pid;
+    console.log("Viewbag ito" + @ViewBag.pid);
+
+    $(document).ready(function () {
+        // Initial call to loadKPIListDetails
+        console.log('Document Ready');
+        loadKPIListDetails();
+    });
+
+
+     function loadKPIListDetails() {
+         var tableKPListDetails = $("#tableKPIList tbody");
+         // Clear table including dynamically added rows
+         tableKPListDetails.empty();
+
+         jQuery.ajax({
+             url: '@Url.Action("GetEmployeeAccountabilityDetails", "KPI")',
+             type: 'POST',
+             dataType: 'json',
+             data: {
+                 PerfIndicatorID: perfindicatorid
+             },
+             success: function (data) {
+                 var jsonArray = JSON.parse(data);
+                 for (var i = 0; i < jsonArray.length; i++) {
+                     var trRow = '<tr><td style="font-size: 12px" disabled>' + jsonArray[i][0] + '</td><td style="font-size: 12px">' + jsonArray[i][1] + '</td><td style="font-size: 12px">' + jsonArray[i][2] + '</td><td style="font-size: 12px">' + jsonArray[i][3] + '</td>' + '</td><td style="font-size: 12px">' + jsonArray[i][4] + '</td>';
+                     trRow += '<td>' +
+                         '<a class="addkpi" title=""><i class="material-icons">&#xE03B;</i></a>' +
+                         '<a class="editkpi" title=""><i class="material-icons">&#xE254;</i></a>' +
+                         '<a class="deletekpi" title=""><i class="material-icons">&#xE872;</i></a>' +
+                         '</td></tr>';
+                     $("#tableKPIList").append(trRow);
+                     $("#tableKPIList tbody tr").eq(i + 1).find(".addkpi, .editkpi").toggle(); // Use 'i' instead of 'index'
+                 }
+             },
+             error: function (e) {
+                 console.error(e);
+             }
+         });
+     }
+
+
+    function addrow_kpi() {
+        var index2 = $("#tableKPIList tbody tr:last-child").index();
+        var row = '<tr>' +
+     '<td><input type="text" class="form-control" name="id" id="id" value="-1" style="font-size: 12px" disabled></td>' +
+        //'<td><input type="text" class="form-control" name="offense" id="offense" placeholder="Offense" style="font-size: 12px" rows="5"></td>' +
+            '<td><input type="text" class="form-control" name="description" id="description" placeholder="Description" style="font-size: 12px" rows="5"></td>' +
+        /* '<td><input type="text" class="form-control" name="disciplinaryaction" id="disciplinaryaction" placeholder="Disciplinary Action" style="font-size: 12px" rows="5"></td></td>' +*/
+     '<td><input type="date" class="form-control" name="dateissued2" id="dateissued2" onchange="transferValue3()" style="font-size: 12px" rows="5"><input type="text" class="form-control" name="dateissued" id="dateissued" placeholder="Date Committed" style="font-size: 12px" rows="5" hidden></td>' +
+     '<td><input type="date" class="form-control" name="datereturned2" id="datereturned2" onchange="transferValue4()" style="font-size: 12px" rows="5"><input type="text" class="form-control" name="datereturned" id="datereturned" placeholder="Date Committed" style="font-size: 12px" rows="5" hidden></td>' +
+     '<td><input type="text" class="form-control" name="remarks" id="remarks" placeholder="Remarks" style="font-size: 12px" rows="5"></td>' +
+            '<td>' +
+            '<a class="addkpi" title=""><i class="material-icons">&#xE03B;</i></a>' +
+            '<a class="editkpi" title=""><i class="material-icons">&#xE254;</i></a>' +
+            '<a class="deletekpi" title=""><i class="material-icons">&#xE872;</i></a>' +
+            '</td>' +
+            '</tr>';
+        $("#tableKPIList").append(row);
+        $("#tableKPIList tbody tr").eq(index2 + 1).find(".addkpi, .editkpi").toggle();
+        $('[data-toggle="tooltip"]').tooltip();
+        $(".add-newkpi").attr("disabled", "disabled");
+    }
+
+    function transferValue3() {
+        var date_value = document.getElementById('dateissued2').value
+        document.getElementById('dateissued').value = date_value;
+    }
+
+    function transferValue4() {
+        var date_value = document.getElementById('datereturned2').value
+        document.getElementById('datereturned').value = date_value;
+    }
+     //Add row on add button click
+
+    $(document).on("click", ".addkpi", function () {
+
+        var empty = false;
+        var input = $(this).parents("tr").find('input[type="text"]');
+
+        //input.each(function () {
+        //    if (!$(this).val() || $(this).val() == 0.00 || $(this).val() == 0) {
+        //        $(this).addClass("error");
+        //        empty = true;
+        //    } else {
+        //        $(this).removeClass("error");
+        //    }
+        //});
+
+        //---
+
+        $(this).parents("tr").find(".error").first().focus();
+
+        if (!empty) {
+            input.each(function () {
+                $(this).parent("td").html($(this).val());
+            });
+
+            //--
+            var $tds = $(this).parents("tr").find('td'),
+                id = $tds.eq(0).text(),
+                description = "'" + $tds.eq(1).text() + "'",
+                dateissued = "'" + $tds.eq(2).text() + "'",
+                datereturned = "'" + $tds.eq(3).text() + "'",
+                remarks = "'" + $tds.eq(4).text() + "'";
+            //var date = new Date(datecommitted);
+            //var day = date.getDate();
+            //var month = date.getMonth() + 1;
+            //var year = date.getFullYear();
+            //var committeddate = "'" + [year ,month, day].join('-') + "'";
+
+
+            //console.log('ito yung committed date: ' + committeddate    );
+
+           // remarks = $tds.eq(4).text();
+
+
+
+            //if (ispwd == "No") {
+            //    ispwd = 0;
+            //} else {
+            //    ispwd = 1;
+            //}
+
+            //condition of save type
+            if (id == "-1") {
+                saveType = 1;
+            } else {
+                saveType = 0;
+            }
+
+           /* if (year != null && ) {*/
+
+                $.ajax({
+                    type: "POST",
+                    url: "../KPIView/UpdatingAccountability",
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    data: JSON.stringify({ saveType: saveType, employeerefno: @ViewBag.pid, id: id, description: description, dateissued: dateissued, datereturned: datereturned, remarks: remarks }),
+                    success: function (data) {
+                        if (data == 'True') {
+                            // status = 1;
+                            loadKPIListDetails();
+                            $(this).parents("tr").find(".add, .edit").toggle();
+                            $(".add-newkpi").removeAttr("disabled");
+                            $('#CategoryDetails').DataTable().ajax.reload();
+                            $('#KPIAssignmentList_ListView_Table').DataTable().ajax.reload();
+                            $('#KPIAssignmentDetails').DataTable().ajax.reload();
+                            $('#KPIListInfo').DataTable().ajax.reload();
+                            Toast.Show("Employee's Education Details Added/Updated");
+                        }
+                        else { }
+                    }
+                })
+
+
+            //} else {
+            //    swal("Failed!", "Invalid Weight format.", "info");
+            //    loadKPIListDetails(perfindicatorid);
+            //    $(".add-newkpi").removeAttr("disabled");
+            //}
+        }
+    });
+
+
+     // Edit row on edit button click
+     $(document).on("click", ".editkpi", function () {
+
+         $(this).parents("tr").find("td:not(:last-child)").each(function () {
+
+             if (count == 1) {
+
+                 $(this).html('<input id="id" onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+                 count++;
+                 recID = $("#kpiid").val();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+             } else if (count == 2) {
+
+                 $(this).html('<input type="text" class="form-control" name="description" id="description" placeholder="Description" style="font-size: 12px" rows="5" value="' + $(this).text() + '" >');
+                 count++;
+                 //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+
+             } else if (count == 3) {
+
+                 $(this).html('<input type="date" class="form-control" name="dateissued2" id="dateissued2" onchange="transferValue3()" style="font-size: 12px" rows="5"><input type="text" class="form-control" name="dateissued" id="dateissued" placeholder="Date Committed" style="font-size: 12px" rows="5" value="' + $(this).text() + '" hidden>');
+                 count++;
+                 //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+
+             } else if (count == 4) {
+
+                 $(this).html('<input type="date" class="form-control" name="datereturned2" id="datereturned2" onchange="transferValue4()" style="font-size: 12px" rows="5"><input type="text" class="form-control" name="datereturned" id="datereturned" placeholder="Date Committed" style="font-size: 12px" rows="5" value="' + $(this).text() + '" hidden>');
+                 count++;
+                 //console.log('dadaan dito sa count 4 tapos ito na yung count number niya: ' + count);
+                 //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+
+             }
+             else if (count == 5) {
+                 $(this).html('<input id="remarks" name="remarks" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px">');
+                 count++;
+                 console.log('dadaan dito sa count 5 tapos ito na yung count number niya: ' + count);
+                 console.log('pero di nag aactivate ung edit button!!!!');
+                 $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 $(".add-newkpi").attr("disabled", "disabled");
+
+             }
+
+             else {
+                 count = 1;
+                 return false;
+             }
+         });
+     });
+
+      // Delete row on delete button click
+     $(document).on("click", ".deletekpi", function () {
+         let status;
+         var $tds = $(this).parents("tr").find('td'),
+             id = $tds.eq(0).text();
+         swal({
+             title: "Are you sure?",
+             text: "Once deleted, you will not be able to recover this record.",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+         })
+
+             .then((willDelete) => {
+                 if (willDelete) {
+
+                     if ((id == undefined || id == "")) {
+                         id = recID;
+                         console.log('ito yung id nang idedelete: ' + id);
+                         if (id != undefined) {
+                             $.ajax({
+                                 type: "POST",
+                                 cache: false,
+                                 url: '../KPIView/UpdatingAccountability?saveType=' + 2 + '&id=' + id + '&description=' + 'NULL' + '&dateissued=' + 'NULL' + '&datereturned=' + 'NULL' + '&remarks=' + 'NULL',
+                                 success: function (data) {
+                                     if (data == 'True') {
+                                         //status = 1;
+                                         //loadKPIListDetails(kpilistid);
+                                     }
+                                     else { }
+                                 }
+                             })
+                         }
+                     } else {
+
+                         console.log('ito yung id nang idedelete: ' + id);
+                         $.ajax({
+                             type: "POST",
+                             cache: false,
+                             url: '../KPIView/UpdatingAccountability?saveType=' + 2 + '&employeerefno=' + @ViewBag.pid + '&id=' + id + '&description=' + 'NULL' + '&dateissued=' + 'NULL' + '&datereturned=' + 'NULL' + '&remarks=' + 'NULL',
+                             success: function (data) {
+                                 if (data == 'True') {
+                                     //status = 1;
+                                     //loadKPIListDetails(kpilistid);
+                                 }
+                                 else { status = 0; }
+                             }
+                         })
+                     }
+
+                     $(this).parents("tr").find(".add, .edit").toggle();
+                     $(".add-newkpi").removeAttr("disabled");
+                     $(this).parents("tr").remove();
+                     Toast.Show("Employee's Offense Details Deleted");
+                 }
+             });
+
+
+     });
+
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+            return false;
+        } else { return true; }
+    }
+
+
+    function isNumeric(num) {
+        return !isNaN(num)
+    }
+
+    // <============= do not remove backup function =======================>
+    // Append table with add row form on add new button click
+    //$(document).on("click", ".add-newkpi", function () {
+    //    var index2 = $("#tableKPIList tbody tr:last-child").index();
+    //    var row = '<tr>' +
+    //        '<td><input type="text" class="form-control" name="kpiid" id="kpiid" value="-1" style="font-size: 12px" disabled></td>' +
+    //        '<td><input type="text" class="form-control" name="kpi" id="kpi" value="Undefined" style="font-size: 12px" rows="5"></td>' +
+    //        '<td><select id="formula" style="width: 150px; height: 32px; font-size: 12px"><option value="1">A = P / T x 100</option><option value="2">A = T / P x 100</option><option value="3">Budget Bracket</option></select></td>' +
+    //        '<td><input onkeypress="return isNumberKey(event)" type="text" class="form-control" name="weight" id="weight" value="0" style="font-size: 12px"></td>' +
+    //        '<td>' +
+    //        '<a class="addkpi" title="Add"><i class="material-icons">&#xE03B;</i></a>' +
+    //        '<a class="editkpi" title="Edit"><i class="material-icons">&#xE254;</i></a>' +
+    //        '<a class="deletekpi" title="Delete"><i class="material-icons">&#xE872;</i></a>' +
+    //        '</td>' +
+    //        '</tr>';
+    //    $("#tableKPIList").append(row);
+    //    $("#tableKPIList tbody tr").eq(index2 + 1).find(".addkpi, .editkpi").toggle();
+    //    $('[data-toggle="tooltip"]').tooltip();
+    //    $(".add-newkpi").attr("disabled", "disabled");
+    //});
+
+    //$(document).on("click", ".editkpi", function () {
+
+    //    $(this).parents("tr").find("td:not(:last-child)").each(function () {
+
+    //        if (count == 1) {
+
+    //            $(this).html('<input id="id" onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+    //            count++;
+    //            recID = $("#kpiid").val();
+    //            $(".add-newkpi").attr("disabled", "disabled");
+    //        } else if (count == 2) {
+
+    //            $(this).html('<input id="dependentsname" name="dependentsname" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+    //            count++;
+    //            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+    //            $(".add-newkpi").attr("disabled", "disabled");
+
+    //        } else if (count == 3) {
+
+    //            $(this).html('<input id="relationship" name="relationship" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+    //            count++;
+    //            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+    //            $(".add-newkpi").attr("disabled", "disabled");
+
+    //        } else if (count == 4) {
+
+    //            $(this).html('<input id="dependentsbirthdate" name="dependentsbirthdate" onkeypress="return" type="date" class="form-control" value="' + $(this).text() + '" style="font-size: 12px">');
+    //            count++;
+    //            console.log('dadaan dito sa count 4 tapos ito na yung count number niya: ' + count);
+    //            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+    //            $(".add-newkpi").attr("disabled", "disabled");
+
+    //        }
+    //        else if (count == 5) {
+    //            $(this).html('<input id="pwd" name="pwd" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px">');
+    //            count++;
+    //            console.log('dadaan dito sa count 5 tapos ito na yung count number niya: ' + count);
+    //            console.log('pero di nag aactivate ung edit button!!!!');
+    //            $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+    //            $(".add-newkpi").attr("disabled", "disabled");
+
+    //        }
+
+    //        else {
+    //            count = 1;
+    //            return false;
+    //        }
+    //    });
+    //});
+
+
+
+</script>
+
+
+

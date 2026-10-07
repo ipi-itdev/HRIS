@@ -1,0 +1,601 @@
+﻿<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i><b>KPI DETAILS LIST</b></a></li>
+        <li class="active"><b>KPI DETAILS</b></li>
+    </ol><br>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style type="text/css">
+        .table-wrapper {
+            width: 100%;
+            /*margin: 30px auto;*/
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        }
+
+        .table-title {
+            padding-bottom: 10px;
+            margin: 0 0 10px;
+        }
+
+            .table-title h2 {
+                margin: 6px 0 0;
+                font-size: 22px;
+            }
+
+            .table-title .add-newkpi {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 5px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+            }
+
+            .table-title .add-newkpi2 {
+                float: right;
+                height: 30px;
+                font-weight: bold;
+                font-size: 5px;
+                text-shadow: none;
+                min-width: 100px;
+                border-radius: 50px;
+                line-height: 13px;
+            }
+
+
+            .table-title .add-newkpi i {
+                margin-right: 4px;
+            }
+
+            .table-title .add-newkpi2 i {
+                margin-right: 4px;
+            }
+
+        table.table {
+            table-layout: fixed;
+        }
+
+            table.table tr th, table.table tr td {
+                border-color: #e9e9e9;
+            }
+
+            table.table th i {
+                font-size: 18px;
+                margin: 0 5px;
+                cursor: pointer;
+            }
+
+            table.table th:last-child {
+                width: 100px;
+            }
+
+            table.table td a {
+                cursor: pointer;
+                display: inline-block;
+                margin: 0 5px;
+                /*min-width: 24px;*/
+
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+                table.table td a.addkpi {
+                    color: #27C46B;
+                }
+
+                table.table td a.editkpi {
+                    color: #FFC107;
+                }
+
+                table.table td a.deletekpi {
+                    color: #E34724;
+                }
+
+                table.table td a.addkpi2 {
+                    color: #27C46B;
+                }
+
+                table.table td a.editkpi2 {
+                    color: #FFC107;
+                }
+
+                table.table td a.deletekpi2 {
+                    color: #E34724;
+                }
+
+            table.table td i {
+                font-size: 22px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td a.addkpi i {
+                /*font-size: 22px;*/
+                margin-right: -1px;
+                position: relative;
+                top: 3px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td a.addkpi2 i {
+                /*font-size: 22px;*/
+                margin-right: -1px;
+                position: relative;
+                top: 3px;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table .form-control {
+                height: 32px;
+                line-height: 32px;
+                box-shadow: none;
+                border-radius: 2px;
+            }
+
+                table.table .form-control.error {
+                    border-color: #f50000;
+                }
+
+            table.table td .addkpi {
+                display: none;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+
+            table.table td .addkpi2 {
+                display: none;
+                max-width: 50px;
+                width: auto;
+                min-width: 10px;
+            }
+    </style>
+</section>
+<section class="content" style="position:relative">
+    <div class="row">
+        <div class="col-xl-5">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+
+                    @*    <div class="table-title">
+                        </div>
+                    *@
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-1" style="margin-left: 100px">
+                                <button style="font-size: 15px" type="button" class="btn btn-success add-newkpi" id="add-newkpi" onclick="loadKPIListDetails()">
+                                    <i class="fa glyphicon glyphicon-plus" id="btnAdd">
+                                    </i>Reload
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered" id="tableKPIList">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width:10%; font-size: 13px;" data-field="id">ID</th>
+                                <th rowspan="1" colspan="1" style="width:40%; font-size: 13px" data-field="kpi"><span style="color: red; font-size: 20px"><b>*</b></span>Category</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="KPIType"><span style="color: red; font-size: 20px"><b>*</b></span>Total Weight(%)</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Status</th>
+                                @*<th> ACTION</th>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-7">
+            <div class="box box-primary">
+                <div class="table-wrapper">
+
+                    @*    <div class="table-title">
+                        </div>
+                    *@
+
+
+                    <div class="table-title">
+                        <div class="row">
+                            <div class="col-sm-1" style="margin-left: 100px">
+                                <button style="font-size: 15px" type="button" class="btn btn-success add-newkpi2" id="add-newkpi2" onclick="addrow_kpi()">
+                                    <i class="fa glyphicon glyphicon-plus" id="btnAdd">
+                                    </i>Add
+                                </button>
+                                <input type="text" id="kpicategoryid" name="kpicategoryid" style="font-size: 15px" hidden />
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered" id="tableKPIList_2">
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width:10%; font-size: 13px;" data-field="id">ID</th>
+                                <th rowspan="1" colspan="1" style="width:50%; font-size: 13px" data-field="kpi"><span style="color: red; font-size: 20px"><b>*</b></span>KPI</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="KPIType"><span style="color: red; font-size: 20px"><b>*</b></span>Formula</th>
+                                <th rowspan="1" colspan="1" style="width:20%; font-size: 13px" data-field="weight"><span style="color: red; font-size: 20px"><b>*</b></span>Weight</th>
+                                <th> ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            @*<span style="color: darkred; float: left; margin-left: 2px"><b>Note : </b></span>
+                <span style="color: black; float: left; margin-left: 5px"><b> Make sure that the KPI's weight is exactly 100% in total.</b></span>*@
+        </div>
+    </div>
+</section>
+
+<script>
+	var recID;
+	var count = 1;
+	var saveType;
+    var perfindicatorid = @ViewBag.pid;
+    console.log("Viewbag ito" + @ViewBag.pid);
+    var tableAssignment;
+    var id;
+    var kpi;
+
+    function addrow_kpi() {
+
+        var index2 = $("#tableKPIList_2 tbody tr:last-child").index();
+        var row = '<tr>' +
+            '<td><input type="text" class="form-control" name="id" id="id" value="-1" style="font-size: 12px" disabled></td>' +
+            '<td><input type="text" class="form-control" return filterInput(event) name="kpi" id="kpi" placeholder="Description" style="font-size: 12px" rows="5"></td>' +
+            '<td><select name="formula" id="formula" class="form-control" onchange="transferValue2()"><option selected value="NULL">N/A</option><option value="1" >A = P / T x 100</option><option value="2">A = T / P x 100</option><option value="3">Budget Bracket</option><input type="text" class="form-control" name="formula_value" id="formula_value" placeholder="Date Committed" style="font-size: 12px" rows="5" hidden></td>' +
+            '<td><input type="text" class="form-control" name="weight" id="weight" placeholder="Weight" style="font-size: 12px" rows="5"></td></td>' +
+            '<td>' +
+            '<a class="addkpi" title="Add"><i class="material-icons">&#xE03B;</i></a>' +
+            '<a class="editkpi" title="Edit"><i class="material-icons">&#xE254;</i></a>' +
+            '<a class="deletekpi" title="Delete"><i class="material-icons">&#xE872;</i></a>' +
+            '</td>' +
+            '</tr>';
+        $("#tableKPIList_2").append(row);
+        $("#tableKPIList_2 tbody tr").eq(index2 + 1).find(".addkpi, .editkpi").toggle();
+        $('[data-toggle="tooltip"]').tooltip();
+        $(".add-newkpi2").attr("disabled", "disabled");
+    }
+
+    function transferValue2() {
+        var formula_value = document.getElementById('formula').value
+        document.getElementById('formula_value').value = formula_value;
+    }
+
+    function loadKPIListDetails() {
+        var tableKPListDetails = $("#tableKPIList tbody");
+        // Clear table including dynamically added rows
+        tableKPListDetails.empty();
+
+        var tableKPListDetails2 = $("#tableKPIList_2 tbody");
+        tableKPListDetails2.empty();
+
+        jQuery.ajax({
+            url: '@Url.Action("GetKPIInformationDetails", "KPI")',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                PerfIndicatorID: perfindicatorid
+            },
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                for (var i = 0; i < jsonArray.length; i++) {
+                    var trRow = '<tr><td style="font-size: 12px" disabled>' + jsonArray[i][0] + '</td><td style="font-size: 12px">' + jsonArray[i][1] + '</td><td style="font-size: 12px">' + jsonArray[i][2] + '</td><td style="font-size: 12px">' + jsonArray[i][3] + '</td>';
+                    //trRow += '<td>' +
+                    //    '<a class="addkpi" title="Add"><i class="material-icons">&#xE03B;</i></a>' +
+                    //    '<a class="editkpi" title="Edit"><i class="material-icons">&#xE254;</i></a>' +
+                    //    '<a class="deletekpi" title="Delete"><i class="material-icons">&#xE872;</i></a>' +
+                    //    '</td></tr>';
+                    $("#tableKPIList").append(trRow);
+                    $("#tableKPIList tbody tr").eq(i + 1).find(".addkpi, .editkpi").toggle(); // Use 'i' instead of 'index'
+                }
+            },
+            error: function (e) {
+                console.error(e);
+            }
+        });
+    }
+
+    function transferValue() {
+        var offense_value = document.getElementById('formula_2').value
+        document.getElementById('formula').value = offense_value;
+    }
+
+    $(document).ready(function () {
+    // Initial call to loadKPIListDetails
+        console.log('Document Ready');
+        document.getElementById('add-newkpi2').style.display = "none";
+    loadKPIListDetails();
+    });
+
+    //On click of table row
+    //$('#tableKPIList tbody').off().on('click', 'tr', function () {
+
+    //    //if (tableAssignment2 != null && tableAssignment2.Rows.Count>0){
+
+    //    var data = tableAssignment.row(this).data();
+    //    if (data != undefined) {
+    //        //$('#Details_Form_Child_KPIAssignmentList_DetailView').html('');
+    //        kpi = data[1];
+    //        id = data[0];
+    //        //$('#KPIAssignmentDetails').DataTable().destroy();
+    //        console.log('ito yung id: ' + id + ' ito yung kpi: ' + kpi);
+    //        //Reload(data[1], data[0]);
+    //        //updateType = 0;
+    //        //$('#Delete').removeAttr('disabled');
+    //        //$('#btnEnroll').removeAttr('disabled');
+    //    }
+    //});
+
+    $("#tableKPIList tbody").on("click", "td", function () {
+        document.getElementById('add-newkpi2').style.display = "block";
+        var currentRow = $(this).closest("tr");
+
+        var id = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+        var category = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+        var weight = currentRow.find("td:eq(2)").text(); // get current row 3rd TD
+        var data = id + " " + category + " " + weight;
+        //console.log(data);
+
+        document.getElementById('kpicategoryid').value = id;
+
+        var tableKPListDetails2 = $("#tableKPIList_2 tbody");
+        tableKPListDetails2.empty();
+
+        jQuery.ajax({
+            url: '@Url.Action("GetPerformanceIndicatorListDetails_2", "KPI")',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                PerfIndicatorID: perfindicatorid, CategoryID: id
+            },
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                for (var i = 0; i < jsonArray.length; i++) {
+                    var trRow = '<tr><td style="font-size: 12px" disabled>' + jsonArray[i][0] + '</td><td style="font-size: 12px">' + jsonArray[i][1] + '</td><td style="font-size: 12px">' + jsonArray[i][2] + '</td><td style="font-size: 12px">' + jsonArray[i][3] + '</td>';
+                    trRow += '<td>' +
+                        '<a class="addkpi" title=""><i class="material-icons">&#xE03B;</i></a>' +
+                        '<a class="editkpi" title=""><i class="material-icons">&#xE254;</i></a>' +
+                        '<a class="deletekpi" title=""><i class="material-icons">&#xE872;</i></a>' +
+                        '</td></tr>';
+                    $("#tableKPIList_2").append(trRow);
+                    $("#tableKPIList_2 tbody tr").eq(i + 1).find(".addkpi, .editkpi").toggle(); // Use 'i' instead of 'index'
+                }
+            },
+            error: function (e) {
+                console.error(e);
+            }
+        });
+    });
+
+     //Add row on add button click
+
+    $(document).off("click", ".addkpi").on("click", ".addkpi", function () {
+    //$(document).on("click", ".addkpi", function () {
+
+        var empty = false;
+        var input = $(this).parents("tr").find('input[type="text"]');
+
+        input.each(function () {
+            if (!$(this).val() || $(this).val() == 0.00 || $(this).val() == 0) {
+                $(this).addClass("error");
+                empty = true;
+            } else {
+                $(this).removeClass("error");
+            }
+        });
+
+        //---
+
+        $(this).parents("tr").find(".error").first().focus();
+
+        if (!empty) {
+            input.each(function () {
+                $(this).parent("td").html($(this).val());
+            });
+
+            //--
+            var $tds = $(this).parents("tr").find('td'),
+                id = $tds.eq(0).text(),
+                kpi = "'" + $tds.eq(1).text() + "'",
+                kpicategoryid = "'" + document.getElementById('kpicategoryid').value + "'",
+                formula = "'" + $tds.eq(2).text() + "'";
+            weight = $tds.eq(3).text();
+            //kpi = kpi.replace(/'/g, "`");
+            if (id == "-1") {
+                saveType = 1;
+            } else {
+                saveType = 0;
+            }
+
+           /* if (year != null && ) {*/
+
+                $.ajax({
+                    type: "POST",
+                    url: "../KPIView/UpdatingKPIDetails",
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    data: JSON.stringify({ saveType: saveType, perfrefno: @ViewBag.pid, id: id, kpi: kpi, kpicategoryid: kpicategoryid , formula: formula, weight: weight }),
+                    success: function (data) {
+                        if (data == 'True') {
+                            // status = 1;
+                            loadKPIListDetails(perfindicatorid);
+                            $(this).parents("tr").find(".add, .edit").toggle();
+                            //$(".add-newkpi2").removeAttr("disabled");
+                            document.getElementById('add-newkpi2').style.display = "none";
+                            $('#CategoryDetails').DataTable().ajax.reload();
+                            $('#KPIAssignmentList_ListView_Table').DataTable().ajax.reload();
+                            $('#KPIAssignmentDetails').DataTable().ajax.reload();
+                            $('#KPIListInfo').DataTable().ajax.reload();
+                            Toast.Show("KPI Details Updated");
+                        }
+                        else { }
+                    }
+                })
+
+
+            //} else {
+            //    swal("Failed!", "Invalid Weight format.", "info");
+            //    loadKPIListDetails(perfindicatorid);
+            //    $(".add-newkpi").removeAttr("disabled");
+            //}
+        }
+    });
+
+    $(document).on("click", ".addkpi2", function () {
+
+        alert('asdas');
+
+    });
+
+     // Edit row on edit button click
+     $(document).on("click", ".editkpi", function () {
+
+         $(this).parents("tr").find("td:not(:last-child)").each(function () {
+
+             if (count == 1) {
+
+                 $(this).html('<input id="id" onkeypress="return isNumberKey(event)" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" disabled>');
+                 count++;
+                 recID = $("#kpiid").val();
+                /* $(".add-newkpi").attr("disabled", "disabled");*/
+             } else if (count == 2) {
+
+                 $(this).html('<input id="kpi" name="kpi" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5">');
+                 count++;
+                 //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+
+             } else if (count == 3) {
+
+                 $(this).html('<select name="formula_2" id="formula_2" class="form-control" onchange="transferValue()"><option selected value="' + $(this).text() + '" disabled>"' + $(this).text() + '"</option><option value="1" >A = P / T x 100</option><option value="2">A = T / P x 100</option><option value="3">Budget Bracket</option></select ><input id="formula" name="formula" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px" rows="5" hidden>');
+                 count++;
+                 //$(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi").attr("disabled", "disabled");
+
+             } else if (count == 4) {
+
+                 $(this).html('<input id="weight" name="weight" onkeypress="return" type="text" class="form-control" value="' + $(this).text() + '" style="font-size: 12px">');
+                 count++;
+                 $(this).parents("tr").find(".addkpi, .editkpi").toggle();
+                 //$(".add-newkpi2").attr("disabled", "disabled");
+
+             } else {
+                 count = 1;
+                 return false;
+             }
+         });
+     });
+
+      // Delete row on delete button click
+     $(document).on("click", ".deletekpi", function () {
+         let status;
+         var $tds = $(this).parents("tr").find('td'),
+             id = $tds.eq(0).text();
+         swal({
+             title: "Are you sure?",
+             text: "Once deleted, you will not be able to recover this record.",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+         })
+
+             .then((willDelete) => {
+                 if (willDelete) {
+
+                     if ((id == undefined || id == "")) {
+                         id = recID;
+                         console.log('ito yung id nang idedelete: ' + id);
+                         if (id != undefined) {
+                             $.ajax({
+                                 type: "POST",
+                                 cache: false,
+                                 url: '../KPIView/UpdatingHighestEducation?saveType=' + 2 + '&id=' + id,
+                                 success: function (data) {
+                                     if (data == 'True') {
+                                         //status = 1;
+                                         //loadKPIListDetails(kpilistid);
+                                     }
+                                     else { }
+                                 }
+                             })
+                         }
+                     } else {
+
+                         console.log('ito yung id nang idedelete: ' + id);
+                         $.ajax({
+                             type: "POST",
+                             cache: false,
+                             url: '../KPIView/UpdatingKPIDetails?saveType=' + 2 + '&perfrefno=' + @ViewBag.pid + '&id=' + id + '&kpi=' + 'NULL' + '&kpicategoryid='+ 'NULL' +'&formula=' + 'NULL' + '&weight=' + 'NULL',
+                             success: function (data) {
+                                 if (data == 'True') {
+                                     //status = 1;
+                                     //loadKPIListDetails(kpilistid);
+                                     loadKPIListDetails(perfindicatorid);
+                                 }
+                                 else { status = 0; }
+                             }
+                         })
+                     }
+
+                     $(this).parents("tr").find(".add, .edit").toggle();
+                     $(".add-newkpi").removeAttr("disabled");
+                     $(this).parents("tr").remove();
+                     Toast.Show("Employee's Education Details Deleted");
+                 }
+             });
+
+
+     });
+
+    // <============= do not remove backup function =======================>
+    // Append table with add row form on add new button click
+    //$(document).on("click", ".add-newkpi", function () {
+    //    var index2 = $("#tableKPIList tbody tr:last-child").index();
+    //    var row = '<tr>' +
+    //        '<td><input type="text" class="form-control" name="kpiid" id="kpiid" value="-1" style="font-size: 12px" disabled></td>' +
+    //        '<td><input type="text" class="form-control" name="kpi" id="kpi" value="Undefined" style="font-size: 12px" rows="5"></td>' +
+    //        '<td><select id="formula" style="width: 150px; height: 32px; font-size: 12px"><option value="1">A = P / T x 100</option><option value="2">A = T / P x 100</option><option value="3">Budget Bracket</option></select></td>' +
+    //        '<td><input onkeypress="return isNumberKey(event)" type="text" class="form-control" name="weight" id="weight" value="0" style="font-size: 12px"></td>' +
+    //        '<td>' +
+    //        '<a class="addkpi" title="Add"><i class="material-icons">&#xE03B;</i></a>' +
+    //        '<a class="editkpi" title="Edit"><i class="material-icons">&#xE254;</i></a>' +
+    //        '<a class="deletekpi" title="Delete"><i class="material-icons">&#xE872;</i></a>' +
+    //        '</td>' +
+    //        '</tr>';
+    //    $("#tableKPIList").append(row);
+    //    $("#tableKPIList tbody tr").eq(index2 + 1).find(".addkpi, .editkpi").toggle();
+    //    $('[data-toggle="tooltip"]').tooltip();
+    //    $(".add-newkpi").attr("disabled", "disabled");
+    //});
+
+    function isNumberKey(evt)
+    {
+	    var charCode = (evt.which) ? evt.which : evt.keyCode
+	    if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)){
+		    return false;}else{	return true;}
+    }
+
+
+    function isNumeric(num){
+        return !isNaN(num)
+    }
+
+</script>
+
+
+

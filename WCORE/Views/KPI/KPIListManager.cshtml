@@ -1,0 +1,396 @@
+﻿@System.Web.Optimization.Scripts.Render("~/Script/plugins/formslist")
+<section class="content-header">
+    <h1>KPI List (Manager)</h1>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+
+        /* fix = code from bootstrap 3 */
+        tbody.collapse.in {
+            display: table-row-group;
+        }
+    </style>
+
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+
+                <div class="col-md-5">
+                    <div class="box-body" id="CRONUS">
+                        <div id="tblList_CRONUS_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="col-sm-6">
+                                <div class="btn-group" id="btnChildList_PerformanceIndicatorMain_ListView_Table">
+                                    <button type="button" class="btn btn-default" id="KPIListManagerNew"><i class="fa fa-file" title="New"></i> New</button>
+                                </div>
+                            </div>
+                            <table id="KPIListMainManager" style="width: 100%; font-size:12px;" class="table table-bordered table-striped table-hover tblList">
+                                <thead id="tblHead">
+                                    <tr class="notfilter" role="row">
+                                        <th style="width: 10%">ID</th>
+                                        <th>KPI GROUP NAME</th>
+                                        <th>SCORECARD</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblBody"></tbody>
+                                <tfoot></tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div id="myParents_KPIAssignmentList">
+                        <section class="content" id="myParents_KPIList">
+                            <div class="btn-group-horizontal" id="btnList_Child_KPIList">
+                                <button type="button" class="btn btn-primary" id="KPIListSaveManager"><i class="fa fa-save" title="Save"></i>  Save</button>
+                                <button type="button" class="btn btn-primary" id="DeleteForManager"><i class="fa fa-close" title="Delete"></i>  Delete</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="nav-tabs-custom">
+                                                    <ul class="nav nav-tabs" id="tab_child_KPIList">
+                                                        <li class="active"><a href="#Details_Form_Child_KPIListManager" data-toggle="tab" aria-expanded="true">Group Details</a></li>
+                                                        <li><a href="#Other_Form_Child_KPIAssignmentListManager" data-toggle="tab">KPI Details</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="Details_Form_Child_KPIListManager">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group" id="Details_Form_Child_KPIList_DetailView">
+
+                                                                    <div class="row form-group" id="cntr_ID_PerformanceIndicatorMain">
+                                                                        <label class="col-lg-4 control-label" style=" " text-align:left">
+                                                                            <span style="color:red; font-size:20px; ">*  </span>ID
+                                                                        </label><div class="col-lg-8 control-container vcenter">
+                                                                            <input type="text" class="form-control unique required" id="ID_PerformanceIndicatorMainManager" name="ID_PerformanceIndicatorMainManager" title="ID" disabled>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row form-group" id="cntr_Description_PerformanceIndicatorMain">
+                                                                        <label class="col-lg-4 control-label" style=" text-align:left" =""><span style="color:red; font-size:20px; ">*  </span>KPI Group Name</label>
+                                                                        <div class="col-lg-8 control-container vcenter"><input type="text" class="form-control unique required" id="Description_PerformanceIndicatorMainManager" name="Description_PerformanceIndicatorMainManager" title="KPI Group Name"></div>
+                                                                    </div>
+
+                                                                    <div class="row form-group">
+                                                                        <label class="col-lg-4 control-label" style=" text-align:left" =""><span style="color:red; font-size:20px; ">*  </span>Scorecard</label>
+                                                                        <div class="col-lg-8 control-container vcenter"><select class="select2 form-control required" id="cmbScorecard" name="Description_PerformanceIndicatorMainManager" title="Scorecard"></select></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div style="clear:both;"></div>
+                                                        </div>
+
+                                                        <div class="tab-pane" id="Other_Form_Child_KPIAssignmentListManager">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group" id="Other_Form_Child_KPIList_DetailView">
+                                                                    <div id="tblList_CRONUS_wrapper_Details" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                                                        <table id="CategoryDetails" style="width: 100%; font-size:12px;" class="table table-bordered table-striped table-hover tblList">
+                                                                            <thead id="tblHeadDetails">
+                                                                                <tr class="notfilter" role="row">
+                                                                                    <th style="width: 5%">ID</th>
+                                                                                    <th style="width: 40%">Category</th>
+                                                                                    <th style="width: 35%">Total Weight (%)</th>
+                                                                                    <th style="width: 20%">Status</th>
+                                                                                    <th style="width: 10%"></th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody id="tblBodyDetails"></tbody>
+                                                                            <tfoot></tfoot>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div style="clear:both;"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+	var count = 1;
+	var recordID = [];
+	var listRec = [];
+	var listID = [];
+	var kpilistid, ktldg, kpiyear;
+	var valid = true;
+	var updateType = 0;
+	var saveType = 0;
+	var isForSAVE = true;
+
+	function loadKPIList() {
+		var r = $.Deferred();
+
+		var tableMain = $("#KPIListMainManager").DataTable({
+			ajax: {
+			    url: '@Url.Action("GetPerformanceIndicatorList", "KPI")?IsForManager=' + 1,
+				type: 'POST',
+				datatype: 'application/json; charset=utf-8',
+				dataSrc: function (data) {
+				    var jsonArray = JSON.parse(data);
+
+
+
+				    listRec.length = 0;
+				    listID.length = 0;
+					if(JSON.parse(data) == ""){
+						kpilistid = -1
+						updateType = 1;
+						$('#ID_PerformanceIndicatorMainManager').val(kpilistid);
+						$('#Description_PerformanceIndicatorMainManager').val("N/A");
+						return JSON.parse(data);
+					}else {
+					    for (var i = 0; i < jsonArray.length; i++){
+					        listID[i] = jsonArray[i][0]
+					        listRec[i] = jsonArray[i][1];
+					    }
+
+					    kpilistid = jsonArray[0][0];
+
+						$('#ID_PerformanceIndicatorMainManager').val(kpilistid);
+						$('#Description_PerformanceIndicatorMainManager').val(jsonArray[0][1]);
+
+						LoadCategoryDetails(kpilistid);
+
+						var dd = document.getElementById('cmbScorecard');
+						for (var i = 0; i < dd.options.length; i++) {
+						    if (dd.options[i].text === jsonArray[0][2]) {
+						        dd.selectedIndex = i;
+						        break;
+						    }
+						}
+						return JSON.parse(data);
+					}
+				},
+
+				error: function (e) {}
+			}
+			, order: [[1, 'asc']], pageResize: true, ordering: false, lengthChange: false, destroy: true, select: 'single',
+			initComplete: function () { }
+		});
+		return r;
+	};
+
+    //----------------
+
+    function LoadScorecards() {
+
+        var rr = $.Deferred();
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: '../KPI/GetScorecards',
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                var listScorecards = document.getElementById('cmbScorecard');
+
+                if (JSON.parse(data) != "") {
+                    for (var i = 0; i < jsonArray.length; i++) {
+                        listScorecards.options[i] = new Option(jsonArray[i][1], jsonArray[i][0]);
+                    }
+                } else { listScorecards.options[0] = new Option("N/A", -1); }
+            }
+        })
+        return rr;
+    }
+
+    function LoadCategoryDetails(groupID) {
+        var rs = $.Deferred();
+        var table3 = $("#CategoryDetails").DataTable({
+            "columnDefs": [{"targets": 4, "data": null, "defaultContent": "<button type='button' style='width: 100%' id='btnViewDetails' onclick='RowDetailsClick();' class='btn btn-alert'>View Details</button>" }],
+            ajax: {
+                url: '@Url.Action("GetKPICategory", "KPI")?PerfID=' + groupID + '&IsForManager=' + 1,
+			    type: 'POST',
+			    datatype: 'application/json; charset=utf-8',
+			    dataSrc: function (data) {
+			        return JSON.parse(data);
+			    },
+
+			    error: function (e) { }
+			}
+			, order: [[1, 'asc']], pageResize: true, ordering: false, lengthChange: false, destroy: true,
+			initComplete: function () {
+
+			}
+        });
+
+        return rs;
+    };
+
+
+    function RowDetailsClick() {
+        var tableCategoryDetails = $('#CategoryDetails').DataTable();
+        $('#CategoryDetails tbody').off().on('click', '#btnViewDetails', function () {
+            var rowData = tableCategoryDetails.row($(this).parents('tr')).data();
+            categoryID = rowData[0].toString();
+            URL = "../KPI/KPIList";
+            var detailView = new KPIList(URL, rowData[1]);
+            detailView.open();
+        })
+    }
+
+    //----------------
+	$(document).ready(function () {
+
+	    LoadScorecards().done(loadKPIList());
+
+	    var table = $('#KPIListMainManager').DataTable();
+
+	    $('#KPIListMainManager tbody').off().on('click', 'tr', function () {
+	        //$(this).toggleClass('selected');
+	        var data = table.row(this).data();
+	        kpilistid = data[0].toString();
+			$('#ID_PerformanceIndicatorMainManager').val(data[0].toString());
+			$('#Description_PerformanceIndicatorMainManager').val(data[1].toString());
+
+
+			var dd = document.getElementById('cmbScorecard');
+			for (var i = 0; i < dd.options.length; i++) {
+			    if (dd.options[i].text === data[2].toString()) {
+			        dd.selectedIndex = i;
+			        break;
+			    }
+			}
+
+			updateType = 0;
+			LoadCategoryDetails(kpilistid);
+		});
+
+	    //---
+	});
+
+	$('#KPIListManagerNew').on('click', function () {
+
+	    	updateType = 1;
+	        $('#ID_PerformanceIndicatorMainManager').val("-1");
+	        $('#Description_PerformanceIndicatorMainManager').val("N/A");
+
+	        LoadCategoryDetails(-1);
+	});
+
+	$('#KPIListSaveManager').on('click', function () {
+
+	    var e = document.getElementById("cmbScorecard");
+	    var scorecardVal = e.options[e.selectedIndex].value;
+
+
+	    //---
+
+	    if ($('#Description_PerformanceIndicatorMainManager').val() == "N/A" || $('#Description_PerformanceIndicatorMainManager').val() == "" || (!$('#Description_PerformanceIndicatorMainManager').val().replace(/\s/g, '').length) ||
+         (!$('#Description_PerformanceIndicatorMainManager').val().replace(/\s/g, '').length) || scorecardVal == -1) {
+	        Toast.Error("Please fill-in all the required fields.");
+	    } else {
+
+	        if (updateType == 1) {
+	            for (var i = 0; i < listRec.length; i++) {
+
+	                var str = $('#Description_PerformanceIndicatorMainManager').val();
+	                str = str.trim();
+
+	                var listString = listRec[i];
+	                listString = listString.trim();
+
+	                if (str.toString().toUpperCase() == listString.toString().toUpperCase()) {
+	                    isForSAVE = false;
+	                    break;
+	                }
+	            }
+	        } else if (updateType == 0) {
+	            for (var i = 0; i < listRec.length; i++) {
+
+	                var str = $('#Description_PerformanceIndicatorMainManager').val();
+	                str = str.trim();
+
+	                var listString = listRec[i];
+	                listString = listString.trim();
+
+	                if (str.toString().toUpperCase() == listString.toString().toUpperCase()) {
+	                    if ($('#ID_PerformanceIndicatorMainManager').val() == listID[i]) {
+	                        isForSAVE = true;
+	                        break;
+	                    } else {
+	                        isForSAVE = false;
+	                        break;
+	                    }
+	                }
+	            }
+	        }
+
+	        if (isForSAVE == false) {
+	            Toast.Error("Duplicate Entry.");
+	            isForSAVE = true;
+	        } else if (isForSAVE == true) {
+
+	            $.ajax({
+	                type: "POST",
+	                cache: false,
+	                url: '../KPIView/UpdatingPerformanceIndicatorList?updateType=' + updateType + '&performanceIndicatorID=' + $('#ID_PerformanceIndicatorMainManager').val() + '&perfDesc=' + $('#Description_PerformanceIndicatorMainManager').val() + '&IsForManager=' + 1 + '&scoreCardID=' + scorecardVal,
+	                success: function (data) {
+	                    if (data == 'True') {
+	                        $('#KPIListMainManager').DataTable().ajax.reload();
+	                        Toast.Show("KPI List successfully updated.");
+	                        updateType = 0
+	                    }
+	                    else { Toast.Show("Something went wrong.") }
+	                }
+	            })
+	        }
+
+	    }
+
+	});
+
+	$('#DeleteForManager').on('click', function () {
+
+        swal({
+            title: "Do you want to continue?",
+            text: "The selected kpi list / scorecard will be deleted.",
+            icon: "info",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+
+                if (willDelete) {
+                    $.ajax({
+                        type: "POST",
+                        cache: false,
+                        url: '../KPIView/UpdatingPerformanceIndicatorList?updateType=' + 2 + '&performanceIndicatorID=' + $('#ID_PerformanceIndicatorMainManager').val() + '&perfDesc=' + $('#Description_PerformanceIndicatorMainManager').val() + '&IsForManager=' + 1 + '&scoreCardID=' + 1,
+                        success: function (data) {
+                            if (data == 'True') {
+                                $('#KPIListMainManager').DataTable().ajax.reload();
+                                Toast.Show("KPI List has been deleted.");
+                                updateType = 0
+                            }
+                            else { Toast.Show("Something went wrong.") }
+                        }
+                    })
+                }
+            });
+	})
+
+	function isNumberKey(evt)
+	{
+		var charCode = (evt.which) ? evt.which : event.keyCode
+		if ((evt.which != 46 || $(this).val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)){
+			return false;}else{	return true;}
+	}
+
+    </script><div>
+        <div style="clear:both;"></div>
+    </div>
+</section>

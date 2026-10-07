@@ -1,0 +1,952 @@
+﻿@using WCORE.Utility;
+@using WCORE.Utility;
+<section class="content-header">
+      <h1>Personnel Action Request (External)</h1>
+</section>
+<section class="content" id="@ViewBag.mCode">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-primary">
+             <div class="box-body">
+                <div class="row">
+                    <div class="box-header">
+                        <div id="btnList_@ViewBag.mCode">
+                            @if (@ViewBag.AllowInsert == true)
+                            { <button type="button" class="btn btn-primary" id="New_@ViewBag.mCode" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-file" title="New"></i>  New</button> }
+                            @if ((@ViewBag.AllowInsert == true && @ViewBag.PKey <= 0) || @ViewBag.AllowUpdate == true)
+                            { <button type="button" class="btn btn-primary" id="Save_@ViewBag.mCode" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-save" title="Save"></i>  Save</button> }
+                            @if (@ViewBag.AllowDelete == true && @ViewBag.PKey > 0)
+                            { <button type="button" class="btn btn-primary" id="Delete_@ViewBag.mCode" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-close" title="Delete"></i>  Delete</button> } 
+                                <button type="button" class="btn btn-primary" id="Back_@ViewBag.mCode" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-sign-in" title="Back"></i>  Back</button>
+                            <div style="float:right;">
+                                @if (@ViewBag.AllowApprove == true && @ViewBag.PKey > 0)
+                                {<button type="button" class="btn btn-primary" id="Approve_@ViewBag.mCode" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-up" title="Approve"></i>  @ViewBag.Action</button> }
+                                @if (@ViewBag.DisAllowApprove == true && @ViewBag.PKey > 0){
+                                <button type="button" class="btn btn-primary" id="Disapprove_@ViewBag.mCode" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-thumbs-o-down" title="Disapprove"></i>  Disapprove</button>}
+                            </div>
+                        </div>
+                    </div>          
+                    <div class="col-xs-4">
+                        <div class="form-group" id="Details_Form_@ViewBag.mCode_DetailView"></div>
+                    </div>
+                    <div class="col-xs-8">
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs" id="tab_@ViewBag.mCode">
+								<li class="active"><a href="#Movement_Form_@ViewBag.mCode" data-toggle="tab" aria-expanded="true">Movement</a></li>
+                                <li class=""><a href="#Details_Form_@ViewBag.mCode" data-toggle="tab" aria-expanded="true">Computation</a></li>
+                                <li class=""><a href="#EmploymentInformation_Form_@ViewBag.mCode" data-toggle="tab" aria-expanded="false">Employment & Payroll Information</a></li>
+                                <li class=""><a href="#JobDescription_Form_@ViewBag.mCode" data-toggle="tab" aria-expanded="false">Job Description</a></li>
+                                <li class=""><a href="#Benefits_Form_@ViewBag.mCode" data-toggle="tab" aria-expanded="false">Benefits</a></li>
+                                <li class=""><a href="#OtherCost_Form_@ViewBag.mCode" data-toggle="tab" aria-expanded="false">Other Cost</a></li>
+                                <li><a href="#Other_Form_@ViewBag.mCode" data-toggle="tab">Other</a></li>
+                                @if (@ViewBag.PKey > 0 && @ViewBag.AL > 0 && @ViewBag.PrintContract == false){<li><a href="#Other_PARForm_@ViewBag.mCode" data-toggle="tab">Report</a></li> }
+                                </ul>
+                            <div class="tab-content">
+								<div class="tab-pane active" id="Movement_Form_@ViewBag.mCode">		
+									<b>Employee Movement History</b>
+									<br/><br/>
+									<div class="col-md-12">
+										<div class="tab-pane" id="EmpHistory_List_@ViewBag.mCode"></div>
+									</div>
+									<div style="clear:both;"></div>		
+								</div>
+                                <div class="tab-pane" id="Details_Form_@ViewBag.mCode">
+                                    <form action="submit" id="calculation">
+                                        <div class="form-group" id="Details_Form_@ViewBag.mCode_DetailView_2">
+                                            <div class="tab-pane" id="computationdetails">
+                                                <div class="table-responsive">
+                                                <table class="table table-striped table-bordered">
+                                                    <tr><td><b>GROSS REVENUE</b> <strong><label class="pull-right" style="color:green" id="TotalGR">0</label></strong></td>
+                                                    <td><b>DIRECT COST</b><strong><label class="pull-right" style="color:red" id="TotalDC">0</label></strong></td></tr>
+                                                    <tr><td><b>GROSS MARGIN</b><strong><label class="pull-right" style="color:darkblue" id="TotalGM">0</label></strong></td>
+                                                    <td><b>GM PERCENTAGE</b><strong><label class="pull-right" style="color:blue" id="TotalMRPercent">0%</label></strong></td></tr>
+                                                    <tr><td><I>WITH SEPARATION PAY</I></td></tr>
+                                                    <tr><td><b>GROSS REVENUE</b> <strong><label class="pull-right" style="color:green" id="TotalGRSP">0</label></strong></td>
+                                                    <td><b>DIRECT COST</b><strong><label class="pull-right" style="color:red" id="TotalDCSP">0</label></strong></td></tr>
+                                                    <tr><td><b>GROSS MARGIN</b><strong><label class="pull-right" style="color:darkblue" id="TotalGMSP">0</label></strong></td>
+                                                    <td><b>GM PERCENTAGE</b><strong><label class="pull-right" style="color:blue" id="TotalMRPercentSP">0%</label></strong></td></tr>
+                                                    <tr><td><button type="button" class="btn btn-default" id="Compute_@ViewBag.mCode"><b>Compute</b></button></td><td></td></tr>
+                                                </table>
+                                                <table class="table table-striped table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="width: 40%;"></th>
+                                                            <th style="width: 20%;">Monthly</th>
+                                                            <th style="width: 20%;">Daily</th>
+                                                            <th style="width: 20%;">Hourly</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><strong>Salary</strong></td>
+                                                            <td><strong>
+                                                                <input name="mBasicSalary" type="text" value="0.00" id="mBasicSalary" disabled="disabled" class="form-control right" /></strong></td>
+                                                            <td><strong>
+                                                                <input name="dBasicSalary" type="text" value="0.00" id="dBasicSalary" disabled="disabled" class="form-control right"></strong></td>
+                                                            <td><strong>
+                                                                <input name="hBasicSalary" type="text" value="0.00" id="hBasicSalary" disabled="disabled" class="form-control right" /></strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>SSS</td>
+                                                            <td>
+                                                                <input name="mSSS" type="text" value="0.00" id="mSSS" disabled="disabled" class="form-control right" /></td>
+                                                            <td>
+                                                                <input name="dSSS" type="text" value="0.00" id="dSSS" disabled="disabled" class="form-control right" /></td>
+                                                            <td>
+                                                                <input name="hSSS" type="text" value="0.00" id="hSSS" disabled="disabled" class="form-control right" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Pag-Ibig</td>
+                                                            <td>
+                                                                <input name="mPGB" type="text" value="0.00" id="mPGB" disabled="disabled" class="form-control right" /></td>
+                                                            <td>
+                                                                <input name="dPGB" type="text" value="0.00" id="dPGB" disabled="disabled" class="form-control right" /></td>
+                                                            <td>
+                                                                <input name="hPGB" type="text" value="0.00" id="hPGB" disabled="disabled" class="form-control right" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Philhealth</td>
+                                                            <td>
+                                                                <input name="mPH" type="text" value="0.00" id="mPH" disabled="disabled" class="form-control right" /></td>
+                                                            <td>
+                                                                <input name="dPH" type="text" value="0.00" id="dPH" disabled="disabled" class="form-control right" /></td>
+                                                            <td>
+                                                                <input name="hPH" type="text" value="0.00" id="hPH" disabled="disabled" class="form-control right" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>13th Month</td>
+                                                            <td>
+                                                                <input name="m13M" type="text" value="0.00" id="m13M" disabled="disabled" class="form-control right" /></td>
+                                                            <td>
+                                                                <input name="d13M" type="text" value="0.00" id="d13M" disabled="disabled" class="form-control right" /></td>
+                                                            <td>
+                                                                <input name="h13M" type="text" value="0.00" id="h13M" disabled="disabled" class="form-control right" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Incentive Leaves</td>
+                                                            <td>
+                                                                <input name="mILV" type="text" value="0.00" id="mILV" disabled="disabled" class="form-control right" /></td>
+                                                            <td>
+                                                                <input name="dILV" type="text" value="0.00" id="dILV" disabled="disabled" class="form-control right" /></td>
+                                                            <td>
+                                                                <input name="hILV" type="text" value="0.00" id="hILV" disabled="disabled" class="form-control right" /></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Holiday Pay</td>
+                                                            <td>
+                                                                <input name="mHOL" type="text" value="0.00" id="mHOL" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="dHOL" type="text" value="0.00" id="dHOL" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="hHOL" type="text" value="0.00" id="hHOL" disabled="disabled" class="form-control right"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Cola</td>
+                                                            <td>
+                                                                <input name="mCOLA" type="text" value="0.00" id="mCOLA" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="dCOLA" type="text" value="0.00" id="dCOLA" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="hCOLA" type="text" value="0.00" id="hCOLA" disabled="disabled" class="form-control right"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>HMO</td>
+                                                            <td>
+                                                                <input name="mHMO" type="text" value="0.00" id="mHMO" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="dHMO" type="text" value="0.00" id="dHMO" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="hHMO" type="text" value="0.00" id="hHMO" disabled="disabled" class="form-control right"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>&nbsp;&nbsp;&nbsp;per Annum</td>
+                                                            <td>
+                                                                <input name="yHMO" type="text" value="0.00" id="yHMO" disabled="disabled" class="form-control right"></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Other Benefits</td>
+                                                            <td>
+                                                                <input name="mOBFT" type="text" value="0.00" id="mOBFT" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="dOBFT" type="text" value="0.00" id="dOBFT" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="hOBFT" type="text" value="0.00" id="hOBFT" disabled="disabled" class="form-control right"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>Total Benefits</strong></td>
+                                                            <td><strong>
+                                                                <input name="mTBFT" type="text" value="0.00" id="mTBFT" disabled="disabled" class="form-control right"></strong></td>
+                                                            <td><strong>
+                                                                <input name="dTBFT" type="text" value="0.00" id="dTBFT" disabled="disabled" class="form-control right"></strong></td>
+                                                            <td><strong>
+                                                                <input name="hTBFT" type="text" value="0.00" id="hTBFT" disabled="disabled" class="form-control right"></strong></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Other Cost</td>
+                                                            <td>
+                                                                <input name="mOC" type="text" value="0.00" id="mOC" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="dOC" type="text" value="0.00" id="dOC" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="hOC" type="text" value="0.00" id="hOC" disabled="disabled" class="form-control right"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Separation Pay</td>
+                                                            <td>
+                                                                <input name="mSEPPAY" type="text" value="0.00" id="mSEPPAY" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="dSEPPAY" type="text" value="0.00" id="dSEPPAY" disabled="disabled" class="form-control right"></td>
+                                                            <td>
+                                                                <input name="hSEPPAY" type="text" value="0.00" id="hSEPPAY" disabled="disabled" class="form-control right"></td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td><strong>Total Direct Cost</strong></td>
+                                                            <td><strong>
+                                                                <input name="mTotalDC" type="text" value="0.00" id="mTotalDC" disabled="disabled" class="form-control right"></strong></td>
+                                                            <td><strong>
+                                                                <input name="dTotalDC" type="text" value="0.00" id="dTotalDC" disabled="disabled" class="form-control right"></strong></td>
+                                                            <td><strong>
+                                                                <input name="hTotalDC" type="text" value="0.00" id="hTotalDC" disabled="disabled" class="form-control right"></strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="EmploymentInformation_Form_@ViewBag.mCode">
+                                    <br />
+                                    <b>EMPLOYMENT INFORMATION</b>
+                                    <br />
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="EmploymentInformation_Form_@ViewBag.mCode_DetailView"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="EmploymentInformation_Form_@ViewBag.mCode_DetailView_2"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <br />
+                                    <b>PAYROLL INFORMATION</b>
+                                    <br />
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="PayrollInformation_Form_@ViewBag.mCode_DetailView"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="PayrollInformation_Form_@ViewBag.mCode_DetailView_2"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="Benefits_Form_@ViewBag.mCode">
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="Benefits_Form_@ViewBag.mCode_DetailView"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="Benefits2_Form_@ViewBag.mCode_DetailView"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <br />
+                                    <b>OTHER BENEFITS</b> (Save request to display existing and add new benefits)
+                                    <br />
+                                    <div class="col-md-12">
+                                        <div class="tab-pane" id="OtherBenefits_List_@ViewBag.mCode"></div>
+                                    </div>
+									<br />
+									<b>ADDITIONAL CLAUSE UNDER 3.3</b> 
+                                    <br /><br />
+                                    <div class="col-md-12">
+                                        <div class="tab-pane" id="Clause_Form_@ViewBag.mCode_DetailView"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="OtherCost_Form_@ViewBag.mCode">
+                                    <b>OTHER COST</b> (Save request to display existing and add new cost)
+                                    <br /><br />
+                                    <div class="col-md-12">
+                                        <div class="tab-pane" id="OtherCost_List_@ViewBag.mCode"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="JobDescription_Form_@ViewBag.mCode">
+                                    <div class="col-md-12">
+                                        <div class="col-md-6"><div class="form-group" id="ProjectName_Form_@ViewBag.mCode_DetailView"></div></div>
+                                        <div class="col-md-6"><div class="form-group" id="ProjectName_Form_@ViewBag.mCode_DetailView_2"></div></div>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="row form-group" id="cntr_ProjectName_EmploymentInfo_@ViewBag.mCode">
+                                                <label class="col-lg-4 control-label" style=" text-align:left" >
+                                                </label>
+                                                <div class="col-lg-8 control-container vcenter">
+                                                    <button type="button" class="btn btn-primary" id="Upload_@ViewBag.mCode"><i class="fa fa-upload" title="New"></i>  Upload</button>
+                                                    <button type="button" class="btn btn-primary" id="Download_@ViewBag.mCode"><i class="fa fa-download" title="New"></i>  View</button>
+                                                    <input type="file" title="search image" id="file_JD_EmploymentInfo_@ViewBag.mCode" name="file_JD_EmploymentInfo_@ViewBag.mCode" style="display:none;" onchange="showfn@{@ViewBag.mCode}(this)"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-12">
+                                        <div class="col-md-6"><div class="form-group" id="JobDescription_Form_@ViewBag.mCode_DetailView_2"></div></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group" id="JobDescription_Form_@ViewBag.mCode_DetailView"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="Other_Form_@ViewBag.mCode">
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="Other_Form_@ViewBag.mCode_DetailView"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group" id="Other_Form_@ViewBag.mCode_DetailView_2"></div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                                <div class="tab-pane" id="Other_PARForm_@ViewBag.mCode">
+                                    <div class="col-md-12">
+                                        @if(@ViewBag.PKey > 0 && @ViewBag.AL > 0 && @ViewBag.PrintContract == false){<iframe src="@Url.Action("ExportReportPARFORM", "ReportView")?pkey=@ViewBag.PKey#zoom=100" style="width:100%; min-height:500px; height:100%"></iframe>}
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                </div>
+                            </div>                                  
+                        </div>                                  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<script>
+    var uri@{@ViewBag.mCode} = '../api/PAREmpInfo';
+    var rnoyv@{@ViewBag.mCode};
+    var new@{@ViewBag.mCode} = @ViewBag.PKey > 0  ? false : true;
+    var tmr@{@ViewBag.mCode};
+    var res@{@ViewBag.mCode} = null;
+	var tblmovement@{@ViewBag.mCode};
+	var emprefno@{@ViewBag.mCode} = 0;
+	 
+    function showfn@{@ViewBag.mCode}(input) {
+        var file = $("#file_JD_EmploymentInfo_@ViewBag.mCode").val();
+        document.getElementById("JobDescriptionPath_@ViewBag.mCode").value = file;
+    }
+
+    $(document).ready(function () {
+        fOne@{@ViewBag.mCode}().done(lstmovement@{@ViewBag.mCode}($('#EmployeeRefNo_@ViewBag.mCode').val()));
+        $('#tab_@ViewBag.mCode>li>a').first().click();
+        $(function() {           
+            $('#btnList_@ViewBag.mCode').find('button').off('click').on('click', function() {
+                var ids = $(this).attr('id');
+                var Message = '';
+                var OkLabel = 'OK';
+                var fAction = null;
+                switch ( ids.replace('@ViewBag.mCode-','').toUpperCase() ) {
+                    case 'NEW_@ViewBag.mCode'.toUpperCase():
+                        Message = 'Create new Personnel Action Request?';
+                        OkLabel = 'New';
+                        fAction = function(result){
+                                var URLView = '@Url.Action("@ViewBag.mCode", "PAR")?mName=@ViewBag.mCode&pKey=-1&Icon=fa-users';
+                                $('#content_@ViewBag.mCode').load(URLView, function () { });}
+                        break;
+                    case 'SAVE_@ViewBag.mCode'.toUpperCase():
+                        if($('#ReasonForChangeRefNo_@ViewBag.mCode').val() == 3){  $('#DateRegularized_@ViewBag.mCode').val($('#EffectivityDate_@ViewBag.mCode').val()).trigger("change");
+                            $('#EmploymentStatusRefNo_@ViewBag.mCode').val(3).trigger("select2:select");  }
+                        Message = 'Save changes?';
+                        OkLabel = 'Save';
+                        fAction = function(result) { if (PARExternal_Validate() != false) { rnoyv@{@ViewBag.mCode}.Save(); }  else { return false; } }
+                        break;
+                    case 'DELETE_@ViewBag.mCode'.toUpperCase():
+                        Message = 'Are you sure you want to delete?';
+                        OkLabel = 'Delete';
+                        fAction = function(result) { rnoyv@{@ViewBag.mCode}.Delete();}
+                        break;
+                    case 'APPROVE_@ViewBag.mCode'.toUpperCase():
+                        Message = 'Approve this request?';
+                        OkLabel = 'Approve';
+                        fAction = function(result) {  rnoyv@{@ViewBag.mCode}.Approve();} 
+                        break;
+                    case 'DISAPPROVE_@ViewBag.mCode'.toUpperCase():
+                        if (jQuery.trim($("#Remarks_@ViewBag.mCode").val()).length == 0) {Toast.Error("Please enter remarks."); return false; }
+                        else {
+                            Message = 'Disapprove this request?';
+                            OkLabel = 'Disapprove';
+                            fAction = function(res@{@ViewBag.mCode}) {  rnoyv@{@ViewBag.mCode}.Disapprove();} 
+                        }
+                        break;
+                    case 'BACK_@ViewBag.mCode'.toUpperCase():
+                        Message = 'Are you sure you want to go back to the list?';
+                        OkLabel = 'Back to List';
+                        fAction = function (result) { var URLView = '../ListView?ModelNo=53'; $('#content_@ViewBag.mCode').load(URLView, function () { });}
+                        break;
+                }
+                
+                BootstrapDialog.show({
+                    title: 'External Personnel Action Request',
+                    icon: 'fa-circle-o',
+                    message: Message,
+                    closable: true,
+                    draggable: true,
+                    buttons: [{ id: 'btn-1', label: 'Cancel', cssClass: 'btn-warning', action: function (dialog) { dialog.close(); } },
+                              { id: 'btn-2', label: 'Ok', cssClass: 'btn-primary', action: function (dialog) { var $button = this; $button.disable(); $button.spin(); fAction(); dialog.close(); } }]
+                });
+            });
+        });
+
+        $('#Compute_@ViewBag.mCode').on('click', function () {
+            InitializeValue();
+        })
+
+        $("#Upload_@ViewBag.mCode").off("click").on("click",function() { $("#file_JD_EmploymentInfo_@ViewBag.mCode").trigger('click'); })
+
+        $("#Download_@ViewBag.mCode").off("click").on("click",function() {
+            if($("#JobDescriptionPath_@ViewBag.mCode").val()) { window.open('@Url.Action("Download","ReportView")?fname=' + $("#JobDescriptionPath_@ViewBag.mCode").val()) }
+        })
+
+        $("#@ViewBag.mCode").off("select2:select","#EmployeeRefNo_@ViewBag.mCode").on("select2:select","#EmployeeRefNo_@ViewBag.mCode",function(){
+            emprefno@{@ViewBag.mCode} = $('#EmployeeRefNo_@ViewBag.mCode').val();
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: '@Url.Action("CheckDuplicatePAR","PAR")?empno=' + emprefno@{@ViewBag.mCode},
+                success: function (data) {
+                var jsonArray = JSON.parse(data);
+                if(jsonArray.length == 0 && emprefno@{@ViewBag.mCode} > 0) {
+                    $.getJSON(uri@{@ViewBag.mCode} + '?empid=' + emprefno@{@ViewBag.mCode} + '&pkey=@ViewBag.PKey')
+                        .done(function (data) {
+                            $('#FOWRefNo_@ViewBag.mCode').val(data.FowRefNo).trigger("select2:select");
+                            $('#EmployeeTypeRefNo_@ViewBag.mCode').val(data.EmployeeTypeRefNo).trigger("select2:select");
+                            $('#EmploymentStatusRefNo_@ViewBag.mCode').val(data.EmploymentStatusRefNo).trigger("select2:select");
+                            $('#ClientAccountRefNo_@ViewBag.mCode').val(data.ClientAccountRefNo).trigger("select2:select");
+                            $('#ClientAddress_@ViewBag.mCode').val(data.ClientAddress).trigger("input");
+                            $('#JobPosition_@ViewBag.mCode').val(data.JobPosition).trigger("input");
+                            $('#StartDate_@ViewBag.mCode').val(data.StartDate).trigger("change");
+                            $('#EndDate_@ViewBag.mCode').val(data.EndDate).trigger("change");
+                            $('#DateHired_@ViewBag.mCode').val(data.DateHired).trigger("change");
+                            $('#ContractualDate_@ViewBag.mCode').val(data.ContractualDate).trigger("change");
+                            $('#DateProbationary_@ViewBag.mCode').val(data.DateProbationary).trigger("change");
+                            $('#DateRegularized_@ViewBag.mCode').val(data.DateRegularized).trigger("change");
+
+                            $('#PayrollRateRefNo_@ViewBag.mCode').val(data.PayrollRateRefNo).trigger("select2:select");
+                            $('#PayBasisRefNo_@ViewBag.mCode').val(data.PayBasisRefNo).trigger("select2:select");
+                            $('#EcolaComputationRefNo_@ViewBag.mCode').val(data.EcolaComputationRefNo).trigger("select2:select");
+                            $('#EcolaRateRefNo_@ViewBag.mCode').val(data.EcolaRateRefNo).trigger("select2:select");
+                            $('#BasicRate_@ViewBag.mCode').val(data.BasicRate).trigger("input");
+                            $('#ClientRate_@ViewBag.mCode').val(data.ClientRate).trigger("input");
+
+                            CKEDITOR.instances['JobDescription_@ViewBag.mCode'].setData(data.JobDescription, function () {
+                                this.checkDirty();
+                            });
+
+							 CKEDITOR.instances['sclause_@ViewBag.mCode'].setData(data.sclause, function () {
+                                this.checkDirty();
+                            });
+                    
+                            $('#SeparationPay_@ViewBag.mCode').prop('checked',data.SepTag == 1 ? 0 : 1).trigger('click');
+                            $('#T13thMonth_@ViewBag.mCode').prop('checked',data.W13thMonth == 1 ? 0 : 1).trigger('click');
+                            $('#HolidayPay_@ViewBag.mCode').prop('checked',data.HOLTag == 1 ? 0 : 1).trigger('click');
+                    
+                            $('#SIL_@ViewBag.mCode').val(data.SIL).trigger('input');
+							$('#AddtlPaidLeaves_@ViewBag.mCode').val(data.AddtlPaidLeaves).trigger('input');
+							$('#APLProRata_@ViewBag.mCode').prop('checked',data.APLProRata == 1 ? 0 : 1).trigger('click');
+                            $('#HMODC_@ViewBag.mCode').val(data.HMODC).trigger('input');
+                            $('#HMOAmount_@ViewBag.mCode').val(data.HMOAmount).trigger('input');
+                            $('#OTAssumption_@ViewBag.mCode').val(data.OTAssumption).trigger('input');
+
+                            $('#ProjectName_@ViewBag.mCode').val(data.ProjectName).trigger('input');
+                            $('#JobDescriptionPath_@ViewBag.mCode').val(data.JobDescriptionPath).trigger('input');
+
+                            $('#IsUpdateSOW_@ViewBag.mCode').prop('checked',data.IsUpdateSOW == 1 ? 0 : 1).trigger('click');
+                    
+                            $("#SubmittedDate_@ViewBag.mCode").val(data.DateNow).trigger("change");
+
+                            $('#ClientAccountRefNo_@ViewBag.mCode').removeClass("Dirty");
+
+                            InitializeValue();
+
+							CmbReason(emprefno@{@ViewBag.mCode});
+                        })
+                } else { if($('#EmployeeRefNo_@ViewBag.mCode').val() > 0) {
+                    $('#EmployeeRefNo_@ViewBag.mCode').val(0).trigger("select2:select");
+                    
+                    $('#FOWRefNo_@ViewBag.mCode').val(0).trigger("select2:select");
+                    $('#EmployeeTypeRefNo_@ViewBag.mCode').val(0).trigger("select2:select");
+                    $('#EmploymentStatusRefNo_@ViewBag.mCode').val(0).trigger("select2:select");
+                    $('#ClientAccountRefNo_@ViewBag.mCode').val(0).trigger("select2:select");
+                    $('#ClientAddress_@ViewBag.mCode').val('').trigger("input");
+                    $('#JobPosition_@ViewBag.mCode').val('').trigger("input");
+                    $('#StartDate_@ViewBag.mCode').val(null).trigger("change");
+                    $('#EndDate_@ViewBag.mCode').val(null).trigger("change");
+                    $('#DateHired_@ViewBag.mCode').val(null).trigger("change");
+                    $('#ContractualDate_@ViewBag.mCode').val(null).trigger("change");
+                    $('#DateProbationary_@ViewBag.mCode').val(null).trigger("change");
+                    $('#DateRegularized_@ViewBag.mCode').val(null).trigger("change");
+
+                    $('#PayrollRateRefNo_@ViewBag.mCode').val(0).trigger("select2:select");
+                    $('#PayBasisRefNo_@ViewBag.mCode').val(0).trigger("select2:select");
+                    $('#EcolaComputationRefNo_@ViewBag.mCode').val(0).trigger("select2:select");
+                    $('#EcolaRateRefNo_@ViewBag.mCode').val(0).trigger("select2:select");
+                    $('#BasicRate_@ViewBag.mCode').val(0).trigger("input");
+                    $('#ClientRate_@ViewBag.mCode').val(0).trigger("input");
+
+                    CKEDITOR.instances['JobDescription_@ViewBag.mCode'].setData('', function () {
+                        this.checkDirty();
+                    });
+
+					 CKEDITOR.instances['sclause_@ViewBag.mCode'].setData('', function () {
+                        this.checkDirty();
+                    });
+					
+                    $('#SeparationPay_@ViewBag.mCode').prop('checked', $('#SeparationPay_@ViewBag.mCode').val() ?  true : false).trigger('click');
+                    $('#T13thMonth_@ViewBag.mCode').prop('checked', $('#T13thMonth_@ViewBag.mCode').val() ?  true : false).trigger('click');
+                    $('#HolidayPay_@ViewBag.mCode').prop('checked', $('#HolidayPay_@ViewBag.mCode').val() ?  true : false).trigger('click');
+                    
+                    $('#SIL_@ViewBag.mCode').val(0).trigger('input');
+					$('#AddtlPaidLeaves_@ViewBag.mCode').val(0).trigger('input');
+					$('#APLProRata_@ViewBag.mCode').prop('checked', $('#APLProRata_@ViewBag.mCode').val() ?  true : false).trigger('click');
+                    $('#HMODC_@ViewBag.mCode').val(0).trigger('input');
+                    $('#HMOAmount_@ViewBag.mCode').val(0).trigger('input');
+                    $('#OTAssumption_@ViewBag.mCode').val(0).trigger('input');
+
+
+                    $('#ProjectName_@ViewBag.mCode').val(0).trigger('input');
+                    $('#JobDescriptionPath_@ViewBag.mCode').val(0).trigger('input');
+                    $('#IsUpdateSOW_@ViewBag.mCode').prop('checked', $('#IsUpdateSOW_@ViewBag.mCode').val() ?  true : false).trigger('click');
+                    $('#ClientAccountRefNo_@ViewBag.mCode').removeClass("Dirty");
+
+                    InitializeValue();
+                    Toast.Error("Duplicate entry is not allowed. Please complete the first entry before filing new par request."); return false;}}
+                }
+            })
+        })
+
+        $("#@ViewBag.mCode").off('select2:select',"#ReasonForChangeRefNo_@ViewBag.mCode").on("select2:select","#ReasonForChangeRefNo_@ViewBag.mCode",function(){       
+            if($('#ReasonForChangeRefNo_@ViewBag.mCode').val() == 3){ $('#DateRegularized_@ViewBag.mCode').addClass('required'); }
+            else{ $('#DateRegularized_@ViewBag.mCode').removeClass('required'); }
+        })
+
+        $("#@ViewBag.mCode").off('select2:select',"#ClientAccountRefNo_@ViewBag.mCode").on("select2:select", "#ClientAccountRefNo_@ViewBag.mCode", function () {
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: '@Url.Action("GetClientAddress","Home")',
+                data: { clientrefno: $('#ClientAccountRefNo_@ViewBag.mCode').val() },
+                    success: function (data) {
+                        if ($('#ClientAccountRefNo_@ViewBag.mCode').hasClass("Dirty")) { $('#ClientAddress_@ViewBag.mCode').val(JSON.parse(data)).trigger("input"); }
+                    }
+                });
+        })
+
+    })
+
+    function PARExternal_Validate() {
+        var valid_PAREXT = true;
+        var objVal = JSON.parse(JSON.stringify( rnoyv@{@ViewBag.mCode} ));
+        $("#@ViewBag.mCode .required").each(function() {
+            var fname_parextreq = $(this).attr('name').split("_");
+            if(objVal[fname_parextreq[0]] == null || objVal[fname_parextreq[0]] == 0)
+            { Toast.Error( $(this).attr('title') + " is required." ); valid_PAREXT = false; return false; }
+        });
+        
+        if(objVal["ReasonForChangeRefNo"] == 0 && (objVal["OtherReason"] == '' || objVal["OtherReason"] == null )) { Toast.Error("Reason is required."); valid_PAREXT = false; return false; }
+
+		if(($('#HMODC_@ViewBag.mCode').val() > 0 && $('#HMOAmount_@ViewBag.mCode').val() == 0) || ($('#HMODC_@ViewBag.mCode').val() == 0 && $('#HMOAmount_@ViewBag.mCode').val() > 0))
+		{Toast.Error("HMO DC and HMO Coverage should both populated."); valid_PAREXT = false; return false;}
+
+        return valid_PAREXT;
+    }
+    
+    function fOne@{@ViewBag.mCode}() {
+        var r = $.Deferred();
+        rnoyv@{@ViewBag.mCode} = {
+            ID: null, EmployeeRefNo: null, SubmittedDate: null, ReasonForChangeRefNo: 0, OtherReason: null, Remarks: null, Justification: null, EffectivityDate: null, ContractTemplateRefNo: null,
+            FOWRefNo: null, EmployeeTypeRefNo: null, EmploymentStatusRefNo: null, ClientAccountRefNo: null, ClientAddress: null, JobPosition: null,
+            DateHired: null, StartDate: null, EndDate: null, ContractualDate: null, DateProbationary: null, DateRegularized: null,
+            PayrollRateRefNo: null, PayBasisRefNo: null, EcolaComputationRefNo: null, EcolaRateRefNo: null, BasicRate: null, ClientRate: null,
+            SIL: null, AddtlPaidLeaves: null, APLProRata: false, SeparationPay: null, T13thMonth: null, HolidayPay: null, HMODC: null, HMOAmount: null, OTAssumption: null, ProjectName: null , JobDescriptionPath: null ,JobDescription: null, sclause: null,
+            CreatedBy: null, CreatedDate: null, ModifiedBy: null, ModifiedDate: null, sclause: null,
+            IsActive: null, OtherBenefits: [], OtherCost: [], Movement: []
+            , IsDirty : false
+            , Save : function(Grid) {
+                    $.ajax({
+                        url: '../DetailView/Save',
+                        data: { mName :'@ViewBag.mCode' ,JSONObject : JSON.stringify( rnoyv@{@ViewBag.mCode} ) },
+                        type: 'POST',
+                        datatype: 'application/json; charset=utf-8',
+                        beforeSend: function () { },
+                        success: function (data) {
+                            res@{@ViewBag.mCode} = eval("(function(){return " + data + ";})()");
+                            rnoyv@{@ViewBag.mCode}.ID = res@{@ViewBag.mCode}.ID;
+                            rnoyv@{@ViewBag.mCode}.IsDirty = false;
+                            
+                            var fileJDPARREQ_data = $("#file_JD_EmploymentInfo_@ViewBag.mCode").prop("files")[0]; 
+                            var formJDPARREQ_data = new FormData();                 
+                            formJDPARREQ_data.append("file", fileJDPARREQ_data)             
+                            $.ajax({
+                                url: '@Url.Action("UploadJD", "PAR")?pkey=' + res@{@ViewBag.mCode}.ID,
+                                type: 'POST',
+                                processData: false, 
+                                contentType: false, 
+                                dataType : 'json',
+                                data: formJDPARREQ_data,
+                                complete: function() {
+                                    var URLView = '@Url.Action("@ViewBag.mCode", "PAR")?mName=' + '@ViewBag.mCode' + '&pKey=' + res@{@ViewBag.mCode}.ID + '&Icon=' + 'fa-users';
+                                    $('#content_@ViewBag.mCode').load(URLView, function () { });
+
+                                    Toast.Show( 'Successfully Saved.');
+                                }
+                            });                            
+                        },
+                        error: function(xhr, textStatus, error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            , Approve : function() {
+                var item = [];
+                item.push(rnoyv@{@ViewBag.mCode});
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url:  '../PAR/Approve?ID=' + rnoyv@{@ViewBag.mCode}.ID + '&Model=' + '@ViewBag.mCode' + '&ApprovalRefNo=2&IsExternal=1&rmk=' + rnoyv@{@ViewBag.mCode}.Remarks + '&MenuRefNo=53',
+                    success: function (data) {
+						console.log(data);
+                        if (data == 'True') {
+                            var URLView = '../ListView?mguid=@{@ViewBag.mguid}';
+                            $('#content_@ViewBag.mCode').load(URLView, function () { });
+                            Toast.Show( "Successfully " + '@ViewBag.Action' + ('@ViewBag.Action' == 'Approve' ? '' : 'ed'));
+                            IsFired_PARExtReq = false;
+                        }
+                        else { Toast.Error("Error"); }
+                    }
+                });
+            }
+            , Disapprove : function() {
+                var item = [];
+                item.push(rnoyv@{@ViewBag.mCode});
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: '../PAR/Approve?ID=' + rnoyv@{@ViewBag.mCode}.ID + '&Model=' + '@ViewBag.mCode' + '&ApprovalRefNo=8&IsExternal=1&rmk=' + rnoyv@{@ViewBag.mCode}.Remarks + '&MenuRefNo=53',
+                    success: function (data) {
+                        if (data == 'True') {  
+                            var URLView = '../ListView?mguid=@{@ViewBag.mguid}';
+                            $('#content_@ViewBag.mCode').load(URLView, function () { });
+                            Toast.Show( "Successfully Disapproved" );
+                            IsFired_PARExtReq = false;
+                        }
+                        else { Toast.Error("Error"); }
+                    }
+                });
+            }
+            , Delete : function() {
+                var item = [];
+                item.push(rnoyv@{@ViewBag.mCode});
+                $.ajax({
+                    url: '../PAR/DeletePAR?ID='+ rnoyv@{@ViewBag.mCode}.ID,
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        if (data.error != undefined ) {
+                            alert(data.error);
+                            return;
+                        }
+                        Toast.Show( "Successfully Deleted" );
+                        var URLView = '../ListView?ModelNo=53';
+                        $('#content_@ViewBag.mCode').load(URLView, function () { });
+                    },
+                    error: function(xhr, textStatus, error) {
+                        console.log(error);
+                    }
+                });
+            }
+        };
+        function @{@ViewBag.mCode}_DetailView() {
+            var ObjectID = '@ViewBag.PKey';
+            var dvFormat = [{ Name: 'Details', Controls: [{ Name: 'ID', Type: 'Int', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'ID' }
+                    , { Name: 'EmployeeRefNo', Caption: 'Employee', Type: 'Int',IsEnabled: new@{@ViewBag.mCode}, ControlType: 'combobox', RefColumn: 'EMP', ControlModel: 'ActiveFloatingEmployee', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'EmployeeRefNo' }
+                    , { Name: 'SubmittedDate', Caption: 'Date Submitted', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: false, ColumnNo: 0, TbName: 'Details', ControlID: 'SubmittedDate' }
+                    , { Name: 'ReasonForChangeRefNo', Caption: 'Reason for Change', Type: 'Int', ControlType: 'combobox', RefColumn: 'RC', ControlModel: 'ReasonForChange', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Details', ControlID: 'ReasonForChangeRefNo' }
+                    , { Name: 'OtherReason', Caption: 'Other Reason', Type: 'String', ColumnNo: 0, TbName: 'Details', ControlID: 'OtherReason' }
+                    , { Name: 'Justification', Caption: 'Justification', Type: 'String', ControlType: 'textarea', ColumnNo: 0, TbName: 'Details', ControlID: 'Justification' }
+                    , { Name: 'EffectivityDate', Caption: 'Effectivity Date', Type: 'DateTime', ControlType: 'datepicker', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'EffectivityDate', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'ContractTemplateRefNo', Caption: 'Contract Template', Type: 'Int', ControlType: 'combobox', RefColumn: 'ContractTemplate', ControlModel: 'ContractTemplate_EXT', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Details', ControlID: 'ContractTemplateRefNo' }
+                    , { Name: 'Remarks', Caption: 'Remarks', Type: 'String', ControlType: 'textarea', ColumnNo: 0, TbName: 'Details', ControlID: 'Remarks' }]}
+                    , { Name: 'EmploymentInformation', Controls: [{ Name: 'FOWRefNo', Caption: 'Field of Work', Type: 'Int', ControlType: 'combobox', RefColumn: 'FOW', ControlModel: 'FOW', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Employment Information', ControlID: 'FOWRefNo' }
+                    , { Name: 'EmployeeTypeRefNo', Caption: 'Rank Level', Type: 'Int', ControlType: 'combobox', RefColumn: 'EType', ControlModel: 'EmployeeType', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Employment Information', ControlID: 'EmployeeTypeRefNo' }
+                    , { Name: 'EmploymentStatusRefNo', Caption: 'Emp. Status', Type: 'Int', ControlType: 'combobox', RefColumn: 'ESM', ControlModel: 'EmploymentStatus', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Employment Information', ControlID: 'EmploymentStatusRefNo' }
+                    , { Name: 'ClientAccountRefNo', Caption: 'Client', Type: 'Int', ControlType: 'combobox', RefColumn: 'Client', ControlModel: 'ClientAccount', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Employment Information', ControlID: 'ClientAccountRefNo' }
+                    , { Name: 'ClientAddress', Caption: 'Client Address', Type: 'String', ControlType: 'textarea', IsRequired: true, ColumnNo: 0, TbName: 'Employment Information', ControlID: 'ClientAddress' }
+                    , { Name: 'JobPosition', Caption: 'Position', Type: 'String', ControlType: 'textarea', IsRequired: true, ColumnNo: 0, TbName: 'Employment Information', ControlID: 'JobPosition' }
+                    , { Name: 'DateHired', Caption: 'Hiring Date', Type: 'DateTime', ControlType: 'datepicker', IsEnabled: false, ColumnNo: 2, TbName: 'Employment Information', ControlID: 'DateHired', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'StartDate', Caption: 'Start Date', Type: 'DateTime', ControlType: 'datepicker', IsRequired: true, ColumnNo: 2, TbName: 'Employment Information', ControlID: 'StartDate', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'EndDate', Caption: 'End Date', Type: 'DateTime', ControlType: 'datepicker', IsRequired: true, ColumnNo: 2, TbName: 'Employment Information', ControlID: 'EndDate', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'ContractualDate', Caption: 'Contractual Date', Type: 'DateTime', ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'ContractualDate', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'DateProbationary', Caption: 'Probationary Start Date', Type: 'DateTime', ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'DateProbationary', strFormat: 'mm/dd/yyyy' }
+                    , { Name: 'DateRegularized', Caption: 'Date Regularized', Type: 'DateTime', ControlType: 'datepicker', ColumnNo: 2, TbName: 'Employment Information', ControlID: 'DateRegularized', strFormat: 'mm/dd/yyyy' }]}
+                    , { Name: 'PayrollInformation', Controls: [{ Name: 'PayrollRateRefNo', Caption: 'Payroll Rate', Type: 'Int', ControlType: 'comboboxPlus', RefColumn: 'PR', ControlModel: 'PayrollRate', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Payroll Information', ControlID: 'PayrollRateRefNo' }
+                    , { Name: 'PayBasisRefNo', Caption: 'Pay Basis', Type: 'Int', ControlType: 'combobox', RefColumn: 'PB', ControlModel: 'PayBasis', ColumnValue: 'ID', DisplayColumnValue: 'Description', IsRequired: true, ColumnNo: 0, TbName: 'Payroll Information', ControlID: 'PayBasisRefNo' }
+                    , { Name: 'BasicRate', Caption: 'Basic Rate', Type: 'Decimal', IsRequired: true, ColumnNo: 2, TbName: 'Payroll Information', ControlID: 'BasicRate' }
+                    , { Name: 'ClientRate', Caption: 'Client Rate', Type: 'Decimal', IsRequired: true, ColumnNo: 2, TbName: 'Payroll Information', ControlID: 'ClientRate' }
+                    , { Name: 'EcolaRateRefNo', Caption: 'ECOLA Rate', Type: 'Int', ControlType: 'combobox', RefColumn: 'ER', ControlModel: 'EcolaRate', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Payroll Information', ControlID: 'EcolaRateRefNo' }
+                    , { Name: 'EcolaComputationRefNo', Caption: 'Ecola Computation', Type: 'Int', ControlType: 'combobox', RefColumn: 'ECOM', ControlModel: 'ECOLAComputation', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Payroll Information', ControlID: 'EcolaComputationRefNo' }]}
+                    , { Name: 'Benefits', Controls: [{ Name: 'SeparationPay', Caption: 'Separation Pay', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Benefits', ControlID: 'SeparationPay' }
+                    , { Name: 'T13thMonth', Caption: '13th Month', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Benefits', ControlID: 'T13thMonth' }
+					, { Name: 'HolidayPay', Caption: 'Holiday Pay', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Benefits2', ControlID: 'HolidayPay' }
+					, { Name: 'HMODC', Caption: 'HMO DC (Annual)', Type: 'Decimal', ColumnNo: 0, TbName: 'Benefits2', ControlID: 'HMODC' }
+                    , { Name: 'HMOAmount', Caption: 'HMO Cov (Annual)', Type: 'Decimal', ColumnNo: 0, TbName: 'Benefits2', ControlID: 'HMOAmount' }]}
+                    , { Name: 'Benefits2', Controls: [{ Name: 'SIL',Caption: 'SIL Days', Type: 'Decimal', ColumnNo: 0, TbName: 'Benefits2', ControlID: 'SIL' }
+					, { Name: 'AddtlPaidLeaves',Caption: 'Addtl Paid Leaves', Type: 'Decimal', ColumnNo: 0, TbName: 'Benefits2', ControlID: 'AddtlPaidLeaves' }
+					, { Name: 'APLProRata',Caption: 'Pro-Rata?', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 0, TbName: 'Benefits2', ControlID: 'APLProRata' }
+                    , { Name: 'OTAssumption', Caption: 'OT Assumption%', Type: 'Decimal', ColumnNo: 0, TbName: 'Benefits2', ControlID: 'OTAssumption' }]}
+                    , { Name: 'OtherBenefits', Type: '@ViewBag.OtherBenefits', FKey: 'PARRefNo', FKeyValue: 'ID', HasNew: true, HasRemove: true , IsListView: true, PropertyName: 'OtherBenefits' }
+                    , { Name: 'OtherCost', Type: '@ViewBag.OtherCost', FKey: 'PARRefNo', FKeyValue: 'ID', HasNew: true, HasRemove: true , IsListView: true, PropertyName: 'OtherCost' }
+                    , { Name: 'Other', Controls: [{ Name: 'CreatedBy', Caption: 'Created By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Created By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedBy' } 
+                    , { Name: 'CreatedDate', Caption: 'Created Date', Type: 'String', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'CreatedDate' }
+                    , { Name: 'ModifiedBy', Caption: 'Last Modified By', Type: 'Int', ControlType: 'combobox', IsEnabled: false, RefColumn: '[Last Modified By]', ControlModel: 'User', ColumnValue: 'ID', DisplayColumnValue: 'Description', ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedBy' }
+                    , { Name: 'ModifiedDate', Caption: 'Last Modified Date', Type: 'String', IsEnabled: false, ColumnNo: 2, TbName: 'Other', ControlID: 'ModifiedDate' }
+                    , { Name: 'IsActive', Type: 'Boolean', ControlType: 'checkbox', IsEnabled: false, ColumnNo: 0, TbName: 'Other', ControlID: 'IsActive' }]}
+                    , { Name: 'ProjectName', Controls: [{ Name: 'ProjectName', Caption: 'Project Name', Type: 'String',  ColumnNo: 0,  TbName: 'ProjectName', ControlID: 'ProjectName' }
+                    , { Name: 'JobDescriptionPath', Caption: 'Job Description Path', Type: 'String', IsEnabled: false,  ColumnNo: 0,  TbName: 'ProjectName', ControlID: 'JobDescriptionPath' }
+                    , { Name: 'IsUpdateSOW', Caption: 'Is Update SOW?', Type: 'Boolean', ControlType: 'checkbox', ColumnNo: 2,  TbName: 'JobDescription', ControlID: 'IsUpdateSOW' }]}
+                    , { Name: 'JobDescription', Controls: [{ Name: 'JobDescription', Type: 'String', ControlType: 'texteditor', ColumnNo: 0, TbName: 'JobDescription', ControlID: 'JobDescription' }], IsTextEditor: true }
+					, { Name: 'Clause', Controls: [{ Name: 'sclause',  Type: 'String', ControlType: 'texteditor',  ColumnNo: 2,  TbName: 'Clause', ControlID: 'sclause' }], IsTextEditor: true }]
+            function GetControl(Selector, CtrlFormat ) {
+                var control = new controly(Selector, { PropertyName: CtrlFormat.Name , Caption: (CtrlFormat.Caption == undefined ? CtrlFormat.Name : CtrlFormat.Caption ), type : CtrlFormat.ControlType, Model : CtrlFormat.ControlModel, ControlID : CtrlFormat.ControlID , ControlFormat: CtrlFormat.strFormat },CtrlFormat,'@ViewBag.mCode');
+                control.IsRequired = CtrlFormat.IsRequired != undefined ? CtrlFormat.IsRequired : false;
+                control.IsUnique = CtrlFormat.IsUnique != undefined ? CtrlFormat.IsUnique : false;
+                control.ParentDiv = Selector
+                control.Init();
+                if ( CtrlFormat.IsEnabled != undefined ) control.SetEnabled( CtrlFormat.IsEnabled );
+                control.CurrentObject = rnoyv@{@ViewBag.mCode};
+                return control;
+            };
+            function InitNewObject(newObject) {
+                $.each(newObject, function(key, value) {
+                    if ( key != "IsEditOnly" ) {
+                        rnoyv@{@ViewBag.mCode}[key] = value;
+                    }
+                });
+                $.each(dvFormat, function(i,tabs) {
+                    if ( tabs.IsListView != undefined ) {
+                        Selector = $('#' + tabs.Name + '_List_@ViewBag.mCode');
+                        LoadListViewTab(Selector,tabs);
+                    }
+                    else {
+                        $.each(tabs.Controls, function(x,val ) {
+                            if (tabs.Name == 'JobDescription') { Selector = $('#JobDescription_Form_@ViewBag.mCode_DetailView'); }
+							else if (tabs.Name == 'Clause') { Selector = $('#Clause_Form_@ViewBag.mCode_DetailView'); } 
+                            else {if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_@ViewBag.mCode_DetailView_2'); } 
+								  else{ Selector = $('#' + tabs.Name + '_Form_@ViewBag.mCode_DetailView');}
+							}
+                            var control = GetControl(Selector,val);
+                            control.SetValue(rnoyv@{@ViewBag.mCode}[val.Name]);
+                        });
+                    }
+                });
+            }
+            this.OpenObject = function(CurrentObject) {
+                InitNewObject(CurrentObject)
+            }
+            this.InitDetailView = function(CurrentObject) {
+                $.ajax({
+                    url: '../DetailView/GetBaseObject',
+                    data: { model:'@ViewBag.mCode', pKey:ObjectID },
+                    type: 'POST',
+                    datatype: 'application/json; charset=utf-8',
+                    beforeSend: function () { },
+                    success: function (data) {
+                        if ( ObjectID <= 0 ) {
+                            var newObject = eval("(function(){return " + data + ";})()");
+                            InitNewObject( newObject );
+                        } else {
+                            var jsonArray = JSON.parse(data);
+                            if (jsonArray.length == 0) return;
+                            var Columns = jsonArray[0];
+                            var Values = jsonArray[1];
+                            $.each(Columns,function(i,o){
+                                CurrentObject[o] = Values[i];
+                            });
+                            $.each(dvFormat, function(x,tabs) {
+                                if ( tabs.IsListView != undefined ) {
+                                    Selector = $('#' + tabs.Name + '_List_@ViewBag.mCode');
+                                    LoadListViewTab(Selector,tabs);
+                                } else {
+                                    $.each( tabs.Controls, function( i, val ) {
+                                        if (tabs.Name == 'JobDescription') { Selector = $('#JobDescription_Form_@ViewBag.mCode_DetailView'); }
+										else if (tabs.Name == 'Clause') { Selector = $('#Clause_Form_@ViewBag.mCode_DetailView'); } 
+										else { if(val.ColumnNo == 2) {Selector = $('#' + tabs.Name + '_Form_@ViewBag.mCode_DetailView_2'); } 
+											   else { Selector = $('#' + tabs.Name + '_Form_@ViewBag.mCode_DetailView'); }
+										}
+                                        var control = GetControl(Selector,val);
+                                        var ColumnIndex = Columns.indexOf( val.Name );
+                                        var Value = Values[ColumnIndex];
+                                        control.SetValue(Value);
+                                    });
+                                }
+                            });
+                        }
+                    }, error: function ( e ) { alert(e.responseText); }
+                });
+            };
+        }
+        function LoadListViewTab(Selector, tabs){
+			var URLView = '../ListView/ChildListIndex?mguid=' + tabs.Type + '&IsAppendMode=True&ForeignKeyName=' + tabs.FKey + '&ForeignKey=' + tabs.FKeyValue + '&ParentModel=@ViewBag.mCode&AllowAddOth=@ViewBag.AllowUpdate';
+            Selector.load(URLView);
+            Selector.on('OnGridCreated', function (e, o) {
+                var ctr = 0;
+                var h = Selector.parent().height();
+                var grid = o.Grid;
+                grid.ParentObject = rnoyv@{@ViewBag.mCode};
+                grid.ParentObjectProperty = tabs.PropertyName;
+                grid.rowHeight = 30;
+                grid.ID_ParentKey = rnoyv@{@ViewBag.mCode}[tabs.FKeyValue];
+                grid.ForeignFieldKey = tabs.FKey != undefined ? tabs.FKey : null;
+                grid.IsPartialRefresh = false;
+                grid.Refresh();
+                grid.getContainer().css('height', h - 10 );
+                grid.getTable().css('height', h - 70);
+            });
+        }
+        var $itm = new @{@ViewBag.mCode}_DetailView();
+        $itm.InitDetailView(rnoyv@{@ViewBag.mCode});
+        if(new@{@ViewBag.mCode} == false){ tmr@{@ViewBag.mCode} = setInterval(InitializeValue, 1000); }
+        return r;
+    }
+
+    function InitializeValue() {        
+        if($('#EmployeeRefNo_@ViewBag.mCode').val() > 0 && $('#PayrollRateRefNo_@ViewBag.mCode').val() > 0 && $('#PayBasisRefNo_@ViewBag.mCode').val() > 0 && $('#BasicRate_@ViewBag.mCode').val() > 0 && $('#ClientRate_@ViewBag.mCode').val() > 0 && $('#IsActive_@ViewBag.mCode').is(":checked") && $('#PayBasisRefNo_@ViewBag.mCode').val() > 0 && $('#EcolaRateRefNo_@ViewBag.mCode').val() != null && $('#EcolaComputationRefNo_@ViewBag.mCode').val() != null){
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: '@Url.Action("ComputePAR","PAR")?empno=' + $('#EmployeeRefNo_@ViewBag.mCode').val() + '&prate=' + $('#PayrollRateRefNo_@ViewBag.mCode').val() + '&pbasis=' + $('#PayBasisRefNo_@ViewBag.mCode').val() + '&ecola=' + $('#EcolaComputationRefNo_@ViewBag.mCode').val() + '&basic=' + $('#BasicRate_@ViewBag.mCode').val() + '&crate=' + $('#ClientRate_@ViewBag.mCode').val() + '&ecolarate=' + $('#EcolaRateRefNo_@ViewBag.mCode').val() + '&sil=' + $('#SIL_@ViewBag.mCode').val() + '&hmo=' + $('#HMODC_@ViewBag.mCode').val() + '&hmoamnt=' + $('#HMOAmount_@ViewBag.mCode').val() + '&pkey=' + '@ViewBag.PKey' + '&sss=' + ($('#SSS_@ViewBag.mCode').prop('checked') ? true : false) + '&pagibig=' + ($('#PAGIBIG_@ViewBag.mCode').prop('checked') ? true : false) + '&phic=' + ($('#PHIC_@ViewBag.mCode').prop('checked') ? true : false) + '&hol=' + ($('#HolidayPay_@ViewBag.mCode').prop('checked') ? true : false) + '&sep=' + ($('#SeparationPay_@ViewBag.mCode').prop('checked') ? true : false) + '&tmonth=' + ($('#T13thMonth_@ViewBag.mCode').prop('checked') ? true : false),
+            success: function (data) {
+                var jsonArray = JSON.parse(data);
+                var basic = 0;
+                basic = parseFloat(jsonArray[0][0]).toFixed(2)
+                var client = 0;
+                client = parseFloat(jsonArray[0][28]).toFixed(2)
+                $('#mBasicSalary').val(accounting.formatMoney(basic,''));
+                $('#dBasicSalary').val(accounting.formatMoney(parseFloat(jsonArray[0][1]).toFixed(2),''));
+                $('#hBasicSalary').val(accounting.formatMoney(parseFloat(jsonArray[0][2]).toFixed(2),''));
+
+                $('#mSSS').val(accounting.formatMoney(parseFloat(jsonArray[0][3]).toFixed(2),''));
+                $('#dSSS').val(accounting.formatMoney(parseFloat(jsonArray[0][4]).toFixed(2),''));
+                $('#hSSS').val(accounting.formatMoney(parseFloat(jsonArray[0][5]).toFixed(2),''));
+
+                $('#mPGB').val(accounting.formatMoney(parseFloat(jsonArray[0][6]).toFixed(2),''));
+                $('#dPGB').val(accounting.formatMoney(parseFloat(jsonArray[0][7]).toFixed(2),''));
+                $('#hPGB').val(accounting.formatMoney(parseFloat(jsonArray[0][8]).toFixed(2),''));
+
+                $('#mPH').val(accounting.formatMoney(parseFloat(jsonArray[0][9]).toFixed(2),''));
+                $('#dPH').val(accounting.formatMoney(parseFloat(jsonArray[0][10]).toFixed(2),''));
+                $('#hPH').val(accounting.formatMoney(parseFloat(jsonArray[0][11]).toFixed(2),''));
+
+                $('#m13M').val(accounting.formatMoney(parseFloat(jsonArray[0][12]).toFixed(2),''));
+                $('#d13M').val(accounting.formatMoney(parseFloat(jsonArray[0][13]).toFixed(2),''));
+                $('#h13M').val(accounting.formatMoney(parseFloat(jsonArray[0][14]).toFixed(2),''));
+
+                $('#mILV').val(accounting.formatMoney(parseFloat(jsonArray[0][15]).toFixed(2),''));
+                $('#dILV').val(accounting.formatMoney(parseFloat(jsonArray[0][16]).toFixed(2),''));
+                $('#hILV').val(accounting.formatMoney(parseFloat(jsonArray[0][17]).toFixed(2),''));
+
+                $('#mHOL').val(accounting.formatMoney(parseFloat(jsonArray[0][18]).toFixed(2),''));
+                $('#dHOL').val(accounting.formatMoney(parseFloat(jsonArray[0][19]).toFixed(2),''));
+                $('#hHOL').val(accounting.formatMoney(parseFloat(jsonArray[0][20]).toFixed(2),''));
+
+                $('#mCOLA').val(accounting.formatMoney(parseFloat(jsonArray[0][21]).toFixed(2),''));
+                $('#dCOLA').val(accounting.formatMoney(parseFloat(jsonArray[0][22]).toFixed(2),''));
+                $('#hCOLA').val(accounting.formatMoney(parseFloat(jsonArray[0][23]).toFixed(2),''));
+
+                $('#yHMO').val(accounting.formatMoney(parseFloat(jsonArray[0][24]).toFixed(2),''));
+                $('#mHMO').val(accounting.formatMoney(parseFloat(jsonArray[0][25]).toFixed(2),''));
+                $('#dHMO').val(accounting.formatMoney(parseFloat(jsonArray[0][26]).toFixed(2),''));
+                $('#hHMO').val(accounting.formatMoney(parseFloat(jsonArray[0][27]).toFixed(2),''));
+
+                $('#mOBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][29]).toFixed(2),''));
+                $('#dOBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][30]).toFixed(2),''));
+                $('#hOBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][31]).toFixed(2),''));
+
+                $('#mOC').val(accounting.formatMoney(parseFloat(jsonArray[0][32]).toFixed(2),''));
+                $('#dOC').val(accounting.formatMoney(parseFloat(jsonArray[0][33]).toFixed(2),''));
+                $('#hOC').val(accounting.formatMoney(parseFloat(jsonArray[0][34]).toFixed(2),''));
+
+                $('#mTBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][35]).toFixed(2),''));
+                $('#dTBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][36]).toFixed(2),''));
+                $('#hTBFT').val(accounting.formatMoney(parseFloat(jsonArray[0][37]).toFixed(2),''));
+
+                $('#mSEPPAY').val(accounting.formatMoney(parseFloat(jsonArray[0][43]).toFixed(2),''));
+                $('#dSEPPAY').val(accounting.formatMoney(parseFloat(jsonArray[0][44]).toFixed(2),''));
+                $('#hSEPPAY').val(accounting.formatMoney(parseFloat(jsonArray[0][45]).toFixed(2),''));
+
+                $('#mTotalDC').val(accounting.formatMoney(parseFloat(jsonArray[0][38]).toFixed(2),''));
+                $('#dTotalDC').val(accounting.formatMoney(parseFloat(jsonArray[0][39]).toFixed(2),''));
+                $('#hTotalDC').val(accounting.formatMoney(parseFloat(jsonArray[0][40]).toFixed(2),''));
+
+                var GR = client;
+                var DC = parseFloat(parseFloat(jsonArray[0][35])) + parseFloat(basic);
+                var GM = parseFloat(GR) - parseFloat(DC);
+
+                $('#TotalGR').html(accounting.formatMoney(GR,''));
+                $('#TotalDC').html(accounting.formatMoney(parseFloat(jsonArray[0][47]).toFixed(2),''));
+                $('#TotalGM').html(accounting.formatMoney(parseFloat(jsonArray[0][48]).toFixed(2),''));
+                $('#TotalMRPercent').html(parseFloat(jsonArray[0][49]).toFixed(2) + '%');
+
+                $('#TotalGRSP').html(accounting.formatMoney(GR,''));
+                $('#TotalDCSP').html(accounting.formatMoney(parseFloat(jsonArray[0][50]).toFixed(2),''));
+                $('#TotalGMSP').html(accounting.formatMoney(parseFloat(jsonArray[0][51]).toFixed(2),''));
+                $('#TotalMRPercentSP').html(parseFloat(jsonArray[0][52]).toFixed(2) + '%');
+
+				$('#tblList_Movement').DataTable().ajax.reload(function(){});  
+            }
+        });
+            clearTimeout(tmr@{@ViewBag.mCode});
+        }
+    }
+
+    function IsNan(val) {
+        if (isNaN(val) || val == undefined) { return 0; } else { return parseFloat(val).toFixed(2) }
+    }
+
+	function lstmovement@{@ViewBag.mCode}(){
+		 tblmovement@{@ViewBag.mCode} = $("#tblList_Movement").DataTable({
+ 			 order: [ 0, 'desc' ],
+			 ajax: {
+				dom: "<'row'<'col-sm-6'i><'col-sm-2'B><'col-sm-4'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+				url: '@Url.Action("GetEmployeeMovement", "PAR")?pkey=' + $('#EmployeeRefNo_@ViewBag.mCode').val(),
+				type: 'POST',
+				datatype: 'application/json; charset=utf-8',
+				dataSrc: function (data) { return JSON.parse(data); },
+				error: function (e) { }
+			}	
+		});
+	}
+
+	function CmbReason(empno){
+		$.ajax({
+			url: '../PAR/GetEmployeeReasonForChage?pkey=' + empno,
+			type: 'POST',
+			datatype: 'application/json; charset=utf-8',
+			success: function (data) {
+				$('#ReasonForChangeRefNo_@ViewBag.mCode').html('');
+				var jsonArray = JSON.parse(data);
+				if (jsonArray.length == 0) return;
+				$('#ReasonForChangeRefNo_@ViewBag.mCode').append('<option id="0" value="0">N/A</option>');
+				for (var i = 0; i < jsonArray.length; i++) {
+					Columns = jsonArray[i];
+					$('#ReasonForChangeRefNo_@ViewBag.mCode').append('<option id=' + Columns[0] + ' value=' + Columns[0] + '>' + Columns[1] + '</option>');
+				}
+			},
+			error: function (e) {
+			}
+		});    
+		$('#ReasonForChangeRefNo_@ViewBag.mCode').select2();
+	}
+
+
+</script>

@@ -1,0 +1,58 @@
+﻿<section class="content-header">
+    <h1>@ViewBag.Description <i style="font-size:13px">  @ViewBag.SubDescription</i></h1>
+    <ol class="breadcrumb">
+        <li><a href="javascript:void(0);" onclick="displayAttachment('../Uploads/UserManual/@{@ViewBag.mCode}.pdf');"><i class="fa fa-question-circle" title="Help?"></i>Help</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="divContainer" id="ListView_@ViewBag.ViewId">
+                        <div id="myButton_@ViewBag.ViewId"></div>
+                        <div class="Model_ListView" id="@{@ViewBag.ViewId}" />
+                    </div>
+                    <div id="mySidebar_@ViewBag.ViewId" class="sidebar-list-filter">
+                        <div class="box-tools pull-right">
+                            <a href="#" class="fa fa-close" onclick="closeNav@{@ViewBag.ViewId}()"></a>
+                        </div>
+                        <br>
+                        <div class="form-group" id="@{@ViewBag.ViewId}_FilterView"></div>
+                        <div id="btnList_@{@ViewBag.ViewId}">
+                            <button type="button" class="btn btn-primary" id="Filter_@{@ViewBag.ViewId}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-filter" title="Filter"></i>  Filter</button>
+                            <button type="button" class="btn btn-primary" id="Clear_@{@ViewBag.ViewId}" onclick="var e=this; e.disabled=true; setTimeout(function(){e.disabled=false;},10000);return true;"><i class="fa fa-eraser" title="Clear Filter"></i>  Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        
+        let $Grid = new griddy('#@{@ViewBag.ViewId}', @Html.Raw(@ViewBag.tFormat), @Html.Raw(@ViewBag.tButtonHdr), @Html.Raw(@ViewBag.tButtonDtl), @{@Html.Raw(ViewBag.tFilter)}, @{@Html.Raw(ViewBag.tFilterValue)});
+		$Grid.DetailViewURL = '@Html.Raw(@Url.Action(@ViewBag.DetailActionName, @ViewBag.DetailControllerName, new { pid = "PRIMARY_KEY" }))';
+		$Grid.WithOpen = '@ViewBag.WithOpen';
+        $Grid.AllowInsert = '@ViewBag.AllowInsert';
+        $Grid.AllowPrint = '@ViewBag.AllowPrint';
+        $Grid.AllowExport = '@ViewBag.AllowExport';
+		$Grid.LimitLoad = '@ViewBag.LimitLoad';
+		$Grid.mguid = '@ViewBag.mguid';
+		$Grid.mCode = '@ViewBag.mCode';
+		$Grid.OrderBy = '@ViewBag.OrderBy';
+		$Grid.OrderByAs = '@ViewBag.OrderByAs';
+		$Grid.Description = '@ViewBag.Description';
+		$Grid.mNo = '@ViewBag.mNo';
+		$Grid.DataSourceUrl = '@ViewBag.ListDataSource';
+        $Grid.IsAPIUrl = '@ViewBag.IsAPIUrl';
+
+       
+    })
+	function closeNav@{@ViewBag.ViewId}(){
+		$('#mySidebar_@ViewBag.ViewId').toggle("slide", { direction: "right" }, 100);
+    }
+</script>
+
+
